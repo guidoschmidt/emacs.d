@@ -8,8 +8,26 @@
 
 
 ;;; Code:
+
+;; Disable tool-bar
+(tool-bar-mode -1)
+
 ;;; Remove startup message
 (setq inhibit-startup-message t)
+
+;;; -- Use ibuffer instead of list-buffer
+(defalias 'list-buffers 'ibuffer)
+
+;;; -- Enable ido mode
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
+
+;;; Enable winner mode
+(winner-mode 1)
+
+
+;;; -------- 3rd Party Packages
 
 ;;; --- Setup melpa packages
 (require 'package)
@@ -27,22 +45,23 @@
 (use-package try
   :ensure t)
 
-;;; --- Help on key combinations
+;;; --- Setup which-key
 (use-package which-key
   :ensure t
   :config (which-key-mode))
 
-
-;;; -- Org-Mode bullets
+;;; --- Setup org-bullets
 (use-package org-bullets
   :ensure t
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-
-;; Disable tool-bar
-(tool-bar-mode -1)
-
+;;; --- Setup ace-window
+(use-package ace-window
+  :ensure t
+  :init
+  (progn
+    (global-set-key [remap other-window] 'ace-window)))
 
 (provide 'init.el)
 ;;; init.el ends here
