@@ -19,9 +19,10 @@
 (defalias 'list-buffers 'ibuffer)
 
 ;;; -- Enable ido mode
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
+;;; No longer needed - since swiper improved isearch
+;; (setq ido-enable-flex-matching t)
+;; (setq ido-everywhere t)
+;; (ido-mode 1)
 
 ;;; Enable winner mode
 (winner-mode 1)
@@ -63,6 +64,22 @@
   (progn
     (global-set-key [remap other-window] 'ace-window)))
 
+;;; --- Swiper - better isearch
+(use-package counsel
+  :ensure t)
+(use-package swiper
+  :ensure t
+  :bind (("C-s" . swiper)
+         ("C-r" . swiper)
+         ("C-c C-r" . ivy-resume)
+         ("M-x" . counsel-M-x)
+         ("C-x C-f" . counsel-find-file))
+  :config
+  (progn
+    (ivy-mode 1)
+    (setq ivy-use-virtual-buffers t)
+    (setq ivy-display-style 'fancy)))
+
 (provide 'init.el)
 ;;; init.el ends here
 
@@ -72,7 +89,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (org-bullets which-key use-package try))))
+ '(package-selected-packages
+   (quote
+    (counsel swiper org-bullets which-key use-package try))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
