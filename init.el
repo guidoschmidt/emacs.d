@@ -5,6 +5,7 @@
 ;; - Remove startup screen
 ;; - Setup Emacs melpa packages
 ;; - Install "use-package"
+;; http://cestlaz.github.io/posts/using-emacs-7-avy/
 
 
 ;;; Code:
@@ -64,6 +65,16 @@
   (progn
     (global-set-key [remap other-window] 'ace-window)))
 
+;;; --- Ivy
+(use-package ivy
+  :ensure t
+  :diminish (ivy-mode)
+  :bind (("C-x b" . ivy-switch-buffer))
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-display-style 'fancy))
+
 ;;; --- Swiper - better isearch
 (use-package counsel
   :ensure t)
@@ -78,7 +89,14 @@
   (progn
     (ivy-mode 1)
     (setq ivy-use-virtual-buffers t)
-    (setq ivy-display-style 'fancy)))
+    (setq ivy-display-style 'fancy)
+    (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)))
+
+;;; --- Avy
+(use-package avy
+  :ensure t
+  :bind (("C-c a" . avy-goto-char)
+         ("C-c o" . avy-goto-char-timer)))
 
 (provide 'init.el)
 ;;; init.el ends here
