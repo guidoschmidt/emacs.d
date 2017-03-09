@@ -25,7 +25,7 @@
 ;; Change scratch buffer message to empty string
 (when (window-system)
   (setq initial-buffer-choice t)
-  (setq initial-scratch-message "Welcome Dave."))
+  (setq initial-scratch-message ""))
 
 ;; Enable show-paren-mode
 (setq show-paren-delay 0)

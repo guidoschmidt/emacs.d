@@ -21,7 +21,7 @@
 (global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-<down>") 'move-line-down)
 (global-set-key (kbd "RET") 'newline-and-indent)
-(global-set-key (kbd "<C-tab>") 'ac-complete)
+(global-set-key (kbd "<C-tab>") 'auto-complete)
 (global-set-key (kbd "C-c s") 'flyspell-popup-correct)
 
 (provide 'keymap.el)

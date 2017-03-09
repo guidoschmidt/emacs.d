@@ -57,6 +57,14 @@
   :init
   (global-undo-tree-mode))
 
+;;; --- Tern
+(use-package tern
+  :ensure t
+  :config
+  (add-hook 'js-mode-hook (lambda () (tern-mode t))))
+(use-package tern-auto-complete
+  :ensure t)
+
 ;;; --- Setup org-bullets
 (use-package org-bullets
   :ensure t
@@ -129,7 +137,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (undo-tree rainbow-delimiters spaceline yasnippet yasnippets exec-path-from-shell better-defaults auto-complete auto-compelete counsel swiper org-bullets which-key use-package try))))
+    (tern-auto-complete tern undo-tree rainbow-delimiters spaceline yasnippet yasnippets exec-path-from-shell better-defaults auto-complete auto-compelete counsel swiper org-bullets which-key use-package try))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
