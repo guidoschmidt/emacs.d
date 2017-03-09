@@ -10,9 +10,6 @@
 
 ;;; Code:
 
-;; Disable tool-bar
-(tool-bar-mode -1)
-
 ;;; Remove startup message
 (setq inhibit-startup-message t)
 
@@ -42,6 +39,13 @@
 (unless (package-installed-p 'use-package)
         (package-refresh-contents)
         (package-install 'use-package))
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
+
+;;; --- Load configuration files
+(load-file "~/.emacs.d/config/appearance.el")
 
 ;;; --- Try packages without installing them
 (use-package try
