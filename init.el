@@ -5,7 +5,7 @@
 ;; - Remove startup screen
 ;; - Setup Emacs melpa packages
 ;; - Install "use-package"
-;; http://cestlaz.github.io/posts/using-emacs-7-avy/
+;; Continue here: http://cestlaz.github.io/posts/using-emacs-9-themes/
 
 
 ;;; Code:
@@ -98,6 +98,14 @@
   :bind (("C-c a" . avy-goto-char)
          ("C-c o" . avy-goto-char-timer)))
 
+;;; --- Auto-complete
+(use-package auto-complete
+  :ensure t
+  :init
+  (progn
+    (ac-config-default)
+    (global-auto-complete-mode t)))
+
 (provide 'init.el)
 ;;; init.el ends here
 
@@ -109,7 +117,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (counsel swiper org-bullets which-key use-package try))))
+    (auto-complete auto-compelete counsel swiper org-bullets which-key use-package try))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
