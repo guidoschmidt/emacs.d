@@ -5,6 +5,9 @@
 ;;; Code:
 
 ;;; --- Frames & windows
+;;; Remove startup message
+(setq inhibit-startup-message t)
+
 ;; Disable menubar
 (when (not window-system)
   (menu-bar-mode -1))
@@ -30,7 +33,7 @@
 (use-package material-theme
   :ensure t)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'material-light t)
+(load-theme 'junio t)
 
 ;;; --- Typeface
 ;; set default font in initial window and for any new window
@@ -49,7 +52,7 @@
     (add-to-list 'default-frame-alist '(font . "Hasklig-16")))))
 
 ;;; --- Whitespace
-(global-whitespace-mode 1)
+(global-whitespace-mode -1)
 (setq-default indicate-empty-lines t)
 (when (not indicate-empty-lines)
   (toggle-indicate-empty-lines))
