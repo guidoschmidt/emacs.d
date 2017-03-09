@@ -18,6 +18,10 @@
 ;; Disable scrollbars
 (scroll-bar-mode -1)
 
+;; Cursor
+(set-default 'cursor-type 'box)
+(set-cursor-color "#E81E58")
+
 ;;; --- Themes
 ;; ** Nighttime themes
 ;; junio (sublime-themes), soothe
@@ -59,7 +63,7 @@
 
 ;;; --- Line numbers
 (global-linum-mode 1)
-(setq Linum-format "%4d")
+(setq linum-format "%4d")
 
 ;;; --- Indentation
 (use-package smart-tabs-mode

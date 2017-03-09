@@ -27,6 +27,21 @@
   :ensure t
   :config (which-key-mode))
 
+;; --- Flycheck
+(use-package flycheck-pos-tip
+  :ensure t)
+(use-package flycheck
+  :ensure t
+  :init
+  (progn
+    (global-flycheck-mode)
+    (setq-default flycheck-temp-prefix ".flycheck")
+    (with-eval-after-load 'flycheck (flycheck-pos-tip-mode))
+    (setq-default flycheck-disabled-checkers '(javascript-jshint))
+    (setq-default flycheck-disabled-checkers '(json-jsonlint))
+    (flycheck-add-mode 'javascript-eslint 'web-mode)
+    (flycheck-add-mode 'javascript-eslint 'vue-mode)))
+
 ;;; --- Yasnippets
 (use-package yasnippet
   :ensure t
@@ -85,6 +100,23 @@
   (progn
     (global-set-key [remap other-window] 'ace-window)))
 
+;;; --- Emmet
+(use-package emmet-mode
+  :ensure t)
+(add-hook 'sass-mode-hook  'emmet-mode)
+
+;;; --- Rainbow mode
+(use-package rainbow-mode
+  :ensure t)
+
+;;; --- SASS/SCSS
+(use-package sass-mode
+  :ensure t)
+(defun init-sass-mode-hook()
+  (setq rainbow-html-colors t)
+  (rainbow-mode))
+(add-hook 'sass-mode-hook 'init-sass-mode-hook)
+
 ;;; --- Ivy
 (use-package ivy
   :ensure t
@@ -137,7 +169,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (tern-auto-complete tern undo-tree rainbow-delimiters spaceline yasnippet yasnippets exec-path-from-shell better-defaults auto-complete auto-compelete counsel swiper org-bullets which-key use-package try))))
+    (flycheck-pos-tip-mode flycheck sass-mode emmet-mode tern-auto-complete tern undo-tree rainbow-delimiters spaceline yasnippet yasnippets exec-path-from-shell better-defaults auto-complete auto-compelete counsel swiper org-bullets which-key use-package try))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
