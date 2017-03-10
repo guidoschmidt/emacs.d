@@ -10,7 +10,7 @@
 
 ;; Disable menubar
 (when (not window-system)
-  (menu-bar-mode -1))
+  (menu-bar-mode 1))
 
 ;; Disable toolbar
 (tool-bar-mode -1)
@@ -20,24 +20,33 @@
 
 ;; Cursor
 (set-default 'cursor-type 'box)
-(set-cursor-color "#E81E58")
+(set-cursor-color "#FF0C42")
 
 ;;; --- Themes
 ;; ** Nighttime themes
-;; junio (sublime-themes), soothe
+;; - junio (sublime-themes)
+;; - soothe-theme
 ;;
 ;; ** Daytime themes
-;; espresso, flatui, material-light
-(use-package soothe-theme
-  :ensure t)
-(use-package sublime-themes
-  :ensure t)
-(use-package flatui-theme
-  :ensure t)
-(use-package material-theme
-  :ensure t)
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'junio t)
+;; - espresso (custom)
+;; - flatui-theme
+;; - material-light (material-theme)
+(if (window-system)
+    (if (or
+	 (>= (nth 2 (decode-time (date-to-time (current-time-string)))) 19)
+	 (<= (nth 2 (decode-time (date-to-time (current-time-string))))  7))
+	;; Nigth theme
+	(use-package soothe-theme
+	  :ensure t
+	  :config
+	  (load-theme 'soothe t))
+      ;; Day theme
+      (use-package flatui-theme
+	:ensure t
+	:config
+	(load-theme 'flatui t)))
+  ;; Fallback
+  (load-theme 'wombat t))
 
 ;;; --- Typeface
 ;; set default font in initial window and for any new window
@@ -56,20 +65,21 @@
     (add-to-list 'default-frame-alist '(font . "Hasklig-16")))))
 
 ;;; --- Whitespace
-(global-whitespace-mode -1)
+;; (global-whitespace-mode -1)
 (setq-default indicate-empty-lines t)
-(when (not indicate-empty-lines)
-  (toggle-indicate-empty-lines))
+;; (when (not indicate-empty-lines)
+;;   (toggle-indicate-empty-lines))
 
 ;;; --- Line numbers
-(global-linum-mode 1)
-(setq linum-format "%4d")
+;; (global-linum-mode 1)
+;; (setq linum-format "%4d")
 
 ;;; --- Indentation
-(use-package smart-tabs-mode
-  :ensure t)
+;; (use-package smart-tabs-mode
+;;   :ensure t
+;;   :config
+;;   (progn
+;;     (smart-tabs-insinuate 'c 'javascript)))
 
-
-
-(provide 'apperance.el)
+(provide 'apperance)
 ;;; apperance.el ends here

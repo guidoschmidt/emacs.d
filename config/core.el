@@ -40,6 +40,15 @@
       use-dialog-box nil
       visible-bell t)
 
+;; Infer tab/space indentation style from files
+(defun infer-indentation-style ()
+  ;; if our source file uses tabs, we use tabs, if spaces spaces, and if        
+  ;; neither, we use the current indent-tabs-mode                               
+  (let ((space-count (how-many-region (point-min) (point-max) "^  "))
+        (tab-count (how-many-region (point-min) (point-max) "^\t")))
+    (if (> space-count tab-count) (setq indent-tabs-mode nil))
+    (if (> tab-count space-count) (setq indent-tabs-mode t))))
+
 ;; Custom function for moving lines up/down
 (defun move-line (n)
   "Move the current line up or down by N lines."
