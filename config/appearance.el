@@ -65,21 +65,21 @@
     (add-to-list 'default-frame-alist '(font . "Hasklig-16")))))
 
 ;;; --- Whitespace
-;; (global-whitespace-mode -1)
+(global-whitespace-mode -1)
 (setq-default indicate-empty-lines t)
-;; (when (not indicate-empty-lines)
-;;   (toggle-indicate-empty-lines))
+(when (not indicate-empty-lines)
+  (toggle-indicate-empty-lines))
 
 ;;; --- Line numbers
-;; (global-linum-mode 1)
-;; (setq linum-format "%4d")
+(global-linum-mode 1)
+(setq linum-format "%4d")
 
 ;;; --- Indentation
-;; (use-package smart-tabs-mode
-;;   :ensure t
-;;   :config
-;;   (progn
-;;     (smart-tabs-insinuate 'c 'javascript)))
+(use-package smart-tabs-mode
+  :ensure t
+  :config
+  (progn
+    (smart-tabs-insinuate 'c 'javascript)))
 
 (provide 'apperance)
 ;;; apperance.el ends here
