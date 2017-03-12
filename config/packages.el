@@ -28,7 +28,7 @@
   :init
   (yas-global-mode 1))
 
-;;; --- Pawerline & Spaceline
+;;; --- Powerline & Spaceline
 (use-package powerline
   :ensure t)
 (use-package spaceline
@@ -52,13 +52,25 @@
   :init
   (global-undo-tree-mode))
 
+;;; --- PHP mode
+(use-package php-mode
+  :ensure t)
+
+;;; --- Elm mode
+(use-package elm-mode
+  :ensure t
+  :config
+  (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
+  (add-hook 'elm-mode-hook
+            (lambda ()
+              (add-to-list 'company-backends '(company-elm))))
+  (custom-set-variables '(elm-format-on-save t)))
+
 ;;; --- Tern
 (use-package tern
   :ensure t
   :config
   (add-hook 'js-mode-hook (lambda () (tern-mode t))))
-(use-package tern-auto-complete
-  :ensure t)
 
 ;;; --- Setup org-bullets
 (use-package org-bullets
@@ -130,10 +142,18 @@
   :bind (("C-c a" . avy-goto-char)
          ("C-c o" . avy-goto-char-timer)))
 
-;;; --- Auto-complete
-(use-package auto-complete
+;;; --- Auto-complete via company
+(use-package company-jedi
+  :ensure t)
+(use-package company-tern
+  :ensure t)
+(use-package company
   :ensure t
   :init
-  (progn
-    (ac-config-default)
-    (global-auto-complete-mode t)))
+  (setq company-tooltip-limit 20)
+  (setq company-idle-delay 0.1)
+  (setq company-echo-delay 0)
+  (setq company-begin-commands '(self-insert-command))
+  (setq company-dabbrev-downcase nil)
+  (setq company-dabbrev-other-buffers t)
+  (add-hook 'after-init-hook 'global-company-mode))

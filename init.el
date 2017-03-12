@@ -32,9 +32,10 @@
  '(custom-safe-themes
    (quote
     ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "15348febfa2266c4def59a08ef2846f6032c0797f001d7b9148f30ace0d08bcf" default)))
+ '(elm-format-on-save t)
  '(package-selected-packages
    (quote
-    (color-theme-sanityinc-tomorrow solarized-theme flycheck-pos-tip-mode flycheck sass-mode emmet-mode tern-auto-complete tern undo-tree rainbow-delimiters spaceline yasnippet yasnippets exec-path-from-shell better-defaults auto-complete auto-compelete counsel swiper org-bullets which-key use-package try))))
+    (company elm-mode php-mode color-theme-sanityinc-tomorrow solarized-theme flycheck-pos-tip-mode flycheck sass-mode emmet-mode tern-auto-complete tern undo-tree rainbow-delimiters spaceline yasnippet yasnippets exec-path-from-shell better-defaults auto-complete auto-compelete counsel swiper org-bullets which-key use-package try))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
