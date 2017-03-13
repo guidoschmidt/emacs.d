@@ -1,3 +1,7 @@
+;;; packages.el --- Manage MELPA packages
+;;; Commentary:
+
+;;; Code:
 ;;; --- Try packages without installing them
 (use-package try
   :ensure t)
@@ -52,20 +56,6 @@
   :init
   (global-undo-tree-mode))
 
-;;; --- PHP mode
-(use-package php-mode
-  :ensure t)
-
-;;; --- Elm mode
-(use-package elm-mode
-  :ensure t
-  :config
-  (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
-  (add-hook 'elm-mode-hook
-            (lambda ()
-              (add-to-list 'company-backends '(company-elm))))
-  (custom-set-variables '(elm-format-on-save t)))
-
 ;;; --- Tern
 (use-package tern
   :ensure t
@@ -94,20 +84,19 @@
 
 ;;; --- Emmet
 (use-package emmet-mode
-  :ensure t)
-(add-hook 'sass-mode-hook  'emmet-mode)
+  :ensure t
+  :config
+  (progn
+    (add-hook 'sass-mode-hook  'emmet-mode)
+    (add-hook 'css-mode-hook 'emmet-mode)
+    (add-hook 'web-mode-hook 'emmet-mode)
+    (add-hook 'html-mode-hook 'emmet-mode)
+    (add-hook 'stylus-mode-hook 'emmet-mode)
+    (add-hook 'jsx-mode-hook 'emmet-mode)))
 
 ;;; --- Rainbow mode
 (use-package rainbow-mode
   :ensure t)
-
-;;; --- SASS/SCSS
-(use-package sass-mode
-  :ensure t)
-(defun init-sass-mode-hook()
-  (setq rainbow-html-colors t)
-  (rainbow-mode))
-(add-hook 'sass-mode-hook 'init-sass-mode-hook)
 
 ;;; --- Ivy
 (use-package ivy
@@ -143,6 +132,10 @@
          ("C-c o" . avy-goto-char-timer)))
 
 ;;; --- Auto-complete via company
+(use-package company-php
+  :ensure t)
+(use-package company-c-headers
+  :ensure t)
 (use-package company-jedi
   :ensure t)
 (use-package company-tern
@@ -154,6 +147,57 @@
   (setq company-idle-delay 0.1)
   (setq company-echo-delay 0)
   (setq company-begin-commands '(self-insert-command))
-  (setq company-dabbrev-downcase nil)
-  (setq company-dabbrev-other-buffers t)
+  (setq-default company-dabbrev-downcase nil)
+  (setq-default company-dabbrev-other-buffers t)
   (add-hook 'after-init-hook 'global-company-mode))
+
+;;; --- Multiple cursors
+(use-package multiple-cursors
+  :ensure t
+  :bind (("C-<" . mc/mark-previous-like-this)
+	 ("C->" . mc/mark-next-like-this)))
+
+;;; --- Flyspell
+(autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
+(use-package flyspell-correct
+  :ensure t)
+(use-package flyspell-popup
+  :ensure t)
+
+;;; --- Language specific
+;;; --- SASS/SCSS
+(use-package sass-mode
+  :ensure t
+  :config
+  (progn
+    (add-hook 'sass-mode-hook
+	      (lambda ()
+		(setq rainbow-html-colors t)
+		(rainbow-mode)))))
+
+;;; --- CSS
+(setq-default css-indent-offset 2)
+
+;;; --- Elm
+(use-package elm-mode
+  :ensure t
+  :config
+  (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
+  (add-hook 'elm-mode-hook
+            (lambda ()
+              (add-to-list 'company-backends '(company-elm))))
+  (custom-set-variables '(elm-format-on-save t)))
+
+;;; --- PHP
+(use-package php-mode
+  :ensure t)
+
+;;; --- Javascript & JSX
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-jsx-mode))
+(add-hook 'jsx-mode-hook
+    (lambda ()
+      (setq emmet-expand-jsx-className? t)))
+(setq-default jsx-indent-level 2)
+
+(provide 'packages.el)
+;;; packages.el ends here

@@ -35,7 +35,7 @@
  '(elm-format-on-save t)
  '(package-selected-packages
    (quote
-    (company elm-mode php-mode color-theme-sanityinc-tomorrow solarized-theme flycheck-pos-tip-mode flycheck sass-mode emmet-mode tern-auto-complete tern undo-tree rainbow-delimiters spaceline yasnippet yasnippets exec-path-from-shell better-defaults auto-complete auto-compelete counsel swiper org-bullets which-key use-package try))))
+    (flyspell-correct flyspell-popup company-php t: company elm-mode php-mode color-theme-sanityinc-tomorrow solarized-theme flycheck-pos-tip-mode flycheck sass-mode emmet-mode tern-auto-complete tern undo-tree rainbow-delimiters spaceline yasnippet yasnippets exec-path-from-shell better-defaults auto-complete auto-compelete counsel swiper org-bullets which-key use-package try))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
