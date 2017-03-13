@@ -49,6 +49,12 @@
     (if (> space-count tab-count) (setq indent-tabs-mode nil))
     (if (> tab-count space-count) (setq indent-tabs-mode t))))
 
+;; Disable tab indentation
+(setq-default indent-tabs-mode nil)
+
+;; Default tab size
+(setq-default js-indent-level 2)
+
 ;; Custom function for moving lines up/down
 (defun move-line (n)
   "Move the current line up or down by N lines."

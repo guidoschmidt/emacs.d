@@ -149,6 +149,9 @@
   (setq company-begin-commands '(self-insert-command))
   (setq-default company-dabbrev-downcase nil)
   (setq-default company-dabbrev-other-buffers t)
+  (add-hook 'python-mode-hook
+	    (lambda()
+	      (add-to-list 'company-backends 'company-jedi)))
   (add-hook 'after-init-hook 'global-company-mode))
 
 ;;; --- Multiple cursors
