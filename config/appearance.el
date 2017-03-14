@@ -25,26 +25,28 @@
 ;;; --- Themes
 ;; ** Nighttime themes
 ;; - junio (sublime-themes)
+;; - spolsky (sublime-themes)
 ;; - soothe-theme
 ;;
 ;; ** Daytime themes
 ;; - espresso (custom)
 ;; - flatui-theme
 ;; - material-light (material-theme)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (if (window-system)
     (if (or
 	 (>= (nth 2 (decode-time (date-to-time (current-time-string)))) 19)
 	 (<= (nth 2 (decode-time (date-to-time (current-time-string))))  7))
 	;; Nigth theme
-	(use-package soothe-theme
+	(use-package sublime-themes
 	  :ensure t
 	  :config
-	  (load-theme 'soothe t))
+	  (load-theme 'spolsky t))
       ;; Day theme
-      (use-package flatui-theme
+      (use-package material-theme
 	:ensure t
 	:config
-	(load-theme 'flatui t)))
+	(load-theme 'material-light t)))
   ;; Fallback
   (load-theme 'wombat t))
 
