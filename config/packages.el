@@ -98,6 +98,13 @@
 (use-package rainbow-mode
   :ensure t)
 
+
+;;; --- Git
+(use-package git-commit
+  :ensure t)
+(use-package magit
+  :ensure)
+
 ;;; --- Ivy
 (use-package ivy
   :ensure t
@@ -142,16 +149,16 @@
   :ensure t)
 (use-package company
   :ensure t
-  :init
+  :config
   (setq company-tooltip-limit 20)
   (setq company-idle-delay 0.1)
   (setq company-echo-delay 0)
   (setq company-begin-commands '(self-insert-command))
   (setq-default company-dabbrev-downcase nil)
   (setq-default company-dabbrev-other-buffers t)
-  (add-hook 'python-mode-hook
-	    (lambda()
-	      (add-to-list 'company-backends 'company-jedi)))
+  (defun my/python-mode-hook ()
+    (add-to-list 'company-backends 'company-jedi))
+  (add-hook 'python-mode-hook 'my/python-mode-hook)
   (add-hook 'after-init-hook 'global-company-mode))
 
 ;;; --- Multiple cursors
@@ -201,6 +208,14 @@
     (lambda ()
       (setq emmet-expand-jsx-className? t)))
 (setq-default jsx-indent-level 2)
+
+;;; --- Python
+(use-package elpy
+  :ensure t
+  :config
+  (elpy-enable)
+  (setq elpy-rpc-python-command "python3")
+  (setq python-shell-interpreter "ipython"))
 
 (provide 'packages.el)
 ;;; packages.el ends here
