@@ -26,6 +26,10 @@
     (flycheck-add-mode 'javascript-eslint 'web-mode)
     (flycheck-add-mode 'javascript-eslint 'vue-mode)))
 
+;; --- Icons
+(use-package all-the-icons
+  :ensure t)
+
 ;;; --- Yasnippets
 (use-package yasnippet
   :ensure t
@@ -37,6 +41,7 @@
   :ensure t)
 (use-package spaceline
   :ensure t
+  :after powerline
   :init
   (progn
     (require 'spaceline-config)
