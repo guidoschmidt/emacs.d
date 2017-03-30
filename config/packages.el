@@ -179,6 +179,10 @@
 (use-package flyspell-popup
   :ensure t)
 
+;;; --- RESTclient
+(use-package restclient
+  :ensure t)
+
 ;;; --- Language specific
 ;;; --- SASS/SCSS
 (use-package sass-mode
@@ -189,6 +193,10 @@
 	      (lambda ()
 		(setq rainbow-html-colors t)
 		(rainbow-mode)))))
+
+;; --- Haskell
+(use-package haskell-mode
+  :ensure t)
 
 ;;; --- CSS
 (setq-default css-indent-offset 2)
