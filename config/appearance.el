@@ -43,10 +43,14 @@
 	  :config
 	  (load-theme 'spolsky t))
       ;; Day theme
-      (use-package material-theme
-	:ensure t
-	:config
-	(load-theme 'material-light t)))
+      ;; (use-package material-theme
+      ;;   :ensure t
+      ;;   :config
+      ;;   (load-theme 'material-light t)))
+      (use-package sublime-themes
+        :ensure t
+        :config
+        (load-theme 'spolsky t)))
   ;; Fallback
   (load-theme 'wombat t))
 

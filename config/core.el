@@ -99,5 +99,9 @@
   (next-line 1)
   (yank))
 
+(defun insert-checkmark()
+  (interactive)
+  (insert-char (string-to-char "✓")))
+
 (provide 'core.el)
 ;;; core.el ends here

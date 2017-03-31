@@ -8,7 +8,7 @@
       mac-command-modifier 'meta
       select-enable-clipboard t)
 
-;; Disable macOS minfication 
+;; Disable macOS minfication
 (global-set-key (kbd "C-z") nil)
 ;; Custom key bindings
 (global-set-key (kbd "C-+")	 'text-scale-increase)
@@ -26,6 +26,7 @@
 (global-set-key (kbd "<C-tab>")	 'company-complete)
 (global-set-key (kbd "C-c s")	 'flyspell-popup-correct)
 (global-set-key (kbd "C-;")	 'comment-or-uncomment-region)
+(global-set-key (kbd "C-c x")    'insert-checkmark)
 
 (provide 'keymap.el)
 ;;; keymap.el ends here
