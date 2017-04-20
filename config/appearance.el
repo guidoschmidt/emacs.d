@@ -43,14 +43,10 @@
 	  :config
 	  (load-theme 'spolsky t))
       ;; Day theme
-      ;; (use-package material-theme
-      ;;   :ensure t
-      ;;   :config
-      ;;   (load-theme 'material-light t)))
-      (use-package sublime-themes
-        :ensure t
-        :config
-        (load-theme 'spolsky t)))
+      (use-package ujelly-theme
+	:ensure t
+	:config
+	(load-theme 'ujelly t)))
   ;; Fallback
   (load-theme 'wombat t))
 
@@ -58,17 +54,17 @@
 ;; set default font in initial window and for any new window
 (cond
  ((string-equal system-type "windows-nt") ; Microsoft Windows
-  (when (member "Hasklig" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Hasklig-12"))
-    (add-to-list 'default-frame-alist '(font . "Hasklig-12"))))
+  (when (member "Monoid" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Monoid-12"))
+    (add-to-list 'default-frame-alist '(font . "Monoid-12"))))
  ((string-equal system-type "darwin"); Mac OS X
-  (when (member "Hasklig" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Hasklig-16"))
-    (add-to-list 'default-frame-alist '(font . "Hasklig-16"))))
+  (when (member "Monoid" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Monoid-14"))
+    (add-to-list 'default-frame-alist '(font . "Monoid-14"))))
  ((string-equal system-type "gnu/linux") ; linux
-  (when (member "Hasklig" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Hasklig-16"))
-    (add-to-list 'default-frame-alist '(font . "Hasklig-16")))))
+  (when (member "Monoid" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Monoid-16"))
+    (add-to-list 'default-frame-alist '(font . "Monoid-16")))))
 
 ;;; --- Whitespace
 (global-whitespace-mode -1)
