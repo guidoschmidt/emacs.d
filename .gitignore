@@ -2,4 +2,4 @@ elpa
 ido.last
 recentf
 .mc-lists.el
-.python-environment/
+.python-environments/
