@@ -183,6 +183,32 @@
   :ensure t)
 
 ;;; --- Language specific
+;;; --- CC Modes
+(setq c-default-style "stroustrup")
+
+;;; --- C++ Mode
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+(c-add-style "c++-style"
+	     '("stroustrup"
+	       (indent-tabs-mode . nil)
+	       (c-basic-offset . 2)
+	       (c-offsets-alist . ((inline-open . 0)
+				   (brace-list-open . 0)
+				   (statement-case-open . +)))))
+(defun my-c++-mode-hook ()
+  (c-set-style "c++-style")
+  (c-toggle-auto-hungry-state 0))
+(add-hook 'c++-mode-hook 'my-c++-mode-hook)
+
+;;; --- GLSL
+(use-package glsl-mode
+  :ensure t
+  :config
+  (add-hook 'glsl-mode-hook
+            (lambda()
+              (setq c-basic-offset 1)
+              (setq tab-width 2))))
+
 ;;; --- SASS/SCSS
 (use-package sass-mode
   :ensure t
