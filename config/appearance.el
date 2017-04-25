@@ -42,13 +42,16 @@
 	  :ensure t
 	  :config
 	  (load-theme 'spolsky t))
-      ;; Day theme
-      (use-package ujelly-theme
-	:ensure t
-	:config
-	(load-theme 'ujelly t)))
-  ;; Fallback
-  (load-theme 'wombat t))
+  ;; ### Day themes
+  ;; -- Soothe
+  ;; (use-package soothe-theme
+  ;;   :ensure t
+  ;;   :config
+  ;;   (load-theme 'soothe t))
+  ;; -- Leuven
+  (load-theme 'leuven t)
+  ;; ### Fallback
+  (load-theme 'leuven t)))
 
 ;;; --- Typeface
 ;; set default font in initial window and for any new window

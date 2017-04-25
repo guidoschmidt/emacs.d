@@ -182,6 +182,15 @@
 (use-package restclient
   :ensure t)
 
+;;; --- FIC Mode
+(use-package fic-mode
+  :ensure t
+  :config
+  (require 'fic-mode)
+  (add-hook 'c++-mode-hook 'fic-mode)
+  (add-hook 'sass-mode-hook 'fic-mode)
+  (add-hook 'jsx-mode-hook 'fic-mode))
+
 ;;; --- Language specific
 ;;; --- CC Modes
 (setq c-default-style "stroustrup")
