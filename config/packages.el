@@ -55,6 +55,15 @@
   :config
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
+;;; --- Projectile
+(use-package counsel-projectile
+  :ensure t)
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-mode))
+
+
 ;;; --- Undo-tree
 (use-package undo-tree
   :ensure t
