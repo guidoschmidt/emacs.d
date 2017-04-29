@@ -56,13 +56,16 @@
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 ;;; --- Projectile
-(use-package counsel-projectile
-  :ensure t)
 (use-package projectile
   :ensure t
   :config
-  (projectile-mode))
+  (projectile-global-mode)
+  (setq projectile-completion-system 'ivy))
 
+(use-package counsel-projectile
+  :ensure t
+  :config
+  (counsel-projectile-on))
 
 ;;; --- Undo-tree
 (use-package undo-tree
