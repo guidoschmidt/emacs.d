@@ -174,17 +174,18 @@
   :ensure t)
 (use-package company
   :ensure t
-  :config
-  (setq company-tooltip-limit 20)
-  (setq company-idle-delay 0.1)
-  (setq company-echo-delay 0)
-  (setq company-begin-commands '(self-insert-command))
-  (setq-default company-dabbrev-downcase nil)
-  (setq-default company-dabbrev-other-buffers t)
-  (defun my/python-mode-hook ()
-    (add-to-list 'company-backends 'company-jedi))
-  (add-hook 'python-mode-hook 'my/python-mode-hook)
-  (add-hook 'after-init-hook 'global-company-mode))
+  :init
+  (progn
+    (setq company-tooltip-limit 20)
+    (setq company-idle-delay 0.1)
+    (setq company-echo-delay 0)
+    (setq company-begin-commands '(self-insert-command))
+    (setq-default company-dabbrev-downcase nil)
+    (setq-default company-dabbrev-other-buffers t)
+    (defun my/python-mode-hook ()
+      (add-to-list 'company-backends 'company-jedi))
+    (add-hook 'python-mode-hook 'my/python-mode-hook)
+    (add-hook 'after-init-hook 'global-company-mode)))
 
 ;;; --- Multiple cursors
 (use-package multiple-cursors
@@ -251,7 +252,55 @@
 
 ;; --- Haskell
 (use-package haskell-mode
+  :ensure t
+  :bind (:map haskell-mode-map
+              ("M-g i" . haskell-navigate-imports)
+              ("M-g M-i" . haskell-navigate-imports))
+  :init
+  (progn
+    (setq haskell-compile-cabal-build-alt-command
+          "cd %s && stack clean && stack build --ghc-options -ferror-spans"
+          haskell-compile-cabal-build-command
+          "cd %s && stack build --ghc-options -ferror-spans"
+          haskell-compile-command
+          "stack ghc -- -Wall -ferror-spans -fforce-recomp -c %s")))
+
+(use-package haskell-snippets
   :ensure t)
+
+(use-package hlint-refactor
+  :ensure t
+  :diminish ""
+  :init (add-hook 'haskell-mode-hook #'hlint-refactor-mode))
+
+
+(use-package intero
+  :ensure t
+  :diminish " λ"
+  :bind (:map intero-mode-map
+              ("M-." . init-intero-goto-definition))
+  :init
+  (progn
+    (defun init-intero ()
+      "Enable Intero unless visiting a cached dependency."
+      (if (and buffer-file-name
+               (string-match ".+/\\.\\(stack\\|stack-work\\)/.+" buffer-file-name))
+          (progn
+            (eldoc-mode -1)
+            (flycheck-mode -1))
+        (intero-mode)
+        (setq projectile-tags-command "codex update")))
+
+    (add-hook 'haskell-mode-hook #'init-intero))
+  :config
+  (progn
+    (defun init-intero-goto-definition ()
+      "Jump to the definition of the thing at point using Intero or etags."
+      (interactive)
+      (or (intero-goto-definition)
+          (find-tag (find-tag-default))))
+
+    (flycheck-add-next-checker 'intero '(warning . haskell-hlint))))
 
 ;;; --- CSS
 (setq-default css-indent-offset 2)
