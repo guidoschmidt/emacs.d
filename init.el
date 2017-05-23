@@ -24,3 +24,18 @@
 ;;; init.el ends here
 
 ;;; --- Automatically added
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(elm-format-on-save t)
+ '(package-selected-packages
+   (quote
+    (smart-tabs-mode sublime-themes elpy skewer-mode vue-mode processing-mode elm-mode hlint-refactor haskell-snippets haskell-mode sass-mode stylus-mode glsl-mode yaml-mode markdown-mode+ fic-mode restclient flyspell-popup flyspell-correct multiple-cursors company-tern company-jedi company-c-headers company-php magit git-commit rainbow-mode emmet-mode ace-window exec-path-from-shell org-bullets tern undo-tree dumb-jump counsel-projectile projectile rainbow-delimiters neotree spaceline powerline yasnippet all-the-icons flycheck-pos-tip editorconfig which-key try use-package))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
