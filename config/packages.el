@@ -1,3 +1,4 @@
+
 ;;; packages.el --- Manage MELPA packages
 ;;; Commentary:
 
@@ -118,7 +119,8 @@
     (add-hook 'web-mode-hook 'emmet-mode)
     (add-hook 'html-mode-hook 'emmet-mode)
     (add-hook 'stylus-mode-hook 'emmet-mode)
-    (add-hook 'jsx-mode-hook 'emmet-mode)))
+    (add-hook 'jsx-mode-hook 'emmet-mode)
+    (add-hook 'markdown-mode-hook 'emmet-mode)))
 
 ;;; --- Rainbow mode
 (use-package rainbow-mode
@@ -214,6 +216,15 @@
   (add-hook 'jsx-mode-hook 'fic-mode))
 
 ;;; --- Language specific
+
+;;; --- Markdown
+(use-package markdown-mode+
+  :ensure t)
+
+;;; --- Yaml
+(use-package yaml-mode
+  :ensure t)
+
 ;;; --- CC Modes
 (setq c-default-style "stroustrup")
 
@@ -318,6 +329,15 @@
 ;;; --- PHP
 (use-package php-mode
   :ensure t)
+
+;;; --- Processing
+(use-package processing-mode
+  :ensure t
+  :config
+  (setq processing-location "/usr/local/bin/processing-java")
+  (setq processing-application-dir "/Applications/Processing.app")
+  (setq processing-sketchbook-dir "~/Development/processing/"))
+
 
 ;;; --- Javascript & JSX
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-jsx-mode))
