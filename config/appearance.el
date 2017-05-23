@@ -24,14 +24,15 @@
 
 ;;; --- Themes
 ;; ** Nighttime themes
-;; - junio (sublime-themes)
-;; - spolsky (sublime-themes)
+;; - junio (pack: sublime-themes)
+;; - spolsky (pack: sublime-themes)
 ;; - soothe-theme
 ;;
 ;; ** Daytime themes
 ;; - espresso (custom)
 ;; - flatui-theme
-;; - material-light (material-theme)
+;; - material-light (pack: material-theme)
+;; - twilight-bright (pack: twilight-bright-theme)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (if (window-system)
     (if (or
@@ -43,10 +44,10 @@
 	  :config
 	  (load-theme 'spolsky t))
   ;; Day theme
-  (use-package challenger-deep-theme
+  (use-package twilight-bright-theme
     :ensure t
     :config
-    (load-theme 'challenger-deep t)))
+    (load-theme 'twilight-bright t)))
   ;; ### Fallback
   (load-theme 'leuven t))
 
@@ -54,7 +55,7 @@
 ;; set default font in initial window and for any new window
 (cond
  ((string-equal system-type "windows-nt") ; Microsoft Windows
-  (when (member "Monoid" (font-family-list))
+  (when (member "Fantasque Sans Mono" (font-family-list))
     (add-to-list 'initial-frame-alist '(font . "Monoid-12"))
     (add-to-list 'default-frame-alist '(font . "Monoid-12"))))
  ((string-equal system-type "darwin"); Mac OS X
@@ -63,8 +64,8 @@
     (add-to-list 'default-frame-alist '(font . "Monoid-14"))))
  ((string-equal system-type "gnu/linux") ; linux
   (when (member "Monoid" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Monoid-16"))
-    (add-to-list 'default-frame-alist '(font . "Monoid-16")))))
+    (add-to-list 'initial-frame-alist '(font . "Monoid-14"))
+    (add-to-list 'default-frame-alist '(font . "Monoid-14")))))
 
 ;;; --- Whitespace
 (global-whitespace-mode -1)

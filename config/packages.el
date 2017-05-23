@@ -11,6 +11,12 @@
   :ensure t
   :config (which-key-mode))
 
+;;; --- EditorConfig
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
+
 ;; --- Flycheck
 (use-package flycheck-pos-tip
   :ensure t)
@@ -48,6 +54,14 @@
     (setq powerline-default-separator 'utf-8)
     (setq powerline-height 20)
     (spaceline-spacemacs-theme)))
+
+;;; --- Neo-tree with icons
+(use-package all-the-icons
+  :ensure t)
+(use-package neotree
+  :ensure t
+  :config
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 
 ;;; --- Rainbow-delimiters
 (use-package rainbow-delimiters
@@ -111,7 +125,7 @@
 ;;; --- Emmet
 (use-package emmet-mode
   :ensure t
-  :config
+  :init
   (progn
     (add-hook 'sass-mode-hook  'emmet-mode)
     (add-hook 'css-mode-hook 'emmet-mode)
@@ -149,7 +163,8 @@
          ("C-r" . swiper)
          ("C-c C-r" . ivy-resume)
          ("M-x" . counsel-M-x)
-         ("C-x C-f" . counsel-find-file))
+         ("C-x C-f" . counsel-find-file)
+         ("C-c g" . counsel-ag))
   :config
   (progn
     (ivy-mode 1)
@@ -240,6 +255,16 @@
               (setq c-basic-offset 1)
               (setq tab-width 2))))
 
+;;; --- Stylus
+(use-package stylus-mode
+  :ensure t
+  :config
+    (progn
+    (add-hook 'stylus-mode-hook
+	      (lambda ()
+		(setq rainbow-html-colors t)
+		(rainbow-mode)))))
+
 ;;; --- SASS/SCSS
 (use-package sass-mode
   :ensure t
@@ -274,33 +299,33 @@
   :init (add-hook 'haskell-mode-hook #'hlint-refactor-mode))
 
 
-(use-package intero
-  :ensure t
-  :diminish " λ"
-  :bind (:map intero-mode-map
-              ("M-." . init-intero-goto-definition))
-  :init
-  (progn
-    (defun init-intero ()
-      "Enable Intero unless visiting a cached dependency."
-      (if (and buffer-file-name
-               (string-match ".+/\\.\\(stack\\|stack-work\\)/.+" buffer-file-name))
-          (progn
-            (eldoc-mode -1)
-            (flycheck-mode -1))
-        (intero-mode)
-        (setq projectile-tags-command "codex update")))
+;; (use-package intero
+;;   :ensure t
+;;   :diminish " λ"
+;;   :bind (:map intero-mode-map
+;;               ("M-." . init-intero-goto-definition))
+;;   :init
+;;   (progn
+;;     (defun init-intero ()
+;;       "Enable Intero unless visiting a cached dependency."
+;;       (if (and buffer-file-name
+;;                (string-match ".+/\\.\\(stack\\|stack-work\\)/.+" buffer-file-name))
+;;           (progn
+;;             (eldoc-mode -1)
+;;             (flycheck-mode -1))
+;;         (intero-mode)
+;;         (setq projectile-tags-command "codex update")))
 
-    (add-hook 'haskell-mode-hook #'init-intero))
-  :config
-  (progn
-    (defun init-intero-goto-definition ()
-      "Jump to the definition of the thing at point using Intero or etags."
-      (interactive)
-      (or (intero-goto-definition)
-          (find-tag (find-tag-default))))
+;;     (add-hook 'haskell-mode-hook #'init-intero))
+;;   :config
+;;   (progn
+;;     (defun init-intero-goto-definition ()
+;;       "Jump to the definition of the thing at point using Intero or etags."
+;;       (interactive)
+;;       (or (intero-goto-definition)
+;;           (find-tag (find-tag-default))))
 
-    (flycheck-add-next-checker 'intero '(warning . haskell-hlint))))
+;;     (flycheck-add-next-checker 'intero '(warning . haskell-hlint))))
 
 ;;; --- CSS
 (setq-default css-indent-offset 2)
@@ -339,6 +364,25 @@
         ;;                 nil
         ;;                 (line-beginning-position) (line-end-position))))))
         ))))
+
+;;; --- Vue
+(use-package vue-mode
+  :ensure t
+  :config
+  (setq mmm-submode-decoration-level 0)
+  (defun custom-vue-mode-hook()
+    "Hook for customizing vue mode."
+    (flycheck-select-checker 'flycheck-javascript-eslint)
+    (flycheck-mode))
+  (add-hook 'vue-mode 'custom-vue-mode-hook)
+  (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode)))
+
+(use-package skewer-mode
+  :ensure t
+  :config
+  (add-hook 'js2-mode-hook 'skewer-mode)
+  (add-hook 'css-mode-hook 'skewer-css-mode)
+  (add-hook 'html-mode-hook 'skewer-html-mode))
 
 ;;; --- Python
 (use-package elpy
