@@ -110,6 +110,8 @@
   (add-hook 'js-mode-hook (lambda () (tern-mode t))))
 
 ;;; --- Setup org-bullets
+'(org-clock-into-drawer "timetracking")
+
 (use-package org-bullets
   :ensure t
   :config
@@ -127,7 +129,10 @@
   :ensure t
   :init
   (progn
-    (global-set-key [remap other-window] 'ace-window)))
+    (global-set-key [remap other-window] 'ace-window)
+    (custom-set-faces
+     '(aw-leading-char-face
+       ((t (:inherit ace-jump-face-forground :height 1.5)))))))
 
 ;;; --- Emmet
 (use-package emmet-mode
