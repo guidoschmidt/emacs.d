@@ -18,19 +18,25 @@
   (editorconfig-mode 1))
 
 ;; --- Flycheck
-(use-package flycheck-pos-tip
-  :ensure t)
 (use-package flycheck
   :ensure t
-  :init
+  :config
   (progn
-    (global-flycheck-mode)
     (setq-default flycheck-temp-prefix ".flycheck")
     (with-eval-after-load 'flycheck (flycheck-pos-tip-mode))
     (setq-default flycheck-disabled-checkers '(javascript-jshint))
     (setq-default flycheck-disabled-checkers '(json-jsonlint))
     (flycheck-add-mode 'javascript-eslint 'web-mode)
     (flycheck-add-mode 'javascript-eslint 'vue-mode)))
+
+(use-package flycheck-package
+  :config
+  (add-hook 'flycheck-mode-hook 'flycheck-package-setup))
+
+(use-package flycheck-pos-tip
+  :ensure t)
+
+(global-flycheck-mode)
 
 ;; --- Icons
 (use-package all-the-icons
@@ -229,6 +235,11 @@
   (add-hook 'jsx-mode-hook 'fic-mode))
 
 ;;; --- Language specific
+
+;;; --- Haskell
+(use-package haskell-mode
+  :ensure t)
+
 ;;; --- CC Modes
 (setq c-default-style "stroustrup")
 
@@ -274,58 +285,6 @@
 	      (lambda ()
 		(setq rainbow-html-colors t)
 		(rainbow-mode)))))
-
-;; --- Haskell
-(use-package haskell-mode
-  :ensure t
-  :bind (:map haskell-mode-map
-              ("M-g i" . haskell-navigate-imports)
-              ("M-g M-i" . haskell-navigate-imports))
-  :init
-  (progn
-    (setq haskell-compile-cabal-build-alt-command
-          "cd %s && stack clean && stack build --ghc-options -ferror-spans"
-          haskell-compile-cabal-build-command
-          "cd %s && stack build --ghc-options -ferror-spans"
-          haskell-compile-command
-          "stack ghc -- -Wall -ferror-spans -fforce-recomp -c %s")))
-
-(use-package haskell-snippets
-  :ensure t)
-
-(use-package hlint-refactor
-  :ensure t
-  :diminish ""
-  :init (add-hook 'haskell-mode-hook #'hlint-refactor-mode))
-
-
-;; (use-package intero
-;;   :ensure t
-;;   :diminish " λ"
-;;   :bind (:map intero-mode-map
-;;               ("M-." . init-intero-goto-definition))
-;;   :init
-;;   (progn
-;;     (defun init-intero ()
-;;       "Enable Intero unless visiting a cached dependency."
-;;       (if (and buffer-file-name
-;;                (string-match ".+/\\.\\(stack\\|stack-work\\)/.+" buffer-file-name))
-;;           (progn
-;;             (eldoc-mode -1)
-;;             (flycheck-mode -1))
-;;         (intero-mode)
-;;         (setq projectile-tags-command "codex update")))
-
-;;     (add-hook 'haskell-mode-hook #'init-intero))
-;;   :config
-;;   (progn
-;;     (defun init-intero-goto-definition ()
-;;       "Jump to the definition of the thing at point using Intero or etags."
-;;       (interactive)
-;;       (or (intero-goto-definition)
-;;           (find-tag (find-tag-default))))
-
-;;     (flycheck-add-next-checker 'intero '(warning . haskell-hlint))))
 
 ;;; --- CSS
 (setq-default css-indent-offset 2)
