@@ -16,7 +16,7 @@
 (load "~/.emacs.d/config/pacman.el")
 (load "~/.emacs.d/config/packages.el")
 (load "~/.emacs.d/config/core.el")
-(load "~/.emacs.d/config/ligatures.el")
+;;(load "~/.emacs.d/config/ligatures.el")
 (load "~/.emacs.d/config/keymap.el")
 (load "~/.emacs.d/config/appearance.el")
 
@@ -38,4 +38,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(aw-leading-char-face ((t (:inherit ace-jump-face-forground :height 1.5)))))

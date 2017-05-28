@@ -55,9 +55,9 @@
 ;; set default font in initial window and for any new window
 (cond
  ((string-equal system-type "windows-nt") ; Microsoft Windows
-  (when (member "Fantasque Sans Mono" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Monoid-12"))
-    (add-to-list 'default-frame-alist '(font . "Monoid-12"))))
+  (when (member "Monoid" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Monoid-11"))
+    (add-to-list 'default-frame-alist '(font . "Monoid-11"))))
  ((string-equal system-type "darwin"); Mac OS X
   (when (member "Monoid" (font-family-list))
     (add-to-list 'initial-frame-alist '(font . "Monoid-14"))
