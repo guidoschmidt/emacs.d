@@ -9,8 +9,7 @@
 (setq inhibit-startup-message t)
 
 ;; Disable menubar
-(when (not window-system)
-  (menu-bar-mode 1))
+(menu-bar-mode -1)
 
 ;; Disable toolbar
 (tool-bar-mode -1)

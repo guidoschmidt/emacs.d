@@ -40,10 +40,10 @@
 
 
 ;;; --- Yasnippets
-;; (use-package yasnippet
-;;   :ensure t
-;;   :init
-;;   (yas-global-mode 1))
+(use-package yasnippet
+  :ensure t
+  :init
+  (yas-global-mode 1))
 
 ;;; --- Powerline & Spaceline
 ;; (use-package powerline
@@ -108,10 +108,10 @@
 ;;; --- Setup org-bullets
 '(org-clock-into-drawer "timetracking")
 
-(use-package org-bullets
-  :ensure t
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+;; (use-package org-bullets
+;;   :ensure t
+;;   :config
+;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 ;;; --- Exec-path-from-shell
 ;; (use-package exec-path-from-shell
@@ -203,7 +203,10 @@
     (setq-default company-dabbrev-downcase nil)
     (setq-default company-dabbrev-other-buffers t)
     (defun my/python-mode-hook ()
-      (add-to-list 'company-backends 'company-jedi))
+      (add-to-list 'company-backends 'company-jedi)
+      (setq indent-tabs-mode t)
+      (setq python-indent 4)
+      (setq tab-width 4))
     (add-hook 'python-mode-hook 'my/python-mode-hook)
     (add-hook 'after-init-hook 'global-company-mode)))
 
