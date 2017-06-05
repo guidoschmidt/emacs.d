@@ -3,6 +3,9 @@
 
 
 ;;; Code:
+;;; Start emacs-server
+(server-start)
+
 ;; Enable interactive do mode
 (require 'ido)
 (ido-mode t)

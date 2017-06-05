@@ -1,11 +1,10 @@
-
 ;;; packages.el --- Manage MELPA packages
 ;;; Commentary:
 
 ;;; Code:
 ;;; --- Try packages without installing them
-(use-package try
-  :ensure t)
+;; (use-package try
+;;   :ensure t)
 
 ;;; --- Setup which-key
 (use-package which-key
@@ -13,35 +12,32 @@
   :config (which-key-mode))
 
 ;;; --- EditorConfig
-(use-package editorconfig
-  :ensure t
-  :config
-  (editorconfig-mode 1))
+;; (use-package editorconfig
+;;   :ensure t
+;;   :config
+;;   (editorconfig-mode 1))
 
 ;; --- Flycheck
-(use-package flycheck
-  :ensure t
-  :config
-  (progn
-    (setq-default flycheck-temp-prefix ".flycheck")
-    (with-eval-after-load 'flycheck (flycheck-pos-tip-mode))
-    (setq-default flycheck-disabled-checkers '(javascript-jshint))
-    (setq-default flycheck-disabled-checkers '(json-jsonlint))
-    (flycheck-add-mode 'javascript-eslint 'web-mode)
-    (flycheck-add-mode 'javascript-eslint 'vue-mode)))
+;; (use-package flycheck
+;;   :ensure t
+;;   :config
+;;   (progn
+;;     (setq-default flycheck-temp-prefix ".flycheck")
+;;     (with-eval-after-load 'flycheck (flycheck-pos-tip-mode))
+;;     (setq-default flycheck-disabled-checkers '(javascript-jshint))
+;;     (setq-default flycheck-disabled-checkers '(json-jsonlint))
+;;     (flycheck-add-mode 'javascript-eslint 'web-mode)
+;;     (flycheck-add-mode 'javascript-eslint 'vue-mode)))
 
-(use-package flycheck-package
-  :config
-  (add-hook 'flycheck-mode-hook 'flycheck-package-setup))
+;; (use-package flycheck-package
+;;   :config
+;;   (add-hook 'flycheck-mode-hook 'flycheck-package-setup))
 
-(use-package flycheck-pos-tip
-  :ensure t)
+;; (use-package flycheck-pos-tip
+;;   :ensure t)
 
-(global-flycheck-mode)
+;; (global-flycheck-mode)
 
-;; --- Icons
-(use-package all-the-icons
-  :ensure t)
 
 ;;; --- Yasnippets
 (use-package yasnippet
@@ -50,25 +46,25 @@
   (yas-global-mode 1))
 
 ;;; --- Powerline & Spaceline
-(use-package powerline
-  :ensure t)
-(use-package spaceline
-  :ensure t
-  :after powerline
-  :init
-  (progn
-    (require 'spaceline-config)
-    (setq powerline-default-separator 'utf-8)
-    (setq powerline-height 20)
-    (spaceline-spacemacs-theme)))
+;; (use-package powerline
+;;   :ensure t)
+;; (use-package spaceline
+;;   :ensure t
+;;   :after powerline
+;;   :init
+;;   (progn
+;;     (require 'spaceline-config)
+;;     (setq powerline-default-separator 'utf-8)
+;;     (setq powerline-height 20)
+;;     (spaceline-spacemacs-theme)))
 
 ;;; --- Neo-tree with icons
-(use-package all-the-icons
-  :ensure t)
-(use-package neotree
-  :ensure t
-  :config
-  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+;; (use-package all-the-icons
+;;   :ensure t)
+;; (use-package neotree
+;;   :ensure t
+;;   :config
+;;   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 
 ;;; --- Rainbow-delimiters
 (use-package rainbow-delimiters
@@ -83,19 +79,19 @@
   (projectile-global-mode)
   (setq projectile-completion-system 'ivy))
 
-(use-package counsel-projectile
-  :ensure t
-  :config
-  (counsel-projectile-on))
+;; (use-package counsel-projectile
+;;   :ensure t
+;;   :config
+;;   (counsel-projectile-on))
 
 ;;; --- Dump-Jump
-(use-package dumb-jump
-  :bind (("M-g o" . dumb-jump-go-other-window)
-         ("M-g j" . dumb-jump-go)
-         ("M-g x" . dumb-jump-go-prefer-external)
-         ("M-g z" . dumb-jump-go-prefer-external-other-window))
-  :config (setq dumb-jump-selector 'ivy)
-  :ensure t)
+;; (use-package dumb-jump
+;;   :bind (("M-g o" . dumb-jump-go-other-window)
+;;          ("M-g j" . dumb-jump-go)
+;;          ("M-g x" . dumb-jump-go-prefer-external)
+;;          ("M-g z" . dumb-jump-go-prefer-external-other-window))
+;;   :config (setq dumb-jump-selector 'ivy)
+;;   :ensure t)
 
 ;;; --- Undo-tree
 (use-package undo-tree
@@ -104,25 +100,25 @@
   (global-undo-tree-mode))
 
 ;;; --- Tern
-(use-package tern
-  :ensure t
-  :config
-  (add-hook 'js-mode-hook (lambda () (tern-mode t))))
+;; (use-package tern
+;;   :ensure t
+;;   :config
+;;   (add-hook 'js-mode-hook (lambda () (tern-mode t))))
 
 ;;; --- Setup org-bullets
 '(org-clock-into-drawer "timetracking")
 
-(use-package org-bullets
-  :ensure t
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+;; (use-package org-bullets
+;;   :ensure t
+;;   :config
+;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 ;;; --- Exec-path-from-shell
-(use-package exec-path-from-shell
-  :ensure t
-  :config
-  (when (memq window-system '(mac ns))
-    (exec-path-from-shell-initialize)))
+;; (use-package exec-path-from-shell
+;;   :ensure t
+;;   :config
+;;   (when (memq window-system '(mac ns))
+;;     (exec-path-from-shell-initialize)))
 
 ;;; --- Setup ace-window
 (use-package ace-window
@@ -192,13 +188,9 @@
          ("C-c o" . avy-goto-char-timer)))
 
 ;;; --- Auto-complete via company
-(use-package company-php
-  :ensure t)
 (use-package company-c-headers
   :ensure t)
 (use-package company-jedi
-  :ensure t)
-(use-package company-tern
   :ensure t)
 (use-package company
   :ensure t
@@ -211,7 +203,10 @@
     (setq-default company-dabbrev-downcase nil)
     (setq-default company-dabbrev-other-buffers t)
     (defun my/python-mode-hook ()
-      (add-to-list 'company-backends 'company-jedi))
+      (add-to-list 'company-backends 'company-jedi)
+      (setq indent-tabs-mode t)
+      (setq python-indent 4)
+      (setq tab-width 4))
     (add-hook 'python-mode-hook 'my/python-mode-hook)
     (add-hook 'after-init-hook 'global-company-mode)))
 
@@ -222,11 +217,11 @@
 	 ("C->" . mc/mark-next-like-this)))
 
 ;;; --- Flyspell
-(autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
-(use-package flyspell-correct
-  :ensure t)
-(use-package flyspell-popup
-  :ensure t)
+;; (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
+;; (use-package flyspell-correct
+;;   :ensure t)
+;; (use-package flyspell-popup
+;;   :ensure t)
 
 ;;; --- RESTclient
 (use-package restclient
@@ -284,99 +279,14 @@
               (setq c-basic-offset 1)
               (setq tab-width 2))))
 
-;;; --- Stylus
-(use-package stylus-mode
-  :ensure t
-  :config
-    (progn
-    (add-hook 'stylus-mode-hook
-	      (lambda ()
-		(setq rainbow-html-colors t)
-		(rainbow-mode)))))
-
-;;; --- SASS/SCSS
-(use-package sass-mode
-  :ensure t
-  :config
-  (progn
-    (add-hook 'sass-mode-hook
-	      (lambda ()
-		(setq rainbow-html-colors t)
-		(rainbow-mode)))))
-
-;;; --- CSS
-(setq-default css-indent-offset 2)
-
-;;; --- Elm
-(use-package elm-mode
-  :ensure t
-  :config
-  (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
-  (add-hook 'elm-mode-hook
-            (lambda ()
-              (add-to-list 'company-backends '(company-elm))))
-  (custom-set-variables '(elm-format-on-save t)))
-
-;;; --- PHP
-(use-package php-mode
-  :ensure t)
-
-;;; --- Processing
-(use-package processing-mode
-  :ensure t
-  :config
-  (setq processing-location "/usr/local/bin/processing-java")
-  (setq processing-application-dir "/Applications/Processing.app")
-  (setq processing-sketchbook-dir "~/Development/processing/"))
-
-
-;;; --- Javascript & JSX
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-jsx-mode))
-(add-hook 'jsx-mode-hook
-    (lambda ()
-      (setq emmet-expand-jsx-className? t)))
-
-(setq-default jsx-indent-level 2)
-
-(defadvice js-jsx-indent-line (after js-jsx-indent-line-after-hack activate)
-  "Workaround `sgml-mode' and follow airbnb component style."
-  (let* ((cur-line (buffer-substring-no-properties
-                    (line-beginning-position)
-                    (line-end-position))))
-    (if (string-match "^\\( +\\)\/?> *$" cur-line)
-      (let* ((empty-spaces (match-string 1 cur-line)))
-        ;; (replace-regexp empty-spaces
-        ;;                 (make-string (- (length empty-spaces) sgml-basic-offset) 32)
-        ;;                 nil
-        ;;                 (line-beginning-position) (line-end-position))))))
-        ))))
-
-;;; --- Vue
-(use-package vue-mode
-  :ensure t
-  :config
-  (setq mmm-submode-decoration-level 0)
-  (defun custom-vue-mode-hook()
-    "Hook for customizing vue mode."
-    (flycheck-select-checker 'flycheck-javascript-eslint)
-    (flycheck-mode))
-  (add-hook 'vue-mode 'custom-vue-mode-hook)
-  (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode)))
-
-(use-package skewer-mode
-  :ensure t
-  :config
-  (add-hook 'js2-mode-hook 'skewer-mode)
-  (add-hook 'css-mode-hook 'skewer-css-mode)
-  (add-hook 'html-mode-hook 'skewer-html-mode))
 
 ;;; --- Python
-(use-package elpy
-  :ensure t
-  :config
-  (elpy-enable)
-  (setq elpy-rpc-python-command "python3")
-  (setq python-shell-interpreter "ipython"))
+;; (use-package elpy
+;;   :ensure t
+;;   :config
+;;   (elpy-enable)
+;;   (setq elpy-rpc-python-command "python3")
+;;   (setq python-shell-interpreter "ipython"))
 
 (provide 'packages.el)
 ;;; packages.el ends here
