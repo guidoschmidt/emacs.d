@@ -243,6 +243,13 @@
 
 ;;; --- Language specific
 
+;;; --- Coljure
+(use-package clojure-mode
+  :ensure t)
+
+(use-package cider
+  :ensure t)
+
 ;;; --- Markdown
 (use-package markdown-mode+
   :ensure t)

@@ -39,10 +39,10 @@
 	 (>= (nth 2 (decode-time (date-to-time (current-time-string)))) 19)
 	 (<= (nth 2 (decode-time (date-to-time (current-time-string))))  7))
 	;; Nigth theme
-	(use-package sublime-themes
+	(use-package soothe-theme
 	  :ensure t
 	  :config
-	  (load-theme 'spolsky t))
+	  (load-theme 'soothe t))
   ;; Day theme
   (use-package twilight-bright-theme
     :ensure t
