@@ -32,10 +32,10 @@
  '(elm-format-on-save t)
  '(package-selected-packages
    (quote
-    (processing-mode yaml-mode which-key vue-mode use-package undo-tree twilight-bright-theme try stylus-mode spaceline smart-tabs-mode skewer-mode sass-mode restclient rainbow-mode rainbow-delimiters org-bullets neotree multiple-cursors markdown-mode+ magit hlint-refactor haskell-snippets haskell-mode glsl-mode flyspell-popup flyspell-correct flycheck-pos-tip fic-mode exec-path-from-shell emmet-mode elpy elm-mode editorconfig dumb-jump counsel-projectile company-tern company-php company-jedi company-c-headers all-the-icons ace-window))))
+    (nlinum-hl nlinum processing-mode yaml-mode which-key vue-mode use-package undo-tree twilight-bright-theme try stylus-mode spaceline smart-tabs-mode skewer-mode sass-mode restclient rainbow-mode rainbow-delimiters org-bullets neotree multiple-cursors markdown-mode+ magit hlint-refactor haskell-snippets haskell-mode glsl-mode flyspell-popup flyspell-correct flycheck-pos-tip fic-mode exec-path-from-shell emmet-mode elpy elm-mode editorconfig dumb-jump counsel-projectile company-tern company-php company-jedi company-c-headers all-the-icons ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(aw-leading-char-face ((t (:inherit ace-jump-face-forground :height 1.5)))))

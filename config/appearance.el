@@ -74,8 +74,22 @@
   (toggle-indicate-empty-lines))
 
 ;;; --- Line numbers
-(global-linum-mode 1)
-(setq linum-format "%4d")
+(use-package nlinum
+  :ensure t
+  :config
+  (global-nlinum-mode)
+  (setq nlinum-format "%3d"))
+
+(use-package nlinum-relative
+    :config
+    (add-hook 'prog-mode-hook 'nlinum-relative-mode))
+
+(use-package nlinum-hl
+  :ensure t
+  :after nlinum
+  :config
+  (add-hook 'nlinum-mode-hook #'nlinum-hl-mode))
+
 
 ;;; --- Indentation
 (use-package smart-tabs-mode

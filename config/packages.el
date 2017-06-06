@@ -1,4 +1,3 @@
-
 ;;; packages.el --- Manage MELPA packages
 ;;; Commentary:
 
