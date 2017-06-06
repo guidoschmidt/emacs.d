@@ -3,8 +3,8 @@
 
 ;;; Code:
 ;;; --- Try packages without installing them
-;; (use-package try
-;;   :ensure t)
+(use-package try
+  :ensure t)
 
 ;;; --- Setup which-key
 (use-package which-key
@@ -12,31 +12,31 @@
   :config (which-key-mode))
 
 ;;; --- EditorConfig
-;; (use-package editorconfig
-;;   :ensure t
-;;   :config
-;;   (editorconfig-mode 1))
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
 
 ;; --- Flycheck
-;; (use-package flycheck
-;;   :ensure t
-;;   :config
-;;   (progn
-;;     (setq-default flycheck-temp-prefix ".flycheck")
-;;     (with-eval-after-load 'flycheck (flycheck-pos-tip-mode))
-;;     (setq-default flycheck-disabled-checkers '(javascript-jshint))
-;;     (setq-default flycheck-disabled-checkers '(json-jsonlint))
-;;     (flycheck-add-mode 'javascript-eslint 'web-mode)
-;;     (flycheck-add-mode 'javascript-eslint 'vue-mode)))
+(use-package flycheck
+  :ensure t
+  :config
+  (progn
+    (setq-default flycheck-temp-prefix ".flycheck")
+    (with-eval-after-load 'flycheck (flycheck-pos-tip-mode))
+    (setq-default flycheck-disabled-checkers '(javascript-jshint))
+    (setq-default flycheck-disabled-checkers '(json-jsonlint))
+    (flycheck-add-mode 'javascript-eslint 'web-mode)
+    (flycheck-add-mode 'javascript-eslint 'vue-mode)))
 
-;; (use-package flycheck-package
-;;   :config
-;;   (add-hook 'flycheck-mode-hook 'flycheck-package-setup))
+(use-package flycheck-package
+  :config
+  (add-hook 'flycheck-mode-hook 'flycheck-package-setup))
 
-;; (use-package flycheck-pos-tip
-;;   :ensure t)
+(use-package flycheck-pos-tip
+  :ensure t)
 
-;; (global-flycheck-mode)
+(global-flycheck-mode)
 
 
 ;;; --- Yasnippets
@@ -46,25 +46,25 @@
   (yas-global-mode 1))
 
 ;;; --- Powerline & Spaceline
-;; (use-package powerline
-;;   :ensure t)
-;; (use-package spaceline
-;;   :ensure t
-;;   :after powerline
-;;   :init
-;;   (progn
-;;     (require 'spaceline-config)
-;;     (setq powerline-default-separator 'utf-8)
-;;     (setq powerline-height 20)
-;;     (spaceline-spacemacs-theme)))
+(use-package powerline
+  :ensure t)
+(use-package spaceline
+  :ensure t
+  :after powerline
+  :init
+  (progn
+    (require 'spaceline-config)
+    (setq powerline-default-separator 'utf-8)
+    (setq powerline-height 20)
+    (spaceline-spacemacs-theme)))
 
 ;;; --- Neo-tree with icons
-;; (use-package all-the-icons
-;;   :ensure t)
-;; (use-package neotree
-;;   :ensure t
-;;   :config
-;;   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+(use-package all-the-icons
+  :ensure t)
+(use-package neotree
+  :ensure t
+  :config
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 
 ;;; --- Rainbow-delimiters
 (use-package rainbow-delimiters
@@ -79,19 +79,19 @@
   (projectile-global-mode)
   (setq projectile-completion-system 'ivy))
 
-;; (use-package counsel-projectile
-;;   :ensure t
-;;   :config
-;;   (counsel-projectile-on))
+(use-package counsel-projectile
+  :ensure t
+  :config
+  (counsel-projectile-on))
 
 ;;; --- Dump-Jump
-;; (use-package dumb-jump
-;;   :bind (("M-g o" . dumb-jump-go-other-window)
-;;          ("M-g j" . dumb-jump-go)
-;;          ("M-g x" . dumb-jump-go-prefer-external)
-;;          ("M-g z" . dumb-jump-go-prefer-external-other-window))
-;;   :config (setq dumb-jump-selector 'ivy)
-;;   :ensure t)
+(use-package dumb-jump
+  :bind (("M-g o" . dumb-jump-go-other-window)
+         ("M-g j" . dumb-jump-go)
+         ("M-g x" . dumb-jump-go-prefer-external)
+         ("M-g z" . dumb-jump-go-prefer-external-other-window))
+  :config (setq dumb-jump-selector 'ivy)
+  :ensure t)
 
 ;;; --- Undo-tree
 (use-package undo-tree
@@ -100,25 +100,25 @@
   (global-undo-tree-mode))
 
 ;;; --- Tern
-;; (use-package tern
-;;   :ensure t
-;;   :config
-;;   (add-hook 'js-mode-hook (lambda () (tern-mode t))))
+(use-package tern
+  :ensure t
+  :config
+  (add-hook 'js-mode-hook (lambda () (tern-mode t))))
 
 ;;; --- Setup org-bullets
 '(org-clock-into-drawer "timetracking")
 
-;; (use-package org-bullets
-;;   :ensure t
-;;   :config
-;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 ;;; --- Exec-path-from-shell
-;; (use-package exec-path-from-shell
-;;   :ensure t
-;;   :config
-;;   (when (memq window-system '(mac ns))
-;;     (exec-path-from-shell-initialize)))
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (when (memq window-system '(mac ns))
+    (exec-path-from-shell-initialize)))
 
 ;;; --- Setup ace-window
 (use-package ace-window
@@ -204,7 +204,7 @@
     (setq-default company-dabbrev-other-buffers t)
     (defun my/python-mode-hook ()
       (add-to-list 'company-backends 'company-jedi)
-      (setq indent-tabs-mode t)
+      (setq indent-tabs-mode f)
       (setq python-indent 4)
       (setq tab-width 4))
     (add-hook 'python-mode-hook 'my/python-mode-hook)
@@ -217,11 +217,11 @@
 	 ("C->" . mc/mark-next-like-this)))
 
 ;;; --- Flyspell
-;; (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
-;; (use-package flyspell-correct
-;;   :ensure t)
-;; (use-package flyspell-popup
-;;   :ensure t)
+(autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
+(use-package flyspell-correct
+  :ensure t)
+(use-package flyspell-popup
+  :ensure t)
 
 ;;; --- RESTclient
 (use-package restclient
@@ -281,12 +281,12 @@
 
 
 ;;; --- Python
-;; (use-package elpy
-;;   :ensure t
-;;   :config
-;;   (elpy-enable)
-;;   (setq elpy-rpc-python-command "python3")
-;;   (setq python-shell-interpreter "ipython"))
+(use-package elpy
+  :ensure t
+  :config
+  (elpy-enable)
+  (setq elpy-rpc-python-command "python3")
+  (setq python-shell-interpreter "ipython"))
 
 (provide 'packages.el)
 ;;; packages.el ends here
