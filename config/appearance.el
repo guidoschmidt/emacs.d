@@ -9,8 +9,7 @@
 (setq inhibit-startup-message t)
 
 ;; Disable menubar
-(when (not window-system)
-  (menu-bar-mode 1))
+(menu-bar-mode -1)
 
 ;; Disable toolbar
 (tool-bar-mode -1)
@@ -39,10 +38,10 @@
 	 (>= (nth 2 (decode-time (date-to-time (current-time-string)))) 19)
 	 (<= (nth 2 (decode-time (date-to-time (current-time-string))))  7))
 	;; Nigth theme
-	(use-package sublime-themes
+	(use-package soothe-theme
 	  :ensure t
 	  :config
-	  (load-theme 'spolsky t))
+	  (load-theme 'soothe t))
   ;; Day theme
   (use-package twilight-bright-theme
     :ensure t
@@ -55,9 +54,9 @@
 ;; set default font in initial window and for any new window
 (cond
  ((string-equal system-type "windows-nt") ; Microsoft Windows
-  (when (member "Fantasque Sans Mono" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Monoid-12"))
-    (add-to-list 'default-frame-alist '(font . "Monoid-12"))))
+  (when (member "Monoid" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Monoid-11"))
+    (add-to-list 'default-frame-alist '(font . "Monoid-11"))))
  ((string-equal system-type "darwin"); Mac OS X
   (when (member "Monoid" (font-family-list))
     (add-to-list 'initial-frame-alist '(font . "Monoid-14"))
