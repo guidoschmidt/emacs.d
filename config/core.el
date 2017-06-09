@@ -4,7 +4,9 @@
 
 ;;; Code:
 ;;; Start emacs-server
-(server-start)
+(cond
+ ((string-equal system-type "windows-nt")
+  (server-start)))
 
 ;; Enable interactive do mode
 (require 'ido)
