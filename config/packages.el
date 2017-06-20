@@ -188,8 +188,6 @@
          ("C-c o" . avy-goto-char-timer)))
 
 ;;; --- Auto-complete via company
-(use-package company-c-headers
-  :ensure t)
 (use-package company-jedi
   :ensure t)
 (use-package company
@@ -202,12 +200,6 @@
     (setq company-begin-commands '(self-insert-command))
     (setq-default company-dabbrev-downcase nil)
     (setq-default company-dabbrev-other-buffers t)
-    (defun my/python-mode-hook ()
-      (add-to-list 'company-backends 'company-jedi)
-      (setq indent-tabs-mode f)
-      (setq python-indent 4)
-      (setq tab-width 4))
-    (add-hook 'python-mode-hook 'my/python-mode-hook)
     (add-hook 'after-init-hook 'global-company-mode)))
 
 ;;; --- Multiple cursors
@@ -269,6 +261,57 @@
   (c-set-style "c++-style")
   (c-toggle-auto-hungry-state 0))
 (add-hook 'c++-mode-hook 'my-c++-mode-hook)
+(add-hook 'c++-mode-hook 'flycheck-mode)
+(add-hook 'c-mode-hook 'flycheck-mode)
+
+;;; --- Rtags
+(use-package rtags
+  :ensure t
+  :config
+  (setq rtags-completions-enabled t))
+
+(use-package company-rtags
+  :ensure t
+  :config
+  (progn (eval-after-load 'company
+  '(add-to-list
+    'company-backends 'company-rtags))
+   (setq rtags-autostart-diagnostics t)
+   (rtags-enable-standard-keybindings)))
+
+(use-package flycheck-rtags
+  :ensure t
+  :config
+  (defun my-flycheck-rtags-setup ()
+  (flycheck-select-checker 'rtags)
+  (setq-local flycheck-highlighting-mode nil) ;; RTags creates more accurate overlays.
+  (setq-local flycheck-check-syntax-automatically nil))
+;; c-mode-common-hook is also called by c++-mode
+  (add-hook 'c-mode-common-hook #'my-flycheck-rtags-setup))
+
+;;; --- Irony - C++ dev mode
+(use-package irony
+  :ensure t
+  :config
+  (custom-set-variables
+   '(irony-additional-clang-options
+     '("-I/Library/Developer/CommandLineTools/usr/include/c++/v1")))
+  (add-hook 'c++-mode-hook 'irony-mode)
+  (add-hook 'c-mode-hook 'irony-mode)
+  (add-hook 'objc-mode-hook 'irony-mode)
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
+
+(use-package company-irony
+  :ensure t
+  :config
+  (eval-after-load 'company
+    '(add-to-list 'company-backends 'company-irony)))
+
+(use-package company-irony-c-headers
+  :ensure t
+  :config
+  (eval-after-load 'company
+  '(add-to-list 'company-backends '(company-irony-c-headers company-irony))))
 
 ;;; --- GLSL
 (use-package glsl-mode
@@ -286,7 +329,13 @@
   :config
   (elpy-enable)
   (setq elpy-rpc-python-command "python3")
-  (setq python-shell-interpreter "ipython"))
+  (setq python-shell-interpreter "ipython")
+  (defun my/python-mode-hook ()
+    (add-to-list 'company-backends 'company-jedi)
+    (setq indent-tabs-mode f)
+    (setq python-indent 4)
+    (setq tab-width 4))
+  (add-hook 'python-mode-hook 'my/python-mode-hook))
 
 (provide 'packages.el)
 ;;; packages.el ends here
