@@ -99,5 +99,14 @@
   (interactive)
   (insert-char (string-to-char "✓")))
 
+
+(defun astyle-this-buffer (pmin pmax)
+  (interactive "r")
+  (shell-command-on-region pmin pmax
+                           "astyle --style=google -s2"
+                           (current-buffer) t 
+                           (get-buffer-create "*Astyle Errors*") t))
+
+
 (provide 'core.el)
 ;;; core.el ends here

@@ -37,9 +37,9 @@
 ;;     '(progn (flycheck-add-next-checker 'c/c++-cppcheck
 ;;                                        '(warning . c/c++-googlelint)))))
 
-;; (eval-after-load 'flycheck
-;;   '(progn (add-hook 'c++-mode-hook 'flycheck-mode)
-;;           (add-hook 'c-mode-hook 'flycheck-mode)))
+(eval-after-load 'flycheck
+  '(progn (add-hook 'c++-mode-hook 'flycheck-mode)
+          (add-hook 'c-mode-hook 'flycheck-mode)))
 
 ;;; --- CMake
 (use-package cmake-ide
@@ -62,14 +62,14 @@
    (setq rtags-autostart-diagnostics t)
    (rtags-enable-standard-keybindings)))
 
-;; (use-package flycheck-rtags
-;;   :ensure t
-;;   :config
-;;   (defun my-flycheck-rtags-setup ()
-;;   (flycheck-select-checker 'rtags)
-;;   (setq-local flycheck-highlighting-mode nil)
-;;   (setq-local flycheck-check-syntax-automatically nil))
-;;   (add-hook 'c-mode-common-hook #'my-flycheck-rtags-setup))
+(use-package flycheck-rtags
+  :ensure t
+  :config
+  (defun my-flycheck-rtags-setup ()
+  (flycheck-select-checker 'rtags)
+  (setq-local flycheck-highlighting-mode nil)
+  (setq-local flycheck-check-syntax-automatically nil))
+  (add-hook 'c-mode-common-hook #'my-flycheck-rtags-setup))
 
 ;;; --- Irony - C++ dev mode
 (use-package irony
@@ -95,12 +95,20 @@
   (eval-after-load 'company
     '(add-to-list 'company-backends '(company-irony-c-headers company-irony))))
 
-;; (use-package flycheck-irony
-;;   :ensure t
-;;   :config
-;;   (eval-after-load 'flycheck
-;;     '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
+(use-package flycheck-irony
+  :ensure t
+  :config
+  (eval-after-load 'flycheck
+    '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
 
+;; --- AStyle
+(defun astyle-this-buffer (pmin pmax)
+  "Astyle a buffer region from PMIN to PMAX."
+  (interactive "r")
+  (shell-command-on-region pmin pmax
+                           "astyle --style=google -s2"
+                           (current-buffer) t
+                           (get-buffer-create "*Astyle Errors*") t))
 
-(provide 'cc-mode-layer.el)
-;;; cc-mode-layer.el ends here
+(provide 'c-modes.el)
+;;; c-modes.el ends here
