@@ -43,10 +43,10 @@
 	  :config
 	  (load-theme 'soothe t))
   ;; Day theme
-  (use-package twilight-bright-theme
+  (use-package sublime-themes
     :ensure t
     :config
-    (load-theme 'twilight-bright t)))
+    (load-theme 'junio t)))
   ;; ### Fallback
   (load-theme 'leuven t))
 
