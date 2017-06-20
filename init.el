@@ -32,9 +32,12 @@
  '(custom-safe-themes
    (quote
     ("3cc2385c39257fed66238921602d8104d8fd6266ad88a006d0a4325336f5ee02" default)))
+ '(irony-additional-clang-options
+   (quote
+    ("-I/Library/Developer/CommandLineTools/usr/include/c++/v1")))
  '(package-selected-packages
    (quote
-    (nlinum-hl nlinum yaml-mode which-key vue-mode use-package undo-tree twilight-bright-theme try sublime-themes stylus-mode spaceline soothe-theme smart-tabs-mode skewer-mode sass-mode restclient rainbow-mode rainbow-delimiters processing-mode org-bullets neotree multiple-cursors markdown-mode+ magit hlint-refactor haskell-snippets haskell-mode glsl-mode flyspell-popup flyspell-correct flycheck-pos-tip fic-mode exec-path-from-shell emmet-mode elpy elm-mode editorconfig dumb-jump counsel-projectile company-tern company-php company-jedi company-c-headers cider all-the-icons ace-window))))
+    (twilight-brigtht-theme cmake-ide flycheck-irony google-c-style flycheck-google-cpplint nlinum-hl nlinum yaml-mode which-key vue-mode use-package undo-tree twilight-bright-theme try sublime-themes stylus-mode spaceline soothe-theme smart-tabs-mode skewer-mode sass-mode restclient rainbow-mode rainbow-delimiters processing-mode org-bullets neotree multiple-cursors markdown-mode+ magit hlint-refactor haskell-snippets haskell-mode glsl-mode flyspell-popup flyspell-correct flycheck-pos-tip fic-mode exec-path-from-shell emmet-mode elpy elm-mode editorconfig dumb-jump counsel-projectile company-tern company-php company-jedi company-c-headers cider all-the-icons ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

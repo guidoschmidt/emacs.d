@@ -35,18 +35,18 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (if (window-system)
     (if (or
-	 (>= (nth 2 (decode-time (date-to-time (current-time-string)))) 19)
-	 (<= (nth 2 (decode-time (date-to-time (current-time-string))))  7))
-	;; Nigth theme
-	(use-package soothe-theme
-	  :ensure t
-	  :config
-	  (load-theme 'soothe t))
-  ;; Day theme
-  (use-package sublime-themes
-    :ensure t
-    :config
-    (load-theme 'junio t)))
+         (>= (nth 2 (decode-time (date-to-time (current-time-string)))) 19)
+         (<= (nth 2 (decode-time (date-to-time (current-time-string))))  7))
+        ;; Nigth theme
+        (use-package soothe-theme
+          :ensure t
+          :config
+          (load-theme 'soothe t))
+      ;; Day theme
+      (use-package twilight-bright-theme
+        :ensure t
+        :config
+        (load-theme 'twilight-bright t)))
   ;; ### Fallback
   (load-theme 'leuven t))
 

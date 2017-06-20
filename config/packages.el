@@ -17,28 +17,6 @@
   :config
   (editorconfig-mode 1))
 
-;; --- Flycheck
-(use-package flycheck
-  :ensure t
-  :config
-  (progn
-    (setq-default flycheck-temp-prefix ".flycheck")
-    (with-eval-after-load 'flycheck (flycheck-pos-tip-mode))
-    (setq-default flycheck-disabled-checkers '(javascript-jshint))
-    (setq-default flycheck-disabled-checkers '(json-jsonlint))
-    (flycheck-add-mode 'javascript-eslint 'web-mode)
-    (flycheck-add-mode 'javascript-eslint 'vue-mode)))
-
-(use-package flycheck-package
-  :config
-  (add-hook 'flycheck-mode-hook 'flycheck-package-setup))
-
-(use-package flycheck-pos-tip
-  :ensure t)
-
-(global-flycheck-mode)
-
-
 ;;; --- Yasnippets
 (use-package yasnippet
   :ensure t
@@ -76,7 +54,7 @@
 (use-package projectile
   :ensure t
   :config
-  (projectile-global-mode)
+  (projectile-mode)
   (setq projectile-completion-system 'ivy))
 
 (use-package counsel-projectile
@@ -208,13 +186,6 @@
   :bind (("C-<" . mc/mark-previous-like-this)
 	 ("C->" . mc/mark-next-like-this)))
 
-;;; --- Flyspell
-(autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
-(use-package flyspell-correct
-  :ensure t)
-(use-package flyspell-popup
-  :ensure t)
-
 ;;; --- RESTclient
 (use-package restclient
   :ensure t)
@@ -245,83 +216,14 @@
 (use-package yaml-mode
   :ensure t)
 
-;;; --- CC Modes
-(setq c-default-style "stroustrup")
-
-;;; --- C++ Mode
-(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
-(c-add-style "c++-style"
-	     '("stroustrup"
-	       (indent-tabs-mode . nil)
-	       (c-basic-offset . 2)
-	       (c-offsets-alist . ((inline-open . 0)
-				   (brace-list-open . 0)
-				   (statement-case-open . +)))))
-(defun my-c++-mode-hook ()
-  (c-set-style "c++-style")
-  (c-toggle-auto-hungry-state 0))
-(add-hook 'c++-mode-hook 'my-c++-mode-hook)
-(add-hook 'c++-mode-hook 'flycheck-mode)
-(add-hook 'c-mode-hook 'flycheck-mode)
-
-;;; --- Rtags
-(use-package rtags
-  :ensure t
-  :config
-  (setq rtags-completions-enabled t))
-
-(use-package company-rtags
-  :ensure t
-  :config
-  (progn (eval-after-load 'company
-  '(add-to-list
-    'company-backends 'company-rtags))
-   (setq rtags-autostart-diagnostics t)
-   (rtags-enable-standard-keybindings)))
-
-(use-package flycheck-rtags
-  :ensure t
-  :config
-  (defun my-flycheck-rtags-setup ()
-  (flycheck-select-checker 'rtags)
-  (setq-local flycheck-highlighting-mode nil) ;; RTags creates more accurate overlays.
-  (setq-local flycheck-check-syntax-automatically nil))
-;; c-mode-common-hook is also called by c++-mode
-  (add-hook 'c-mode-common-hook #'my-flycheck-rtags-setup))
-
-;;; --- Irony - C++ dev mode
-(use-package irony
-  :ensure t
-  :config
-  (custom-set-variables
-   '(irony-additional-clang-options
-     '("-I/Library/Developer/CommandLineTools/usr/include/c++/v1")))
-  (add-hook 'c++-mode-hook 'irony-mode)
-  (add-hook 'c-mode-hook 'irony-mode)
-  (add-hook 'objc-mode-hook 'irony-mode)
-  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
-
-(use-package company-irony
-  :ensure t
-  :config
-  (eval-after-load 'company
-    '(add-to-list 'company-backends 'company-irony)))
-
-(use-package company-irony-c-headers
-  :ensure t
-  :config
-  (eval-after-load 'company
-  '(add-to-list 'company-backends '(company-irony-c-headers company-irony))))
-
 ;;; --- GLSL
 (use-package glsl-mode
   :ensure t
   :config
   (add-hook 'glsl-mode-hook
             (lambda()
-              (setq c-basic-offset 1)
+              (defvar c-basic-offset 1)
               (setq tab-width 2))))
-
 
 ;;; --- Python
 (use-package elpy
@@ -332,10 +234,15 @@
   (setq python-shell-interpreter "ipython")
   (defun my/python-mode-hook ()
     (add-to-list 'company-backends 'company-jedi)
-    (setq indent-tabs-mode f)
-    (setq python-indent 4)
+    (setq indent-tabs-mode -1)
+    (setq python-indent-offset 4)
     (setq tab-width 4))
   (add-hook 'python-mode-hook 'my/python-mode-hook))
+
+;;; --- Load additional layers
+(load "~/.emacs.d/config/layers/c-modes.el")
+(load "~/.emacs.d/config/layers/syntax-checking.el")
+(load "~/.emacs.d/config/layers/spell-checking.el")
 
 (provide 'packages.el)
 ;;; packages.el ends here
