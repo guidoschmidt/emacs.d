@@ -11,3 +11,7 @@ cmake
 &&
 cmake --build . --use-stderr --config Release --target install
 ```
+
+### Shortcuts
+* `C-M-i` *counsel-irony auto-complete*
+

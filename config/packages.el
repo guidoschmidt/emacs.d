@@ -199,8 +199,18 @@
   (add-hook 'sass-mode-hook 'fic-mode)
   (add-hook 'jsx-mode-hook 'fic-mode))
 
-;;; --- Language specific
+;;; --- Wrap region
+(use-package wrap-region
+  :ensure t
+  :config
+  (wrap-region-add-wrappers
+   '(("`" "`" nil '(markdown-mode))
+     ("*" "*" nil '(markdown-mode))
+     (""" """)
+     ("'" "'")))
+  (wrap-region-mode t))
 
+;;; --- Language specific
 ;;; --- Coljure
 (use-package clojure-mode
   :ensure t)

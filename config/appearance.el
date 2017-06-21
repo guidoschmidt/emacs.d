@@ -87,7 +87,7 @@
   :ensure t
   :after nlinum
   :config
-  (add-hook 'nlinum-mode-hook #'nlinum-hl-mode))
+  (setq nlinum-highlight-current-line t))
 
 
 ;;; --- Indentation

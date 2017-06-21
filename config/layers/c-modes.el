@@ -44,6 +44,12 @@
   (add-hook 'c++-mode-hook 'irony-mode)
   (add-hook 'c-mode-hook 'irony-mode)
   (add-hook 'objc-mode-hook 'irony-mode)
+  (defun custom-irony-mode-hook ()
+    (define-key irony-mode-map
+      [remap completion-at-point] 'counsel-irony)
+    (define-key irony-mode-map
+      [remap complete-symbol] 'counsel-irony))
+  (add-hook 'irony-mode-hook 'custom-irony-mode-hook)
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
 
 (use-package company-irony
