@@ -4,3 +4,6 @@ recentf
 .mc-lists.el
 .python-environments/
 projectile-bookmarks.eld
+
+# Irony C++ IDE
+irony/
