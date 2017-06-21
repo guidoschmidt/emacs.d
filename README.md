@@ -12,6 +12,6 @@ cmake
 cmake --build . --use-stderr --config Release --target install
 ```
 
-### Shortcuts
+### Common Shortcuts
 * `C-M-i` *counsel-irony auto-complete*
-
+* `C-p-p` *projectile-switch-project*

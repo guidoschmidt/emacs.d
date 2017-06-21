@@ -208,7 +208,7 @@
      ("*" "*" nil '(markdown-mode))
      (""" """)
      ("'" "'")))
-  (wrap-region-mode t))
+  (wrap-region-global-mode t))
 
 ;;; --- Language specific
 ;;; --- Coljure
