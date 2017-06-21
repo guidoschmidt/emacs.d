@@ -203,12 +203,11 @@
 (use-package wrap-region
   :ensure t
   :config
-  (wrap-region-add-wrappers
-   '(("`" "`" nil '(markdown-mode))
-     ("*" "*" nil '(markdown-mode))
-     (""" """)
-     ("'" "'")))
-  (wrap-region-global-mode t))
+  (wrap-region-add-wrapper "`" "`")
+  (wrap-region-add-wrapper "*" "*")
+  (wrap-region-add-wrapper """ """)
+  (wrap-region-add-wrapper "'" "'")
+  (wrap-region-mode t))
 
 ;;; --- Language specific
 ;;; --- Coljure
