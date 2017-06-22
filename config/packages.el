@@ -175,17 +175,21 @@
 ;;; --- Auto-complete via company
 (use-package company-jedi
   :ensure t)
+
 (use-package company
   :ensure t
-  :init
-  (progn
-    (setq company-tooltip-limit 20)
-    (setq company-idle-delay 0.1)
-    (setq company-echo-delay 0)
-    (setq company-begin-commands '(self-insert-command))
-    (setq-default company-dabbrev-downcase nil)
-    (setq-default company-dabbrev-other-buffers t)
-    (add-hook 'after-init-hook 'global-company-mode)))
+  :defer t
+  :init (add-hook 'after-init-hook 'global-company-mode)
+  :config
+  (use-package company-irony :ensure t :defer t)
+  (use-package company-irony-c-headers :ensure t :defer t)
+  (setq company-idle-delay nil
+        company-minimum-prefix-length 2
+        company-show-numbers t
+        company-tooltip-limit 20
+        company-dabbrev-downcase nil
+        company-backends '((company-irony company-gtags))
+        company-dabbrev-other-buffers t))
 
 ;;; --- Multiple cursors
 (use-package multiple-cursors

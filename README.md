@@ -2,6 +2,8 @@
 
 
 ### C++ IDE
+
+### irony
 Installing irony server:
 ```
 cmake
@@ -12,6 +14,12 @@ cmake
 &&
 cmake --build . --use-stderr --config Release --target install
 ```
+
+##### ctags
+- Install *pygments*:
+  `pip install pygments`
+- Install *GNU Global* with *ctags* (Source code tagging system):
+  `brew install global --with-ctags`
 
 ### Common Shortcuts
 * `C-M-i` *counsel-irony auto-complete*

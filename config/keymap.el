@@ -23,7 +23,7 @@
 (global-set-key (kbd "M-<down>")    'move-line-down)
 (global-set-key (kbd "M-n")         'move-line-down)
 (global-set-key (kbd "RET")         'newline-and-indent)
-(global-set-key (kbd "<C-tab>")     'company-complete)
+(global-set-key (kbd "<C-tab>")     'company-complete-common)
 (global-set-key (kbd "C-c s")       'flyspell-popup-correct)
 (global-set-key (kbd "C-;")         'comment-or-uncomment-region)
 (global-set-key (kbd "C-c x")       'insert-checkmark)

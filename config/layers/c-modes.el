@@ -10,20 +10,29 @@
   :config
   (cmake-ide-setup))
 
-;;; --- Rtags
-(use-package rtags
+;;; --- ctags & ggtags
+(use-package ggtags
   :ensure t
   :config
-  (setq rtags-completions-enabled t))
+  (add-hook 'c-mode-common-hook
+            (lambda ()
+              (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+                (ggtags-mode 1)))))
 
-(use-package company-rtags
-  :ensure t
-  :config
-  (progn (eval-after-load 'company
-  '(add-to-list
-    'company-backends 'company-rtags))
-   (setq rtags-autostart-diagnostics t)
-   (rtags-enable-standard-keybindings)))
+;;; --- rtags
+;; (use-package rtags
+;;   :ensure t
+;;   :config
+;;   (setq rtags-completions-enabled t))
+
+;; (use-package company-rtags
+;;   :ensure t
+;;   :config
+;;   (progn (eval-after-load 'company
+;;   '(add-to-list
+;;     'company-backends 'company-rtags))
+;;    (setq rtags-autostart-diagnostics t)
+;;    (rtags-enable-standard-keybindings)))
 
 ;; (use-package flycheck-rtags
 ;;   :ensure t
@@ -43,18 +52,20 @@
 ;;; --- Irony - C++ dev mode
 (use-package irony
   :ensure t
+  :defer t
+  :init
+  (add-hook 'c++-mode-hook 'irony-mode)
+  (add-hook 'c-mode-hook 'irony-mode)
+  (add-hook 'objc-mode-hook 'irony-mode)
   :config
   (custom-set-variables
    '(irony-additional-clang-options
      '("-I/Library/Developer/CommandLineTools/usr/include/c++/v1")))
-  (add-hook 'c++-mode-hook 'irony-mode)
-  (add-hook 'c-mode-hook 'irony-mode)
-  (add-hook 'objc-mode-hook 'irony-mode)
   (defun custom-irony-mode-hook ()
-    (define-key irony-mode-map
-      [remap completion-at-point] 'counsel-irony)
-    (define-key irony-mode-map
-      [remap complete-symbol] 'counsel-irony))
+    (define-key irony-mode-map [remap completion-at-point]
+      'irony-completion-at-point-async)
+    (define-key irony-mode-map [remap complete-symbol]
+      'irony-completion-at-point-async))
   (add-hook 'irony-mode-hook 'custom-irony-mode-hook)
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
 
