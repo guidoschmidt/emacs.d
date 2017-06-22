@@ -34,6 +34,12 @@
 ;;   (setq-local flycheck-check-syntax-automatically nil))
 ;;   (add-hook 'c-mode-common-hook #'my-flycheck-rtags-setup))
 
+;; (use-package flycheck-irony
+;;   :ensure t
+;;   :config
+;;   (eval-after-load 'flycheck
+;;     '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
+
 ;;; --- Irony - C++ dev mode
 (use-package irony
   :ensure t
@@ -63,12 +69,6 @@
   :config
   (eval-after-load 'company
     '(add-to-list 'company-backends '(company-irony-c-headers company-irony))))
-
-(use-package flycheck-irony
-  :ensure t
-  :config
-  (eval-after-load 'flycheck
-    '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
 
 ;; --- AStyle
 (defun astyle-this-buffer (pmin pmax)

@@ -3,6 +3,13 @@
 
 ;;; Code:
 ;;; --- Try packages without installing them
+(use-package no-littering               ; Keep .emacs.d clean
+  :ensure t
+  :config
+  (require 'recentf)
+  (add-to-list 'recentf-exclude no-littering-var-directory)
+  (add-to-list 'recentf-exclude no-littering-etc-directory))
+
 (use-package try
   :ensure t)
 
@@ -197,6 +204,7 @@
   (require 'fic-mode)
   (add-hook 'c++-mode-hook 'fic-mode)
   (add-hook 'sass-mode-hook 'fic-mode)
+  (add-hook 'python-mode-hook 'fic-mode)
   (add-hook 'jsx-mode-hook 'fic-mode))
 
 ;;; --- Wrap region
@@ -210,7 +218,11 @@
   (wrap-region-mode t))
 
 ;;; --- Language specific
-;;; --- Coljure
+;;; --- Android
+(use-package gradle-mode
+  :ensure t)
+
+;;; --- Clojure
 (use-package clojure-mode
   :ensure t)
 
@@ -238,15 +250,15 @@
 (use-package elpy
   :ensure t
   :config
-  (elpy-enable)
   (setq elpy-rpc-python-command "python3")
   (setq python-shell-interpreter "ipython")
-  (defun my/python-mode-hook ()
+  (defun custom-python-mode-hook ()
     (add-to-list 'company-backends 'company-jedi)
-    (setq indent-tabs-mode -1)
     (setq python-indent-offset 4)
-    (setq tab-width 4))
-  (add-hook 'python-mode-hook 'my/python-mode-hook))
+    (setq tab-width 4)
+    (setq indent-tabs-mode nil))
+  (add-hook 'python-mode-hook 'custom-python-mode-hook)
+  (elpy-enable))
 
 ;;; --- Load additional layers
 (load "~/.emacs.d/config/layers/c-modes.el")
