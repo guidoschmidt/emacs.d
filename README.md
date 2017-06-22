@@ -1,5 +1,6 @@
 # .emacs.d/
 
+Install [emacs-plus](https://github.com/d12frosted/homebrew-emacs-plus): `brew install emacs-plus --with-no-title-bars --without-spacemacs-icon`
 
 ### C++ IDE
 
