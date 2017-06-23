@@ -3,7 +3,8 @@
 
 ;;; Code:
 ;;; --- Try packages without installing them
-(use-package no-littering               ; Keep .emacs.d clean
+;;; Keep .emacs.d clean
+(use-package no-littering
   :ensure t
   :config
   (require 'recentf)
@@ -172,25 +173,6 @@
   :bind (("C-c a" . avy-goto-char)
          ("C-c o" . avy-goto-char-timer)))
 
-;;; --- Auto-complete via company
-(use-package company-jedi
-  :ensure t)
-
-(use-package company
-  :ensure t
-  :defer t
-  :init (add-hook 'after-init-hook 'global-company-mode)
-  :config
-  (use-package company-irony :ensure t :defer t)
-  (use-package company-irony-c-headers :ensure t :defer t)
-  (setq company-idle-delay nil
-        company-minimum-prefix-length 2
-        company-show-numbers t
-        company-tooltip-limit 20
-        company-dabbrev-downcase nil
-        company-backends '((company-irony company-gtags))
-        company-dabbrev-other-buffers t))
-
 ;;; --- Multiple cursors
 (use-package multiple-cursors
   :ensure t
@@ -250,6 +232,14 @@
               (defvar c-basic-offset 1)
               (setq tab-width 2))))
 
+;;; --- Vue.js
+(use-package vue-mode
+  :ensure t
+  :defer t
+  :config
+  (use-package vue-html-mode :ensure t :defer t)
+  (setq mmm-submode-decoration-level 0))
+
 ;;; --- Python
 (use-package elpy
   :ensure t
@@ -257,7 +247,6 @@
   (setq elpy-rpc-python-command "python3")
   (setq python-shell-interpreter "ipython")
   (defun custom-python-mode-hook ()
-    (add-to-list 'company-backends 'company-jedi)
     (setq python-indent-offset 4)
     (setq tab-width 4)
     (setq indent-tabs-mode nil))
@@ -265,6 +254,7 @@
   (elpy-enable))
 
 ;;; --- Load additional layers
+(load "~/.emacs.d/config/layers/auto-completion.el")
 (load "~/.emacs.d/config/layers/c-modes.el")
 (load "~/.emacs.d/config/layers/syntax-checking.el")
 (load "~/.emacs.d/config/layers/spell-checking.el")

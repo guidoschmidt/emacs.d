@@ -2,7 +2,6 @@
 ;;; Commentary:
 
 ;;; Code:
-;;; --- Flyspell
 (autoload 'flyspell-mode "flyspell" "On-the-fly spelling checker." t)
 (use-package flyspell-correct
   :ensure t)
