@@ -183,6 +183,15 @@
 (use-package restclient
   :ensure t)
 
+;;; --- Fill collumn indicator
+(use-package fill-column-indicator
+  :ensure t
+  :defer t
+  :config
+  (setq fci-rule-width 1)
+  (setq fci-rule-color "lightgray")
+  (fci-mode 1))
+
 ;;; --- FIC Mode
 (use-package fic-mode
   :ensure t
