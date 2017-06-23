@@ -188,9 +188,11 @@
   :ensure t
   :defer t
   :config
-  (setq fci-rule-width 1)
+  (setq fci-rule-width 2)
+  (setq-default fci-rule-column 80)
   (setq fci-rule-color "lightgray")
-  (fci-mode 1))
+  (setq whitespace-style '(face trailing))
+  (add-hook 'after-change-major-mode-hook 'fci-mode))
 
 ;;; --- FIC Mode
 (use-package fic-mode
