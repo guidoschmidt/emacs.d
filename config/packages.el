@@ -215,6 +215,11 @@
   (wrap-region-mode t))
 
 ;;; --- Language specific
+;;; --- Haskell
+(use-package haskell-mode
+  :ensure t
+  :defer t)
+
 ;;; --- Android
 (use-package gradle-mode
   :ensure t)
