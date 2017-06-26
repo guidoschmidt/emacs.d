@@ -33,7 +33,7 @@
     (use-package company-irony-c-headers :ensure t)
     (use-package company-tern            :ensure t)
     (use-package company-jedi            :ensure t)
-    (use-package company-restcliennt     :ensure t)
+    (use-package company-restclient      :ensure t)
     (use-package company-ghci            :ensure t)
     (eval-after-load 'company
       '(add-to-list 'company-backends '(company-gtags
@@ -44,7 +44,9 @@
                                         company-restclient
                                         company-ghci)))
     ;;; Enable company mode everywhere
-    (global-company-mode)))
+    (global-company-mode))
+  :bind
+  (("<C-tab>" . company-complete-common)))
 
 
 (use-package company-quickhelp
