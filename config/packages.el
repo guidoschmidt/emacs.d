@@ -248,6 +248,11 @@
               (defvar c-basic-offset 1)
               (setq tab-width 2))))
 
+;;; --- Twig templates
+(use-package twig-mode
+  :ensure t
+  :defer t)
+
 ;;; --- Vue.js
 (use-package vue-mode
   :ensure t

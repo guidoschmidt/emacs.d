@@ -29,6 +29,7 @@
   :config
   (progn
     ;;; Setup 3rd party backends
+    ;;; Move to language specific settings/layers
     (use-package company-irony           :ensure t)
     (use-package company-irony-c-headers :ensure t)
     (use-package company-tern            :ensure t)

@@ -2,8 +2,7 @@
 
 Install [emacs-plus](https://github.com/d12frosted/homebrew-emacs-plus): `brew install emacs-plus --with-no-title-bars --without-spacemacs-icon`
 
-### C++ IDE
-
+## C++ IDE
 ### irony
 Installing irony server:
 ```
@@ -25,3 +24,6 @@ cmake --build . --use-stderr --config Release --target install
 ### Common Shortcuts
 * `C-M-i` *counsel-irony auto-complete*
 * `C-p-p` *projectile-switch-project*
+
+## Python IDE
+- `M-x jedi:install-server` Install the jedi server
