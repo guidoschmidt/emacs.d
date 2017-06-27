@@ -225,6 +225,11 @@
               (add-to-list 'company-backends '(company-elm))))
   (custom-set-variables '(elm-format-on-save t)))
 
+;;; --- SASS/SCSS
+(use-package sass-mode
+  :ensure t
+  :defer t)
+
 ;;; --- Haskell
 (use-package haskell-mode
   :ensure t
