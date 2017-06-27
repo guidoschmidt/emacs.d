@@ -33,7 +33,6 @@
     (use-package company-irony           :ensure t)
     (use-package company-irony-c-headers :ensure t)
     (use-package company-tern            :ensure t)
-    (use-package company-jedi            :ensure t)
     (use-package company-restclient      :ensure t)
     (use-package company-ghci            :ensure t)
     (eval-after-load 'company

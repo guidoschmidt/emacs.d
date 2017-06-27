@@ -261,22 +261,10 @@
   (use-package vue-html-mode :ensure t :defer t)
   (setq mmm-submode-decoration-level 0))
 
-;;; --- Python
-(use-package elpy
-  :ensure t
-  :config
-  (setq elpy-rpc-python-command "python3")
-  (setq python-shell-interpreter "ipython")
-  (defun custom-python-mode-hook ()
-    (setq python-indent-offset 4)
-    (setq tab-width 4)
-    (setq indent-tabs-mode nil))
-  (add-hook 'python-mode-hook 'custom-python-mode-hook)
-  (elpy-enable))
-
 ;;; --- Load additional layers
 (load "~/.emacs.d/config/layers/auto-completion.el")
 (load "~/.emacs.d/config/layers/c-modes.el")
+(load "~/.emacs.d/config/layers/python.el")
 (load "~/.emacs.d/config/layers/syntax-checking.el")
 (load "~/.emacs.d/config/layers/spell-checking.el")
 
