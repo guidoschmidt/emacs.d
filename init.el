@@ -32,6 +32,7 @@
  '(custom-safe-themes
    (quote
     ("f23a961abba42fc5d75bf94c46b5688c52683c02b3a81313dd0738b4d48afd1d" "2d16a5d1921feb826a6a9b344837c1ab3910f9636022fa6dc1577948694b7d84" "24685b60b28b071596be6ba715f92ed5e51856fb87114cbdd67775301acf090d" "3cc2385c39257fed66238921602d8104d8fd6266ad88a006d0a4325336f5ee02" default)))
+ '(elm-format-on-save t)
  '(irony-additional-clang-options
    (quote
     ("-I/Library/Developer/CommandLineTools/usr/include/c++/v1")))
