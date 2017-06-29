@@ -276,6 +276,12 @@
   (use-package vue-html-mode :ensure t :defer t)
   (setq mmm-submode-decoration-level 0))
 
+;;; --- Javascript
+(use-package indium
+  :ensure t
+  :config
+  (add-hook 'js-mode-hook #'indium-interaction-mode))
+
 ;;; --- Load additional layers
 (load "~/.emacs.d/config/layers/auto-completion.el")
 (load "~/.emacs.d/config/layers/c-modes.el")
