@@ -23,8 +23,6 @@
   (setq flyspell-issue-message-flag nil)
   ;; Define aspell as the spellchecking engine.
   (setq-default ispell-program-name "aspell")
-  ;; Set the default language dictionary.
-  (ispell-change-dictionary "en_US" t)
   ;; Correct word on mouse click
   (eval-after-load "flyspell"
     '(progn

@@ -126,7 +126,7 @@
     (add-hook 'web-mode-hook 'emmet-mode)
     (add-hook 'html-mode-hook 'emmet-mode)
     (add-hook 'stylus-mode-hook 'emmet-mode)
-    (add-hook 'jsx-mode-hook 'emmet-mode)
+    (add-hook 'rjsx-mode-hook 'emmet-mode)
     (add-hook 'markdown-mode-hook 'emmet-mode)))
 
 ;;; --- Rainbow mode
@@ -216,7 +216,14 @@
 
 ;;; --- Language specific
 ;;; --- JSX & React
-
+(use-package rjsx-mode
+  :ensure t
+  :defer t
+  :config
+  (add-hook 'rjsx-mode-hook
+            (lambda ()
+              (setq emmet-expand-jsx-className? t)))
+  (setq-default rjsx-indent-level 2))
 
 ;;; --- Elm
 (use-package elm-mode

@@ -11,7 +11,8 @@
     (setq-default flycheck-disabled-checkers '(javascript-jshint))
     (setq-default flycheck-disabled-checkers '(json-jsonlint))
     (flycheck-add-mode 'javascript-eslint 'web-mode)
-    (flycheck-add-mode 'javascript-eslint 'vue-mode)))
+    (flycheck-add-mode 'javascript-eslint 'vue-mode)
+    (flycheck-add-mode 'javascript-eslint 'rjsx-mode)))
 
 (use-package flycheck-package
   :config
