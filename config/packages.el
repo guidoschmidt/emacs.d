@@ -215,6 +215,9 @@
   (wrap-region-mode t))
 
 ;;; --- Language specific
+;;; --- JSX & React
+
+
 ;;; --- Elm
 (use-package elm-mode
   :ensure t
@@ -227,6 +230,17 @@
 
 ;;; --- SASS/SCSS
 (use-package sass-mode
+  :ensure t
+  :defer t
+  :config
+  (progn
+    (add-hook 'sass-mode-hook
+	      (lambda ()
+		(setq rainbow-html-colors t)
+		(rainbow-mode)))))
+
+;;; --- Stylus
+(use-package stylus-mode
   :ensure t
   :defer t)
 
