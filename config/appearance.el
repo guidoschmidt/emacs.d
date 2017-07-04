@@ -43,10 +43,10 @@
           :config
           (load-theme 'soothe t))
       ;; Day theme
-      (use-package gruvbox-theme
+      (use-package twilight-theme
         :ensure t
         :config
-        (load-theme 'gruvbox-dark-soft t)))
+        (load-theme 'twilight-bright t)))
   ;; ### Fallback
   (load-theme 'leuven t))
 
