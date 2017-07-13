@@ -27,3 +27,24 @@ cmake --build . --use-stderr --config Release --target install
 
 ## Python IDE
 - `M-x jedi:install-server` Install the jedi server
+
+## Javascript IDE
+### tern
+Create `.tern-config` file in your `$HOME` dir:
+
+```json
+{
+  "libs": [
+    "browser",
+    "jquery"
+  ],
+  "loadEagerly": [
+  ],
+  "plugins": {
+    "requirejs": {
+      "baseURL": "./",
+      "paths": {}
+    }
+  }
+}
+```
