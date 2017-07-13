@@ -88,16 +88,14 @@
 ;;; --- Tern
 (use-package tern
   :ensure t
+  :init
+  (add-to-list 'load-path "~/.nvm/versions/node/v8.1.2/lib/node_modules/tern/")
+  (autoload 'tern-mode "tern.el" nil t)
   :config
   (add-hook 'js-mode-hook (lambda () (tern-mode t))))
 
 ;;; --- Setup org-bullets
 '(org-clock-into-drawer "timetracking")
-
-(use-package org-bullets
-  :ensure t
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 ;;; --- Exec-path-from-shell
 (use-package exec-path-from-shell
@@ -301,7 +299,12 @@
 (use-package indium
   :ensure t
   :config
-  (add-hook 'js-mode-hook #'indium-interaction-mode))
+  (progn
+    (add-hook 'sass-mode-hook
+	    (lambda ()
+  		  (setq rainbow-html-colors t)
+		(rainbow-mode)))
+  (add-hook 'js-mode-hook #'indium-interaction-mode)))
 
 ;;; --- Load additional layers
 (load "~/.emacs.d/config/layers/auto-completion.el")
