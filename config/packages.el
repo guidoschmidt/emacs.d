@@ -119,13 +119,14 @@
   :ensure t
   :init
   (progn
-    (add-hook 'sass-mode-hook  'emmet-mode)
-    (add-hook 'css-mode-hook 'emmet-mode)
-    (add-hook 'web-mode-hook 'emmet-mode)
-    (add-hook 'html-mode-hook 'emmet-mode)
-    (add-hook 'stylus-mode-hook 'emmet-mode)
-    (add-hook 'rjsx-mode-hook 'emmet-mode)
-    (add-hook 'markdown-mode-hook 'emmet-mode)))
+    (add-hook  'sass-mode-hook     'emmet-mode)
+    (add-hook  'css-mode-hook      'emmet-mode)
+    (add-hook  'web-mode-hook      'emmet-mode)
+    (add-hook  'mustache-mode-hook 'emmet-mode)
+    (add-hook  'html-mode-hook     'emmet-mode)
+    (add-hook  'stylus-mode-hook   'emmet-mode)
+    (add-hook  'rjsx-mode-hook     'emmet-mode)
+    (add-hook  'markdown-mode-hook 'emmet-mode)))
 
 ;;; --- Rainbow mode
 (use-package rainbow-mode
@@ -213,6 +214,24 @@
   (wrap-region-mode t))
 
 ;;; --- Language specific
+;;; --- HTML
+(use-package web-mode
+  :ensure t
+  :defer t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+  (defun custom-web-mode-hook ()
+    (setq-default web-mode-markup-indent-offset 2)
+    (setq-default web-mode-css-indent-offset 2)
+    (setq-default web-mode-code-indent-offset 2))
+  (add-hook 'web-mode-hook  'custom-web-mode-hook))
+
+(use-package html-check-frag
+  :ensure t
+  :defer t
+  :config
+  (add-hook 'html-mode-hook (lambda () (html-check-frag-mode 1))))
+
 ;;; --- JSX & React
 (use-package rjsx-mode
   :ensure t
