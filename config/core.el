@@ -93,10 +93,31 @@
   (next-line 1)
   (yank))
 
+;; Custom function to insert a checkmark
 (defun insert-checkmark()
   (interactive)
   (insert-char (string-to-char "✓")))
 
+
+;; Custom function to create a new empty buffer in a separate frame
+(defun new-buffer-frame ()
+  "Create a new frame with a new empty buffer."
+  (interactive)
+  (let ((buffer (generate-new-buffer "untitled")))
+    (set-buffer-major-mode buffer)
+    (display-buffer buffer '(display-buffer-pop-up-frame . nil))))
+
+
+;; Custom function to create a new empty buffer
+(defun new-buffer ()
+  (interactive)
+  (let ((bn "untitled")
+        (num 1))
+    (while
+        (get-buffer (concat bn (number-to-string num))) 
+      (setq num (1+ num))) 
+    (switch-to-buffer
+     (concat bn (number-to-string num)))))
 
 (provide 'core.el)
 ;;; core.el ends here
