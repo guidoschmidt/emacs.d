@@ -216,6 +216,24 @@
   (wrap-region-mode t))
 
 ;;; --- Language specific
+;;; --- Typoscript
+(use-package typoscript-mode
+  :ensure t
+  :defer t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.ts\\'" . typoscript-mode)))
+
+;;; --- PHP
+(use-package php-mode
+  :ensure t
+  :defer t
+  :config
+  (defun custom-php-mode-hook ()
+    (setq indent-tabs-mode nil
+          tab-width 2
+          c-basic-offset 2))
+  (add-hook 'php-mode-hook 'custom-php-mode-hook))
+
 ;;; --- HTML
 (use-package web-mode
   :ensure t
@@ -322,12 +340,20 @@
   :config
   (add-hook 'js-mode-hook #'indium-interaction-mode))
 
+;;; --- JSON
+(use-package json-mode
+  :ensure t
+  :defer t
+  :config
+  (setq js-indent-level 2))
+
 ;;; --- Load additional layers
 (load "~/.emacs.d/config/layers/auto-completion.el")
 (load "~/.emacs.d/config/layers/c-modes.el")
 (load "~/.emacs.d/config/layers/python.el")
 (load "~/.emacs.d/config/layers/syntax-checking.el")
 (load "~/.emacs.d/config/layers/spell-checking.el")
+(load "~/.emacs.d/config/layers/shell.el")
 
 (provide 'packages.el)
 ;;; packages.el ends here
