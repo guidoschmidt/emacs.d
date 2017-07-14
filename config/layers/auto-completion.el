@@ -34,15 +34,20 @@
     (use-package company-irony-c-headers :ensure t)
     (use-package company-tern            :ensure t)
     (use-package company-restclient      :ensure t)
+    (use-package company-jedi            :ensure t)
     (use-package company-ghci            :ensure t)
     (eval-after-load 'company
-      '(add-to-list 'company-backends '(company-gtags
-                                        company-irony
-                                        company-irony-c-headers
-                                        company-tern
-                                        company-jedi
-                                        company-restclient
-                                        company-ghci)))
+      '(add-to-list 'company-backends 'company-irony))
+    (eval-after-load 'company
+      '(add-to-list 'company-backends 'company-irony-c-headers))
+    (eval-after-load 'company
+      '(add-to-list 'company-backends 'company-tern))
+    (eval-after-load 'company
+      '(add-to-list 'company-backends 'company-restclient))
+    (eval-after-load 'company
+      '(add-to-list 'company-backends 'company-jedi))
+    (eval-after-load 'company
+      '(add-to-list 'company-backends 'company-ghci))
     ;;; Enable company mode everywhere
     (global-company-mode))
   :bind
