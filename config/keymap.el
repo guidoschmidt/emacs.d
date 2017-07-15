@@ -1,7 +1,6 @@
 ;;; keymap.el --- Configure custom key bindings
 ;;; Commentary:
 
-
 ;;; Code:
 ;; macOS key binding setup
 (setq mac-option-modifier nil
@@ -10,6 +9,7 @@
 
 ;; Disable macOS minfication
 (global-set-key (kbd "C-z") nil)
+
 ;; Custom key bindings
 (global-set-key (kbd "C-+")         'text-scale-increase)
 (global-set-key (kbd "C--")         'text-scale-decrease)
@@ -31,6 +31,7 @@
 (global-set-key (kbd "S-C-<down>")  'shrink-window)
 (global-set-key (kbd "S-C-<up>")    'enlarge-window)
 (global-set-key (kbd "C-x n")       'new-buffer)
+(global-set-key (kbd "C-c t")       'neotree-toggle)
 
 (provide 'keymap.el)
 ;;; keymap.el ends here

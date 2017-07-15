@@ -59,12 +59,12 @@
     (add-to-list 'default-frame-alist '(font . "Fira Code-11"))))
  ((string-equal system-type "darwin"); Mac OS X
   (when (member "Fira Code" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Fira Code-16"))
-    (add-to-list 'default-frame-alist '(font . "Fira Code-16"))))
+    (add-to-list 'initial-frame-alist '(font . "Fira Code-18"))
+    (add-to-list 'default-frame-alist '(font . "Fira Code-18"))))
  ((string-equal system-type "gnu/linux") ; linux
   (when (member "Fira Code" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Fira Code-16"))
-    (add-to-list 'default-frame-alist '(font . "Fira Code-16")))))
+    (add-to-list 'initial-frame-alist '(font . "Fira Code-18"))
+    (add-to-list 'default-frame-alist '(font . "Fira Code-18")))))
 
 ;;; --- Whitespace
 (global-whitespace-mode -1)

@@ -6,13 +6,15 @@
 ;;; Keep .emacs.d clean
 (use-package no-littering
   :ensure t
+  :defer t
   :config
   (require 'recentf)
   (add-to-list 'recentf-exclude no-littering-var-directory)
   (add-to-list 'recentf-exclude no-littering-etc-directory))
 
 (use-package try
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;;; --- Setup which-key
 (use-package which-key
@@ -85,15 +87,6 @@
   :init
   (global-undo-tree-mode))
 
-;;; --- Tern
-(use-package tern
-  :ensure t
-  :init
-  (add-to-list 'load-path "~/.nvm/versions/node/v8.1.2/lib/node_modules/tern/")
-  (autoload 'tern-mode "tern.el" nil t)
-  :config
-  (add-hook 'js-mode-hook (lambda () (tern-mode t))))
-
 ;;; --- Setup org-bullets
 '(org-clock-into-drawer "timetracking")
 
@@ -119,24 +112,15 @@
   :ensure t
   :init
   (progn
-    (add-hook  'sass-mode-hook     'emmet-mode)
-    (add-hook  'css-mode-hook      'emmet-mode)
     (add-hook  'web-mode-hook      'emmet-mode)
     (add-hook  'mustache-mode-hook 'emmet-mode)
     (add-hook  'html-mode-hook     'emmet-mode)
-    (add-hook  'stylus-mode-hook   'emmet-mode)
-    (add-hook  'rjsx-mode-hook     'emmet-mode)
     (add-hook  'markdown-mode-hook 'emmet-mode)))
 
 ;;; --- Rainbow mode
 (use-package rainbow-mode
-  :ensure t)
-
-;;; --- Git
-(use-package git-commit
-  :ensure t)
-(use-package magit
-  :ensure)
+  :ensure t
+  :defer t)
 
 ;;; --- Ivy
 (use-package ivy
@@ -150,9 +134,12 @@
 
 ;;; --- Swiper - better isearch
 (use-package counsel
-  :ensure t)
+  :ensure t
+  :defer t)
+
 (use-package swiper
   :ensure t
+  :defer t
   :bind (("C-s" . swiper)
          ("C-r" . swiper)
          ("C-c C-r" . ivy-resume)
@@ -169,18 +156,16 @@
 ;;; --- Avy
 (use-package avy
   :ensure t
+  :defer t
   :bind (("C-c a" . avy-goto-char)
          ("C-c o" . avy-goto-char-timer)))
 
 ;;; --- Multiple cursors
 (use-package multiple-cursors
   :ensure t
+  :defer t
   :bind (("C-<" . mc/mark-previous-like-this)
 	 ("C->" . mc/mark-next-like-this)))
-
-;;; --- RESTclient
-(use-package restclient
-  :ensure t)
 
 ;;; --- Fill collumn indicator
 (use-package fill-column-indicator
@@ -189,23 +174,25 @@
   :config
   (setq fci-rule-width 2)
   (setq-default fci-rule-column 80)
-  (setq fci-rule-color "lightgray")
-  (setq whitespace-style '(face trailing))
+  (setq-default fci-rule-color "lightgray")
+  (setq-default whitespace-style '(face trailing))
   (add-hook 'after-change-major-mode-hook 'fci-mode))
 
 ;;; --- FIC Mode
 (use-package fic-mode
   :ensure t
+  :defer t
   :config
   (require 'fic-mode)
   (add-hook 'c++-mode-hook 'fic-mode)
   (add-hook 'sass-mode-hook 'fic-mode)
   (add-hook 'python-mode-hook 'fic-mode)
-  (add-hook 'jsx-mode-hook 'fic-mode))
+  (add-hook 'rjsx-mode-hook 'fic-mode))
 
 ;;; --- Wrap region
 (use-package wrap-region
   :ensure t
+  :defer t
   :config
   (wrap-region-add-wrapper "`" "`")
   (wrap-region-add-wrapper "*" "*")
@@ -214,30 +201,13 @@
   (wrap-region-mode t))
 
 ;;; --- Language specific
-;;; --- Typoscript
-(use-package typoscript-mode
-  :ensure t
-  :defer t
-  :config
-  (add-to-list 'auto-mode-alist '("\\.ts\\'" . typoscript-mode)))
-
-;;; --- PHP
-(use-package php-mode
-  :ensure t
-  :defer t
-  :config
-  (defun custom-php-mode-hook ()
-    (setq indent-tabs-mode nil
-          tab-width 2
-          c-basic-offset 2))
-  (add-hook 'php-mode-hook 'custom-php-mode-hook))
-
 ;;; --- HTML
 (use-package web-mode
   :ensure t
   :defer t
   :init
-  (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+  (add-to-list 'auto-mode-alist
+               '("\\.mustache\\'" . web-mode))
   (defun custom-web-mode-hook ()
     (setq-default web-mode-markup-indent-offset 2)
     (setq-default web-mode-css-indent-offset 2)
@@ -250,113 +220,37 @@
   :config
   (add-hook 'html-mode-hook (lambda () (html-check-frag-mode 1))))
 
-;;; --- JSX & React
-(use-package rjsx-mode
-  :ensure t
-  :defer t
-  :config
-  (add-hook 'rjsx-mode-hook
-            (lambda ()
-              (setq emmet-expand-jsx-className? t)))
-  (setq-default rjsx-indent-level 2))
-
-;;; --- Elm
-(use-package elm-mode
-  :ensure t
-  :config
-  (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
-  (add-hook 'elm-mode-hook
-            (lambda ()
-              (add-to-list 'company-backends '(company-elm))))
-  (custom-set-variables '(elm-format-on-save t)))
-
-;;; --- SASS/SCSS
-(use-package sass-mode
-  :ensure t
-  :defer t
-  :config
-  (progn
-    (add-hook 'sass-mode-hook
-	      (lambda ()
-		(setq rainbow-html-colors t)
-		(rainbow-mode)))))
-
-;;; --- Stylus
-(use-package stylus-mode
-  :ensure t
-  :defer t)
-
-;;; --- Haskell
-(use-package haskell-mode
-  :ensure t
-  :defer t)
-
 ;;; --- Android
 (use-package gradle-mode
-  :ensure t)
-
-;;; --- Clojure
-(use-package clojure-mode
-  :ensure t)
-
-(use-package cider
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;;; --- Markdown
 (use-package markdown-mode+
-  :ensure t)
-
-;;; --- Yaml
-(use-package yaml-mode
-  :ensure t)
-
-;;; --- GLSL
-(use-package glsl-mode
-  :ensure t
-  :config
-  (add-hook 'glsl-mode-hook
-            (lambda()
-              (defvar c-basic-offset 1)
-              (setq tab-width 2))))
-
-;;; --- Twig templates
-(use-package twig-mode
   :ensure t
   :defer t)
 
-;;; --- Vue.js
-(use-package vue-mode
+;;; --- Yaml
+(use-package yaml-mode
   :ensure t
-  :defer t
-  :config
-  (use-package vue-html-mode :ensure t :defer t)
-  (setq mmm-submode-decoration-level 0))
-
-;;; --- Javascript
-(use-package indium
-  :ensure t
-  :config
-  (progn
-    (add-hook 'sass-mode-hook
-	    (lambda ()
-  		  (setq rainbow-html-colors t)
-		(rainbow-mode)))
-  (add-hook 'js-mode-hook #'indium-interaction-mode)))
-
-;;; --- JSON
-(use-package json-mode
-  :ensure t
-  :defer t
-  :config
-  (setq js-indent-level 2))
+  :defer t)
 
 ;;; --- Load additional layers
-(load "~/.emacs.d/config/layers/auto-completion.el")
-(load "~/.emacs.d/config/layers/c-modes.el")
-(load "~/.emacs.d/config/layers/python.el")
-(load "~/.emacs.d/config/layers/syntax-checking.el")
-(load "~/.emacs.d/config/layers/spell-checking.el")
+(load "~/.emacs.d/config/layers/autocomplete.el")
+(load "~/.emacs.d/config/layers/git.el")
 (load "~/.emacs.d/config/layers/shell.el")
+(load "~/.emacs.d/config/layers/spell-checking.el")
+(load "~/.emacs.d/config/layers/syntax-checking.el")
+
+;;; --- Languages setup
+(load "~/.emacs.d/config/languages/cc.el")
+(load "~/.emacs.d/config/languages/clojure.el")
+(load "~/.emacs.d/config/languages/css.el")
+(load "~/.emacs.d/config/languages/glsl.el")
+(load "~/.emacs.d/config/languages/haskell.el")
+(load "~/.emacs.d/config/languages/javascript.el")
+(load "~/.emacs.d/config/languages/php.el")
+(load "~/.emacs.d/config/languages/python.el")
 
 (provide 'packages.el)
 ;;; packages.el ends here

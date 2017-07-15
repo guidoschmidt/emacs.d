@@ -4,10 +4,10 @@
 ;;; - Initialize packages
 ;;; - Bootstrap use-package
 
-;;; Code
+;;; Code:
 ;;; --- Setup melpa packages
 (require 'package)
-(setq package-enable-at-startup nil)
+(setq-default package-enable-at-startup nil)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)

@@ -1,11 +1,11 @@
 ;;; python.el --- Python Language/IDE settings
 ;;; Commentary:
 
-
 ;;; Code:
 ;;; --- Python
 (use-package elpy
   :ensure t
+  :defer t
   :config
   (setq elpy-rpc-python-command "python3")
   (setq python-shell-interpreter "ipython")
@@ -18,6 +18,7 @@
 
 (use-package company-jedi
   :ensure t
+  :defer t
   :config
   (defun company/python-mode-hook ()
     (add-to-list 'company-backends 'company-jedi))

@@ -69,23 +69,6 @@
 ;; Enable flycheck globally
 (global-flycheck-mode 1)
 
-;;; --- Language styles &
-;; Custom c++ sytle
-;; (c-add-style "c++-style
-;; 	     '("stroustrup"
-;; 	       (indent-tabs-mode . nil)
-;; 	       (c-basic-offset . 2)
-;; 	       (c-offsets-alist . ((inline-open . 0)
-;; 				   (brace-list-open . 0)
-;; 				   (statement-case-open . +)))))
-
-;; Activate custom c++ style
-;; (defun my-c++-mode-hook ()
-;;   (c-set-style "c++-style")
-;;   (c-toggle-auto-hungry-state 0))
-;; (add-hook 'c++-mode-hook 'my-c++-mode-hook)
-
-
 ;; Add Google C++ style
 (use-package google-c-style
   :ensure t
@@ -101,6 +84,13 @@
   (eval-after-load 'flycheck
     '(progn (flycheck-add-next-checker 'c/c++-clang
                                        '(warning . c/c++-googlelint)))))
+
+;; Haskell
+(use-package flycheck-haskell
+  :ensure t
+  :defer t
+  :config
+  '(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup))
 
 (provide 'syntax-checking.el)
 ;;; syntax-checking.el ends here
