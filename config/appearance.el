@@ -73,6 +73,8 @@
   (toggle-indicate-empty-lines))
 
 ;;; --- Line numbers
+;;; TODO: replace nlinum with native line numbers:
+;;; https://lists.gnu.org/archive/html/emacs-devel/2017-06/msg00338.html
 (use-package nlinum
   :ensure t
   :config
@@ -97,5 +99,5 @@
   (progn
     (smart-tabs-insinuate 'c 'javascript)))
 
-(provide 'apperance)
-;;; apperance.el ends here
+(provide 'appearance)
+;;; appearance.el ends here

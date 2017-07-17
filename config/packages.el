@@ -36,6 +36,7 @@
 ;;; --- Powerline & Spaceline
 (use-package powerline
   :ensure t)
+
 (use-package spaceline
   :ensure t
   :after powerline
