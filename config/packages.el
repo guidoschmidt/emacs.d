@@ -210,6 +210,15 @@
   (wrap-region-add-wrapper "'" "'")
   (wrap-region-mode t))
 
+;;; -- Refactor
+(use-package emr
+  :ensure t
+  :defer t
+  :config
+  (add-hook 'prog-mode-hook 'emr-initialize)
+  :bind
+  (("<M-RET>" . emr-show-refactor-menu)))
+
 ;;; --- Language specific
 ;;; --- HTML
 (use-package web-mode
