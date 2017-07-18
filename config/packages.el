@@ -73,6 +73,12 @@
   :config
   (counsel-projectile-on))
 
+;;; --- EditorConfig
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
+
 ;;; --- Dump-Jump
 (use-package dumb-jump
   :bind (("M-g o" . dumb-jump-go-other-window)
@@ -188,7 +194,10 @@
   (add-hook 'c++-mode-hook 'fic-mode)
   (add-hook 'sass-mode-hook 'fic-mode)
   (add-hook 'python-mode-hook 'fic-mode)
-  (add-hook 'rjsx-mode-hook 'fic-mode))
+  (add-hook 'rjsx-mode-hook 'fic-mode)
+  (add-hook 'js-mode-hook 'fic-mode)
+  (add-hook 'js2-mode-hook 'fic-mode)
+  (add-hook 'jsx-mode-hook 'fic-mode))
 
 ;;; --- Wrap region
 (use-package wrap-region
