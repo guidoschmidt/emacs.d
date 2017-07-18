@@ -10,6 +10,14 @@
   (eval-when-compile
     (add-hook 'js-mode-hook #'indium-interaction-mode)))
 
+(use-package js2-refactor
+  :ensure t
+  :defer t
+  :config
+  (add-hook 'js2-mode-hook #'js2-refactor-mode)
+  (add-hook 'js-mode #'js2-refactor-mode)
+  (js2r-add-keybindings-with-prefix "C-c C-m"))
+
 ;;; --- JSON
 (use-package json-mode
   :ensure t
