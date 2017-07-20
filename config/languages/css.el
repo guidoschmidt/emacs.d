@@ -20,7 +20,7 @@
     "Hook to customize sass mode."
     (rainbow-mode)
     (emmet-mode)
-    (setq-default emmet-use-sass-syntax t))
+    (setq emmet-use-sass-syntax t))
   (add-hook 'sass-mode-hook 'custom/sass-mode-hook))
 
 ;;; --- Stylus

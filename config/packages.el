@@ -94,6 +94,12 @@
   :init
   (global-undo-tree-mode))
 
+;;; --- Auto highlight words
+(use-package auto-highlight-symbol
+  :ensure t
+  :config
+  (global-auto-highlight-symbol-mode t))
+
 ;;; --- Setup org-bullets
 '(org-clock-into-drawer "timetracking")
 

@@ -32,6 +32,7 @@
 (global-set-key (kbd "S-C-<up>")    'enlarge-window)
 (global-set-key (kbd "C-x n")       'new-buffer)
 (global-set-key (kbd "C-c t")       'neotree-toggle)
+(global-set-key (kbd "C-c s")       'magit-status)
 
 (provide 'keymap.el)
 ;;; keymap.el ends here
