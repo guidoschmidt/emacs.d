@@ -21,10 +21,6 @@ cmake --build . --use-stderr --config Release --target install
 - Install *GNU Global* with *ctags* (Source code tagging system):
   `brew install global --with-ctags`
 
-### Common Shortcuts
-* `C-M-i` *counsel-irony auto-complete*
-* `C-p-p` *projectile-switch-project*
-
 ## Python IDE
 - `M-x jedi:install-server` Install the jedi server
 
@@ -48,3 +44,9 @@ Create `.tern-config` file in your `$HOME` dir:
   }
 }
 ```
+
+
+## Shortcuts
+-  `C-M-i`      *counsel-irony auto-complete
+-  `C-p-p`      *projectile-switch-project
+-  `C-q <tab>`  *insert tab
