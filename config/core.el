@@ -6,6 +6,9 @@
 ;;; Start emacs-server
 (server-start)
 
+;;; Apropos sortage by relevancy
+(setq apropos-sort-by-scores t)
+
 ;; Enable interactive do mode
 (require 'ido)
 (ido-mode t)
