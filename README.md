@@ -52,3 +52,5 @@ Create `.tern-config` file in your `$HOME` dir:
 - `C-q <tab>`  insert tab
 - `C-x C--`    decrease font size
 - `C-x C-+`    increase font size
+- `F3`         start keyboard macro
+- `F4`         define keyboard macro/insert macro
