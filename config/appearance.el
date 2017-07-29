@@ -72,6 +72,9 @@
 (when (not indicate-empty-lines)
   (toggle-indicate-empty-lines))
 
+;;; --- Highlight current line
+(global-hl-line-mode 1)
+
 ;;; --- Line numbers
 ;;; TODO: replace nlinum with native line numbers:
 ;;; https://lists.gnu.org/archive/html/emacs-devel/2017-06/msg00338.html
