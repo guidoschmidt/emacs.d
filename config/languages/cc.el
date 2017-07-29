@@ -28,11 +28,11 @@
                 (ggtags-mode 1)))
   (add-hook 'c-mode-common-hook 'ggtags/c-mode-hook))
 
-;; (use-package flycheck-irony
-;;   :ensure t
-;;   :config
-;;   (eval-after-load 'flycheck
-;;     '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
+(use-package flycheck-irony
+  :ensure t
+  :config
+  (eval-after-load 'flycheck
+    '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
 
 ;;; --- Irony - C++ IDE
 (use-package irony
