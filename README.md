@@ -47,6 +47,8 @@ Create `.tern-config` file in your `$HOME` dir:
 
 
 ## Shortcuts
--  `C-M-i`      *counsel-irony auto-complete
--  `C-p-p`      *projectile-switch-project
--  `C-q <tab>`  *insert tab
+- `C-M-i`      counsel-irony auto-complete
+- `C-p-p`      projectile-switch-project
+- `C-q <tab>`  insert tab
+- `C-x C--`    decrease font size
+- `C-x C-+`    increase font size
