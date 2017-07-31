@@ -118,7 +118,7 @@
     (global-set-key [remap other-window] 'ace-window)
     (custom-set-faces
      '(aw-leading-char-face
-       ((t (:inherit ace-jump-face-forground :height 1.5)))))))
+       ((t (:inherit ace-jump-face-forground :height 1.5 :color 'red)))))))
 
 ;;; --- Emmet
 (use-package emmet-mode

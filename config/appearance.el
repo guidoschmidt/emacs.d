@@ -54,17 +54,17 @@
 ;; set default font in initial window and for any new window
 (cond
  ((string-equal system-type "windows-nt") ; Microsoft Windows
-  (when (member "Fira Code" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Fira Code-11"))
-    (add-to-list 'default-frame-alist '(font . "Fira Code-11"))))
+  (when (member "Iosevka" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Iosevka-11"))
+    (add-to-list 'default-frame-alist '(font . "Iosevka-11"))))
  ((string-equal system-type "darwin"); Mac OS X
-  (when (member "Fira Code" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Fira Code-18"))
-    (add-to-list 'default-frame-alist '(font . "Fira Code-18"))))
+  (when (member "Iosevka" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Iosevka-18"))
+    (add-to-list 'default-frame-alist '(font . "Iosevka-18"))))
  ((string-equal system-type "gnu/linux") ; linux
-  (when (member "Fira Code" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Fira Code-18"))
-    (add-to-list 'default-frame-alist '(font . "Fira Code-18")))))
+  (when (member "Iosevka" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "Iosevka-18"))
+    (add-to-list 'default-frame-alist '(font . "Iosevka-18")))))
 
 ;;; --- Whitespace
 (global-whitespace-mode -1)

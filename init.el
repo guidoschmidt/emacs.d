@@ -5,7 +5,6 @@
 ;;; Code:
 ;;; --- Load configuration files
 
-
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -19,6 +18,8 @@
 (load "~/.emacs.d/config/ligatures.el")
 (load "~/.emacs.d/config/keymap.el")
 (load "~/.emacs.d/config/appearance.el")
+
+(setq custom-file "~/.emacs.d/local/custom-set.el")
 
 (provide 'init.el)
 ;;; init.el ends here
