@@ -45,6 +45,8 @@ Create `.tern-config` file in your `$HOME` dir:
 }
 ```
 
+## Swift
+Install [SourceKittenDaemon](https://github.com/terhechte/SourceKittenDaemon/releases/) first.
 
 ## Shortcuts
 - `C-M-i`      counsel-irony auto-complete
