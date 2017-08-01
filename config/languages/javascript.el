@@ -6,12 +6,14 @@
 ;;; --- Javascript
 (use-package indium
   :ensure t
+  :defer t
   :config
   (eval-when-compile
     (add-hook 'js-mode-hook #'indium-interaction-mode)))
 
 (use-package js2-refactor
   :ensure t
+  :defer t
   :config
   (add-hook 'js2-mode-hook #'js2-refactor-mode)
   (add-hook 'js-mode #'js2-refactor-mode)
@@ -20,16 +22,19 @@
 ;;; --- JSON
 (use-package json-mode
   :ensure t
+  :defer t
   :config
   (setq js-indent-level 2))
 
 ;;; --- Twig templates
 (use-package twig-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;;; --- Typoscript
 (use-package typoscript-mode
   :ensure t
+  :defer t
   :config
   (add-to-list 'auto-mode-alist
                '("\\.ts\\'" . typoscript-mode)))
@@ -37,6 +42,7 @@
 ;;; --- Vue.js
 (use-package vue-mode
   :ensure t
+  :defer t
   :config
   (use-package vue-html-mode :ensure t :defer t)
   (setq mmm-submode-decoration-level 0))
@@ -44,6 +50,7 @@
 ;;; --- JSX & React
 (use-package rjsx-mode
   :ensure t
+  :defer t
   :config
   (defun emmet/rjsx-mode-hook ()
     (setq-default emmet-expand-jsx-className? t)
@@ -65,6 +72,7 @@
 ;;; --- Tern
 (use-package tern
   :ensure t
+  :defer t
   :init
   (add-to-list
    'load-path
@@ -80,4 +88,4 @@
   (add-hook 'js-mode-hook 'tern/js-mode-hook))
 
 (provide 'javascript-web.el)
-;;; javascript-web.el ends here
+;;; javascript.el ends here
