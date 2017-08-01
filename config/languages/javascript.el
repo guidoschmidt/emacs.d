@@ -12,7 +12,6 @@
 
 (use-package js2-refactor
   :ensure t
-  :defer t
   :config
   (add-hook 'js2-mode-hook #'js2-refactor-mode)
   (add-hook 'js-mode #'js2-refactor-mode)
@@ -21,19 +20,16 @@
 ;;; --- JSON
 (use-package json-mode
   :ensure t
-  :defer t
   :config
   (setq js-indent-level 2))
 
 ;;; --- Twig templates
 (use-package twig-mode
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;;; --- Typoscript
 (use-package typoscript-mode
   :ensure t
-  :defer t
   :config
   (add-to-list 'auto-mode-alist
                '("\\.ts\\'" . typoscript-mode)))
@@ -41,7 +37,6 @@
 ;;; --- Vue.js
 (use-package vue-mode
   :ensure t
-  :defer t
   :config
   (use-package vue-html-mode :ensure t :defer t)
   (setq mmm-submode-decoration-level 0))
@@ -49,7 +44,6 @@
 ;;; --- JSX & React
 (use-package rjsx-mode
   :ensure t
-  :defer t
   :config
   (defun emmet/rjsx-mode-hook ()
     (setq-default emmet-expand-jsx-className? t)

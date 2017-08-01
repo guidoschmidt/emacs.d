@@ -30,6 +30,7 @@
 
 (use-package flycheck-irony
   :ensure t
+  :defer t
   :config
   (eval-after-load 'flycheck
     '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
