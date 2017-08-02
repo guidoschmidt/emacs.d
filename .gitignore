@@ -9,4 +9,7 @@ projectile-bookmarks.eld
 irony/
 
 # No-littering
-var
+url/
+local/
+var/
+tramp
