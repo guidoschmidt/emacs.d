@@ -276,6 +276,7 @@
 (load "~/.emacs.d/config/languages/javascript.el")
 (load "~/.emacs.d/config/languages/php.el")
 (load "~/.emacs.d/config/languages/python.el")
+(load "~/.emacs.d/config/languages/swift.el")
 
 (provide 'packages.el)
 ;;; packages.el ends here

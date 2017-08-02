@@ -6,6 +6,7 @@
 ;;; --- Javascript
 (use-package indium
   :ensure t
+  :defer t
   :config
   (eval-when-compile
     (add-hook 'js-mode-hook #'indium-interaction-mode)))
@@ -71,6 +72,7 @@
 ;;; --- Tern
 (use-package tern
   :ensure t
+  :defer t
   :init
   (add-to-list
    'load-path
@@ -86,4 +88,4 @@
   (add-hook 'js-mode-hook 'tern/js-mode-hook))
 
 (provide 'javascript-web.el)
-;;; javascript-web.el ends here
+;;; javascript.el ends here

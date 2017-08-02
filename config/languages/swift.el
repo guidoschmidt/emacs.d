@@ -15,12 +15,10 @@
 
 (use-package company-sourcekit
   :ensure t
-  :defer t
   :config
-    (defun custom/swift-mode-hook ()
-      (add-to-list 'company-backends 'company-sourcekit))
-    (add-hook 'swift-mode-hook 'custom/swift-mode-hook))
-
+  (defun company/swift-mode-hook ()
+    (add-to-list 'company-backends 'company-sourcekit))
+  (add-hook 'swift-mode-hook 'company/swift-mode-hook))
 
 (provide 'swift.el)
 ;;; swift.el ends here

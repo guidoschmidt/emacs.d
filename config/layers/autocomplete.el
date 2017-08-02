@@ -37,12 +37,15 @@
 
 (use-package company-quickhelp
   :ensure t
+  :if window-system
   :config
   (eval-when-compile
     (eval-after-load 'company
       '(define-key company-active-map
          (kbd "C-c h")
-         #'company-quickhelp-manual-begin))))
+         #'company-quickhelp-manual-begin)))
+      (company-quickhelp-mode))
+
 
 (provide 'autocomplete.el)
 ;;; autocomplete.el ends here
