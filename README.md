@@ -2,11 +2,13 @@
 
 Install [emacs-plus](https://github.com/d12frosted/homebrew-emacs-plus): `brew install emacs-plus --with-no-title-bars --without-spacemacs-icon`
 
-## C++ IDE
-### irony
-Installing irony server:
+---
+## Language specific preliminaries
+
+### C++
+1. Installing **IRONY SERVER**:
 ```
-cmake
+CMAKE
 -DLIBCLANG_INCLUDE_DIR\=/usr/local/opt/llvm/include/
 -DLIBCLANG_LIBRARY\=/usr/local/opt/llvm/lib/libclang.dylib
 -DCMAKE_INSTALL_PREFIX\=/Users/gs/.emacs.d/irony/
@@ -15,18 +17,18 @@ cmake
 cmake --build . --use-stderr --config Release --target install
 ```
 
-##### ctags
+2. Install **CTAGS**
 - Install *pygments*:
   `pip install pygments`
 - Install *GNU Global* with *ctags* (Source code tagging system):
   `brew install global --with-ctags`
 
-## Python IDE
+### Python
+- Install virtualenv: `pip3 install virtualenv`
 - `M-x jedi:install-server` Install the jedi server
 
-## Javascript IDE
-### tern
-Create `.tern-config` file in your `$HOME` dir:
+### Javascript
+1. Configure **TERN** by creating `.tern-config` file in your `$HOME` dir:
 
 ```json
 {
@@ -45,8 +47,10 @@ Create `.tern-config` file in your `$HOME` dir:
 }
 ```
 
-## Swift
-Install [SourceKittenDaemon](https://github.com/terhechte/SourceKittenDaemon/releases/) first.
+### Swift
+1. Install [SourceKittenDaemon](https://github.com/terhechte/SourceKittenDaemon/releases/) first.
+
+---
 
 ## Shortcuts
 - `C-M-i`      counsel-irony auto-complete
