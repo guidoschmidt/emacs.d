@@ -6,10 +6,7 @@
 ;;; --- Javascript
 (use-package indium
   :ensure t
-  :defer t
-  :config
-  (eval-when-compile
-    (add-hook 'js-mode-hook #'indium-interaction-mode)))
+  :defer t)
 
 (use-package js2-refactor
   :ensure t
@@ -42,9 +39,7 @@
 ;;; --- Vue.js
 (use-package vue-mode
   :ensure t
-  :defer t
   :config
-  (use-package vue-html-mode :ensure t :defer t)
   (setq mmm-submode-decoration-level 0))
 
 ;;; --- JSX & React
