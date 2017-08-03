@@ -40,6 +40,9 @@
 (use-package vue-mode
   :ensure t
   :config
+  (defun emmet/vue-mode-hook ()
+    (emmet-mode))
+  (add-hook 'vue-mode-hook 'emmet/vue-mode-hook)
   (setq mmm-submode-decoration-level 0))
 
 ;;; --- JSX & React

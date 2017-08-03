@@ -12,13 +12,12 @@
   (defun custom-python-mode-hook ()
     (setq python-indent-offset 4)
     (setq tab-width 4)
-    (setq indent-tabs-mode nil))
-  (add-hook 'python-mode-hook 'custom-python-mode-hook)
-  (elpy-enable))
+    (setq indent-tabs-mode nil)
+    (elpy-enable))
+  (add-hook 'python-mode-hook 'custom-python-mode-hook))
 
 (use-package company-jedi
   :ensure t
-  :defer t
   :config
   (defun company/python-mode-hook ()
     (add-to-list 'company-backends 'company-jedi))
