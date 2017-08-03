@@ -88,7 +88,6 @@
 ;; Haskell
 (use-package flycheck-haskell
   :ensure t
-  :defer t
   :config
   '(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup))
 

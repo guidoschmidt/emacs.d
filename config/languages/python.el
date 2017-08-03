@@ -5,7 +5,6 @@
 ;;; --- Python
 (use-package elpy
   :ensure t
-  :defer t
   :config
   (setq elpy-rpc-python-command "python3")
   (setq python-shell-interpreter "ipython")
@@ -20,7 +19,7 @@
   :ensure t
   :config
   (defun company/python-mode-hook ()
-    (add-to-list 'company-backends 'company-jedi))
+    (push 'company-jedi company-backends))
   (add-hook 'python-mode-hook 'company/python-mode-hook))
 
 (provide 'python.el)

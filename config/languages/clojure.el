@@ -3,12 +3,10 @@
 
 ;;; Code:
 (use-package clojure-mode
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package cider
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (provide 'clojure.el)
 ;;; clojure.el ends here

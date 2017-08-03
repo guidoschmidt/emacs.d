@@ -4,7 +4,6 @@
 ;;; Code:
 (use-package php-mode
   :ensure t
-  :defer t
   :config
   (defun custom-php-mode-hook ()
     (setq indent-tabs-mode nil

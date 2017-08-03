@@ -6,15 +6,13 @@
 ;;; Keep .emacs.d clean
 (use-package no-littering
   :ensure t
-  :defer t
   :config
   (require 'recentf)
   (add-to-list 'recentf-exclude no-littering-var-directory)
   (add-to-list 'recentf-exclude no-littering-etc-directory))
 
 (use-package try
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;;; --- Setup which-key
 (use-package which-key
@@ -132,8 +130,7 @@
 
 ;;; --- Rainbow mode
 (use-package rainbow-mode
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;;; --- Ivy
 (use-package ivy
@@ -147,12 +144,10 @@
 
 ;;; --- Swiper - better isearch
 (use-package counsel
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package swiper
   :ensure t
-  :defer t
   :bind (("C-s" . swiper)
          ("C-r" . swiper)
          ("C-c C-r" . ivy-resume)
@@ -169,21 +164,18 @@
 ;;; --- Avy
 (use-package avy
   :ensure t
-  :defer t
   :bind (("C-c a" . avy-goto-char)
          ("C-c o" . avy-goto-char-timer)))
 
 ;;; --- Multiple cursors
 (use-package multiple-cursors
   :ensure t
-  :defer t
   :bind (("C-<" . mc/mark-previous-like-this)
 	 ("C->" . mc/mark-next-like-this)))
 
 ;;; --- Fill collumn indicator
 (use-package fill-column-indicator
   :ensure t
-  :defer t
   :config
   (setq fci-rule-width 2)
   (setq-default fci-rule-column 80)
@@ -194,7 +186,6 @@
 ;;; --- FIC Mode
 (use-package fic-mode
   :ensure t
-  :defer t
   :config
   (require 'fic-mode)
   (add-hook 'c++-mode-hook 'fic-mode)
@@ -208,7 +199,6 @@
 ;;; --- Wrap region
 (use-package wrap-region
   :ensure t
-  :defer t
   :config
   (wrap-region-add-wrapper "`" "`")
   (wrap-region-add-wrapper "*" "*")
@@ -219,7 +209,6 @@
 ;;; -- Refactor
 (use-package emr
   :ensure t
-  :defer t
   :config
   (add-hook 'prog-mode-hook 'emr-initialize)
   :bind
@@ -229,7 +218,6 @@
 ;;; --- HTML
 (use-package web-mode
   :ensure t
-  :defer t
   :init
   (add-to-list 'auto-mode-alist
                '("\\.mustache\\'" . web-mode))
@@ -241,24 +229,20 @@
 
 (use-package html-check-frag
   :ensure t
-  :defer t
   :config
   (add-hook 'html-mode-hook (lambda () (html-check-frag-mode 1))))
 
 ;;; --- Android
 (use-package gradle-mode
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;;; --- Markdown
 (use-package markdown-mode+
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;;; --- Yaml
 (use-package yaml-mode
-  :ensure t
-  :defer t)
+  :ensure t)
 
 ;;; --- Load additional layers
 (load "~/.emacs.d/config/layers/autocomplete.el")

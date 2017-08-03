@@ -6,7 +6,6 @@
 ;;; Code:
 (use-package company
   :ensure t
-  :defer t
   :config
   (setq-default company-dabbrev-other-buffers t)
   (setq-default company-idle-delay 0.2)

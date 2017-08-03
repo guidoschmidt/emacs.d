@@ -4,12 +4,10 @@
 
 ;;; Code:
 (use-package swift-mode
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package flycheck-swift
   :ensure t
-  :defer t
   :config
   (eval-after-load 'flycheck '(flycheck-swift-setup)))
 
@@ -17,7 +15,7 @@
   :ensure t
   :config
   (defun company/swift-mode-hook ()
-    (add-to-list 'company-backends 'company-sourcekit))
+    (push 'company-sourcekit company-backends))
   (add-hook 'swift-mode-hook 'company/swift-mode-hook))
 
 (provide 'swift.el)

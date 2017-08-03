@@ -13,14 +13,12 @@
 ;;; --- CMake
 (use-package cmake-ide
   :ensure t
-  :defer t
   :config
   (cmake-ide-setup))
 
 ;;; --- ctags & ggtags
 (use-package ggtags
   :ensure t
-  :defer t
   :config
   (defun ggtags/c-mode-hook ()
     "Hook to setup GGTAGS in cc-modes."
@@ -30,7 +28,6 @@
 
 (use-package flycheck-irony
   :ensure t
-  :defer t
   :config
   (eval-after-load 'flycheck
     '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
@@ -38,14 +35,13 @@
 ;;; --- Irony - C++ IDE
 (use-package irony
   :ensure t
-  :defer t
   :init
   (add-hook 'c++-mode-hook 'irony-mode)
   (add-hook 'c-mode-hook 'irony-mode)
   (add-hook 'objc-mode-hook 'irony-mode)
   :config
-  (use-package company-irony :ensure t :defer t)
-  (use-package company-irony-c-headers :ensure t :defer t)
+  (use-package company-irony :ensure t)
+  (use-package company-irony-c-headers :ensure t)
   (custom-set-variables
    '(irony-additional-clang-options
      '("-I/Library/Developer/CommandLineTools/usr/include/c++/v1")))
