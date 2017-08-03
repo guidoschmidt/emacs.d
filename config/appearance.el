@@ -17,10 +17,6 @@
 ;; Disable scrollbars
 (scroll-bar-mode -1)
 
-;; Cursor
-(set-default 'cursor-type 'box)
-(set-cursor-color "#FF0C42")
-
 ;;; --- Themes
 ;; ** Nighttime themes
 ;; - junio (pack: sublime-themes)
@@ -49,6 +45,10 @@
         (load-theme 'twilight-bright t)))
   ;; ### Fallback
   (load-theme 'leuven t))
+
+;; Cursor
+(set-default 'cursor-type 'box)
+(set-cursor-color "#FA0C72")
 
 ;;; --- Typeface
 ;; set default font in initial window and for any new window
