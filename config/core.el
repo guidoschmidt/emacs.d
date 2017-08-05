@@ -13,6 +13,15 @@
 (require 'ido)
 (ido-mode t)
 
+;; Move backup files
+(setq backup-directory-alist
+      `((".*" "~/.emacs.d/backup/" t)))
+(setq backup-by-copying-when-linked t)
+
+;; Move auto-save files
+(setq auto-save-file-name-transforms
+  `((".*" "~/.emacs.d/auto-save/" t)))
+
 ;; Electric pairs
 (electric-pair-mode 1)
 
