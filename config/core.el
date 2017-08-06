@@ -31,6 +31,9 @@
 ;; Delete selections
 (delete-selection-mode t)
 
+;; Show time
+(display-time-mode 1)
+
 ;; Use ibuffers instead of default buffer overview
 (defalias 'list-buffers 'ibuffer)
 
