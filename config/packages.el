@@ -214,6 +214,13 @@
   :bind
   (("<M-RET>" . emr-show-refactor-menu)))
 
+;;; -- Aggressive indent
+(use-package aggressive-indent
+  :ensure t
+  :config
+  (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+  (add-hook 'css-mode-hook #'aggressive-indent-mode))
+
 ;;; --- Language specific
 ;;; --- HTML
 (use-package web-mode
