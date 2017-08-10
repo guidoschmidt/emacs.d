@@ -18,16 +18,20 @@
 (scroll-bar-mode -1)
 
 ;;; --- Themes
+;; - color-theme-solarized
+;;
 ;; ** Nighttime themes
 ;; - junio (pack: sublime-themes)
 ;; - spolsky (pack: sublime-themes)
 ;; - soothe-theme
 ;;
 ;; ** Daytime themes
-;; - espresso (custom)
 ;; - flatui-theme
 ;; - material-light (pack: material-theme)
 ;; - twilight-bright (pack: twilight-bright-theme)
+;; - espresso-theme
+;; - ample-theme
+
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (if (window-system)
     (if (or
@@ -39,12 +43,12 @@
           :config
           (load-theme 'soothe t))
       ;; Day theme
-      (use-package twilight-bright-theme
+      (use-package espresso-theme
         :ensure t
         :config
-        (load-theme 'twilight-bright t)))
-  ;; ### Fallback
-  (load-theme 'leuven t))
+        (load-theme 'espresso t))
+      ;; ### Fallback
+      (load-theme 'leuven t)))
 
 ;; Cursor
 (set-default 'cursor-type 'box)
