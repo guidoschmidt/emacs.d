@@ -15,7 +15,9 @@
   :ensure t
   :config
   (defun company/swift-mode-hook ()
-    (push 'company-sourcekit company-backends))
+    (push 'company-sourcekit company-backends)
+    (setq company-sourcekit-use-yasnippet t)
+    (setq company-sourcekit-verbose t))
   (add-hook 'swift-mode-hook 'company/swift-mode-hook))
 
 (provide 'swift.el)
