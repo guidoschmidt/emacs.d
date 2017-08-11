@@ -264,6 +264,7 @@
 (load "~/.emacs.d/config/languages/css.el")
 (load "~/.emacs.d/config/languages/glsl.el")
 (load "~/.emacs.d/config/languages/haskell.el")
+(load "~/.emacs.d/config/languages/elisp.el")
 (load "~/.emacs.d/config/languages/javascript.el")
 (load "~/.emacs.d/config/languages/php.el")
 (load "~/.emacs.d/config/languages/python.el")
