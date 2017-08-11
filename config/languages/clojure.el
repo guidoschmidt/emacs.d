@@ -3,7 +3,9 @@
 
 ;;; Code:
 (use-package clojure-mode
-  :ensure t)
+  :ensure t
+  :config
+  (add-hook 'clojure-mode-hook #'enable-paredit-mode))
 
 (use-package clojure-snippets
   :ensure t)
