@@ -38,20 +38,15 @@
          (>= (nth 2 (decode-time (date-to-time (current-time-string)))) 19)
          (<= (nth 2 (decode-time (date-to-time (current-time-string))))  7))
         ;; Nigth theme
-        (use-package soothe-theme
-          :ensure t
-          :config
-          (load-theme 'soothe t))
+        (load-theme 'nyx t)
       ;; Day theme
       (use-package espresso-theme
         :ensure t
         :config
-        (load-theme 'espresso t))
-      ;; ### Fallback
-      (load-theme 'leuven t)))
+        (load-theme 'espresso t))))
 
 ;; Cursor
-(set-default 'cursor-type 'box)
+  (set-default 'cursor-type 'box)
 (set-cursor-color "#FA0C72")
 
 ;;; --- Typeface
