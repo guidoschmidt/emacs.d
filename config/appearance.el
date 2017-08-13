@@ -55,12 +55,12 @@
     (add-to-list 'default-frame-alist '(font . "Iosevka-11"))))
  ((string-equal system-type "darwin"); Mac OS X
   (when (member "Iosevka" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Iosevka-18"))
-    (add-to-list 'default-frame-alist '(font . "Iosevka-18"))))
+    (add-to-list 'initial-frame-alist '(font . "Iosevka-16"))
+    (add-to-list 'default-frame-alist '(font . "Iosevka-16"))))
  ((string-equal system-type "gnu/linux") ; linux
   (when (member "Iosevka" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Iosevka-18"))
-    (add-to-list 'default-frame-alist '(font . "Iosevka-18")))))
+    (add-to-list 'initial-frame-alist '(font . "Iosevka-16"))
+    (add-to-list 'default-frame-alist '(font . "Iosevka-16")))))
 
 ;;; --- Whitespace
 (global-whitespace-mode -1)
