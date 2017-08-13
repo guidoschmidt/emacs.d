@@ -21,11 +21,6 @@
   (custom-set-variables '(haskell-tags-on-save t))
   (add-hook 'haskell-interactive-mode-hook 'company-mode))
 
-;; (use-package intero
-;;   :ensure t
-;;   :config
-;;   (add-hook 'haskell-mode-hook 'intero-mode))
-
 (use-package company-ghc
   :ensure t
   :config
@@ -44,6 +39,12 @@
 
 (use-package haskell-snippets
   :ensure t)
+
+(use-package flycheck-haskell
+  :ensure t
+  :config
+  (eval-after-load 'flycheck
+    '(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup)))
 
 (provide 'haskell.el)
 ;;; haskell.el ends here
