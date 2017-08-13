@@ -269,7 +269,10 @@
   :ensure t)
 
 ;;; --- Load additional layers
-(load "~/.emacs.d/config/layers/autocomplete.el")
+;; Auto-completion via company
+;;(load "~/.emacs.d/config/layers/autocomplete.el")
+;; Auto-completion via auto-complete
+(load "~/.emacs.d/config/layers/autocomplete.auto-complete.el")
 (load "~/.emacs.d/config/layers/git.el")
 (load "~/.emacs.d/config/layers/shell.el")
 (load "~/.emacs.d/config/layers/spell-checking.el")
