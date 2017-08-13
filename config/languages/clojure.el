@@ -10,8 +10,13 @@
 (use-package clojure-snippets
   :ensure t)
 
-(use-package cider
+(use-package cider  
   :ensure t)
+
+(use-package flycheck-clojure
+  :ensure t
+  :config
+  (eval-after-load 'flycheck '(flycheck-clojure-setup)))
 
 (provide 'clojure.el)
 ;;; clojure.el ends here
