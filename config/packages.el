@@ -47,8 +47,8 @@
     ;; -- Powerline seperator styles:
     ;; alternate, arrow, arrow-fade, bar, box, brace,
     ;; butt, chamfer, contour, curve, rounded, roundstub,
-    ;;wave, zigzag, utf-8
-    (setq powerline-default-separator 'bar)
+    ;;wave, zigzag, utf-8, nil
+    (setq powerline-default-separator nil)
     ;; Disable spaceline segments
     (spaceline-toggle-workspace-number-off)
     (spaceline-toggle-minor-modes-off)

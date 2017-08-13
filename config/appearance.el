@@ -40,10 +40,7 @@
         ;; Nigth theme
         (load-theme 'nyx t)
       ;; Day theme
-      (use-package espresso-theme
-        :ensure t
-        :config
-        (load-theme 'espresso t))))
+      (load-theme 'hemera t)))
 
 ;; Cursor
   (set-default 'cursor-type 'box)

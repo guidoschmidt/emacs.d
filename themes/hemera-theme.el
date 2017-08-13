@@ -1,11 +1,25 @@
-;;; nyx-theme.el --- Theme
+;;; hemera-theme.el --- Theme 
 
-;; Copyright (C) 2017, Guido Schmidt
+;; Copyright (C) 2016 , Guido Schmidt
 
 ;; Author: Guido Schmidt
-;; Version: 0.0.1
+;; Version: 0.1
 ;; Package-Requires: ((emacs "24"))
+;; Created with ThemeCreator, https://github.com/mswift42/themecreator.
 
+
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 ;; This file is not part of Emacs.
 
@@ -13,28 +27,28 @@
 
 ;;; Code:
 
-(deftheme nyx)
+(deftheme hemera)
 (let ((class '((class color) (min-colors 89)))
-      (fg1      "#f8f8f8")
-      (fg2      "#e4e4e4")
-      (fg3      "#d0d0d0")
-      (fg4      "#bcbcbc")
-      (bg1      "#000000")
-      (bg2      "#141414")
-      (bg3      "#292929")
-      (bg4      "#3d3d3d")
-      (builtin  "#ff007f")
-      (keyword  "#ff3300")
-      (const    "#ab00ff")
-      (comment  "#383838")
-      (func     "#00ffc2")
-      (str      "#ffa900")
-      (type     "#5f0dff")
-      (var      "#00e9ff")
+      (fg1      "#0d0700")
+      (fg2      "#201b14")
+      (fg3      "#342f29")
+      (fg4      "#47433d")
+      (bg1      "#ffffff")
+      (bg2      "#ebebeb")
+      (bg3      "#d6d6d6")
+      (bg4      "#c2c2c2")
+      (builtin  "#0ac500")
+      (keyword  "#6700b6")
+      (const    "#110092")
+      (comment  "#c4bfa4")
+      (func     "#ff7a00")
+      (str      "#9000d9")
+      (type     "#ff005e")
+      (var      "#5e00ff")
       (warning  "#ff0000")
       (warning2 "#ff8800"))
   (custom-theme-set-faces
-   'nyx
+   'hemera
    `(default ((,class (:background ,bg1 :foreground ,fg1))))
    `(font-lock-builtin-face ((,class (:foreground ,builtin))))
    `(font-lock-comment-face ((,class (:foreground ,comment))))
@@ -55,10 +69,11 @@
    `(cursor ((,class (:background ,bg3))))
    `(show-paren-match-face ((,class (:background ,warning))))
    `(isearch ((,class (:bold t :foreground ,warning :background ,bg3))))
+
    `(mode-line ((,class (:box nil :bold t :foreground ,fg4 :background ,bg2))))
    `(mode-line-inactive ((,class (:box nil :foreground ,var :background ,bg1 :weight normal))))
-   `(mode-line-buffer-id ((,class (:bold f :foreground ,func :background nil))))
-   `(mode-line-highlight ((,class (:foreground ,keyword :box nil :weight normal))))
+   `(mode-line-buffer-id ((,class (:bold t :foreground ,func :background nil))))
+   `(mode-line-highlight ((,class (:foreground ,keyword :box nil :weight bold))))
    `(mode-line-emphasis ((,class (:foreground ,fg1))))
    `(vertical-border ((,class (:foreground ,fg3))))
    `(minibuffer-prompt ((,class (:bold t :foreground ,keyword))))
@@ -230,10 +245,10 @@
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide-theme 'nyx)
+(provide-theme 'hemera)
 
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
 
-;;; nyx-theme.el ends here
+;;; hemera-theme.el ends here
