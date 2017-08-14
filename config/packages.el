@@ -35,14 +35,31 @@
 (use-package powerline
   :ensure t)
 
+(use-package fancy-battery
+  :ensure t)
+
 (use-package spaceline
   :ensure t
   :after powerline
   :init
   (progn
     (require 'spaceline-config)
-    (setq powerline-default-separator 'utf-8)
-    (setq powerline-height 20)
+    ;; -- Powerline seperator styles:
+    ;; alternate, arrow, arrow-fade, bar, box, brace,
+    ;; butt, chamfer, contour, curve, rounded, roundstub,
+    ;;wave, zigzag, utf-8, nil
+    (setq powerline-default-separator nil)
+    ;; Disable spaceline segments
+    (spaceline-toggle-workspace-number-off)
+    (spaceline-toggle-minor-modes-off)
+    (spaceline-toggle-buffer-encoding-abbrev-off)
+    (spaceline-toggle-buffer-size-off)
+    (spaceline-toggle-org-clock-off)
+    ;; Enable spaceline segments
+    (spaceline-toggle-projectile-root-on)
+    (spaceline-toggle-battery-on)
+    (spaceline-toggle-selection-info-on)
+    ;; Select theme
     (spaceline-spacemacs-theme)))
 
 ;;; --- Neo-tree with icons
@@ -252,7 +269,10 @@
   :ensure t)
 
 ;;; --- Load additional layers
-(load "~/.emacs.d/config/layers/autocomplete.el")
+;; Auto-completion via company
+;;(load "~/.emacs.d/config/layers/autocomplete.el")
+;; Auto-completion via auto-complete
+(load "~/.emacs.d/config/layers/autocomplete.auto-complete.el")
 (load "~/.emacs.d/config/layers/git.el")
 (load "~/.emacs.d/config/layers/shell.el")
 (load "~/.emacs.d/config/layers/spell-checking.el")
@@ -264,6 +284,7 @@
 (load "~/.emacs.d/config/languages/css.el")
 (load "~/.emacs.d/config/languages/glsl.el")
 (load "~/.emacs.d/config/languages/haskell.el")
+(load "~/.emacs.d/config/languages/elisp.el")
 (load "~/.emacs.d/config/languages/javascript.el")
 (load "~/.emacs.d/config/languages/php.el")
 (load "~/.emacs.d/config/languages/python.el")

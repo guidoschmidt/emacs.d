@@ -38,15 +38,9 @@
          (>= (nth 2 (decode-time (date-to-time (current-time-string)))) 19)
          (<= (nth 2 (decode-time (date-to-time (current-time-string))))  7))
         ;; Nigth theme
-        (use-package soothe-theme
-          :ensure t
-          :config
-          (load-theme 'soothe t))
+        (load-theme 'nyx t)
       ;; Day theme
-      (use-package soothe-theme
-        :ensure t
-        :config
-        (load-theme 'soothe t))))
+      (load-theme 'hemera t)))
 
 ;; Cursor
 (set-default 'cursor-type 'box)
@@ -61,12 +55,12 @@
     (add-to-list 'default-frame-alist '(font . "Iosevka-11"))))
  ((string-equal system-type "darwin"); Mac OS X
   (when (member "Iosevka" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Iosevka-18"))
-    (add-to-list 'default-frame-alist '(font . "Iosevka-18"))))
+    (add-to-list 'initial-frame-alist '(font . "Iosevka-16"))
+    (add-to-list 'default-frame-alist '(font . "Iosevka-16"))))
  ((string-equal system-type "gnu/linux") ; linux
   (when (member "Iosevka" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Iosevka-18"))
-    (add-to-list 'default-frame-alist '(font . "Iosevka-18")))))
+    (add-to-list 'initial-frame-alist '(font . "Iosevka-16"))
+    (add-to-list 'default-frame-alist '(font . "Iosevka-16")))))
 
 ;;; --- Whitespace
 (global-whitespace-mode -1)

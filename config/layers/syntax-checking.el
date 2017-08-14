@@ -85,11 +85,5 @@
     '(progn (flycheck-add-next-checker 'c/c++-clang
                                        '(warning . c/c++-googlelint)))))
 
-;; Haskell
-(use-package flycheck-haskell
-  :ensure t
-  :config
-  '(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup))
-
 (provide 'syntax-checking.el)
 ;;; syntax-checking.el ends here
