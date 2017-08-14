@@ -7,7 +7,7 @@
   :ensure t
   :config
   (setq elpy-rpc-python-command "python3")
-  (setq python-shell-interpreter "ipython")
+  (setq python-shell-interpreter "python3")
   (defun custom-python-mode-hook ()
     (setq python-indent-offset 4)
     (setq tab-width 4)
