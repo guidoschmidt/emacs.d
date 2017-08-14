@@ -43,12 +43,10 @@
           :config
           (load-theme 'soothe t))
       ;; Day theme
-      (use-package espresso-theme
+      (use-package soothe-theme
         :ensure t
         :config
-        (load-theme 'espresso t))
-      ;; ### Fallback
-      (load-theme 'leuven t)))
+        (load-theme 'soothe t))))
 
 ;; Cursor
 (set-default 'cursor-type 'box)
