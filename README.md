@@ -51,7 +51,9 @@ cmake --build . --use-stderr --config Release --target install
 1. Install [SourceKittenDaemon](https://github.com/terhechte/SourceKittenDaemon/releases/) first.
 
 ### Haskell
-1. Install Docker: `brew install docker` to use **intero**.
+1. Install **Docker*: `brew install docker` to use **intero**.
+2. Install **Stack*: `brew install stack`
+3. Setup Stack via `stack setup`.
 
 ---
 
