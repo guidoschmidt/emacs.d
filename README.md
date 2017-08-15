@@ -50,6 +50,9 @@ cmake --build . --use-stderr --config Release --target install
 ### Swift
 1. Install [SourceKittenDaemon](https://github.com/terhechte/SourceKittenDaemon/releases/) first.
 
+### Haskell
+1. Install Docker: `brew install docker` to use **intero**.
+
 ---
 
 ## Shortcuts

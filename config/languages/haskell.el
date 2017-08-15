@@ -32,10 +32,15 @@
 (use-package company-ghci
   :ensure t
   :config
-  (defun company/haskell-mode-hook ()
+  (defun company/interactive-haskell-mode-hook ()
     (push 'company-ghci company-backends))
   (add-hook 'haskell-interactive-mode-hook
-            'company/haskell-mode-hook))
+            'company/interactive-haskell-mode-hook))
+
+(use-package intero
+  :ensure t
+  :config
+  (add-hook 'haskell-mode-hook 'intero-mode))
 
 (use-package haskell-snippets
   :ensure t)
