@@ -10,7 +10,7 @@
 (use-package clojure-snippets
   :ensure t)
 
-(use-package cider  
+(use-package cider
   :ensure t)
 
 (use-package flycheck-clojure
