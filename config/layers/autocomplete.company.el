@@ -1,4 +1,4 @@
-;;; autocomplete.el --- Setup auto completion
+;;; autocomplete.company.el --- Setup auto completion
 
 ;;; Commentary:
 ;;; Setup company mode
@@ -15,6 +15,7 @@
   (setq-default company-dabbrev-downcase nil)
   (setq-default company-tooltip-limit 20)
   (setq-default company-show-numbers t)
+  (setq-default company-transformers '(company-sort-by-occurrence))
   ;;; Fix company popups when using fci
   ;;; (fill column indicator) mode
   (defvar-local company-fci-mode-on-p nil)
@@ -32,7 +33,8 @@
             'company-maybe-turn-on-fci)
   (global-company-mode)
   :bind
-  ("<C-tab>" . company-complete-common))
+  (("<C-tab>" . company-complete-common)
+   ("C-c <C-tab>" . company-yasnippet)))
 
 (use-package company-quickhelp
   :ensure t
@@ -46,5 +48,5 @@
       (company-quickhelp-mode))
 
 
-(provide 'autocomplete.el)
-;;; autocomplete.el ends here
+(provide 'autocomplete.company.el)
+;;; autocomplete.company.el ends here

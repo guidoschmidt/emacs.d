@@ -61,10 +61,12 @@ according to this [github issue](https://github.com/commercialhaskell/intero/iss
 ---
 
 ## Shortcuts
-- `C-M-i`      counsel-irony auto-complete
-- `C-p-p`      projectile-switch-project
-- `C-q <tab>`  insert tab
-- `C-x C--`    decrease font size
-- `C-x C-+`    increase font size
-- `F3`         start keyboard macro
-- `F4`         define keyboard macro/insert macro
+ -  `C-M-i`       -> counsel-irony auto-complete
+ -  `C-p-p`       -> projectile-switch-project
+ -  `C-q <tab>`   -> insert tab
+ -  `C-x C--`     -> decrease font size
+ -  `C-x C-+`     -> increase font size
+ -  `F3`          -> start keyboard macro
+ -  `F4`          -> define keyboard macro/insert macro
+ -  `C-c e`       -> expand yasnippet
+ -  `C-c <C-tab>` -> auto-complete yasnippet

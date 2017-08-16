@@ -40,7 +40,9 @@
 (use-package intero
   :ensure t
   :config
-  (add-hook 'haskell-mode-hook 'intero-mode))
+  (add-hook 'haskell-mode-hook 'intero-mode)
+  :bind
+  (("C-<tab>" . company-intero)))
 
 (use-package haskell-snippets
   :ensure t)

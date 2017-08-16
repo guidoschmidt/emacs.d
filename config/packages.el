@@ -29,7 +29,11 @@
 (use-package yasnippet
   :ensure t
   :init
-  (yas-global-mode 1))
+  (yas-global-mode 1)
+  :config
+  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+  :bind
+  (("C-c e" . yas-expand)))
 
 ;;; --- Powerline & Spaceline
 (use-package powerline
