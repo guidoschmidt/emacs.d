@@ -47,6 +47,7 @@
 (use-package rjsx-mode
   :ensure t
   :config
+  (use-package react-snippets :ensure t)
   (defun emmet/rjsx-mode-hook ()
     (setq-default emmet-expand-jsx-className? t)
     (emmet-mode))
@@ -57,6 +58,7 @@
 (use-package elm-mode
   :ensure t
   :config
+  (use-package elm-yasnippets :ensure t)
   (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
   (defun company/elm-mode-hook ()
     (add-to-list 'company-backends 'company-elm))
