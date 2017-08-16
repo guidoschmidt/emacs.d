@@ -1,4 +1,4 @@
-;;; autocomplete.el --- Setup auto completion
+;;; autocomplete.company.el --- Setup auto completion
 
 ;;; Commentary:
 ;;; Setup company mode
@@ -46,5 +46,5 @@
       (company-quickhelp-mode))
 
 
-(provide 'autocomplete.el)
-;;; autocomplete.el ends here
+(provide 'autocomplete.company.el)
+;;; autocomplete.company.el ends here
