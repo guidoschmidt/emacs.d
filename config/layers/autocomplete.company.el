@@ -15,6 +15,7 @@
   (setq-default company-dabbrev-downcase nil)
   (setq-default company-tooltip-limit 20)
   (setq-default company-show-numbers t)
+  (setq-default company-transformers '(company-sort-by-occurrence))
   ;;; Fix company popups when using fci
   ;;; (fill column indicator) mode
   (defvar-local company-fci-mode-on-p nil)
@@ -32,7 +33,8 @@
             'company-maybe-turn-on-fci)
   (global-company-mode)
   :bind
-  ("<C-tab>" . company-complete-common))
+  (("<C-tab>" . company-complete-common)
+   ("C-c <C-tab>" . company-yasnippet)))
 
 (use-package company-quickhelp
   :ensure t
