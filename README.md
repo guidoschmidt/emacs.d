@@ -67,3 +67,4 @@ cmake --build . --use-stderr --config Release --target install
  -  `F4`          -> define keyboard macro/insert macro
  -  `C-c e`       -> expand yasnippet
  -  `C-c <C-tab>` -> auto-complete yasnippet
+ -  `C-=`         -> expand region

@@ -25,6 +25,10 @@
   :config
   (editorconfig-mode 1))
 
+(use-package expand-region
+  :ensure t
+  :bind (("C-=" . er/expand-region)))
+
 ;;; --- Yasnippets
 (use-package yasnippet
   :ensure t
