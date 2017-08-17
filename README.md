@@ -55,6 +55,9 @@ cmake --build . --use-stderr --config Release --target install
 2. Install **Stack*: `brew install stack`
 3. Setup Stack via `stack setup`.
 
+Make sure to use `ghc` version larger than `8.2.1`. Intero seems to fail an `8.0.2`
+according to this [github issue](https://github.com/commercialhaskell/intero/issues/428).
+
 ---
 
 ## Shortcuts
