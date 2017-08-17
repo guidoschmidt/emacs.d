@@ -42,7 +42,7 @@
   :config
   (add-hook 'haskell-mode-hook 'intero-mode)
   :bind
-  (("C-<tab>" . company-intero)))
+  (("C-c i" . intero-company)))
 
 (use-package haskell-snippets
   :ensure t)
