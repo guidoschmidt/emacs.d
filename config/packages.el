@@ -137,11 +137,15 @@
 (use-package ace-window
   :ensure t
   :init
-  (progn
-    (global-set-key [remap other-window] 'ace-window)
-    (custom-set-faces
-     '(aw-leading-char-face
-       ((t (:inherit ace-jump-face-forground :height 1.5 :color 'red)))))))
+  (global-set-key [remap other-window] 'ace-window)
+  :config
+  (setq aw-background nil)
+  (custom-set-faces
+   '(aw-leading-char-face
+     ((t (:inherit ace-jump-face-forground
+                   :height 2.0
+                   :foreground "white"
+                   :background "black"))))))
 
 ;;; --- Emmet
 (use-package emmet-mode
