@@ -40,12 +40,14 @@
   :ensure t
   :if window-system
   :config
+  (setq pos-tip-background-color "black")
+  (setq pos-tip-foreground-color "white")
   (eval-when-compile
     (eval-after-load 'company
       '(define-key company-active-map
          (kbd "C-c h")
          #'company-quickhelp-manual-begin)))
-      (company-quickhelp-mode))
+  (company-quickhelp-mode))
 
 
 (provide 'autocomplete.company.el)
