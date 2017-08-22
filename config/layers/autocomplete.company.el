@@ -8,6 +8,7 @@
   :ensure t
   :config
   (setq-default company-dabbrev-other-buffers t)
+  (setq-default company-dabbrev-code-time-limit 0.5)
   (setq-default company-idle-delay 0.2)
   (setq-default company-minimum-prefix-length 1)
   (setq-default company-require-match nil)
@@ -40,12 +41,14 @@
   :ensure t
   :if window-system
   :config
+  (setq pos-tip-background-color "black")
+  (setq pos-tip-foreground-color "white")
   (eval-when-compile
     (eval-after-load 'company
       '(define-key company-active-map
          (kbd "C-c h")
          #'company-quickhelp-manual-begin)))
-      (company-quickhelp-mode))
+  (company-quickhelp-mode))
 
 
 (provide 'autocomplete.company.el)
