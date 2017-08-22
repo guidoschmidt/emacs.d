@@ -8,6 +8,7 @@
   :ensure t
   :config
   (setq-default company-dabbrev-other-buffers t)
+  (setq-default company-dabbrev-code-time-limit 0.5)
   (setq-default company-idle-delay 0.2)
   (setq-default company-minimum-prefix-length 1)
   (setq-default company-require-match nil)
