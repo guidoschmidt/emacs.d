@@ -71,3 +71,8 @@ according to this [github issue](https://github.com/commercialhaskell/intero/iss
  -  `C-c e`       -> expand yasnippet
  -  `C-c <C-tab>` -> auto-complete yasnippet
  -  `C-=`         -> expand region
+
+---
+
+## Paredit for n00bs
+1. `((square 42))` -> `(square 42)`: **paredit-splice-sexp** `M-s`

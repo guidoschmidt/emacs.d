@@ -33,9 +33,9 @@
 (use-package yasnippet
   :ensure t
   :init
+  (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
   (yas-global-mode 1)
   :config
-  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
   :bind
   (("C-c e" . yas-expand)))
 
