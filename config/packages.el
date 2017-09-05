@@ -147,16 +147,6 @@
                    :foreground "white"
                    :background "black"))))))
 
-;;; --- Emmet
-(use-package emmet-mode
-  :ensure t
-  :init
-  (progn
-    (add-hook  'web-mode-hook      'emmet-mode)
-    (add-hook  'mustache-mode-hook 'emmet-mode)
-    (add-hook  'html-mode-hook     'emmet-mode)
-    (add-hook  'markdown-mode-hook 'emmet-mode)))
-
 ;;; --- Rainbow mode
 (use-package rainbow-mode
   :ensure t)
@@ -251,33 +241,9 @@
   (add-hook 'css-mode-hook #'aggressive-indent-mode))
 
 ;;; --- Language specific
-;;; --- HTML
-(use-package web-mode
-  :ensure t
-  :init
-  (add-to-list 'auto-mode-alist
-               '("\\.mustache\\'" . web-mode))
-  (defun custom-web-mode-hook ()
-    (setq-default web-mode-markup-indent-offset 2)
-    (setq-default web-mode-css-indent-offset 2)
-    (setq-default web-mode-code-indent-offset 2))
-  (add-hook 'web-mode-hook  'custom-web-mode-hook))
-
-(use-package html-check-frag
-  :ensure t
-  :config
-  (add-hook 'html-mode-hook (lambda () (html-check-frag-mode 1))))
 
 ;;; --- Android
 (use-package gradle-mode
-  :ensure t)
-
-;;; --- Markdown
-(use-package markdown-mode+
-  :ensure t)
-
-;;; --- Yaml
-(use-package yaml-mode
   :ensure t)
 
 ;;; --- Load additional layers
@@ -294,10 +260,11 @@
 (load "~/.emacs.d/config/languages/cc.el")
 (load "~/.emacs.d/config/languages/clojure.el")
 (load "~/.emacs.d/config/languages/css.el")
+(load "~/.emacs.d/config/languages/elisp.el")
 (load "~/.emacs.d/config/languages/glsl.el")
 (load "~/.emacs.d/config/languages/haskell.el")
-(load "~/.emacs.d/config/languages/elisp.el")
 (load "~/.emacs.d/config/languages/javascript.el")
+(load "~/.emacs.d/config/languages/markup.el")
 (load "~/.emacs.d/config/languages/php.el")
 (load "~/.emacs.d/config/languages/python.el")
 (load "~/.emacs.d/config/languages/swift.el")
