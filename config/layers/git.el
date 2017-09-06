@@ -8,5 +8,8 @@
 (use-package magit
   :ensure t)
 
+(use-package gist
+  :ensure t)
+
 (provide 'git.el)
 ;;; git.el ends here
