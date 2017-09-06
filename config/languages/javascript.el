@@ -71,7 +71,7 @@
   :init
   (add-to-list
    'load-path
-   "~/.nvm/versions/node/v8.1.2/lib/node_modules/tern/")
+   "~/.nvm/versions/node/v8.4.0/lib/node_modules/tern/")
   (autoload 'tern-mode "tern.el" nil t))
 
 (use-package company-tern
