@@ -7,10 +7,15 @@
 ;;; Code:
 ;;; --- Setup melpa packages
 (require 'package)
-(setq-default package-enable-at-startup nil)
-(setq package-archives
-      '(("gnu" . "http://elpa.gnu.org/packages/")
-        ("melpa" . "https://melpa.org/packages/")))
+
+;;; https://github.com/melpa/melpa
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
+  (add-to-list 'package-archives (cons "melpa" url) t))
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/")))
 
 (package-initialize)
 (when (not package-archive-contents)
