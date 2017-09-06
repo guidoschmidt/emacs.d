@@ -15,15 +15,17 @@
 ;;; --- HTML
 (use-package web-mode
   :ensure t
-  :init
-  (add-to-list 'auto-mode-alist
-               '("\\.mustache\\'" . web-mode))
+  :config
+  (setq-default web-mode-markup-indent-offset 2)
+  (setq-default web-mode-css-indent-offset 2)
+  (setq-default web-mode-code-indent-offset 2)
   (defun custom-web-mode-hook ()
-    (setq emmet-expand-jsx-className? f)
-    (setq web-mode-markup-indent-offset 2)
-    (setq web-mode-css-indent-offset 2)
-    (setq web-mode-code-indent-offset 2))
-  (add-hook 'web-mode-hook  'custom-web-mode-hook))
+    (setq-default web-mode-markup-indent-offset 2)
+    (setq-default web-mode-css-indent-offset 2)
+    (setq-default web-mode-code-indent-offset 2))
+  (add-hook 'web-mode-hook 'custom-web-mode-hook)
+  (add-to-list 'auto-mode-alist
+               '("\\.mustache\\'" . web-mode)))
 
 (use-package html-check-frag
   :ensure t
