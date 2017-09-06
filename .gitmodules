@@ -1,0 +1,3 @@
+[submodule "config/circadian"]
+	path = config/circadian
+	url = git@github.com:GuidoSchmidt/circadian.git
