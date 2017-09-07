@@ -33,14 +33,14 @@
 ;; - ample-theme
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(if (window-system)
-    (if (or
-         (>= (nth 2 (decode-time (date-to-time (current-time-string)))) 19)
-         (<= (nth 2 (decode-time (date-to-time (current-time-string))))  7))
-        ;; Nigth theme
-        (load-theme 'nyx t)
-      ;; Day theme
-      (load-theme 'hemera t)))
+;; (if (window-system)
+;;     (if (or
+;;          (>= (nth 2 (decode-time (date-to-time (current-time-string)))) 19)
+;;          (<= (nth 2 (decode-time (date-to-time (current-time-string))))  7))
+;;         ;; Nigth theme
+;;         (load-theme 'nyx t)
+;;       ;; Day theme
+;;       (load-theme 'hemera t)))
 
 ;; Cursor
 (set-default 'cursor-type 'box)
