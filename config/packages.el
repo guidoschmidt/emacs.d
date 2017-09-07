@@ -266,6 +266,7 @@
 (load "~/.emacs.d/config/layers/syntax-checking.el")
 
 ;;; --- Languages setup
+(load "~/.emacs.d/config/languages/arduino.el")
 (load "~/.emacs.d/config/languages/cc.el")
 (load "~/.emacs.d/config/languages/clojure.el")
 (load "~/.emacs.d/config/languages/css.el")

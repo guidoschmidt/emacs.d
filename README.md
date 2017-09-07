@@ -10,7 +10,11 @@ brew install emacs-plus --with-no-title-bars --without-spacemacs-icon
 ## Language specific preliminaries
 
 ### C++
-1. Installing **IRONY SERVER**:
+1. Install **LLVM**: `brew install llvm`
+2. Install **IRONY SERVER**:
+`M-x irony-install-server`
+
+**You may need to change the command to**:
 ```
 CMAKE
 -DLIBCLANG_INCLUDE_DIR\=/usr/local/opt/llvm/include/

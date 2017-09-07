@@ -49,16 +49,15 @@
     "Hook to customize irony mode."
     (add-to-list 'company-backends 'company-irony)
     (add-to-list 'company-backends 'company-irony-c-headers)
-    (define-key irony-mode-map
-      [remap completion-at-point]
-      'counsel-irony)
-    (define-key irony-mode-map
-      [remap complete-symbol]
-      'counsel-irony))
-  (add-hook 'irony-mode-hook
-            'custom/irony-mode-hook)
-  (add-hook 'irony-mode-hook
-            'irony-cdb-autosetup-compile-options))
+    (add-to-list 'company-backends 'company-dabbrev)
+    (define-key irony-mode-map [remap completion-at-point] 'counsel-irony)
+    (define-key irony-mode-map [remap complete-symbol] 'counsel-irony))
+  (add-hook 'irony-mode-hook 'custom/irony-mode-hook)
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+  (defun cc/irony-mode-hook ()
+    (irony-mode)
+    (add-hook 'irony-mode-hook #'irony-eldoc))
+  (add-hook 'c-mode-common-hook 'cc/irony-mode-hook))
 
 ;; --- astyle
 (defun astyle-this-buffer (pmin pmax)
