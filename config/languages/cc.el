@@ -56,7 +56,7 @@
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   (defun cc/irony-mode-hook ()
     (irony-mode)
-    (irony-eldoc))
+    (add-hook 'irony-mode-hook #'irony-eldoc))
   (add-hook 'c-mode-common-hook 'cc/irony-mode-hook))
 
 ;; --- astyle
