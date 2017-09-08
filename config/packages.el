@@ -96,9 +96,9 @@
   :load-path "~/.emacs.d/config/circadian/"
   :config
   (setq circadian-day-start-hour 8)
-  (setq circadian-day-theme 'brin)
+  (setq circadian-day-theme 'hemera)
   (setq circadian-night-start-hour 19)
-  (setq circadian-night-theme 'hemera))
+  (setq circadian-night-theme 'nyx))
 
 (use-package counsel-projectile
   :ensure t
