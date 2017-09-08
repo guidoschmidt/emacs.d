@@ -3,8 +3,12 @@
 
 
 ;;; Code:
-;;; Start emacs-server
+;; Start emacs-server
 (server-start)
+
+;; Setup language environment
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
 
 ;;; Apropos sortage by relevancy
 (setq apropos-sort-by-scores t)
