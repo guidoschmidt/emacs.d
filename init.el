@@ -15,9 +15,9 @@
 (load "~/.emacs.d/config/pacman.el")
 (load "~/.emacs.d/config/packages.el")
 (load "~/.emacs.d/config/core.el")
-(load "~/.emacs.d/config/ligatures.el")
 (load "~/.emacs.d/config/keymap.el")
 (load "~/.emacs.d/config/appearance.el")
+(load "~/.emacs.d/config/ligatures.el")
 
 (setq custom-file "~/.emacs.d/local/custom-set.el")
 
