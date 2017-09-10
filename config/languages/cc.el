@@ -69,5 +69,21 @@
    (current-buffer) t
    (get-buffer-create "*Astyle Errors*") t))
 
+;; Add Google C++ style
+(use-package google-c-style
+  :ensure t
+  :config
+  (add-hook 'c-mode-common-hook 'google-set-c-style)
+  (add-hook 'c++-mode-hook 'google-set-c-style)
+  (add-hook 'c-mode-hook 'google-set-c-style))
+
+;; Add Google C++ style checker - In default, syntax checked by clang
+(use-package flycheck-google-cpplint
+  :load-path "config/layers/"
+  :config
+  (eval-after-load 'flycheck
+    '(progn (flycheck-add-next-checker 'c/c++-clang
+                                       '(warning . c/c++-googlelint)))))
+
 (provide 'cc.el)
 ;;; cc.el ends here

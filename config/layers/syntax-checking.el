@@ -6,13 +6,7 @@
 (use-package flycheck
   :ensure t
   :config
-  (progn
-    (setq-default flycheck-temp-prefix ".flycheck")
-    (setq-default flycheck-disabled-checkers '(javascript-jshint))
-    (setq-default flycheck-disabled-checkers '(json-jsonlint))
-    (flycheck-add-mode 'javascript-eslint 'web-mode)
-    (flycheck-add-mode 'javascript-eslint 'vue-mode)
-    (flycheck-add-mode 'javascript-eslint 'rjsx-mode)))
+  (setq-default flycheck-temp-prefix ".flycheck"))
 
 (use-package flycheck-package
   :config
@@ -65,25 +59,8 @@
     :fringe-bitmap bitmap
     :fringe-face 'flycheck-fringe-info))
 
-
 ;; Enable flycheck globally
 (global-flycheck-mode 1)
-
-;; Add Google C++ style
-(use-package google-c-style
-  :ensure t
-  :config
-  (add-hook 'c-mode-common-hook 'google-set-c-style)
-  (add-hook 'c++-mode-hook 'google-set-c-style)
-  (add-hook 'c-mode-hook 'google-set-c-style))
-
-;; Add Google C++ style checker - In default, syntax checked by clang
-(use-package flycheck-google-cpplint
-  :load-path "config/layers/"
-  :config
-  (eval-after-load 'flycheck
-    '(progn (flycheck-add-next-checker 'c/c++-clang
-                                       '(warning . c/c++-googlelint)))))
 
 (provide 'syntax-checking.el)
 ;;; syntax-checking.el ends here
