@@ -5,7 +5,10 @@
 ;;; Code:
 ;;; --- Javascript
 (use-package indium
-  :ensure t)
+  :ensure t
+  :config
+  (flycheck-add-mode 'javascript-eslint 'js2-mode)
+  (flycheck-add-mode 'javascript-eslint 'js-mode))
 
 (use-package js2-refactor
   :ensure t
@@ -32,16 +35,14 @@
                '("\\.ts\\'" . typoscript-mode)))
 
 ;;; --- Vue.js
-(use-package vue-html-mode
-	     :ensure t)
-
 (use-package vue-mode
   :ensure t
   :config
   (defun emmet/vue-mode-hook ()
     (emmet-mode))
   (add-hook 'vue-mode-hook 'emmet/vue-mode-hook)
-  (setq mmm-submode-decoration-level 0))
+  (setq mmm-submode-decoration-level 0)
+  (flycheck-add-mode 'javascript-eslint 'vue-mode))
 
 ;;; --- JSX & React
 (use-package rjsx-mode
@@ -52,7 +53,8 @@
     (setq-default emmet-expand-jsx-className? t)
     (emmet-mode))
   (add-hook 'rjsx-mode-hook 'emmet/rjsx-mode-hook)
-  (setq-default rjsx-indent-level 2))
+  (setq-default rjsx-indent-level 2)
+  (flycheck-add-mode 'javascript-eslint 'rjsx-mode))
 
 ;;; --- Elm
 (use-package elm-mode
@@ -65,14 +67,15 @@
   (add-hook 'elm-mode-hook 'company/elm-mode-hook)
   (custom-set-variables '(elm-format-on-save t)))
 
+(use-package flycheck-elm
+  :ensure t
+  :config
+  (eval-after-load 'flycheck
+    '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup)))
+
 ;;; --- Tern
 (use-package tern
-  :ensure t
-  :init
-  (add-to-list
-   'load-path
-   "~/.nvm/versions/node/v8.4.0/lib/node_modules/tern/")
-  (autoload 'tern-mode "tern.el" nil t))
+  :ensure t)
 
 (use-package company-tern
   :ensure t

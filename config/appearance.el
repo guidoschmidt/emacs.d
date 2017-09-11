@@ -33,6 +33,8 @@
 ;; - ample-theme
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-hemera-theme/")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-nyx-theme")
 ;; (if (window-system)
 ;;     (if (or
 ;;          (>= (nth 2 (decode-time (date-to-time (current-time-string)))) 19)
