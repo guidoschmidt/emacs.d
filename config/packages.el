@@ -105,9 +105,9 @@
 (use-package circadian
   :load-path "~/.emacs.d/config/circadian/"
   :ensure t
-  :confi
+  :config
   (setq circadian-themes '(("8:00" . hemera)
-                           ("19:30" . nyx)))
+                           ("16:00" . nyx)))
   (circadian-setup))
 
 ;; before loading new theme
