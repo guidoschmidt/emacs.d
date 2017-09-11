@@ -102,6 +102,14 @@
   (setq projectile-completion-system 'ivy))
 
 ;;; --- Circadian
+(use-package hemera-theme
+	     :ensure t
+	     :load-path "~/.emacs.d/github/emacs-hemera-theme/")
+
+(use-package nyx-theme
+	     :ensure t
+	     :load-path "~/.emacs.d/github/emacs-nyx-theme/")
+
 (use-package circadian
   :load-path "~/.emacs.d/config/circadian/"
   :ensure t
