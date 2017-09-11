@@ -33,10 +33,8 @@
 ;; - ample-theme
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-hemera-theme/")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-nyx-theme")
-
-(load-theme 'hemera t)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/github/emacs-hemera-theme/")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/github/emacs-nyx-theme")
 
 ;; Cursor
 (set-default 'cursor-type 'box)
