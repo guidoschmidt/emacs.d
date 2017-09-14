@@ -4,11 +4,24 @@
 
 ;;; Code:
 ;;; --- Javascript
+(defun my/use-eslint-from-node-modules ()
+  "Use local eslint from node_modules before global.
+src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-eslint-executable"
+  (let* ((root (locate-dominating-file
+                (or (buffer-file-name) default-directory)
+                "node_modules"))
+         (eslint (and root
+                      (expand-file-name "node_modules/eslint/bin/eslint.js"
+                                        root))))
+    (when (and eslint (file-executable-p eslint))
+      (setq-local flycheck-javascript-eslint-executable eslint))))
+
 (use-package indium
   :ensure t
   :config
   (flycheck-add-mode 'javascript-eslint 'js2-mode)
-  (flycheck-add-mode 'javascript-eslint 'js-mode))
+  (flycheck-add-mode 'javascript-eslint 'js-mode)
+  (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules))
 
 (use-package js2-refactor
   :ensure t
@@ -72,6 +85,13 @@
   :config
   (eval-after-load 'flycheck
     '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup)))
+
+;;; --- Flow
+(use-package company-flow
+  :ensure t
+  :config
+  (eval-after-load 'company
+    '(add-to-list 'company-backends 'company-flow)))
 
 ;;; --- Tern
 (use-package tern
