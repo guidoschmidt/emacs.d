@@ -115,7 +115,7 @@
   :ensure t
   :config
   (setq circadian-themes '(("8:00" . hemera)
-                           ("16:00" . nyx)))
+                           ("21:00" . nyx)))
   (circadian-setup))
 
 ;; before loading new theme
