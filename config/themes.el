@@ -5,6 +5,7 @@
 ;; - junio (pack: sublime-themes)
 ;; - spolsky (pack: sublime-themes)
 ;; - soothe-theme
+;; - spacegray (pack: spacegray-theme)
 ;;
 ;; ** Daytime themes:
 ;; - flatui-theme
@@ -41,12 +42,19 @@
 (use-package hemera-theme
   :ensure t)
 
+(use-package spacegray-theme
+  :ensure t)
+
+(use-package soothe-theme
+  :ensure t)
+
 ;; --- Circadian
 (use-package circadian
   :ensure t
   :config
   (setq circadian-themes '((" 8:00" . hemera)
-                           ("20:00" . nyx)))
+                           ("14:00" . nyx)
+                           ("20:00" . soothe)))
   (circadian-setup))
 
 
