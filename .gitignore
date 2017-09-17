@@ -1,8 +1,14 @@
-elpa
+# Emacs related
+.cask/
+elpa/
 ido.last
 recentf
 .mc-lists.el
+
+# Python IDE
 .python-environments/
+
+# Projectile
 projectile-bookmarks.eld
 
 # Irony C++ IDE
