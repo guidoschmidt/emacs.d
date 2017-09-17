@@ -17,27 +17,6 @@
 ;; Disable scrollbars
 (scroll-bar-mode -1)
 
-;;; --- Themes
-;; - color-theme-solarized
-;;
-;; ** Nighttime themes
-;; - junio (pack: sublime-themes)
-;; - spolsky (pack: sublime-themes)
-;; - soothe-theme
-;;
-;; ** Daytime themes
-;; - flatui-theme
-;; - material-light (pack: material-theme)
-;; - twilight-bright (pack: twilight-bright-theme)
-;; - espresso-theme
-;; - ample-theme
-
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-
-;; Cursor
-(set-default 'cursor-type 'box)
-(set-cursor-color "#FA0C72")
-
 ;;; --- Typeface
 ;; set default font in initial window and for any new window
 (cond

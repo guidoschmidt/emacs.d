@@ -101,35 +101,6 @@
   (projectile-mode)
   (setq projectile-completion-system 'ivy))
 
-;;; --- Circadian
-(use-package hemera-theme
-	     :ensure t
-	     :load-path "~/.emacs.d/github/emacs-hemera-theme/")
-
-(use-package nyx-theme
-	     :ensure t
-	     :load-path "~/.emacs.d/github/emacs-nyx-theme/")
-
-(use-package circadian
-  :load-path "~/.emacs.d/config/circadian/"
-  :ensure t
-  :config
-  (setq circadian-themes '(("8:00" . hemera)
-                           ("21:00" . nyx)))
-  (circadian-setup))
-
-;; before loading new theme
-(defun load-theme-disable-old-theme(theme &rest args)
-  "Disable current theme before loading new one."
-  (mapcar #'disable-theme custom-enabled-themes))
-(advice-add 'load-theme :before #'load-theme-disable-old-theme)
-
-;; After loading new theme
-(defun load-theme-restore-line-numbering(theme &rest args)
-  "Set linum-format again after loading any theme."
-  (setq linum-format 'linum-format-func))
-(advice-add 'load-theme :after #'load-theme-restore-line-numbering)
-
 (use-package counsel-projectile
   :ensure t
   :config
@@ -283,7 +254,7 @@
 
 ;;; --- Android
 (use-package gradle-mode
-  :ensure t)
+  :ensure )
 
 ;;; --- Load additional layers
 ;; Auto-completion via company
