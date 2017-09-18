@@ -26,8 +26,8 @@
     (add-to-list 'default-frame-alist '(font . "Iosevka-11"))))
  ((string-equal system-type "darwin")  ; Mac OS X
   (when (member "Monoid" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Monoid-13"))
-    (add-to-list 'default-frame-alist '(font . "Monoid-13"))))
+    (add-to-list 'initial-frame-alist '(font . "Monoid-15"))
+    (add-to-list 'default-frame-alist '(font . "Monoid-15"))))
  ((string-equal system-type "gnu/linux") ; linux
   (when (member "Iosevka-Term" (font-family-list))
     (add-to-list 'initial-frame-alist '(font . "Iosevka-20"))
@@ -50,10 +50,6 @@
   :config
   (global-nlinum-mode)
   (setq nlinum-format "%3d"))
-
-(use-package nlinum-relative
-    :config
-    (add-hook 'prog-mode-hook 'nlinum-relative-mode))
 
 (use-package nlinum-hl
   :ensure t
