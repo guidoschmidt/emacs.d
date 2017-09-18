@@ -47,6 +47,7 @@
       (var      "#0099d3")
       (warning  "#e54d18")
       (warning2 "#f18123"))
+  
   (custom-theme-set-faces
    'lanzarote
    `(default ((,class (:background ,bg1 :foreground ,fg1))))
@@ -70,11 +71,14 @@
    `(show-paren-match-face ((,class (:background ,warning))))
    `(isearch ((,class (:bold t :foreground ,warning :background ,bg3))))
 
-   `(mode-line ((t (:background ,builtin :foreground ,var))))
-   `(mode-line ((,class (:box nil :foreground ,bg1 :background ,const))))
-   `(mode-line-inactive ((,class (:foreground ,bg1 :background ,const))))
-   `(mode-line-buffer-id ((,class (:foreground ,bg1 :background ,const))))
-   `(mode-line-highlight ((,class (:foreground ,bg1 :background ,warning))))
+   `(mode-line ((t (:background ,bg2 :foreground ,var))))
+   `(mode-line ((,class (:box nil :foreground ,fg3 :background ,bg2))))
+   `(mode-line-inactive ((,class (:inherit mode-line
+                                           :foreground ,fg3
+                                           :background ,bg1
+                                           :box nil))))
+   `(mode-line-buffer-id ((,class (:foreground ,fg3 :background ,bg2))))
+   `(mode-line-highlight ((,class (:foreground ,warning2 :background ,bg2))))
    `(mode-line-emphasis ((,class (:foreground ,bg1 :background ,const))))
 
    `(vertical-border ((,class (:foreground ,fg3))))
