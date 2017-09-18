@@ -307,6 +307,7 @@
 (load "~/.emacs.d/config/languages/markup.el")
 (load "~/.emacs.d/config/languages/php.el")
 (load "~/.emacs.d/config/languages/python.el")
+(load "~/.emacs.d/config/languages/rest.el")
 (load "~/.emacs.d/config/languages/swift.el")
 
 (provide 'packages.el)
