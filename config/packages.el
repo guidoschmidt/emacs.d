@@ -153,7 +153,6 @@
   (custom-set-faces
    '(aw-leading-char-face
      ((t (:inherit ace-jump-face-forground
-                   :height 2.0
                    :foreground "white"
                    :background "black"))))))
 
