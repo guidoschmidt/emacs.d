@@ -31,14 +31,21 @@
 
 ;; --- Circadian
 (use-package circadian
-  :load-path "~/git/misc/emacs/circadian.el"
-  :ensure t
+  :load-path "~/Development/emacs/circadian.el"
+  :ensure
   :init
-  (use-package nyx-theme :ensure t)
-  (use-package hemera-theme :ensure t)
+  (use-package nyx-theme :ensure)
+  (use-package hemera-theme :ensure)
+  (use-package soothe-theme :ensure)
   :config
   (setq circadian-themes '(("8:00" . hemera)
-                           ("20:00" . nyx)))
+                           ("20:00" . nyx)
+                           ("20:02" . soothe)
+                           ("20:04" . hemera)
+                           ("20:20" . leuven)
+                           ("20:21" . hemera)
+                           ("20:34" . soothe)
+                           ("20:36" . nyx)))
   (circadian-setup))
 
 (provide 'themes)
