@@ -19,6 +19,11 @@
   :ensure t
   :config (which-key-mode))
 
+;;; --- Setup evil mode
+(use-package evil
+  :ensure t
+  :config (evil-mode 1))
+
 ;;; --- EditorConfig
 (use-package editorconfig
   :ensure t
