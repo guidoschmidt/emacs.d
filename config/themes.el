@@ -4,7 +4,7 @@
 ;; ** Nighttime themes:
 ;; - junio (pack: sublime-themes)
 ;; - spolsky (pack: sublime-themes)
-;; - soothe-theme
+;; - soohe-theme
 ;; - spacegray (pack: spacegray-theme)
 ;;
 ;; ** Daytime themes:
@@ -30,23 +30,17 @@
 (advice-add 'load-theme :after #'load-theme-restore-line-numbering)
 
 ;; --- Circadian
+(use-package nyx-theme :ensure)
+(use-package hemera-theme :ensure)
+(use-package soothe-theme :ensure)
+
 (use-package circadian
-  :load-path "~/Development/emacs/circadian.el"
   :ensure
-  :init
-  (use-package nyx-theme :ensure)
-  (use-package hemera-theme :ensure)
-  (use-package soothe-theme :ensure)
   :config
   (setq circadian-themes '(("8:00" . hemera)
-                           ("20:00" . nyx)
-                           ("20:02" . soothe)
-                           ("20:04" . hemera)
-                           ("20:20" . leuven)
-                           ("20:21" . hemera)
-                           ("20:34" . soothe)
-                           ("20:36" . nyx)))
+                           ("19:00" . nyx)))
   (circadian-setup))
+
 
 (provide 'themes)
 ;;; themes.el ends here
