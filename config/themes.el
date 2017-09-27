@@ -30,12 +30,12 @@
 (advice-add 'load-theme :after #'load-theme-restore-line-numbering)
 
 ;; --- Circadian
-(use-package nyx-theme :ensure)
-(use-package hemera-theme :ensure)
-(use-package soothe-theme :ensure)
-
 (use-package circadian
   :ensure
+  :init
+  (use-package nyx-theme :ensure t :defer t)
+  (use-package hemera-theme :ensure t :defer t)
+  (use-package soothe-theme :ensure t :defer t)
   :config
   (setq circadian-themes '(("8:00" . hemera)
                            ("19:00" . nyx)))
