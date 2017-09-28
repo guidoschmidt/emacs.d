@@ -30,17 +30,20 @@
 (advice-add 'load-theme :after #'load-theme-restore-line-numbering)
 
 ;; --- Circadian
-(use-package nyx-theme :ensure)
-(use-package hemera-theme :ensure)
-(use-package soothe-theme :ensure)
-
 (use-package circadian
   :ensure
+  :init
+  (use-package soothe-theme :ensure :defer)
+  (use-package nyx-theme :ensure :defer)
+  (use-package hemera-theme :ensure :defer)
+  (use-package gruvbox-theme :ensure :defer)
   :config
   (setq circadian-themes '(("8:00" . hemera)
-                           ("19:00" . nyx)))
+                           ("10:00" . gruvbox-light-medium)
+                           ("19:00" . nyx)
+                           ("21:00" . soothe)
+                           ("22:00" . gruvbox-dark-hard)))
   (circadian-setup))
-
 
 (provide 'themes)
 ;;; themes.el ends here
