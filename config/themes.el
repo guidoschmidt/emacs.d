@@ -42,7 +42,7 @@
                            ("10:00" . gruvbox-light-medium)
                            ("19:00" . nyx)
                            ("21:00" . soothe)
-                           ("22:00" . gruvbox-dark-hard)))
+                           ("21:10" . gruvbox-dark-hard)))
   (circadian-setup))
 
 (provide 'themes)
