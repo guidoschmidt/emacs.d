@@ -33,16 +33,15 @@
 (use-package circadian
   :ensure
   :init
-  (use-package soothe-theme :ensure :defer)
-  (use-package nyx-theme :ensure :defer)
-  (use-package hemera-theme :ensure :defer)
+  ;; (use-package soothe-theme :ensure :defer)
+  ;; (use-package nyx-theme :ensure :defer)
+  ;; (use-package hemera-theme :ensure :defer)
   (use-package gruvbox-theme :ensure :defer)
+  ;; (use-package nord-theme :ensure :defer)
+  (use-package darkokai-theme :ensure :defer)
   :config
-  (setq circadian-themes '(("8:00" . hemera)
-                           ("10:00" . gruvbox-light-medium)
-                           ("19:00" . nyx)
-                           ("21:00" . soothe)
-                           ("21:10" . gruvbox-dark-hard)))
+  (setq circadian-themes '(("8:00" . gruvbox-light-medium)
+                           ("20:32" . darkokai)))
   (circadian-setup))
 
 (provide 'themes)
