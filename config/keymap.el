@@ -12,9 +12,6 @@
 (global-set-key (kbd "C-z") nil)
 
 ;; Custom key bindings
-;; (global-set-key (kbd "C-+")         'text-scale-increase)
-;; (global-set-key (kbd "C--")         'text-scale-decrease)
-;; (global-set-key (kbd "C-d")         'duplicate-line)
 (global-set-key (kbd "C-;")         'comment-or-uncomment-region)
 (global-set-key (kbd "C-M-f")       'toggle-frame-fullscreen)
 (global-set-key (kbd "C-c C-k")     'compile)
