@@ -181,6 +181,11 @@
   (setq ivy-use-virtual-buffers t)
   (setq ivy-display-style 'fancy))
 
+;;; --- imenu-anywhere
+(use-package imenu-anywhere
+  :ensure
+  :bind (("C-i" . ivy-imenu-anywhere)))
+
 ;;; --- Swiper - better isearch
 (use-package counsel
   :ensure t)
@@ -205,11 +210,6 @@
   :ensure t
   :bind (("C-c a" . avy-goto-char)
          ("C-c o" . avy-goto-char-timer)))
-
-;;; --- imenu-anywhere
-(use-package imenu-anywhere
-  :ensure
-  :bind (("C-i" . ivy-imenu-anywhere)))
 
 ;;; --- Multiple cursors
 (use-package multiple-cursors
