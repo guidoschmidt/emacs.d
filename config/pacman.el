@@ -19,7 +19,9 @@
                '("gnu" . "https://elpa.gnu.org/packages/")))
 
 (add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+             '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/"))
 
 (package-initialize)
 (when (not package-archive-contents)
@@ -27,8 +29,8 @@
 
 ;;; --- Bootstrap "use-package"
 (unless (package-installed-p 'use-package)
-        (package-refresh-contents)
-        (package-install 'use-package))
+  (package-refresh-contents)
+  (package-install 'use-package))
 (eval-when-compile
   (require 'use-package))
 (require 'diminish)

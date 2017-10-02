@@ -183,8 +183,7 @@
 
 ;;; --- Swiper - better isearch
 (use-package counsel
-  :ensure t
-  :bind (("C-." . imenu-anywhere)))
+  :ensure t)
 
 (use-package swiper
   :ensure t
@@ -207,11 +206,16 @@
   :bind (("C-c a" . avy-goto-char)
          ("C-c o" . avy-goto-char-timer)))
 
+;;; --- imenu-anywhere
+(use-package imenu-anywhere
+  :ensure
+  :bind (("C-i" . ivy-imenu-anywhere)))
+
 ;;; --- Multiple cursors
 (use-package multiple-cursors
   :ensure t
   :bind (("C-<" . mc/mark-previous-like-this)
-	 ("C->" . mc/mark-next-like-this)))
+         ("C->" . mc/mark-next-like-this)))
 
 ;;; --- Fill collumn indicator
 (use-package fill-column-indicator
