@@ -177,7 +177,8 @@
 
 ;;; --- Swiper - better isearch
 (use-package counsel
-  :ensure t)
+  :ensure t
+  :bind (("C-." . imenu-anywhere)))
 
 (use-package swiper
   :ensure t
