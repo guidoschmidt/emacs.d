@@ -17,7 +17,8 @@
 ;;; --- Setup which-key
 (use-package which-key
   :ensure t
-  :config (which-key-mode))
+  :config (which-key-mode)
+  :diminish (which-key-mode . "w"))
 
 ;;; --- Setup evil mode
 (use-package evil
@@ -176,15 +177,11 @@
   :ensure t
   :diminish (ivy-mode)
   :bind (("C-x b" . ivy-switch-buffer))
+  :init (ivy-mode 1)
   :config
-  (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)
+  (setq ivy-height 20)
   (setq ivy-display-style 'fancy))
-
-;;; --- imenu-anywhere
-(use-package imenu-anywhere
-  :ensure
-  :bind (("C-i" . ivy-imenu-anywhere)))
 
 ;;; --- Swiper - better isearch
 (use-package counsel
@@ -192,18 +189,15 @@
 
 (use-package swiper
   :ensure t
-  :bind (("C-s" . swiper)
-         ("C-r" . swiper)
-         ("C-c C-r" . ivy-resume)
-         ("M-x" . counsel-M-x)
-         ("C-x C-f" . counsel-find-file)
-         ("C-c g" . counsel-ag))
+  :bind
+  (("C-s" . swiper)
+   ("C-r" . swiper)
+   ("C-c C-r" . ivy-resume)
+   ("M-x" . counsel-M-x)
+   ("C-x C-f" . counsel-find-file)
+   ("C-c g" . counsel-ag))
   :config
-  (progn
-    (ivy-mode 1)
-    (setq ivy-use-virtual-buffers t)
-    (setq ivy-display-style 'fancy)
-    (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)))
+  (define-key read-expression-map (kbd "C-r") 'counsel-expression-history))
 
 ;;; --- Avy
 (use-package avy
