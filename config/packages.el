@@ -31,6 +31,12 @@
   (add-hook 'emacs-lisp-mode #'evil-cleverparens-mode)
   (add-hook 'clojure-mode #'evil-cleverparens-mode))
 
+(use-package evil-paredit
+  :ensure
+  :config
+  (add-hook 'emacs-lisp-mode-hook 'evil-paredit-mode)
+  (add-hook 'clojure-mode 'evil-paredit-mode))
+
 ;;; --- EditorConfig
 (use-package editorconfig
   :ensure t
