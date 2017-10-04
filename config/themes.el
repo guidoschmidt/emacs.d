@@ -41,7 +41,7 @@
   (use-package darkokai-theme :ensure :defer)
   :config
   (setq circadian-themes '(("8:00" . gruvbox-light-medium)
-                           ("20:32" . darkokai)))
+                           ("19:30" . darkokai)))
   (circadian-setup))
 
 (provide 'themes)
