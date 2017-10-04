@@ -2,6 +2,7 @@
 ;;; Commentary:
 
 ;; TODO:
+;; - Try smex: https://github.com/nonsequitur/smex
 ;; - evil-leader: https://github.com/cofi/evil-leader
 ;; - ivy/swyper/counsel: evil
 
