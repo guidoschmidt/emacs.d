@@ -1,6 +1,10 @@
 ;;; packages.el --- Manage MELPA packages
 ;;; Commentary:
 
+;; TODO:
+;; - evil-leader: https://github.com/cofi/evil-leader
+;; - ivy/swyper/counsel: evil
+
 ;;; Code:
 ;;; --- Try packages without installing them
 ;;; Keep .emacs.d clean
@@ -19,6 +23,13 @@
   :ensure t
   :config (which-key-mode)
   :diminish (which-key-mode . "w"))
+
+;;; --- keyfreq
+(use-package keyfreq
+  :ensure
+  :config
+  (keyfreq-mode 1)
+  (keyfreq-autosave-mode 1))
 
 ;;; --- Setup evil mode
 (use-package evil
