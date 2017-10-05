@@ -63,10 +63,10 @@
 (use-package yasnippet
   :ensure t
   :init
-  (add-to-list 'load-path
-               "~/.emacs.d/snippets")
   (yas-global-mode 1)
   :config
+  (eval-after-load 'yasnippet
+    (yas-load-directory "~/.emacs.d/snippets"))
   :bind
   (("C-c e" . yas-expand)))
 
