@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: sign
+# key: sign
+# --
+sign($1)

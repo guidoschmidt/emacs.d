@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: lineplot
+# key: lineplot
+# --
+// Plot a line on Y using a value between [0.0, 1.0]
+// Usage:
+// float line = plot(st, st.x);
+// color = (1.0 - line) * color + line * vec3(1.0, 0.0, 0.0); 
+float plot(vec2 st, float pct){
+  float offset = 0.005;
+  return  smoothstep(pct - offset, pct, st.y) - 
+          smoothstep(pct, pct + offset, st.y);
+}

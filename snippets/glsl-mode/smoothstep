@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: smoothstep
+# key: smooth
+# --
+// Smooth interpolation between a and b along c
+float y = smoothstep($1, $2, $3);

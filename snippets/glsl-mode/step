@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: step
+# key: step 
+# --
+// step will return 0.0 until the first numeric value
+// is reached and 1.0 afterwards
+float x = step($1, $2);

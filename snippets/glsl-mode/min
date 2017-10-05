@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: min
+# key: min
+# --
+min($1, $2)

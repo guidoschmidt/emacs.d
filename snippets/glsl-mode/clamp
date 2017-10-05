@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: clamp
+# key: clamp
+# --
+clamp($1, $2, $3)
