@@ -2,7 +2,6 @@
 ;;; Commentary:
 
 ;; TODO:
-;; - Try smex: https://github.com/nonsequitur/smex
 ;; - evil-leader: https://github.com/cofi/evil-leader
 ;; - ivy/swyper/counsel: evil
 
@@ -31,6 +30,15 @@
   :config
   (keyfreq-mode 1)
   (keyfreq-autosave-mode 1))
+
+;;; --- Smex
+(use-package smex
+  :ensure t
+  :config
+  (global-set-key (kbd "M-x") 'smex)
+  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+  ;; This is your old M-x.
+  (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command))
 
 ;;; --- Setup evil mode
 (use-package evil
