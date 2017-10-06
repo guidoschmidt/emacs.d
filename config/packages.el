@@ -92,6 +92,17 @@
     ("g" text-scale-increase "in")
     ("l" text-scale-decrease "out")))
 
+;;; FIC-Mode
+(use-package fic-mode
+  :ensure
+  :config
+  (defun add-something-to-mode-hooks (mode-list something)
+    "helper function to add a callback to multiple hooks"
+    (dolist (mode mode-list)
+      (add-hook (intern (concat (symbol-name mode) "-mode-hook")) something)))
+
+  (add-something-to-mode-hooks '(c++ emacs-lisp sass) (lambda () (fic-mode 1))))
+
 ;;; --- Powerline & Spaceline
 (use-package powerline
   :ensure t)
@@ -251,19 +262,6 @@
   (setq-default fci-rule-color "lightgray")
   (setq-default whitespace-style '(face trailing))
   (add-hook 'after-change-major-mode-hook 'fci-mode))
-
-;;; --- FIC Mode
-(use-package fic-mode
-  :ensure t
-  :config
-  (require 'fic-mode)
-  (add-hook 'c++-mode-hook 'fic-mode)
-  (add-hook 'sass-mode-hook 'fic-mode)
-  (add-hook 'python-mode-hook 'fic-mode)
-  (add-hook 'rjsx-mode-hook 'fic-mode)
-  (add-hook 'js-mode-hook 'fic-mode)
-  (add-hook 'js2-mode-hook 'fic-mode)
-  (add-hook 'jsx-mode-hook 'fic-mode))
 
 ;;; --- Wrap region
 (use-package wrap-region
