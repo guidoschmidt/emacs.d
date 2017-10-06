@@ -41,8 +41,18 @@
   (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command))
 
 ;;; --- Setup evil mode
+(use-package evil-leader
+  :ensure
+  :config
+  (global-evil-leader-mode)
+  (evil-leader/set-leader "<SPC>")
+  (evil-leader/set-key
+    "b" 'switch-to-buffer
+    "k" 'kill-buffer
+    "s" 'magit-status))
+
 (use-package evil
-  :ensure t
+  :ensure
   :config (evil-mode 1))
 
 (use-package evil-cleverparens
