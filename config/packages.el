@@ -32,12 +32,7 @@
 
 ;;; --- Smex
 (use-package smex
-  :ensure t
-  :config
-  (global-set-key (kbd "M-x") 'smex)
-  (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-  ;; This is your old M-x.
-  (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command))
+  :ensure t)
 
 ;;; --- Setup evil mode
 (use-package evil-leader
@@ -46,8 +41,8 @@
   (global-evil-leader-mode)
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
-    "b" 'switch-to-buffer
-    "k" 'kill-buffer
+    "b" 'ivy-switch-buffer
+    "k" 'ido-kill-buffer
     "s" 'magit-status
     "p" 'counsel-projectile-switch-project))
 
