@@ -2,7 +2,6 @@
 ;;; Commentary:
 
 ;; TODO:
-;; - evil-leader: https://github.com/cofi/evil-leader
 ;; - ivy/swyper/counsel: evil
 
 ;;; Code:
@@ -49,7 +48,8 @@
   (evil-leader/set-key
     "b" 'switch-to-buffer
     "k" 'kill-buffer
-    "s" 'magit-status))
+    "s" 'magit-status
+    "p" 'counsel-projectile-switch-project))
 
 (use-package evil
   :ensure
