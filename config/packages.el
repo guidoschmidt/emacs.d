@@ -44,7 +44,8 @@
     "b" 'ivy-switch-buffer
     "k" 'ido-kill-buffer
     "s" 'magit-status
-    "p" 'counsel-projectile-switch-project))
+    "p" 'counsel-projectile-switch-project
+    "f" 'counsel-projectile-find-file))
 
 (use-package evil
   :ensure
