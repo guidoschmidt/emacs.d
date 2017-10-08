@@ -34,6 +34,12 @@
 (use-package smex
   :ensure t)
 
+;;; --- Smartparens
+(use-package smartparens
+  :ensure
+  :config
+  (add-hook 'js-mode-hook #'smartparens-mode))
+
 ;;; --- Setup evil mode
 (use-package evil-leader
   :ensure
