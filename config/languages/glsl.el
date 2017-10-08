@@ -10,5 +10,11 @@
               (defvar c-basic-offset 1)
               (setq tab-width 2))))
 
+(use-package company-glsl
+  :load-path "~/.emacs.d/github/company-glsl"
+  :config
+  (when (executable-find "glslangValidator")
+    (add-to-list 'company-backends 'company-glsl)))
+
 (provide 'glsl.el)
 ;;; glsl.el ends here
