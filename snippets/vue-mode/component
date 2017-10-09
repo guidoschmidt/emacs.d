@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: component
+# key: component
+# --
+<template>
+
+</template>
+
+<script>
+  export default {
+
+  }
+</script>
+
+<style scoped lang="sass">
+
+</style>
