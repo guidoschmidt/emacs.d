@@ -34,6 +34,14 @@
 (use-package smex
   :ensure t)
 
+;;; --- Smartparens
+(use-package smartparens
+  :ensure
+  :config
+  (add-hook 'js-mode-hook #'smartparens-mode)
+  (add-hook 'clojure-mode-hook #'smartparens-mode)
+  (add-hook 'emacs-lisp-mode-hook #'smartparens-mode))
+
 ;;; --- Setup evil mode
 (use-package evil-leader
   :ensure
@@ -42,8 +50,11 @@
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
     "b" 'ivy-switch-buffer
+    "n" 'ivy-switch-buffer-other-window
     "k" 'ido-kill-buffer
+
     "s" 'magit-status
+
     "p" 'counsel-projectile-switch-project
     "f" 'counsel-projectile-find-file))
 

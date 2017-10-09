@@ -36,8 +36,8 @@
   ;; (use-package soothe-theme :ensure :defer)
   ;; (use-package nyx-theme :ensure :defer)
   ;; (use-package hemera-theme :ensure :defer)
-  (use-package gruvbox-theme :ensure :defer)
   ;; (use-package nord-theme :ensure :defer)
+  (use-package gruvbox-theme :ensure :defer)
   (use-package darkokai-theme :ensure :defer)
   :config
   (setq circadian-themes '(("8:00" . gruvbox-light-medium)
