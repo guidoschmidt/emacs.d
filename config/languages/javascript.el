@@ -54,6 +54,10 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (defun emmet/vue-mode-hook ()
     (emmet-mode))
   (add-hook 'vue-mode-hook 'emmet/vue-mode-hook)
+  (defun company/vue-mode-hook ()
+    (add-to-list 'company-backends 'company-tern)
+    (add-to-list 'company-backends 'company-css))
+  (add-hook 'vue-mode-hook 'company/vue-mode-hook)
   (setq mmm-submode-decoration-level 0)
   (flycheck-add-mode 'javascript-eslint 'vue-mode))
 
