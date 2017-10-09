@@ -44,7 +44,8 @@
     "b" 'ivy-switch-buffer
     "k" 'ido-kill-buffer
     "s" 'magit-status
-    "p" 'counsel-projectile-switch-project))
+    "p" 'counsel-projectile-switch-project
+    "f" 'counsel-projectile-find-file))
 
 (use-package evil
   :ensure
@@ -100,8 +101,14 @@
     "helper function to add a callback to multiple hooks"
     (dolist (mode mode-list)
       (add-hook (intern (concat (symbol-name mode) "-mode-hook")) something)))
-
-  (add-something-to-mode-hooks '(c++ emacs-lisp sass) (lambda () (fic-mode 1))))
+  (add-something-to-mode-hooks '(c++
+                                 emacs-lisp
+                                 vue
+                                 jsx
+                                 rjsx
+                                 web
+                                 sass)
+                               (lambda () (fic-mode 1))))
 
 ;;; --- Powerline & Spaceline
 (use-package powerline
