@@ -2,7 +2,7 @@
 ;;; Commentary:
 
 ;; TODO:
-;; - ivy/swyper/counsel: evil
+;; Move evil configuration into it's own file
 
 ;;; Code:
 ;;; --- Try packages without installing them
@@ -60,7 +60,9 @@
 
 (use-package evil
   :ensure
-  :config (evil-mode 1))
+  :config
+  (evil-mode t)
+  (setq evil-emacs-state-modes (delq 'ibuffer-mode evil-emacs-state-modes)))
 
 (use-package evil-cleverparens
   :ensure
