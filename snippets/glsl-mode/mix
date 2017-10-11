@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: mix
+# key: mix
+# --
+mix(${1:colorA}, ${2:colorB}, ${3:interpolate})
