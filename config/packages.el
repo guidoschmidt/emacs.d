@@ -2,7 +2,10 @@
 ;;; Commentary:
 
 ;; TODO:
-;; Move evil configuration into it's own file
+;; - Move evil configuration into it's own file
+;; - dired hacks: https://github.com/Fuco1/dired-hacks
+;; - Try focus: https://github.com/larstvei/Focus
+;; - Try highlight indent: https://github.com/DarthFennec/highlight-indent-guides
 
 ;;; Code:
 ;;; --- Try packages without installing them
@@ -50,6 +53,7 @@
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
     "b" 'ivy-switch-buffer
+    "i" 'ibuffer
     "n" 'ivy-switch-buffer-other-window
     "k" 'ido-kill-buffer
 
