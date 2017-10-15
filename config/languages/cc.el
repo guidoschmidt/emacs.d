@@ -12,36 +12,33 @@
 
 ;;; --- CMake
 (use-package cmake-ide
-  :ensure t
+  :ensure
   :config
   (cmake-ide-setup))
 
 ;;; --- ctags & ggtags
 (use-package ggtags
-  :ensure t
+  :ensure
   :config
   (defun ggtags/c-mode-hook ()
     "Hook to setup GGTAGS in cc-modes."
     (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-                (ggtags-mode 1)))
+      (ggtags-mode 1)))
   (add-hook 'c-mode-common-hook 'ggtags/c-mode-hook))
 
 (use-package flycheck-irony
-  :ensure t
+  :ensure
   :config
   (eval-after-load 'flycheck
     '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
 
 ;;; --- Irony - C++ IDE
 (use-package irony
-  :ensure t
-  :init
-  (add-hook 'c++-mode-hook 'irony-mode)
-  (add-hook 'c-mode-hook 'irony-mode)
-  (add-hook 'objc-mode-hook 'irony-mode)
+  :ensure
   :config
   (use-package company-irony :ensure t)
   (use-package company-irony-c-headers :ensure t)
+  (use-package irony-eldoc :ensure t)
   (custom-set-variables
    '(irony-additional-clang-options
      '("-I/Library/Developer/CommandLineTools/usr/include/c++/v1")))
@@ -55,9 +52,12 @@
   (add-hook 'irony-mode-hook 'custom/irony-mode-hook)
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   (defun cc/irony-mode-hook ()
-    (irony-mode)
-    (add-hook 'irony-mode-hook #'irony-eldoc))
-  (add-hook 'c-mode-common-hook 'cc/irony-mode-hook))
+    (unless (glsl-mode)
+      (irony-mode)
+      (add-hook 'irony-mode-hook #'irony-eldoc)))
+  (add-hook  'c-mode-hook '    cc/irony-mode-hook)
+  (add-hook  'c++-mode-hook '  cc/irony-mode-hook)
+  (add-hook  'objc-mode-hook ' cc/irony-mode-hook))
 
 ;; --- astyle
 (defun astyle-this-buffer (pmin pmax)
