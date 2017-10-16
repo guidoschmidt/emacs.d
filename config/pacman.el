@@ -36,5 +36,7 @@
 (require 'diminish)
 (require 'bind-key)
 
+(package-refresh-contents)
+
 (provide 'pacman.el)
 ;;; pacman.el ends here
