@@ -129,6 +129,11 @@
                                  sass)
                                (lambda () (fic-mode 1))))
 
+;;; --- Focus mode
+(use-package focus
+  :ensure
+  :defer)
+
 ;;; --- Powerline & Spaceline
 (use-package powerline
   :ensure t)

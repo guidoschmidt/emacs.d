@@ -34,7 +34,7 @@
     (add-to-list 'default-frame-alist '(font . "Iosevka-20")))))
 
 ;;; --- Whitespace
-(global-whitespace-mode -1)
+(global-whitespace-mode t)
 (setq-default indicate-empty-lines t)
 (when (not indicate-empty-lines)
   (toggle-indicate-empty-lines))

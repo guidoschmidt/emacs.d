@@ -7,3 +7,6 @@
 [submodule "github/emacs-hemera-theme"]
 	path = github/emacs-hemera-theme
 	url = git@github.com:GuidoSchmidt/emacs-hemera-theme.git
+[submodule "github/flycheck-glsl"]
+	path = github/flycheck-glsl
+	url = git@github.com:rochg/flycheck-glsl.git

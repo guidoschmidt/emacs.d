@@ -14,13 +14,9 @@
 
 (use-package flycheck-pos-tip
   :ensure t
-  :init
-  (with-eval-after-load 'flycheck
-    (flycheck-pos-tip-mode))
   :config
-  (setq pos-tip-foreground-color '((:foreground "blue")))
-  (setq pos-tip-background-color '((:background "red")))
-  (pos-tip-show "ALERT"))
+  (with-eval-after-load 'flycheck
+    (flycheck-pos-tip-mode)))
 
 ;; Custom fringe indicator
 (define-fringe-bitmap 'my-flycheck-fringe-indicator
