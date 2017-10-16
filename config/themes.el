@@ -38,8 +38,8 @@
   ;; (use-package hemera-theme :ensure :defer)
   ;; (use-package nord-theme :ensure :defer)
   ;; (use-package gruvbox-theme :ensure :defer)
-  (use-package apropospriate-theme :ensure)
-  (use-package darkokai-theme :ensure)
+  (use-package apropospriate-theme :ensure :defer)
+  (use-package darkokai-theme :ensure :defer)
   :config
   (setq circadian-themes '(("8:00" . apropospriate-light)
                            ("19:15" . darkokai)))
