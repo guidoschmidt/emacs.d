@@ -45,7 +45,7 @@
   ;; (use-package darkokai-theme :ensure :defer)
   :config
   (setq circadian-themes '(("8:00" . apropospriate-light)
-                           ("19:15" . darkokai)))
+                           ("19:00" . darkokai)))
   (circadian-setup))
 
 (provide 'themes)
