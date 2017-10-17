@@ -3,21 +3,25 @@
 
 ;;; Code:
 (use-package clojure-mode
-  :ensure t
+  :ensure
   :mode "\\.clj\\'"
+  :defer
   :config
   (add-hook 'clojure-mode-hook #'enable-paredit-mode))
 
 (use-package clojure-snippets
-  :ensure t
+  :ensure
+  :defer
   :commands clojure-mode)
 
 (use-package cider
-  :ensure t
+  :ensure
+  :defer
   :commands clojure-mode)
 
 (use-package flycheck-clojure
   :ensure
+  :defer
   :config
   (eval-after-load 'flycheck '(flycheck-clojure-setup)))
 

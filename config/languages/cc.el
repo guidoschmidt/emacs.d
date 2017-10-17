@@ -13,12 +13,14 @@
 ;;; --- CMake
 (use-package cmake-ide
   :ensure
+  :defer
   :config
   (cmake-ide-setup))
 
 ;;; --- ctags & ggtags
 (use-package ggtags
   :ensure
+  :defer
   :config
   (defun ggtags/c-mode-hook ()
     "Hook to setup GGTAGS in cc-modes."
@@ -28,6 +30,7 @@
 
 (use-package flycheck-irony
   :ensure
+  :defer
   :config
   (eval-after-load 'flycheck
     '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
@@ -35,6 +38,7 @@
 ;;; --- Irony - C++ IDE
 (use-package irony
   :ensure
+  :defer
   :config
   (use-package company-irony :ensure t)
   (use-package company-irony-c-headers :ensure t)
@@ -72,6 +76,7 @@
 ;; Add Google C++ style
 (use-package google-c-style
   :ensure t
+  :defer
   :config
   (add-hook 'c-mode-common-hook 'google-set-c-style)
   (add-hook 'c++-mode-hook 'google-set-c-style)
@@ -80,6 +85,7 @@
 ;; Add Google C++ style checker - In default, syntax checked by clang
 (use-package flycheck-google-cpplint
   :load-path "config/layers/"
+  :defer
   :config
   (eval-after-load 'flycheck
     '(progn (flycheck-add-next-checker 'c/c++-clang

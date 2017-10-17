@@ -3,7 +3,8 @@
 
 ;;; Code:
 (use-package haskell-mode
-  :ensure t
+  :ensure
+  :defer
   :config
   (use-package hindent :ensure t)
   (add-hook 'haskell-mode-hook 'hindent-mode)
@@ -22,7 +23,8 @@
   (add-hook 'haskell-interactive-mode-hook 'company-mode))
 
 (use-package company-ghc
-  :ensure t
+  :ensure
+  :defer
   :config
   (defun company/haskell-mode-hook ()
     (push 'company-ghc company-backends))
@@ -30,7 +32,8 @@
             'company/haskell-mode-hook))
 
 (use-package company-ghci
-  :ensure t
+  :ensure
+  :defer
   :config
   (defun company/interactive-haskell-mode-hook ()
     (push 'company-ghci company-backends))
@@ -38,17 +41,20 @@
             'company/interactive-haskell-mode-hook))
 
 (use-package intero
-  :ensure t
+  :ensure
+  :defer
   :config
   (add-hook 'haskell-mode-hook 'intero-mode)
   :bind
   (("C-c i" . intero-company)))
 
 (use-package haskell-snippets
-  :ensure t)
+  :ensure
+  :defer)
 
 (use-package flycheck-haskell
-  :ensure t
+  :ensure
+  :defer
   :config
   (eval-after-load 'flycheck
     '(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup)))
