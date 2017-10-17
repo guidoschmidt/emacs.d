@@ -59,7 +59,7 @@
 
     "s" 'magit-status
 
-    "[?\t]" 'indent-region
+    "TAB" 'indent-region
 
     "p" 'counsel-projectile-switch-project
     "f" 'counsel-projectile-find-file))
