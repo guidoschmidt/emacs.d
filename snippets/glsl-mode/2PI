@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: 2PI
+# key: 2PI
+# --
+#define TWO_PI 6.283185

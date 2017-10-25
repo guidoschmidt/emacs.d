@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: PI
+# key: PI
+# --
+#define PI     3.141593
