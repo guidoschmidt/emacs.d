@@ -110,8 +110,6 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (add-hook 'js-mode-hook 'company/js-mode-hook)
   (add-hook 'js2-mode-hook 'company/js-mode-hook))
 
-(use-package tern-auto-complete
-  :ensure t)
 
 (provide 'javascript-web.el)
 ;;; javascript.el ends here
