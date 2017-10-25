@@ -111,6 +111,19 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (add-hook 'js2-mode-hook 'company/js-mode-hook)
   (add-hook 'vue-mode-hook 'company/js-mode-hook))
 
+;;; --- Prettier.js
+(use-package prettier-js
+  :ensure
+  :config
+  (add-hook 'js2-mode-hook 'prettier-js-mode)
+  (add-hook 'web-mode-hook 'prettier-js-mode)
+  (defun enable-minor-mode (my-pair)
+    (if (buffer-file-name)
+        (if (string-match (car my-pair) buffer-file-name)
+            (funcall (cdr my-pair)))))
+  (add-hook 'rjsx-mode #'(lambda ()
+                           (enable-minor-mode
+                            '("\\.jsx?\\'" . prettier-js-mode)))))
 
 (provide 'javascript-web.el)
 ;;; javascript.el ends here
