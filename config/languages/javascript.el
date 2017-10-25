@@ -108,7 +108,8 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
     (tern-mode t)
     (push 'company-tern company-backends))
   (add-hook 'js-mode-hook 'company/js-mode-hook)
-  (add-hook 'js2-mode-hook 'company/js-mode-hook))
+  (add-hook 'js2-mode-hook 'company/js-mode-hook)
+  (add-hook 'vue-mode-hook 'company/js-mode-hook))
 
 
 (provide 'javascript-web.el)
