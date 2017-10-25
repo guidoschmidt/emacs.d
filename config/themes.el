@@ -31,21 +31,25 @@
 
 (use-package apropospriate-theme :ensure :defer)
 (use-package darkokai-theme :ensure :defer)
+(use-package tao-theme :ensure :defer)
+(use-package nord-theme :ensure :defer)
+;; (use-package soothe-theme :ensure :defer)
+;; (use-package nyx-theme :ensure :defer)
+;; (use-package hemera-theme :ensure :defer)
+;; (use-package nord-theme :ensure :defer)
+;; (use-package gruvbox-theme :ensure :defer)
+;; (use-package apropospriate-theme :ensure :defer)
+;; (use-package darkokai-theme :ensure :defer)
 
 ;; --- Circadian
 (use-package circadian
   :ensure
   :init
-  ;; (use-package soothe-theme :ensure :defer)
-  ;; (use-package nyx-theme :ensure :defer)
-  ;; (use-package hemera-theme :ensure :defer)
-  ;; (use-package nord-theme :ensure :defer)
-  ;; (use-package gruvbox-theme :ensure :defer)
-  ;; (use-package apropospriate-theme :ensure :defer)
-  ;; (use-package darkokai-theme :ensure :defer)
   :config
-  (setq circadian-themes '(("8:00" . apropospriate-light)
-                           ("19:00" . darkokai)))
+  (setq calendar-latitude 49.6)
+  (setq calendar-longitude 8.6)
+  (setq circadian-themes '((:sunrise . apropospriate-light)
+                           (:sunset . darkokai)))
   (circadian-setup))
 
 (provide 'themes)
