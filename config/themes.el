@@ -43,11 +43,12 @@
 
 ;; --- Circadian
 (use-package circadian
+  ;; :load-path "~/Development/emacs/circadian.el/"
   :ensure
   :init
   :config
-  (setq calendar-latitude 49.6)
-  (setq calendar-longitude 8.6)
+  (setq calendar-latitude 49.329896)
+  (setq calendar-longitude 8.570925)
   (setq circadian-themes '((:sunrise . apropospriate-light)
                            (:sunset . darkokai)))
   (circadian-setup))
