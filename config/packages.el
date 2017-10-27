@@ -11,18 +11,18 @@
 ;;; --- Try packages without installing them
 ;;; Keep .emacs.d clean
 (use-package no-littering
-  :ensure t
+  :ensure
   :config
   (require 'recentf)
   (add-to-list 'recentf-exclude no-littering-var-directory)
   (add-to-list 'recentf-exclude no-littering-etc-directory))
 
 (use-package try
-  :ensure t)
+  :ensure)
 
 ;;; --- Setup which-key
 (use-package which-key
-  :ensure t
+  :ensure
   :config (which-key-mode)
   :diminish (which-key-mode . "w"))
 
@@ -35,7 +35,7 @@
 
 ;;; --- Smex
 (use-package smex
-  :ensure t)
+  :ensure)
 
 ;;; --- Setup evil mode
 (use-package evil-leader
@@ -77,17 +77,17 @@
 
 ;;; --- EditorConfig
 (use-package editorconfig
-  :ensure t
+  :ensure
   :config
   (editorconfig-mode 1))
 
 (use-package expand-region
-  :ensure t
+  :ensure
   :bind (("C-=" . er/expand-region)))
 
 ;;; --- Yasnippets
 (use-package yasnippet
-  :ensure t
+  :ensure
   :init
   (yas-global-mode 1)
   :config
@@ -98,7 +98,7 @@
 
 ;;; --- Hydra
 (use-package hydra
-  :ensure t
+  :ensure
   :config
   (defhydra hydra-zoom (global-map "<f2>")
     "zoom"
@@ -129,13 +129,13 @@
 
 ;;; --- Powerline & Spaceline
 (use-package powerline
-  :ensure t)
+  :ensure)
 
 (use-package fancy-battery
-  :ensure t)
+  :ensure)
 
 (use-package spaceline
-  :ensure t
+  :ensure
   :after powerline
   :init
   (progn
@@ -160,33 +160,33 @@
 
 ;;; --- Neo-tree with icons
 (use-package all-the-icons
-  :ensure t)
+  :ensure)
 (use-package neotree
-  :ensure t
+  :ensure
   :config
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 
 ;;; --- Rainbow-delimiters
 (use-package rainbow-delimiters
-  :ensure t
+  :ensure
   :config
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 ;;; --- Projectile
 (use-package projectile
-  :ensure t
+  :ensure
   :config
   (projectile-mode)
   (setq projectile-completion-system 'ivy))
 
 (use-package counsel-projectile
-  :ensure t
+  :ensure
   :config
   (counsel-projectile-on))
 
 ;;; --- EditorConfig
 (use-package editorconfig
-  :ensure t
+  :ensure
   :config
   (editorconfig-mode 1))
 
@@ -197,17 +197,17 @@
          ("M-g x" . dumb-jump-go-prefer-external)
          ("M-g z" . dumb-jump-go-prefer-external-other-window))
   :config (setq dumb-jump-selector 'ivy)
-  :ensure t)
+  :ensure)
 
 ;;; --- Undo-tree
 (use-package undo-tree
-  :ensure t
+  :ensure
   :init
   (global-undo-tree-mode))
 
 ;;; --- Auto highlight words
 (use-package auto-highlight-symbol
-  :ensure t
+  :ensure
   :config
   (global-auto-highlight-symbol-mode t))
 
@@ -216,14 +216,14 @@
 
 ;;; --- Exec-path-from-shell
 (use-package exec-path-from-shell
-  :ensure t
+  :ensure
   :config
   (when (memq window-system '(mac ns))
     (exec-path-from-shell-initialize)))
 
 ;;; --- Setup ace-window
 (use-package ace-window
-  :ensure t
+  :ensure
   :init
   (global-set-key [remap other-window] 'ace-window)
   :config
@@ -236,11 +236,11 @@
 
 ;;; --- Rainbow mode
 (use-package rainbow-mode
-  :ensure t)
+  :ensure)
 
 ;;; --- Ivy
 (use-package ivy
-  :ensure t
+  :ensure
   :diminish (ivy-mode)
   :bind (("C-x b" . ivy-switch-buffer))
   :init (ivy-mode 1)
@@ -251,10 +251,10 @@
 
 ;;; --- Swiper - better isearch
 (use-package counsel
-  :ensure t)
+  :ensure)
 
 (use-package swiper
-  :ensure t
+  :ensure
   :bind
   (("C-s" . swiper)
    ("C-r" . swiper)
@@ -267,19 +267,24 @@
 
 ;;; --- Avy
 (use-package avy
-  :ensure t
+  :ensure
   :bind (("C-c a" . avy-goto-char)
          ("C-c o" . avy-goto-char-timer)))
 
-;;; --- Multiple cursors
-(use-package multiple-cursors
-  :ensure t
-  :bind (("C-<" . mc/mark-previous-like-this)
-         ("C->" . mc/mark-next-like-this)))
+;;; --- Multiple cursors/Emacs key bindings
+;; (use-package multiple-cursors
+;;   :ensure
+;;   :bind (("C-<" . mc/mark-previous-like-this)
+;;          ("C->" . mc/mark-next-like-this)))
+
+(use-package evil-mc
+  :ensure
+  :config
+  (global-evil-mc-mode 1))
 
 ;;; --- Fill collumn indicator
 (use-package fill-column-indicator
-  :ensure t
+  :ensure
   :config
   (setq fci-rule-width 2)
   (setq-default fci-rule-column 80)
@@ -289,7 +294,7 @@
 
 ;;; --- Wrap region
 (use-package wrap-region
-  :ensure t
+  :ensure
   :config
   (wrap-region-add-wrapper "`" "`")
   (wrap-region-add-wrapper "*" "*")
@@ -299,7 +304,7 @@
 
 ;;; -- Refactor
 (use-package emr
-  :ensure t
+  :ensure
   :config
   (add-hook 'prog-mode-hook 'emr-initialize)
   :bind
@@ -307,7 +312,7 @@
 
 ;;; -- Aggressive indent
 (use-package aggressive-indent
-  :ensure t
+  :ensure
   :config
   (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
   (add-hook 'css-mode-hook #'aggressive-indent-mode))
