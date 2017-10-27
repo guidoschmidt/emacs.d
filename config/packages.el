@@ -280,6 +280,7 @@
 (use-package evil-mc
   :ensure
   :config
+  (setq evil-mc-one-cursor-show-mode-line-text nil)
   (global-evil-mc-mode 1))
 
 ;;; --- Fill collumn indicator
