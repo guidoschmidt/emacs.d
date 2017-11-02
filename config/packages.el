@@ -281,7 +281,10 @@
   :ensure
   :config
   (setq evil-mc-one-cursor-show-mode-line-text nil)
-  (global-evil-mc-mode 1))
+  (global-evil-mc-mode 1)
+  :bind
+  (("C-<" . evil-mc-make-cursor-move-next-line)
+   ("C->" . evil-mc-make-cursor-move-prev-line)))
 
 ;;; --- Fill collumn indicator
 (use-package fill-column-indicator
