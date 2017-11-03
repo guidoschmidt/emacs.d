@@ -33,6 +33,7 @@
 (use-package darkokai-theme :ensure :defer)
 (use-package tao-theme :ensure :defer)
 (use-package nord-theme :ensure :defer)
+;; TODO: try kaolin-theme
 ;; (use-package soothe-theme :ensure :defer)
 ;; (use-package nyx-theme :ensure :defer)
 ;; (use-package hemera-theme :ensure :defer)
