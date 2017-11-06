@@ -54,6 +54,8 @@
 
     "TAB" 'indent-region
 
+    "?" 'ispell-word
+
     "p" 'counsel-projectile-switch-project
     "f" 'counsel-projectile-find-file))
 
