@@ -1,0 +1,24 @@
+# -*- mode: snippet -*-
+# name: responsive-font-size
+# key: res-fz
+# --
+\$screensize-phones: 480px
+\$screensize-desktops: 1280px
+
+=screen(\$screen-size)
+@media screen and (min-width: \$screen-size)
+@content
+
+\$font-size-min: 16px
+\$font-size-max: 32px
+
+=responsive-type
+\$screen-difference: strip-unit(\$screensize-desktops - \$screensize-phones)
+\$font-difference: strip-unit(\$font-size-max - \$font-size-min)
+\$screen-mult: calc((100vw - #{\$screensize-phones}) / #{\$screen-difference})
+\$font-size-responsive: calc(#{\$font-size-min} + (#{\$font-difference}) * #{\$screen-mult})
+font-size: \$font-size-min
++screen(\$screensize-phones)
+font-size: \$font-size-responsive
++screen(\$screensize-desktops)
+font-size: \$font-size-max
