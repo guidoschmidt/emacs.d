@@ -50,6 +50,10 @@
          #'company-quickhelp-manual-begin)))
   (company-quickhelp-mode))
 
+(use-package company-statistics
+  :ensure
+  :config
+  (add-hook 'after-init-hook 'company-statistics-mode))
 
 (provide 'autocomplete.company.el)
 ;;; autocomplete.company.el ends here
