@@ -98,6 +98,13 @@
   :bind
   (("C-c e" . yas-expand)))
 
+;;; --- Wakatime
+(use-package wakatime-mode
+  :ensure
+  :config
+  (setq wakatime-api-key "32135691-bb0b-462e-94c2-b364aa352a6c")
+  (global-wakatime-mode))
+
 ;;; --- Hydra
 (use-package hydra
   :ensure
@@ -283,7 +290,10 @@
   :ensure
   :config
   (setq evil-mc-one-cursor-show-mode-line-text nil)
-  (global-evil-mc-mode 1))
+  (global-evil-mc-mode 1)
+  :bind
+  (("C-<" . evil-mc-make-cursor-move-next-line)
+   ("C->" . evil-mc-make-cursor-move-prev-line)))
 
 ;;; --- Fill collumn indicator
 (use-package fill-column-indicator
