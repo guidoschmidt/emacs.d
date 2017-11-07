@@ -84,3 +84,8 @@ according to this [github issue](https://github.com/commercialhaskell/intero/iss
 
 ## Paredit for n00bs
 1. `((square 42))` -> `(square 42)`: **paredit-splice-sexp** `M-s`
+
+
+---
+## Wakatime
+`pip3 install wakatime`
