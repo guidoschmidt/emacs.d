@@ -83,9 +83,12 @@
   :config
   (editorconfig-mode 1))
 
+
 (use-package expand-region
   :ensure
-  :bind (("C-=" . er/expand-region)))
+  :config
+  (eval-after-load "evil" '(setq expand-region-contract-fast-key "z"))
+  (evil-leader/set-key "e" 'er/expand-region))
 
 ;;; --- Yasnippets
 (use-package yasnippet
