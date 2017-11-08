@@ -29,12 +29,13 @@
   (set-cursor-color "#FBE812"))
 (advice-add 'load-theme :after #'load-theme-restore-line-numbering)
 
+
 (use-package apropospriate-theme :ensure :defer)
 (use-package darkokai-theme :ensure :defer)
 (use-package tao-theme :ensure :defer)
 (use-package nord-theme :ensure :defer)
 (use-package ample-theme :ensure :defer)
-;; TODO: try kaolin-theme
+(use-package kaolin-themes :ensure :defer)
 ;; (use-package soothe-theme :ensure :defer)
 ;; (use-package nyx-theme :ensure :defer)
 ;; (use-package hemera-theme :ensure :defer)
@@ -42,6 +43,7 @@
 ;; (use-package gruvbox-theme :ensure :defer)
 ;; (use-package apropospriate-theme :ensure :defer)
 ;; (use-package darkokai-theme :ensure :defer)
+
 
 ;; --- Circadian
 (use-package circadian
@@ -51,8 +53,8 @@
   :config
   (setq calendar-latitude 49.329896)
   (setq calendar-longitude 8.570925)
-  (setq circadian-themes '((:sunrise . ample-light)
-                           (:sunset . darkokai)))
+  (setq circadian-themes '((:sunrise . kaolin-light)
+                           (:sunset . kaolin-eclipse)))
   (circadian-setup))
 
 (provide 'themes)
