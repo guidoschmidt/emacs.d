@@ -26,14 +26,16 @@
   (setq linum-format 'linum-format-func)
   ;; Cursor
   (set-default 'cursor-type 'box)
-  (set-cursor-color "#FA0C72"))
+  (set-cursor-color "#FBE812"))
 (advice-add 'load-theme :after #'load-theme-restore-line-numbering)
 
 (use-package apropospriate-theme :ensure :defer)
 (use-package darkokai-theme :ensure :defer)
 (use-package tao-theme :ensure :defer)
 (use-package nord-theme :ensure :defer)
-(use-package soothe-theme :ensure :defer)
+(use-package ample-theme :ensure :defer)
+;; TODO: try kaolin-theme
+;; (use-package soothe-theme :ensure :defer)
 ;; (use-package nyx-theme :ensure :defer)
 ;; (use-package hemera-theme :ensure :defer)
 ;; (use-package nord-theme :ensure :defer)
@@ -49,8 +51,8 @@
   :config
   (setq calendar-latitude 49.329896)
   (setq calendar-longitude 8.570925)
-  (setq circadian-themes '((:sunrise . nord)
-                           (:sunset . soothe)))
+  (setq circadian-themes '((:sunrise . ample-light)
+                           (:sunset . darkokai)))
   (circadian-setup))
 
 (provide 'themes)
