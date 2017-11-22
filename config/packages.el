@@ -2,14 +2,11 @@
 ;;; Commentary:
 
 ;; TODO:
-;; - Move evil configuration into it's own file
 ;; - dired hacks: https://github.com/Fuco1/dired-hacks
-;; - Try focus: https://github.com/larstvei/Focus
-;; - Try highlight indent: https://github.com/DarthFennec/highlight-indent-guides
 
 ;;; Code:
-;;; --- Try packages without installing them
-;;; Keep .emacs.d clean
+
+;;; --- Keep .emacs.d clean
 (use-package no-littering
   :ensure
   :config
@@ -17,6 +14,7 @@
   (add-to-list 'recentf-exclude no-littering-var-directory)
   (add-to-list 'recentf-exclude no-littering-etc-directory))
 
+;;; --- Try packages without installing them
 (use-package try
   :ensure)
 
@@ -37,58 +35,11 @@
 (use-package smex
   :ensure)
 
-;;; --- Setup evil mode
-(use-package evil-leader
-  :ensure
-  :config
-  (global-evil-leader-mode)
-  (evil-leader/set-leader "<SPC>")
-  (evil-leader/set-key
-    "a" 'align-regexp
-    "b" 'ivy-switch-buffer
-    "i" 'ibuffer
-    "n" 'ivy-switch-buffer-other-window
-    "k" 'ido-kill-buffer
-
-    "s" 'magit-status
-
-    "TAB" 'indent-region
-
-    "?" 'ispell-word
-
-    "p" 'counsel-projectile-switch-project
-    "f" 'counsel-projectile-find-file))
-
-(use-package evil
-  :ensure
-  :config
-  (evil-mode t)
-  (setq evil-emacs-state-modes (delq 'ibuffer-mode evil-emacs-state-modes)))
-
-(use-package evil-cleverparens
-  :ensure
-  :config
-  (add-hook 'emacs-lisp-mode #'evil-cleverparens-mode)
-  (add-hook 'clojure-mode #'evil-cleverparens-mode))
-
-(use-package evil-paredit
-  :ensure
-  :config
-  (add-hook 'emacs-lisp-mode-hook 'evil-paredit-mode)
-  (add-hook 'clojure-mode 'evil-paredit-mode))
-
 ;;; --- EditorConfig
 (use-package editorconfig
   :ensure
   :config
   (editorconfig-mode 1))
-
-
-(use-package expand-region
-  :ensure
-  :config
-  (eval-after-load "evil" '(setq expand-region-contract-fast-key "z"))
-  (evil-leader/set-key "e" 'er/expand-region))
 
 ;;; --- Yasnippets
 (use-package yasnippet
@@ -138,6 +89,13 @@
 (use-package focus
   :ensure
   :defer)
+
+;;; --- Highlight indentation
+(use-package highlight-indent-guides
+  :ensure
+  :config
+  (setq highlight-indent-guides-method 'character)
+  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
 
 ;;; --- Powerline & Spaceline
 (use-package powerline
@@ -283,21 +241,6 @@
   :bind (("C-c a" . avy-goto-char)
          ("C-c o" . avy-goto-char-timer)))
 
-;;; --- Multiple cursors/Emacs key bindings
-;; (use-package multiple-cursors
-;;   :ensure
-;;   :bind (("C-<" . mc/mark-previous-like-this)
-;;          ("C->" . mc/mark-next-like-this)))
-
-(use-package evil-mc
-  :ensure
-  :config
-  (setq evil-mc-one-cursor-show-mode-line-text nil)
-  (global-evil-mc-mode 1)
-  :bind
-  (("C-<" . evil-mc-make-cursor-move-next-line)
-   ("C->" . evil-mc-make-cursor-move-prev-line)))
-
 ;;; --- Fill collumn indicator
 (use-package fill-column-indicator
   :ensure
@@ -348,6 +291,7 @@
 (load "~/.emacs.d/config/layers/spell-checking.el")
 (load "~/.emacs.d/config/layers/syntax-checking.el")
 (load "~/.emacs.d/config/notifications.el")
+(load "~/.emacs.d/config/evil.el")
 
 ;;; --- Languages setup
 (load "~/.emacs.d/config/languages/arduino.el")
