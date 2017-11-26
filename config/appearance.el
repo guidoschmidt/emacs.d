@@ -25,9 +25,9 @@
     (add-to-list 'initial-frame-alist '(font . "Iosevka-11"))
     (add-to-list 'default-frame-alist '(font . "Iosevka-11"))))
  ((string-equal system-type "darwin")  ; Mac OS X
-  (when (member "Monoid" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Monoid-15"))
-    (add-to-list 'default-frame-alist '(font . "Monoid-15"))))
+  (when (member "PragmataPro Mono" (font-family-list))
+    (add-to-list 'initial-frame-alist '(font . "PragmataPro Mono-14"))
+    (add-to-list 'default-frame-alist '(font . "PragmataPro Mono-14"))))
  ((string-equal system-type "gnu/linux") ; linux
   (when (member "Iosevka-Term" (font-family-list))
     (add-to-list 'initial-frame-alist '(font . "Iosevka-20"))
