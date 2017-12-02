@@ -53,7 +53,7 @@
   :config
   (setq calendar-latitude 49.329896)
   (setq calendar-longitude 8.570925)
-  (setq circadian-themes '((:sunrise . apropospriate-light)
+  (setq circadian-themes '((:sunrise . ample-flat)
                            (:sunset . kaolin-eclipse)))
   (circadian-setup))
 
