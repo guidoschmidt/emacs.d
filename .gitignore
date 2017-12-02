@@ -4,6 +4,7 @@ elpa/
 ido.last
 recentf
 .mc-lists.el
+auto-save/
 
 # Python IDE
 .python-environments/
