@@ -138,5 +138,7 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
       (prettier-js--prettify start end)
       (goto-char original))))
 
+(use-package web-beautify :ensure t)
+
 (provide 'javascript-web.el)
 ;;; javascript.el ends here
