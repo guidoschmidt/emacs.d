@@ -19,19 +19,20 @@
 
 ;;; --- Typeface
 ;; set default font in initial window and for any new window
-(cond
- ((string-equal system-type "windows-nt") ; Microsoft Windows
-  (when (member "Iosevka-Term" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Iosevka-11"))
-    (add-to-list 'default-frame-alist '(font . "Iosevka-11"))))
- ((string-equal system-type "darwin")  ; Mac OS X
-  (when (member "PragmataPro Mono" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "PragmataPro Mono-14"))
-    (add-to-list 'default-frame-alist '(font . "PragmataPro Mono-14"))))
- ((string-equal system-type "gnu/linux") ; linux
-  (when (member "Iosevka-Term" (font-family-list))
-    (add-to-list 'initial-frame-alist '(font . "Iosevka-20"))
-    (add-to-list 'default-frame-alist '(font . "Iosevka-20")))))
+(when system-name "MBA-Guido"
+      (cond
+       ((string-equal system-type "windows-nt") ; Microsoft Windows
+        (when (member "Iosevka-Term" (font-family-list))
+          (add-to-list 'initial-frame-alist '(font . "Iosevka-11"))
+          (add-to-list 'default-frame-alist '(font . "Iosevka-11"))))
+       ((string-equal system-type "darwin")  ; Mac OS X
+        (when (member "PragmataPro Mono" (font-family-list))
+          (add-to-list 'initial-frame-alist '(font . "PragmataPro Mono-16"))
+          (add-to-list 'default-frame-alist '(font . "PragmataPro Mono-16"))))
+       ((string-equal system-type "gnu/linux") ; linux
+        (when (member "Iosevka-Term" (font-family-list))
+          (add-to-list 'initial-frame-alist '(font . "Iosevka-20"))
+          (add-to-list 'default-frame-alist '(font . "Iosevka-20"))))))
 
 ;;; --- Whitespace
 (global-whitespace-mode t)
