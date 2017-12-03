@@ -30,12 +30,13 @@
 (advice-add 'load-theme :after #'load-theme-restore-line-numbering)
 
 
+(use-package ample-theme :ensure :defer)
 (use-package apropospriate-theme :ensure :defer)
 (use-package darkokai-theme :ensure :defer)
-(use-package tao-theme :ensure :defer)
-(use-package nord-theme :ensure :defer)
-(use-package ample-theme :ensure :defer)
+(use-package espresso-theme :ensure :defer)
 (use-package kaolin-themes :ensure :defer)
+(use-package nord-theme :ensure :defer)
+(use-package tao-theme :ensure :defer)
 ;; (use-package soothe-theme :ensure :defer)
 ;; (use-package nyx-theme :ensure :defer)
 ;; (use-package hemera-theme :ensure :defer)
@@ -53,8 +54,8 @@
   :config
   (setq calendar-latitude 49.329896)
   (setq calendar-longitude 8.570925)
-  (setq circadian-themes '((:sunrise . ample-flat)
-                           (:sunset . kaolin-eclipse)))
+  (setq circadian-themes '((:sunrise . espresso)
+                           (:sunset . nord)))
   (circadian-setup))
 
 (provide 'themes)

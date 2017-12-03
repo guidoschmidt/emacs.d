@@ -18,6 +18,7 @@
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
     "a" 'align-regexp
+    "o" 'sort-lines
     "b" 'ivy-switch-buffer
     "i" 'ibuffer
     "n" 'ivy-switch-buffer-other-window
