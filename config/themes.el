@@ -26,7 +26,7 @@
   (setq linum-format 'linum-format-func)
   ;; Cursor
   (set-default 'cursor-type 'box)
-  (set-cursor-color "#FBE812"))
+  (set-cursor-color "#F327AB"))
 (advice-add 'load-theme :after #'load-theme-restore-line-numbering)
 
 

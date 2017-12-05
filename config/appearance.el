@@ -34,6 +34,21 @@
           (add-to-list 'initial-frame-alist '(font . "Iosevka-20"))
           (add-to-list 'default-frame-alist '(font . "Iosevka-20"))))))
 
+(when system-name "imu-10-rs2.immun1.local"
+      (cond
+       ((string-equal system-type "windows-nt") ; Microsoft Windows
+        (when (member "Iosevka-Term" (font-family-list))
+          (add-to-list 'initial-frame-alist '(font . "Iosevka-11"))
+          (add-to-list 'default-frame-alist '(font . "Iosevka-11"))))
+       ((string-equal system-type "darwin")  ; Mac OS X
+        (when (member "PragmataPro Mono" (font-family-list))
+          (add-to-list 'initial-frame-alist '(font . "PragmataPro Mono-18"))
+          (add-to-list 'default-frame-alist '(font . "PragmataPro Mono-18"))))
+       ((string-equal system-type "gnu/linux") ; linux
+        (when (member "Iosevka-Term" (font-family-list))
+          (add-to-list 'initial-frame-alist '(font . "Iosevka-20"))
+          (add-to-list 'default-frame-alist '(font . "Iosevka-20"))))))
+
 ;;; --- Whitespace
 (global-whitespace-mode t)
 (setq-default indicate-empty-lines t)
@@ -57,7 +72,6 @@
   :after nlinum
   :config
   (setq nlinum-highlight-current-line t))
-
 
 ;;; --- Indentation
 (use-package smart-tabs-mode
