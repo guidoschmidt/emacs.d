@@ -37,13 +37,13 @@
 (use-package kaolin-themes :ensure :defer)
 (use-package nord-theme :ensure :defer)
 (use-package tao-theme :ensure :defer)
-;; (use-package soothe-theme :ensure :defer)
-;; (use-package nyx-theme :ensure :defer)
-;; (use-package hemera-theme :ensure :defer)
-;; (use-package nord-theme :ensure :defer)
-;; (use-package gruvbox-theme :ensure :defer)
-;; (use-package apropospriate-theme :ensure :defer)
-;; (use-package darkokai-theme :ensure :defer)
+(use-package soothe-theme :ensure :defer)
+(use-package nyx-theme :ensure :defer)
+(use-package hemera-theme :ensure :defer)
+(use-package nord-theme :ensure :defer)
+(use-package gruvbox-theme :ensure :defer)
+(use-package apropospriate-theme :ensure :defer)
+(use-package darkokai-theme :ensure :defer)
 
 
 ;; --- Circadian
@@ -54,7 +54,7 @@
   :config
   (setq calendar-latitude 49.329896)
   (setq calendar-longitude 8.570925)
-  (setq circadian-themes '((:sunrise . espresso)
+  (setq circadian-themes '((:sunrise . ample-light)
                            (:sunset . nord)))
   (circadian-setup))
 
