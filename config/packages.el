@@ -302,6 +302,7 @@
 (load "~/.emacs.d/config/languages/glsl.el")
 (load "~/.emacs.d/config/languages/haskell.el")
 (load "~/.emacs.d/config/languages/javascript.el")
+(load "~/.emacs.d/config/languages/kotlin.el")
 (load "~/.emacs.d/config/languages/markup.el")
 (load "~/.emacs.d/config/languages/php.el")
 (load "~/.emacs.d/config/languages/python.el")
