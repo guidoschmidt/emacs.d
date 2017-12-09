@@ -44,7 +44,7 @@
 (use-package gruvbox-theme :ensure :defer)
 (use-package apropospriate-theme :ensure :defer)
 (use-package darkokai-theme :ensure :defer)
-
+(use-package material-theme :ensure :defer)
 
 ;; --- Circadian
 (use-package circadian
