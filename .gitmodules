@@ -10,6 +10,9 @@
 [submodule "github/flycheck-glsl"]
 	path = github/flycheck-glsl
 	url = git@github.com:rochg/flycheck-glsl.git
+[submodule "github/company-glsl"]
+	path = github/company-glsl
+	url = git@github.com:rochg/flycheck-glsl.git
 [submodule "github/prettier-emacs"]
 	path = github/prettier-emacs
 	url = git@github.com:prettier/prettier-emacs.git

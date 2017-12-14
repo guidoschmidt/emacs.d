@@ -44,6 +44,7 @@
 (use-package gruvbox-theme :ensure :defer)
 (use-package apropospriate-theme :ensure :defer)
 (use-package darkokai-theme :ensure :defer)
+(use-package material-theme :ensure :defer)
 
 
 ;; --- Circadian
@@ -54,8 +55,8 @@
   :config
   (setq calendar-latitude 49.329896)
   (setq calendar-longitude 8.570925)
-  (setq circadian-themes '((:sunrise . material-light)
-                           (:sunset . nord)))
+  (setq circadian-themes '((:sunrise . apropospriate-light)
+                           (:sunset . material)))
   (circadian-setup))
 
 (provide 'themes)

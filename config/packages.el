@@ -14,6 +14,10 @@
   (add-to-list 'recentf-exclude no-littering-var-directory)
   (add-to-list 'recentf-exclude no-littering-etc-directory))
 
+;;; --- Install system dependencies automatically
+(use-package use-package-ensure-system-package
+  :ensure t)
+
 ;;; --- Try packages without installing them
 (use-package try
   :ensure)
