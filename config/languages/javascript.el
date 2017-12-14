@@ -99,7 +99,8 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
 
 ;;; --- Tern
 (use-package tern
-  :ensure t)
+  :ensure t
+  :ensure-system-package (tern . "npm i -g tern"))
 
 (use-package company-tern
   :ensure t
@@ -138,7 +139,8 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
 ;;       (prettier-js--prettify start end)
 ;;       (goto-char original))))
 
-(use-package web-beautify :ensure t)
+(use-package web-beautify :ensure t
+  :ensure-system-package (tern . "npm i -g js-beautify"))
 
 (provide 'javascript-web.el)
 ;;; javascript.el ends here
