@@ -35,5 +35,9 @@
 (eval-when-compile
   (require 'use-package))
 
+;; --- Install system dependencies automatically
+(use-package use-package-ensure-system-package
+  :ensure t)
+
 (provide 'pacman.el)
 ;;; pacman.el ends here
