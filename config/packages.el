@@ -3,7 +3,6 @@
 
 ;; TODO:
 ;; - dired hacks: https://github.com/Fuco1/dired-hacks
-;; - ensure-system-package: https://github.com/waymondo/use-package-ensure-system-package
 
 ;;; Code:
 
