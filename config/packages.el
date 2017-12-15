@@ -3,7 +3,6 @@
 
 ;; TODO:
 ;; - dired hacks: https://github.com/Fuco1/dired-hacks
-;; - Use ensure-system-package: https://github.com/waymondo/use-package-ensure-system-package
 
 ;;; Code:
 
@@ -14,10 +13,6 @@
   (require 'recentf)
   (add-to-list 'recentf-exclude no-littering-var-directory)
   (add-to-list 'recentf-exclude no-littering-etc-directory))
-
-;;; --- Install system dependencies automatically
-(use-package use-package-ensure-system-package
-  :ensure t)
 
 ;;; --- Try packages without installing them
 (use-package try
