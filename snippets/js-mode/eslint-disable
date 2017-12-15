@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: eslint-disable
+# key: eslint-d
+# --
+/*eslint-disable no-alert, no-console */
