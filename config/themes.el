@@ -45,7 +45,9 @@
 (use-package apropospriate-theme :ensure :defer)
 (use-package darkokai-theme :ensure :defer)
 (use-package material-theme :ensure :defer)
-
+(use-package jazz-theme :ensure :defer)
+(use-package subatomic-theme :ensure :defer)
+(use-package flatui-theme :ensure :defer)
 
 ;; --- Circadian
 (use-package circadian
@@ -55,8 +57,8 @@
   :config
   (setq calendar-latitude 49.329896)
   (setq calendar-longitude 8.570925)
-  (setq circadian-themes '((:sunrise . apropospriate-light)
-                           (:sunset . material)))
+  (setq circadian-themes '((:sunrise . flatui)
+                           (:sunset . jazz)))
   (circadian-setup))
 
 (provide 'themes)
