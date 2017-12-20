@@ -16,10 +16,9 @@
 (load "~/.emacs.d/config/packages.el")
 (load "~/.emacs.d/config/core.el")
 (load "~/.emacs.d/config/keymap.el")
-(load "~/.emacs.d/config/themes.el")
 (load "~/.emacs.d/config/appearance.el")
 (load "~/.emacs.d/config/ligatures.el")
-(load "~/.emacs.d/config/slack.el")
+(load "~/.emacs.d/config/themes.el")
 
 (setq custom-file "~/.emacs.d/local/custom-set.el")
 
