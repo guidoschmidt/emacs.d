@@ -182,9 +182,6 @@
   :config
   (global-auto-highlight-symbol-mode t))
 
-;;; --- Setup org-bullets
-'(org-clock-into-drawer "timetracking")
-
 ;;; --- Exec-path-from-shell
 (use-package exec-path-from-shell
   :ensure
@@ -287,12 +284,13 @@
 (load "~/.emacs.d/config/layers/autocomplete.company.el")
 ;; Auto-completion via auto-complete
 ;; (load "~/.emacs.d/config/layers/autocomplete.auto-complete.el")
+(load "~/.emacs.d/config/evil.el")
 (load "~/.emacs.d/config/layers/git.el")
 (load "~/.emacs.d/config/layers/shell.el")
 (load "~/.emacs.d/config/layers/spell-checking.el")
 (load "~/.emacs.d/config/layers/syntax-checking.el")
 (load "~/.emacs.d/config/notifications.el")
-(load "~/.emacs.d/config/evil.el")
+(load "~/.emacs.d/config/layers/orgmode.el")
 
 ;;; --- Languages setup
 (load "~/.emacs.d/config/languages/arduino.el")
