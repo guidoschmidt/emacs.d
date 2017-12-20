@@ -115,6 +115,7 @@
     ;; butt, chamfer, contour, curve, rounded, roundstub,
     ;; wave, zigzag, utf-8, nil
     (setq powerline-default-separator nil)
+    (setq powerline-height 30)
     ;; Disable spaceline segments
     (spaceline-toggle-workspace-number-off)
     (spaceline-toggle-minor-modes-off)
@@ -123,10 +124,10 @@
     (spaceline-toggle-org-clock-off)
     ;; Enable spaceline segments
     (spaceline-toggle-projectile-root-on)
-    (spaceline-toggle-battery-on)
+    (spaceline-toggle-battery-off)
     (spaceline-toggle-selection-info-on)
     ;; Select theme
-    (spaceline-spacemacs-theme)))
+    (spaceline-spacemacs-theme)
 
 ;;; --- Neo-tree with icons
 (use-package all-the-icons
