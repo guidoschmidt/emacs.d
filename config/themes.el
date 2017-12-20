@@ -20,16 +20,6 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 ;;; --- Re-set linum after loading a new theme.
-(defun load-theme-restore-line-numbering(theme &rest args)
-  "Set appearance again after loading any theme."
-  ;; Line numbers appearance
-  (setq linum-format 'linum-format-func)
-  ;; Cursor
-  (set-default 'cursor-type 'box)
-  (set-cursor-color "#F327AB"))
-(advice-add 'load-theme :after #'load-theme-restore-line-numbering)
-
-
 (use-package ample-theme :ensure :defer)
 (use-package apropospriate-theme :ensure :defer)
 (use-package darkokai-theme :ensure :defer)
@@ -61,15 +51,13 @@
                            (:sunset . jazz)))
   (circadian-setup))
 
-(add-hook 'circadian-before-load-theme-hook
-          #'(lambda (theme)
-              (message "Circadian will change your theme...")
-              (print theme)))
-
 (add-hook 'circadian-after-load-theme-hook
           #'(lambda (theme)
-              (message "Circadian changed your theme...")
-              (print theme)))
+              ;; Line numbers appearance
+              (setq linum-format 'linum-format-func)
+              ;; Cursor
+              (set-default 'cursor-type 'box)
+              (set-cursor-color "#F52503")))
 
 (provide 'themes)
 ;;; themes.el ends here
