@@ -51,7 +51,7 @@
 
 ;; --- Circadian
 (use-package circadian
-  ;; :load-path "~/Development/emacs/circadian.el/"
+  :load-path "~/git/develop/emacs/circadian.el/"
   :ensure
   :init
   :config
@@ -60,6 +60,16 @@
   (setq circadian-themes '((:sunrise . flatui)
                            (:sunset . jazz)))
   (circadian-setup))
+
+(add-hook 'circadian-before-load-theme-hook
+          #'(lambda (theme)
+              (message "Circadian will change your theme...")
+              (print theme)))
+
+(add-hook 'circadian-after-load-theme-hook
+          #'(lambda (theme)
+              (message "Circadian changed your theme...")
+              (print theme)))
 
 (provide 'themes)
 ;;; themes.el ends here
