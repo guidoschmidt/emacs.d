@@ -41,7 +41,7 @@
 
 ;; --- Circadian
 (use-package circadian
-  :load-path "~/git/develop/emacs/circadian.el/"
+  ;; :load-path "~/git/develop/emacs/circadian.el/"
   :ensure
   :init
   :config
