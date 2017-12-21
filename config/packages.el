@@ -127,7 +127,7 @@
     (spaceline-toggle-battery-off)
     (spaceline-toggle-selection-info-on)
     ;; Select theme
-    (spaceline-spacemacs-theme)
+    (spaceline-spacemacs-theme)))
 
 ;;; --- Neo-tree with icons
 (use-package all-the-icons
