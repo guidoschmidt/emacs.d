@@ -32,7 +32,6 @@
 (use-package hemera-theme :ensure :defer)
 (use-package nord-theme :ensure :defer)
 (use-package gruvbox-theme :ensure :defer)
-(use-package apropospriate-theme :ensure :defer)
 (use-package darkokai-theme :ensure :defer)
 (use-package material-theme :ensure :defer)
 (use-package jazz-theme :ensure :defer)
@@ -48,7 +47,7 @@
   (setq calendar-latitude 49.329896)
   (setq calendar-longitude 8.570925)
   (setq circadian-themes '((:sunrise . flatui)
-                           (:sunset . jazz)))
+                           (:sunset . gruvbox-dark-hard)))
   (circadian-setup))
 
 (add-hook 'circadian-after-load-theme-hook
