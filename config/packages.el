@@ -296,6 +296,7 @@
 (load "~/.emacs.d/config/languages/arduino.el")
 (load "~/.emacs.d/config/languages/cc.el")
 (load "~/.emacs.d/config/languages/clojure.el")
+(load "~/.emacs.d/config/languages/clisp.el")
 (load "~/.emacs.d/config/languages/css.el")
 (load "~/.emacs.d/config/languages/elisp.el")
 (load "~/.emacs.d/config/languages/glsl.el")
