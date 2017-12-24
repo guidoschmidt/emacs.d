@@ -3,7 +3,7 @@
 
 ;; TODO:
 ;; - dired hacks: https://github.com/Fuco1/dired-hacks
-
+;; - Setup common-lisp (slime-company)
 ;;; Code:
 
 ;;; --- Keep .emacs.d clean
