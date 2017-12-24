@@ -20,7 +20,8 @@
 ;;; --- ctags & ggtags
 (use-package ggtags
   :ensure
-  :defer
+  :commands ggtags-mode
+  :diminish ggtags-mode
   :config
   (defun ggtags/c-mode-hook ()
     "Hook to setup GGTAGS in cc-modes."
