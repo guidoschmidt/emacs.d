@@ -57,7 +57,7 @@
   (("C-<" . evil-mc-make-cursor-move-next-line)
    ("C->" . evil-mc-make-cursor-move-prev-line)))
 
-;;; Expand region in combination with evil-leader
+;;; --- Expand region in combination with evil-leader
 (use-package expand-region
   :ensure
   :config
@@ -66,11 +66,16 @@
     '(setq expand-region-contract-fast-key "z"))
   (evil-leader/set-key "e" 'er/expand-region))
 
-;;; Evil-surround
+;;; --- Evil-surround
 (use-package evil-surround
   :ensure
   :config
   (global-evil-surround-mode 1))
+
+;;; --- Evil collection
+;; (use-package evil-collection
+;;   :custom (evil-collection-setup-minibuffer t)
+;;   :init (evil-collection-init))
 
 (provide 'evil.el)
 ;;; evil.el ends here

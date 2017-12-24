@@ -4,6 +4,7 @@
 ;; TODO:
 ;; - dired hacks: https://github.com/Fuco1/dired-hacks
 ;; - Setup common-lisp (slime-company)
+;; - evil-collection
 ;;; Code:
 
 ;;; --- Keep .emacs.d clean
