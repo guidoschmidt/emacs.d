@@ -14,5 +14,13 @@
 (use-package gist
   :ensure t)
 
+(use-package git-gutter
+  :ensure
+  :config
+  (global-git-gutter-mode t)
+  (git-gutter:linum-setup)
+  (custom-set-variables
+   '(git-gutter:update-interval 2)))
+
 (provide 'git.el)
 ;;; git.el ends here
