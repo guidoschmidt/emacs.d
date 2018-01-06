@@ -216,7 +216,12 @@
   :config
   (setq ivy-use-virtual-buffers t)
   (setq ivy-height 20)
-  (setq ivy-display-style 'fancy))
+  (setq ivy-display-style 'fancy)
+  ;;advise swiper to recenter on exit
+  (defun bjm-swiper-recenter (&rest args)
+    "recenter display after swiper"
+    (recenter))
+  (advice-add 'swiper :after #'bjm-swiper-recenter))
 
 ;;; --- Swiper - better isearch
 (use-package counsel
@@ -226,7 +231,6 @@
   :ensure
   :bind
   (("C-s" . swiper)
-   ("C-r" . swiper)
    ("C-c C-r" . ivy-resume)
    ("M-x" . counsel-M-x)
    ("C-x C-f" . counsel-find-file)
