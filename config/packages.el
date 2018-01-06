@@ -187,7 +187,7 @@
 (use-package exec-path-from-shell
   :ensure
   :config
-  (when (memq window-system '(mac ns))
+  (when (string-equal system-type "darwin")
     (exec-path-from-shell-initialize)))
 
 ;;; --- Setup ace-window
@@ -225,6 +225,7 @@
 
 ;;; --- Swiper - better isearch
 (use-package counsel
+  :ensure-system-package (counsel-ag . "brew install ag")
   :ensure)
 
 (use-package swiper
