@@ -286,17 +286,14 @@
   :ensure)
 
 ;;; --- Load additional layers
-;; Auto-completion via company
-(load "~/.emacs.d/config/layers/autocomplete.company.el")
-;; Auto-completion via auto-complete
-;; (load "~/.emacs.d/config/layers/autocomplete.auto-complete.el")
 (load "~/.emacs.d/config/evil.el")
+(load "~/.emacs.d/config/layers/autocomplete.company.el")
 (load "~/.emacs.d/config/layers/git.el")
+(load "~/.emacs.d/config/layers/orgmode.el")
 (load "~/.emacs.d/config/layers/shell.el")
 (load "~/.emacs.d/config/layers/spell-checking.el")
 (load "~/.emacs.d/config/layers/syntax-checking.el")
 (load "~/.emacs.d/config/notifications.el")
-(load "~/.emacs.d/config/layers/orgmode.el")
 
 ;;; --- Languages setup
 (load "~/.emacs.d/config/languages/arduino.el")
