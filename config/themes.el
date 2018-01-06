@@ -1,13 +1,13 @@
 ;;; themes.el --- Configure themes
 ;;; Commentary:
 
-;; ** Nighttime themes:
+;;  Nighttime themes:
 ;; - junio (pack: sublime-themes)
 ;; - spolsky (pack: sublime-themes)
 ;; - soohe-theme
 ;; - spacegray (pack: spacegray-theme)
 ;;
-;; ** Daytime themes:
+;;  Daytime themes:
 ;; - flatui-theme
 ;; - material-light (pack: material-theme)
 ;; - twilight-bright (pack: twilight-bright-theme)
@@ -15,7 +15,6 @@
 ;; - ample-theme
 
 ;;; Code:
-
 ;; --- Theme load paths
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
@@ -32,7 +31,6 @@
 (use-package kaolin-themes :ensure :defer)
 (use-package material-theme :ensure :defer)
 (use-package nord-theme :ensure :defer)
-(use-package nord-theme :ensure :defer)
 (use-package nyx-theme :ensure :defer)
 (use-package soothe-theme :ensure :defer)
 (use-package subatomic-theme :ensure :defer)
@@ -42,13 +40,13 @@
 (use-package circadian
   ;; :load-path "~/git/develop/emacs/circadian.el/"
   :ensure
-  :init
   :config
   (setq calendar-latitude 49.329896)
   (setq calendar-longitude 8.570925)
-  (setq circadian-themes '((:sunrise . flatui)
+  (setq circadian-themes '((:sunrise . apropospriate-dark)
                            (:sunset . gruvbox-dark-hard)))
-  (circadian-setup))
+  (circadian-setup)
+  (add-hook 'emacs-startup-hook #'(circadian-setup)))
 
 (add-hook 'circadian-after-load-theme-hook
           #'(lambda (theme)
