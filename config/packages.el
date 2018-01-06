@@ -225,7 +225,6 @@
 
 ;;; --- Swiper - better isearch
 (use-package counsel
-  :ensure-system-package (counsel-ag . "brew install ag")
   :ensure)
 
 (use-package swiper
@@ -286,7 +285,6 @@
   :ensure)
 
 ;;; --- Load additional layers
-(load "~/.emacs.d/config/evil.el")
 (load "~/.emacs.d/config/layers/autocomplete.company.el")
 (load "~/.emacs.d/config/layers/git.el")
 (load "~/.emacs.d/config/layers/orgmode.el")
