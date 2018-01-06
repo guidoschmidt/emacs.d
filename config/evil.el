@@ -28,7 +28,8 @@
     "?" 'ispell-word
     "p" 'counsel-projectile-switch-project
     "f" 'counsel-projectile-find-file
-    "t" 'mc/mark-sgml-tag-pair))
+    "t" 'mc/mark-sgml-tag-pair
+    "g" 'counsel-ag))
 
 ;;; --- Evil cleverparens
 (use-package evil-cleverparens
