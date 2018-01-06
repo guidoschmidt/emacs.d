@@ -17,6 +17,12 @@
   :config
   (cmake-ide-setup))
 
+;;; --- Modern C++11 font lock/syntax highlighting
+(use-package modern-cpp-font-lock
+  :ensure
+  :config
+  (modern-c++-font-lock-global-mode t))
+
 ;;; --- ctags & ggtags
 (use-package ggtags
   :ensure
