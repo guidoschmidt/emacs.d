@@ -3,6 +3,9 @@
 
 
 ;;; Code:
+;; Start the server
+(server-start)
+
 ;; Setup language environment
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
