@@ -5,20 +5,20 @@
 
 ;;; Code:
 (use-package company
-  :ensure t
+  :ensure
   :config
-  (setq-default company-dabbrev-other-buffers t)
-  (setq-default company-dabbrev-code-time-limit 0.5)
-  (setq-default company-idle-delay 0.1)
-  (setq-default company-minimum-prefix-length 1)
-  (setq-default company-require-match nil)
-  (setq-default company-dabbrev-ignore-case nil)
-  (setq-default company-dabbrev-downcase nil)
-  (setq-default company-tooltip-limit 20)
-  (setq-default company-show-numbers t)
-  (setq-default company-transformers '(company-sort-by-occurrence))
-  ;;; Fix company popups when using fci
-  ;;; (fill column indicator) mode
+  (setq-default company-dabbrev-other-buffers t
+                company-dabbrev-code-time-limit 0.5
+                company-idle-delay 0.1
+                company-minimum-prefix-length 1
+                company-require-match nil
+                company-dabbrev-ignore-case nil
+                company-dabbrev-downcase nil
+                company-tooltip-limit 20
+                company-show-numbers t
+                company-transformers '(company-sort-by-occurrence))
+  ;; Fix company popups when using fci
+  ;; (fill column indicator) mode
   (defvar-local company-fci-mode-on-p nil)
   (defun company-turn-off-fci (&rest ignore)
     (when (boundp 'fci-mode)
@@ -37,21 +37,22 @@
   (("<C-tab>" . company-complete-common)
    ("C-c <C-tab>" . company-yasnippet)))
 
+;;; --- Company quickhelp
 (use-package company-quickhelp
-  :ensure t
+  :ensure
+  :commands company-mode
   :if window-system
   :config
   (setq pos-tip-background-color "black")
   (setq pos-tip-foreground-color "white")
-  (eval-when-compile
-    (eval-after-load 'company
-      '(define-key company-active-map
-         (kbd "C-c h")
-         #'company-quickhelp-manual-begin)))
-  (company-quickhelp-mode))
+  (company-quickhelp-mode)
+  :bind
+  (("C-c h" . company-quickhelp-manual-begin)))
 
+;;; --- Company statistics
 (use-package company-statistics
   :ensure
+  :commands company-mode
   :config
   (add-hook 'after-init-hook 'company-statistics-mode))
 
