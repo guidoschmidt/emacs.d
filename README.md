@@ -22,7 +22,7 @@ brew install emacs-plus --with-no-title-bars --without-spacemacs-icon
 3. Install [**Universal CTAGS**](https://github.com/universal-ctags/ctags)
 
 
-## Time Tracking (Wakatime)
+### Time Tracking (Wakatime)
 1. `pip3 install wakatime`
 
 
