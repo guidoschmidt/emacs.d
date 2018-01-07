@@ -16,8 +16,7 @@
   :config
   (setq auto-save-file-name-transforms
         `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
- (eval-when-compile
-    (add-to-list 'recentf-exclude no-littering-var-directory))
+ (add-to-list 'recentf-exclude no-littering-var-directory)
  (add-to-list 'recentf-exclude no-littering-etc-directory))
 
 ;;; --- Try packages without installing them
@@ -228,7 +227,7 @@
 
 ;;; --- Fill collumn indicator
 (use-package fill-column-indicator
-  :commands fci-mode
+  :ensure
   :config
   (setq fci-rule-width 2)
   (setq-default fci-rule-column 80)
