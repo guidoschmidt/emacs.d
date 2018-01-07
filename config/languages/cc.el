@@ -69,8 +69,10 @@
   :init
   (add-hook 'c++-mode-hook 'ycmd-mode)
   :config
-  (set-variable 'ycmd-global-config "/Users/gs/.emacs.d/ycm_extra_conf.py")
-  (set-variable 'ycmd-server-command '("python" "/Users/gs/.emacs.d/ycmd/ycmd"))
+  (set-variable 'ycmd-global-config
+                "/Users/gs/.emacs.d/github/ycm_extra_conf.py")
+  (set-variable 'ycmd-server-command
+                '("python" "/Users/gs/.emacs.d/github/ycmd/ycmd"))
   (setq ycmd-force-semantic-completion t))
 
 (use-package company-ycmd
