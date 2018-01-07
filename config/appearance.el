@@ -35,10 +35,15 @@
 (defun set-font (font size)
   "Set Emacs font via `set-frame-font' with a FONT name and SIZE."
   (interactive)
-  (let ((font-string (concat font " " (int-to-string size))))
+  (let ((font-string (concat font "-" (int-to-string size))))
+    (add-to-list 'initial-frame-alist `(font . ,font-string))
+    (add-to-list 'default-frame-alist `(font . ,font-string))
     (if (member font (font-family-list))
-        (set-frame-font font-string nil t)
-      (message (concat font " not available")))))
+        (progn
+          (set-frame-font font-string nil t)))
+    (message (concat font " not available"))))
+
+(set-font "PragmataPro" 16)
 
 (defun set-font-for-os ()
   "Set the font for a matched operating system."
@@ -50,6 +55,7 @@
         (set-font font-typeface size))))
   (mapc #'set-font-by-match os-font-map))
 
+;; TODO:
 ;; (defun scale-with (size scale)
 ;;   (round (* size scale)))
 ;;
@@ -60,9 +66,6 @@
 ;;   "List of typographic scales used at different hosts."
 ;;   :type 'alist
 ;;   :group 'fontset)
-
-(set-font-for-os)
-(add-hook 'emacs-startup-hook #'set-font-for-os)
 
 ;;; --- Whitespace
 (global-whitespace-mode t)
@@ -80,7 +83,7 @@
   :ensure t
   :config
   (global-nlinum-mode)
-  (setq nlinum-format "%3d"))
+  (setq nlinum-format "%4d"))
 
 (use-package nlinum-hl
   :ensure t

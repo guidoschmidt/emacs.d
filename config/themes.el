@@ -44,9 +44,9 @@
   (setq calendar-latitude 49.329896)
   (setq calendar-longitude 8.570925)
   (setq circadian-themes '((:sunrise . apropospriate-dark)
-                           (:sunset . gruvbox-dark-hard)))
+                           (:sunset . nyx)))
   (circadian-setup)
-  (add-hook 'emacs-startup-hook #'(circadian-setup)))
+  (add-hook 'after-init-hook 'circadian-setup))
 
 (add-hook 'circadian-after-load-theme-hook
           #'(lambda (theme)
