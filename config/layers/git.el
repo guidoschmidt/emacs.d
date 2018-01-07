@@ -9,7 +9,8 @@
   :ensure t
   :config
   (use-package evil-magit
-    :ensure))
+    :ensure)
+  (setq magit-completing-read-function 'ivy-completing-read))
 
 (use-package gist
   :ensure t)
