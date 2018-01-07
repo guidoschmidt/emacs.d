@@ -2,18 +2,19 @@
 ;;; Commentary:
 
 ;;; Code:
-(use-package git-commit
-  :ensure t)
+(use-package shell
+  :ensure)
 
 (use-package magit
-  :ensure t
+  :ensure
+  :commands magit-status
   :config
   (use-package evil-magit
     :ensure)
   (setq magit-completing-read-function 'ivy-completing-read))
 
 (use-package gist
-  :ensure t)
+  :ensure)
 
 (use-package git-gutter
   :ensure
