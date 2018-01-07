@@ -17,19 +17,20 @@
   (global-evil-leader-mode)
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
-    "a" 'align-regexp
-    "o" 'sort-lines
-    "b" 'ivy-switch-buffer
-    "i" 'ibuffer
-    "n" 'ivy-switch-buffer-other-window
-    "k" 'ido-kill-buffer
-    "s" 'magit-status
-    "TAB" 'indent-region
-    "?" 'ispell-word
-    "p" 'counsel-projectile-switch-project
-    "f" 'counsel-projectile-find-file
-    "t" 'mc/mark-sgml-tag-pair
-    "g" 'counsel-ag))
+    "a"       'align-regexp
+    "o"       'sort-lines
+    "b"       'ivy-switch-buffer
+    "i"       'ibuffer
+    "n"       'ivy-switch-buffer-other-window
+    "k"       'ido-kill-buffer
+    "s"       'magit-status
+    "TAB"     'indent-region
+    "?"       'ispell-word
+    "p"       'counsel-projectile-switch-project
+    "f"       'counsel-projectile-find-file
+    "t"       'mc/mark-sgml-tag-pair
+    "g"       'counsel-ag
+    ))
 
 ;;; --- Evil cleverparens
 (use-package evil-cleverparens
