@@ -20,10 +20,57 @@
 
 ;;; --- Modern C++11 font lock/syntax highlighting
 (use-package modern-cpp-font-lock
-  :ensure
+  :commands c++-mode
   :config
   (modern-c++-font-lock-global-mode t))
 
+;; --- clang-format
+(use-package clang-format
+  ;; Create clang-format file using google style
+  ;; clang-format -style=google -dump-config > .clang-format
+  :commands c++-mode
+  :bind
+  (("C-c C-f" . clang-format-region)))
+
+;; -- Add Google C++ style
+(use-package google-c-style
+  :commands c++-mode
+  :defer
+  :config
+  (add-hook 'c-mode-common-hook 'google-set-c-style)
+  (add-hook 'c++-mode-hook 'google-set-c-style)
+  (add-hook 'c-mode-hook 'google-set-c-style))
+
+;; -- Add Google C++ style checker - In default, syntax checked by clang
+(use-package flycheck-google-cpplint
+  :load-path "config/layers/"
+  :commands c++-mode
+  :config
+  (eval-after-load 'flycheck
+    '(progn (flycheck-add-next-checker 'c/c++-clang
+                                       '(warning . c/c++-googlelint)))))
+
+;; -- YouCompleteMe
+(use-package ycmd
+  :commands c++-mode
+  :init
+  (add-hook 'c++-mode-hook 'ycmd-mode)
+  :config
+  (set-variable 'ycmd-global-config
+                "/Users/gs/.emacs.d/github/ycm_extra_conf.py")
+  (set-variable 'ycmd-server-command
+                '("python" "/Users/gs/.emacs.d/github/ycmd/ycmd"))
+  (setq ycmd-force-semantic-completion t))
+
+(use-package company-ycmd
+  :commands c++-mode
+  :config (company-ycmd-setup))
+
+(use-package flycheck-ycmd
+  :commands c++-mode
+  :config (flycheck-ycmd-setup))
+
+;;; TODO: move to it's code-navigation package
 ;;; --- ctags & ggtags
 (use-package ggtags
   :ensure
@@ -36,55 +83,7 @@
       (ggtags-mode 1)))
   (add-hook 'c-mode-common-hook 'ggtags/c-mode-hook))
 
-;; --- clang-format
-(use-package clang-format
-  ;; Create clang-format file using google style
-  ;; clang-format -style=google -dump-config > .clang-format
-  :ensure t
-  :bind
-  (("C-c C-f" . clang-format-region)))
-
-;; -- Add Google C++ style
-(use-package google-c-style
-  :ensure t
-  :defer
-  :config
-  (add-hook 'c-mode-common-hook 'google-set-c-style)
-  (add-hook 'c++-mode-hook 'google-set-c-style)
-  (add-hook 'c-mode-hook 'google-set-c-style))
-
-;; -- Add Google C++ style checker - In default, syntax checked by clang
-(use-package flycheck-google-cpplint
-  :load-path "config/layers/"
-  :defer
-  :config
-  (eval-after-load 'flycheck
-    '(progn (flycheck-add-next-checker 'c/c++-clang
-                                       '(warning . c/c++-googlelint)))))
-
-;; -- YouCompleteMe
-(use-package ycmd
-  :ensure
-  :commands c++-mode
-  :init
-  (add-hook 'c++-mode-hook 'ycmd-mode)
-  :config
-  (set-variable 'ycmd-global-config
-                "/Users/gs/.emacs.d/github/ycm_extra_conf.py")
-  (set-variable 'ycmd-server-command
-                '("python" "/Users/gs/.emacs.d/github/ycmd/ycmd"))
-  (setq ycmd-force-semantic-completion t))
-
-(use-package company-ycmd
-  :ensure
-  :config (company-ycmd-setup))
-
-(use-package flycheck-ycmd
-  :ensure
-  :config (flycheck-ycmd-setup))
-
 ;;; -- Counsel with etags
-;;; TODO: move to it's code-navigation package
 (use-package counsel-etags
   :ensure
   :config

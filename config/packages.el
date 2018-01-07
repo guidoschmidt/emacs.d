@@ -19,11 +19,11 @@
 
 ;;; --- Try packages without installing them
 (use-package try
-  :ensure)
+  :commands try)
 
 ;;; --- Setup which-key
 (use-package which-key
-  :ensure
+  :commands which-key
   :config (which-key-mode)
   :diminish (which-key-mode . "w"))
 
@@ -46,7 +46,7 @@
 
 ;;; --- Yasnippets
 (use-package yasnippet
-  :ensure
+  :commands (yas-global-mode yas-minor-mode)
   :config
   (yas-global-mode 1)
   (eval-after-load 'yasnippet
@@ -54,7 +54,7 @@
 
 ;;; --- Wakatime
 (use-package wakatime-mode
-  :ensure
+  :commands global-wakatime-mode
   :config
   (setq wakatime-api-key "32135691-bb0b-462e-94c2-b364aa352a6c")
   (global-wakatime-mode))
@@ -68,7 +68,6 @@
     ("+" text-scale-increase "increase")
     ("<" text-scale-decrease "decrease")
     ("0" text-scale-adjust "adjust")))
-
 
 ;;; --- Focus mode
 (use-package focus
@@ -115,7 +114,7 @@
 
 ;;; --- Neo-tree with icons
 (use-package neotree
-  :ensure
+  :commands neotree
   :config
   (use-package all-the-icons
     :ensure)
@@ -139,19 +138,16 @@
   (setq projectile-completion-system 'ivy))
 
 (use-package counsel-projectile
-  :ensure
+  :commands counsel-projectile
   :config
   (counsel-projectile-on))
 
-;;; --- EditorConfig
-(use-package editorconfig
-  :ensure
-  :config
-  (editorconfig-mode 1))
-
 ;;; --- Dump-Jump
 (use-package dumb-jump
-  :ensure
+  :commands (dumb-jump-go-other-window
+             dumb-jump-go
+             dumb-jump-go-prefer-external
+             dumb-jump-go-prefer-external-other-window)
   :bind (("M-g o" . dumb-jump-go-other-window)
          ("M-g j" . dumb-jump-go)
          ("M-g x" . dumb-jump-go-prefer-external)
@@ -160,7 +156,7 @@
 
 ;;; --- Undo-tree
 (use-package undo-tree
-  :ensure
+  :commands global-undo-tree-mode
   :init (global-undo-tree-mode))
 
 ;;; --- Auto highlight words
@@ -188,8 +184,7 @@
 
 ;;; --- Ivy
 (use-package ivy
-  :ensure
-  :commands ivy-mode
+  :commands (ivy-mode ivy-switch-buffer)
   :bind (("C-x b" . ivy-switch-buffer))
   :init (ivy-mode 1)
   :config
@@ -219,7 +214,7 @@
 
 ;;; --- Avy
 (use-package avy
-  :ensure
+  :commands (avy-goto-char avy-goto-char-timer)
   :bind (("C-c a" . avy-goto-char)
          ("C-c o" . avy-goto-char-timer)))
 
@@ -245,7 +240,7 @@
 
 ;;; -- Refactor
 (use-package emr
-  :ensure
+  :commands emr-show-refactor-menu
   :config
   (add-hook 'prog-mode-hook 'emr-initialize)
   :bind

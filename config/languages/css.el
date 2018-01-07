@@ -12,7 +12,7 @@
 
 ;;; --- SASS & SCSS
 (use-package sass-mode
-  :ensure t
+  :commands sass-mode
   :config
   (defun custom/sass-mode-hook ()
     (setq-default rainbow-html-colors t)
@@ -24,7 +24,7 @@
 
 ;;; --- Stylus
 (use-package stylus-mode
-  :ensure t
+  :commands stylus-mode
   :config
   (defun custom/stylus-mode-hook ()
     "Hook to customize stylus mode."
