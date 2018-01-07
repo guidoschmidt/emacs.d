@@ -22,7 +22,6 @@
 (use-package ample-theme :ensure :defer)
 (use-package apropospriate-theme :ensure :defer)
 (use-package darkokai-theme :ensure :defer)
-(use-package darkokai-theme :ensure :defer)
 (use-package espresso-theme :ensure :defer)
 (use-package flatui-theme :ensure :defer)
 (use-package gruvbox-theme :ensure :defer)
@@ -44,7 +43,7 @@
   (setq calendar-latitude 49.329896)
   (setq calendar-longitude 8.570925)
   (setq circadian-themes '((:sunrise . apropospriate-dark)
-                           (:sunset . nyx)))
+                           (:sunset . darkokai)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
 
@@ -54,7 +53,12 @@
               (setq linum-format 'linum-format-func)
               ;; Cursor
               (set-default 'cursor-type 'box)
-              (set-cursor-color "#F52503")))
+              (set-cursor-color "#F52503")
+              ;; Set evil-modes cursor colors
+              '(evil-emacs-state-cursor (quote ("#F52503" hbar)) t)
+              '(evil-insert-state-cursor (quote ("#03F5E5" bar)) t)
+              '(evil-normal-state-cursor (quote ("#F52503" box)) t)
+              '(evil-visual-state-cursor (quote ("#F3F3F2" box)) t)))
 
 (provide 'themes)
 ;;; themes.el ends here
