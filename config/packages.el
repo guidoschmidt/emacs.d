@@ -10,14 +10,12 @@
 ;;; --- Keep .emacs.d clean
 (use-package no-littering
   :ensure
-  :defines recentf-exclude
-  :requires recentf
-  :init
   :config
+  (require 'recentf)
   (setq auto-save-file-name-transforms
         `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
- (add-to-list 'recentf-exclude no-littering-var-directory)
- (add-to-list 'recentf-exclude no-littering-etc-directory))
+  (add-to-list 'recentf-exclude no-littering-var-directory)
+  (add-to-list 'recentf-exclude no-littering-etc-directory))
 
 ;;; --- Try packages without installing them
 (use-package try
