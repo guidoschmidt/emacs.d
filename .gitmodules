@@ -19,3 +19,6 @@
 [submodule "github/org-kanban"]
 	path = github/org-kanban
 	url = https://github.com/hagmonk/org-kanban.git
+[submodule "ycmd"]
+	path = ycmd
+	url = https://github.com/Valloric/ycmd.git
