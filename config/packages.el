@@ -250,7 +250,7 @@
   :config
   (setq fci-rule-width 2)
   (setq-default fci-rule-column 80)
-  (setq-default fci-rule-color "lightgray")
+  (setq-default fci-rule-color "#252525")
   (setq-default whitespace-style '(face trailing))
   (add-hook 'after-change-major-mode-hook 'fci-mode))
 
