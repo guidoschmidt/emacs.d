@@ -7,23 +7,25 @@
 ;; - evil-collection
 ;; - https://github.com/DarwinAwardWinner/ido-completing-read-plus
 ;; - https://github.com/technomancy/find-file-in-project
-;;; Code:
 
+;;; Code:
 ;;; --- Keep .emacs.d clean
 (use-package no-littering
   :ensure
   :config
   (require 'recentf)
+  (setq auto-save-file-name-transforms
+        `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
   (add-to-list 'recentf-exclude no-littering-var-directory)
   (add-to-list 'recentf-exclude no-littering-etc-directory))
 
 ;;; --- Try packages without installing them
 (use-package try
-  :ensure)
+  :commands try)
 
 ;;; --- Setup which-key
 (use-package which-key
-  :ensure
+  :commands which-key
   :config (which-key-mode)
   :diminish (which-key-mode . "w"))
 
@@ -46,18 +48,15 @@
 
 ;;; --- Yasnippets
 (use-package yasnippet
-  :ensure
-  :init
-  (yas-global-mode 1)
+  :commands (yas-global-mode yas-minor-mode)
   :config
+  (yas-global-mode 1)
   (eval-after-load 'yasnippet
-    (yas-load-directory "~/.emacs.d/snippets"))
-  :bind
-  (("C-c e" . yas-expand)))
+    (yas-load-directory "~/.emacs.d/snippets")))
 
 ;;; --- Wakatime
 (use-package wakatime-mode
-  :ensure
+  :commands global-wakatime-mode
   :config
   (setq wakatime-api-key "32135691-bb0b-462e-94c2-b364aa352a6c")
   (global-wakatime-mode))
@@ -66,32 +65,15 @@
 (use-package hydra
   :ensure
   :config
-  (defhydra hydra-zoom (global-map "<f2>")
-    "zoom"
-    ("g" text-scale-increase "in")
-    ("l" text-scale-decrease "out")))
-
-;;; FIC-Mode
-(use-package fic-mode
-  :ensure
-  :config
-  (defun add-something-to-mode-hooks (mode-list something)
-    "helper function to add a callback to multiple hooks"
-    (dolist (mode mode-list)
-      (add-hook (intern (concat (symbol-name mode) "-mode-hook")) something)))
-  (add-something-to-mode-hooks '(c++
-                                 emacs-lisp
-                                 vue
-                                 jsx
-                                 rjsx
-                                 web
-                                 sass)
-                               (lambda () (fic-mode 1))))
+  (defhydra hydra-text-scale (global-map "<f10>")
+    "Text Zoom"
+    ("+" text-scale-increase "increase")
+    ("<" text-scale-decrease "decrease")
+    ("0" text-scale-adjust "adjust")))
 
 ;;; --- Focus mode
 (use-package focus
-  :ensure
-  :defer)
+  :commands focus-mode)
 
 ;;; --- Highlight indentation
 (use-package highlight-indent-guides
@@ -133,11 +115,11 @@
     (spaceline-spacemacs-theme)))
 
 ;;; --- Neo-tree with icons
-(use-package all-the-icons
-  :ensure)
 (use-package neotree
-  :ensure
+  :commands neotree
   :config
+  (use-package all-the-icons
+    :ensure)
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 
 ;;; --- Rainbow-delimiters
@@ -145,6 +127,10 @@
   :ensure
   :config
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+
+;; --- Rainbow mode
+(use-package rainbow-mode
+  :commands rainbow-mode)
 
 ;;; --- Projectile
 (use-package projectile
@@ -154,49 +140,42 @@
   (setq projectile-completion-system 'ivy))
 
 (use-package counsel-projectile
-  :ensure
+  :commands counsel-projectile
   :config
   (counsel-projectile-on))
 
-;;; --- EditorConfig
-(use-package editorconfig
-  :ensure
-  :config
-  (editorconfig-mode 1))
-
 ;;; --- Dump-Jump
 (use-package dumb-jump
+  :commands (dumb-jump-go-other-window
+             dumb-jump-go
+             dumb-jump-go-prefer-external
+             dumb-jump-go-prefer-external-other-window)
   :bind (("M-g o" . dumb-jump-go-other-window)
          ("M-g j" . dumb-jump-go)
          ("M-g x" . dumb-jump-go-prefer-external)
          ("M-g z" . dumb-jump-go-prefer-external-other-window))
-  :config (setq dumb-jump-selector 'ivy)
-  :ensure)
+  :config (setq dumb-jump-selector 'ivy))
 
 ;;; --- Undo-tree
 (use-package undo-tree
-  :ensure
-  :init
-  (global-undo-tree-mode))
+  :commands global-undo-tree-mode
+  :init (global-undo-tree-mode))
 
 ;;; --- Auto highlight words
 (use-package auto-highlight-symbol
   :ensure
-  :config
-  (global-auto-highlight-symbol-mode t))
+  :config (global-auto-highlight-symbol-mode t))
 
 ;;; --- Exec-path-from-shell
 (use-package exec-path-from-shell
   :ensure
-  :config
-  (when (memq window-system '(mac ns))
-    (exec-path-from-shell-initialize)))
+  :config (when (string-equal system-type "darwin")
+            (exec-path-from-shell-initialize)))
 
 ;;; --- Setup ace-window
 (use-package ace-window
   :ensure
-  :init
-  (global-set-key [remap other-window] 'ace-window)
+  :init (global-set-key [remap other-window] 'ace-window)
   :config
   (setq aw-background nil)
   (custom-set-faces
@@ -205,20 +184,20 @@
                    :foreground "white"
                    :background "black"))))))
 
-;;; --- Rainbow mode
-(use-package rainbow-mode
-  :ensure)
-
 ;;; --- Ivy
 (use-package ivy
-  :ensure
-  :diminish (ivy-mode)
+  :commands (ivy-mode ivy-switch-buffer)
   :bind (("C-x b" . ivy-switch-buffer))
   :init (ivy-mode 1)
   :config
   (setq ivy-use-virtual-buffers t)
   (setq ivy-height 20)
-  (setq ivy-display-style 'fancy))
+  (setq ivy-display-style 'fancy)
+  ;; Advise swiper to recenter on exit
+  (defun bjm-swiper-recenter (&rest args)
+    "recenter display after swiper"
+    (recenter))
+  (advice-add 'swiper :after #'bjm-swiper-recenter))
 
 ;;; --- Swiper - better isearch
 (use-package counsel
@@ -228,7 +207,6 @@
   :ensure
   :bind
   (("C-s" . swiper)
-   ("C-r" . swiper)
    ("C-c C-r" . ivy-resume)
    ("M-x" . counsel-M-x)
    ("C-x C-f" . counsel-find-file)
@@ -238,7 +216,7 @@
 
 ;;; --- Avy
 (use-package avy
-  :ensure
+  :commands (avy-goto-char avy-goto-char-timer)
   :bind (("C-c a" . avy-goto-char)
          ("C-c o" . avy-goto-char-timer)))
 
@@ -248,13 +226,13 @@
   :config
   (setq fci-rule-width 2)
   (setq-default fci-rule-column 80)
-  (setq-default fci-rule-color "lightgray")
+  (setq-default fci-rule-color "#252525")
   (setq-default whitespace-style '(face trailing))
-  (add-hook 'after-change-major-mode-hook 'fci-mode))
+  (add-hook 'prog-mode-hook 'fci-mode))
 
 ;;; --- Wrap region
 (use-package wrap-region
-  :ensure
+  :commands wrap-region-mode
   :config
   (wrap-region-add-wrapper "`" "`")
   (wrap-region-add-wrapper "*" "*")
@@ -264,7 +242,7 @@
 
 ;;; -- Refactor
 (use-package emr
-  :ensure
+  :commands emr-show-refactor-menu
   :config
   (add-hook 'prog-mode-hook 'emr-initialize)
   :bind
@@ -272,7 +250,7 @@
 
 ;;; -- Aggressive indent
 (use-package aggressive-indent
-  :ensure
+  :commands aggressive-indent-mode
   :config
   (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
   (add-hook 'css-mode-hook #'aggressive-indent-mode))
@@ -280,20 +258,16 @@
 ;;; --- Language specific
 ;;; --- Android
 (use-package gradle-mode
-  :ensure)
+  :commands gradle-mode)
 
 ;;; --- Load additional layers
-;; Auto-completion via company
 (load "~/.emacs.d/config/layers/autocomplete.company.el")
-;; Auto-completion via auto-complete
-;; (load "~/.emacs.d/config/layers/autocomplete.auto-complete.el")
-(load "~/.emacs.d/config/evil.el")
 (load "~/.emacs.d/config/layers/git.el")
+(load "~/.emacs.d/config/layers/orgmode.el")
 (load "~/.emacs.d/config/layers/shell.el")
 (load "~/.emacs.d/config/layers/spell-checking.el")
 (load "~/.emacs.d/config/layers/syntax-checking.el")
 (load "~/.emacs.d/config/notifications.el")
-(load "~/.emacs.d/config/layers/orgmode.el")
 
 ;;; --- Languages setup
 (load "~/.emacs.d/config/languages/arduino.el")

@@ -19,6 +19,7 @@
 (load "~/.emacs.d/config/appearance.el")
 (load "~/.emacs.d/config/ligatures.el")
 (load "~/.emacs.d/config/themes.el")
+(load "~/.emacs.d/config/evil.el")
 
 (setq custom-file "~/.emacs.d/local/custom-set.el")
 

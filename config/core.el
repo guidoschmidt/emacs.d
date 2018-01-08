@@ -3,7 +3,7 @@
 
 
 ;;; Code:
-;; Start emacs-server
+;; Start the server
 (server-start)
 
 ;; Setup language environment

@@ -3,7 +3,7 @@
 
 ;;; Code:
 (use-package platformio-mode
-  :ensure t
+  :commands arduino-mode
   :config
   (defun platformio-custom-hook ()
     (irony-mode)

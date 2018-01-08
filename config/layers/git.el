@@ -2,17 +2,27 @@
 ;;; Commentary:
 
 ;;; Code:
-(use-package git-commit
-  :ensure t)
+(use-package shell
+  :ensure)
 
 (use-package magit
-  :ensure t
+  :ensure
+  :commands magit-status
   :config
   (use-package evil-magit
-    :ensure))
+    :ensure)
+  (setq magit-completing-read-function 'ivy-completing-read))
 
 (use-package gist
-  :ensure t)
+  :ensure)
+
+(use-package git-gutter
+  :ensure
+  :config
+  (global-git-gutter-mode t)
+  (git-gutter:linum-setup)
+  (custom-set-variables
+   '(git-gutter:update-interval 2)))
 
 (provide 'git.el)
 ;;; git.el ends here

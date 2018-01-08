@@ -16,3 +16,9 @@
 [submodule "github/prettier-emacs"]
 	path = github/prettier-emacs
 	url = git@github.com:prettier/prettier-emacs.git
+[submodule "github/org-kanban"]
+	path = github/org-kanban
+	url = https://github.com/hagmonk/org-kanban.git
+[submodule "ycmd"]
+	path = ycmd
+	url = https://github.com/Valloric/ycmd.git

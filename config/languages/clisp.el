@@ -3,7 +3,6 @@
 
 ;;; Code:
 (use-package slime
-  :ensure
   :commands common-lisp-mode
   :config
   (setq inferior-lisp-program "/usr/local/bin/clisp")

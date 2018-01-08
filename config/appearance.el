@@ -19,35 +19,53 @@
 
 ;;; --- Typeface
 ;; set default font in initial window and for any new window
-(when system-name "MBA-Guido"
-      (cond
-       ((string-equal system-type "windows-nt") ; Microsoft Windows
-        (when (member "Iosevka-Term" (font-family-list))
-          (add-to-list 'initial-frame-alist '(font . "Iosevka-11"))
-          (add-to-list 'default-frame-alist '(font . "Iosevka-11"))))
-       ((string-equal system-type "darwin")  ; Mac OS X
-        (when (member "PragmataPro Mono" (font-family-list))
-          (add-to-list 'initial-frame-alist '(font . "PragmataPro Mono-16"))
-          (add-to-list 'default-frame-alist '(font . "PragmataPro Mono-16"))))
-       ((string-equal system-type "gnu/linux") ; linux
-        (when (member "Iosevka-Term" (font-family-list))
-          (add-to-list 'initial-frame-alist '(font . "Iosevka-20"))
-          (add-to-list 'default-frame-alist '(font . "Iosevka-20"))))))
+(defconst font-typeface "PragmataPro")
 
-(when system-name "imu-10-rs2.immun1.local"
-      (cond
-       ((string-equal system-type "windows-nt") ; Microsoft Windows
-        (when (member "Iosevka-Term" (font-family-list))
-          (add-to-list 'initial-frame-alist '(font . "Iosevka-11"))
-          (add-to-list 'default-frame-alist '(font . "Iosevka-11"))))
-       ((string-equal system-type "darwin")  ; Mac OS X
-        (when (member "PragmataPro Mono" (font-family-list))
-          (add-to-list 'initial-frame-alist '(font . "PragmataPro Mono-18"))
-          (add-to-list 'default-frame-alist '(font . "PragmataPro Mono-18"))))
-       ((string-equal system-type "gnu/linux") ; linux
-        (when (member "Iosevka-Term" (font-family-list))
-          (add-to-list 'initial-frame-alist '(font . "Iosevka-20"))
-          (add-to-list 'default-frame-alist '(font . "Iosevka-20"))))))
+(defconst os-windows "windows-nt")
+(defconst os-mac "darwin")
+(defconst os-linux "linux")
+(defcustom os-font-map '()
+  "List of fonts used at different operating systems."
+  :type 'alist
+  :group 'fontset)
+(add-to-list 'os-font-map `(,os-windows . 12))
+(add-to-list 'os-font-map `(,os-mac . 16))
+(add-to-list 'os-font-map `(,os-linux . 20))
+
+(defun set-font (font size)
+  "Set Emacs font via `set-frame-font' with a FONT name and SIZE."
+  (interactive)
+  (let ((font-string (concat font "-" (int-to-string size))))
+    (add-to-list 'initial-frame-alist `(font . ,font-string))
+    (add-to-list 'default-frame-alist `(font . ,font-string))
+    (if (member font (font-family-list))
+        (progn
+          (set-frame-font font-string nil t)))
+    (message (concat font " not available"))))
+
+(set-font "PragmataPro" 16)
+
+(defun set-font-for-os ()
+  "Set the font for a matched operating system."
+  (defun set-font-by-match (entry)
+    (let ((os (car entry))
+          (size (cdr entry)))
+      (when (string-equal system-type os)
+        (message os)
+        (set-font font-typeface size))))
+  (mapc #'set-font-by-match os-font-map))
+
+;; TODO:
+;; (defun scale-with (size scale)
+;;   (round (* size scale)))
+;;
+;; (defconst host-roxy "Roxy.local")
+;; (defconst host-emma "Emma.local")
+;; (defcustom host-type-scales '((host-roxy . 0.875)
+;;                               (host-emma . 1.125))
+;;   "List of typographic scales used at different hosts."
+;;   :type 'alist
+;;   :group 'fontset)
 
 ;;; --- Whitespace
 (global-whitespace-mode t)
@@ -65,7 +83,7 @@
   :ensure t
   :config
   (global-nlinum-mode)
-  (setq nlinum-format "%3d"))
+  (setq nlinum-format "%4d"))
 
 (use-package nlinum-hl
   :ensure t
