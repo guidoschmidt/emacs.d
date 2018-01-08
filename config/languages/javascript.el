@@ -30,6 +30,12 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (add-hook 'js-mode #'js2-refactor-mode)
   (js2r-add-keybindings-with-prefix "C-c C-m"))
 
+;;; --- Docstrings
+(add-to-list 'load-path "~/.emacs.d/config/languages/javascript/")
+(load "nd-js")
+(add-hook 'js-mode-hook
+          (lambda () (local-set-key (kbd "C-c d") #'nd-js-doc)))
+
 ;;; --- JSON
 (use-package json-mode
   :ensure t
