@@ -14,7 +14,13 @@
 ;; enable syntax highlighting by default
 (setq org-src-fontify-natively t)
 
+;; Kanban board
 (load "~/.emacs.d/github/org-kanban/org-kanban.el")
+
+;; Confluence
+(use-package ox-confluence
+  :load-path "~/.emacs.d/github/org-confluence"
+  :commands org-confluence-export-as-confluence)
 
 (provide 'orgmode.el)
 ;;; orgmode.el ends here

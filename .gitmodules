@@ -22,3 +22,6 @@
 [submodule "ycmd"]
 	path = ycmd
 	url = https://github.com/Valloric/ycmd.git
+[submodule "github/org-confluence"]
+	path = github/org-confluence
+	url = https://github.com/sdelafond/org-confluence.git
