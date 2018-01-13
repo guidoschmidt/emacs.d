@@ -11,6 +11,9 @@
 ;; Disable macOS minfication
 (global-set-key (kbd "C-z") nil)
 
+;; Do not kill Emacs, when deleting buffer
+(global-set-key (kbd "C-x C-c") 'kill-buffer-and-window)
+
 ;; Custom key bindings
 (global-set-key (kbd "C-;")         'comment-or-uncomment-region)
 (global-set-key (kbd "C-M-f")       'toggle-frame-fullscreen)
