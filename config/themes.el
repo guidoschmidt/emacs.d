@@ -43,7 +43,7 @@
   (setq calendar-latitude 49.329896)
   (setq calendar-longitude 8.570925)
   (setq circadian-themes '((:sunrise . apropospriate-dark)
-                           (:sunset . darkokai)))
+                           (:sunset . ample-flat)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
 
