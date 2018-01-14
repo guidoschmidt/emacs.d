@@ -15,7 +15,7 @@
 (setq org-src-fontify-natively t)
 
 ;; Kanban board
-(load "~/.emacs.d/github/org-kanban/org-kanban.el")
+;;(load "~/.emacs.d/github/org-kanban/org-kanban.el")
 
 ;; Confluence
 (use-package ox-confluence
