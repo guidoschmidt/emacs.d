@@ -137,17 +137,7 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
                                (enable-minor-mode
                                 '("\\.jsx?\\'" . prettier-js-mode)))))
 
-;; (defun prettier-vue ()
-;;   (interactive)
-;;   (let ((original (point)))
-;;     (goto-char 0)
-;;     (let* ((script-start (re-search-forward "<script>" nil t))
-;;            (start (+ script-start 1))
-;;            (script-end (re-search-forward "</script>" nil t))
-;;            (end (- script-end 10)))
-;;       (prettier-js--prettify start end)
-;;       (goto-char original))))
-
+;;; --- Web beautify for prettier HTML auto formatting
 (use-package web-beautify :ensure t
   :ensure-system-package (tern . "npm i -g js-beautify"))
 
