@@ -104,12 +104,12 @@
 
 ;; Custom function to duplicate a whole line
 (defun duplicate-line()
+  "Duplicate a line"
   (interactive)
   (move-beginning-of-line 1)
   (kill-line)
   (yank)
-  (open-line 1)
-  (next-line 1)
+  (forward-line 1)
   (yank))
 
 ;; Custom function to insert a checkmark
@@ -129,12 +129,13 @@
 
 ;; Custom function to create a new empty buffer
 (defun new-buffer ()
+  "Create a new empty buffer."
   (interactive)
   (let ((bn "untitled")
         (num 1))
     (while
-        (get-buffer (concat bn (number-to-string num))) 
-      (setq num (1+ num))) 
+        (get-buffer (concat bn (number-to-string num)))
+      (setq num (1+ num)))
     (switch-to-buffer
      (concat bn (number-to-string num)))))
 
