@@ -260,6 +260,13 @@
 (use-package gradle-mode
   :commands gradle-mode)
 
+;;; --- iTerm2 Support
+(unless window-system
+  (require 'mouse)
+  (xterm-mouse-mode t)
+  (defun track-mouse (e))
+  (setq mouse-sel-mode t))
+
 ;;; --- Load additional layers
 (load "~/.emacs.d/config/layers/autocomplete.company.el")
 (load "~/.emacs.d/config/layers/git.el")
