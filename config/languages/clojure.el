@@ -13,7 +13,11 @@
   :commands clojure-mode)
 
 (use-package cider
-  :commands clojure-mode)
+  :commands clojure-mode
+  :config
+  (setq nrepl-log-messages t)
+  (setq nrepl-hide-special-buffers t)
+  (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode))
 
 (use-package flycheck-clojure
   :commands clojure-mode
