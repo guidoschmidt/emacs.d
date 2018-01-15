@@ -119,20 +119,23 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (add-hook 'vue-mode-hook 'company/js-mode-hook))
 
 ;;; --- Prettier.js
-;; (use-package prettier-js
-;;   :load-path "~/.emacs.d/github/prettier-emacs/"
-;;   :ensure
-;;   :config
-;;   (add-hook 'js2-mode-hook 'prettier-js-mode)
-;;   (add-hook 'web-mode-hook 'prettier-js-mode)
-;;   (add-hook 'vue-mode-hook 'prettier-js-mode)
-;;   (defun enable-minor-mode (my-pair)
-;;     (if (buffer-file-name)
-;;         (if (string-match (car my-pair) buffer-file-name)
-;;             (funcall (cdr my-pair)))))
-;;   (add-hook 'rjsx-mode #'(lambda ()
-;;                            (enable-minor-mode
-;;                             '("\\.jsx?\\'" . prettier-js-mode)))))
+(use-package prettier-js
+  :load-path "~/.emacs.d/github/prettier-emacs/"
+  :ensure
+  :config
+  (setq prettier-js-command "~/.nvm/versions/node/v9.4.0/bin/vue-prettier")
+  (add-hook 'js2-mode-hook 'prettier-js-mode)
+  (add-hook 'vue-mode-hook 'prettier-js-mode)
+  (defun enable-minor-mode (my-pair)
+    (if (buffer-file-name)
+        (if (string-match (car my-pair) buffer-file-name)
+            (funcall (cdr my-pair)))))
+  (add-hook 'rjsx-mode-hook #'(lambda ()
+                                (enable-minor-mode
+                                 '("\\.jsx?\\'" . prettier-js-mode))))
+  (add-hook 'web-mode-hook #'(lambda ()
+                               (enable-minor-mode
+                                '("\\.jsx?\\'" . prettier-js-mode)))))
 
 ;; (defun prettier-vue ()
 ;;   (interactive)
