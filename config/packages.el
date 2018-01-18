@@ -4,7 +4,6 @@
 ;; TODO:
 ;; - dired hacks: https://github.com/Fuco1/dired-hacks
 ;; - Setup common-lisp (slime-company)
-;; - evil-collection
 ;; - https://github.com/DarwinAwardWinner/ido-completing-read-plus
 ;; - https://github.com/technomancy/find-file-in-project
 
