@@ -10,7 +10,10 @@
   :config
   (evil-mode t)
   (setq evil-emacs-state-modes
-        (delq 'ibuffer-mode evil-emacs-state-modes)))
+        (delq 'ibuffer-mode evil-emacs-state-modes))
+  (define-key ibuffer-mode-map (kbd "v") nil)
+  (define-key ibuffer-mode-map (kbd "V") nil)
+  (define-key ibuffer-mode-map (kbd "r") 'ibuffer-do-revert))
 
 ;;; --- Evil leader for shortcuts
 (use-package evil-leader
