@@ -1,4 +1,4 @@
-;;; packages.el --- Manage MELPA packages
+
 ;;; Commentary:
 
 ;; TODO:
@@ -140,9 +140,10 @@
   (setq projectile-completion-system 'ivy))
 
 (use-package counsel-projectile
-  :commands counsel-projectile
+  :ensure
+  :after projectile
   :config
-  (counsel-projectile-on))
+  (counsel-projectile-mode))
 
 ;;; --- Dump-Jump
 (use-package dumb-jump
@@ -169,8 +170,11 @@
 ;;; --- Exec-path-from-shell
 (use-package exec-path-from-shell
   :ensure
-  :config (when (string-equal system-type "darwin")
-            (exec-path-from-shell-initialize)))
+  :config
+  (setq explicit-shell-file-name "/bin/zsh")
+  (setq shell-file-name "zsh")
+  (when (string-equal system-type "darwin")
+    (exec-path-from-shell-initialize)))
 
 ;;; --- Setup ace-window
 (use-package ace-window
@@ -190,6 +194,9 @@
   :bind (("C-x b" . ivy-switch-buffer))
   :init (ivy-mode 1)
   :config
+  (define-key ivy-switch-buffer-map (kbd "v") nil)
+  (define-key ivy-switch-buffer-map (kbd "V") nil)
+  (define-key ivy-switch-buffer-map (kbd "r") 'ibuffer-do-revert)
   (setq ivy-use-virtual-buffers t)
   (setq ivy-height 20)
   (setq ivy-display-style 'fancy)
