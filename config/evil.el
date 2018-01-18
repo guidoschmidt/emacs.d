@@ -80,10 +80,12 @@
 
 ;;; --- Evil collection
 (use-package evil-collection
+  :ensure t
   :after evil
-  :ensure
   :config
-  (evil-collection-setup-minibuffer))
+  (setq evil-collection-setup-minibuffer t)
+  (setq evil-collection-company-use-tng nil)
+  (evil-collection-init))
 
 (provide 'evil.el)
 ;;; evil.el ends here
