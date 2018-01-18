@@ -5,10 +5,15 @@
 ;;; --- Basic evil mode setup
 (use-package evil
   :ensure
+  :init
+  (setq evil-want-integration nil)
   :config
   (evil-mode t)
   (setq evil-emacs-state-modes
-        (delq 'ibuffer-mode evil-emacs-state-modes)))
+        (delq 'ibuffer-mode evil-emacs-state-modes))
+  (define-key ibuffer-mode-map (kbd "v") nil)
+  (define-key ibuffer-mode-map (kbd "V") nil)
+  (define-key ibuffer-mode-map (kbd "r") 'ibuffer-do-revert))
 
 ;;; --- Evil leader for shortcuts
 (use-package evil-leader
@@ -29,8 +34,7 @@
     "p"       'counsel-projectile-switch-project
     "f"       'counsel-projectile-find-file
     "t"       'mc/mark-sgml-tag-pair
-    "g"       'counsel-ag
-    ))
+    "g"       'counsel-ag))
 
 ;;; --- Evil cleverparens
 (use-package evil-cleverparens
@@ -75,9 +79,11 @@
   (global-evil-surround-mode 1))
 
 ;;; --- Evil collection
-;; (use-package evil-collection
-;;   :custom (evil-collection-setup-minibuffer t)
-;;   :init (evil-collection-init))
+(use-package evil-collection
+  :after evil
+  :ensure
+  :config
+  (evil-collection-setup-minibuffer))
 
 (provide 'evil.el)
 ;;; evil.el ends here
