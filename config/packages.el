@@ -4,7 +4,6 @@
 ;; TODO:
 ;; - dired hacks: https://github.com/Fuco1/dired-hacks
 ;; - Setup common-lisp (slime-company)
-;; - evil-collection
 ;; - https://github.com/DarwinAwardWinner/ido-completing-read-plus
 ;; - https://github.com/technomancy/find-file-in-project
 
@@ -273,6 +272,15 @@
   (xterm-mouse-mode t)
   (defun track-mouse (e))
   (setq mouse-sel-mode t))
+
+;;; --- fish shell
+(use-package fish-mode
+  :ensure
+  :commands fish-mode
+  :config
+  (add-hook 'fish-mode-hook
+            (lambda ()
+              (add-hook 'before-save-hook 'fish_indent-before-save))))
 
 ;;; --- Load additional layers
 (load "~/.emacs.d/config/layers/autocomplete.company.el")

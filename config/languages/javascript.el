@@ -120,7 +120,6 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
 
 ;;; --- Prettier.js
 (use-package prettier-js
-  :load-path "~/.emacs.d/github/prettier-emacs/"
   :ensure
   :config
   (setq prettier-js-command "~/.nvm/versions/node/v9.4.0/bin/vue-prettier")
