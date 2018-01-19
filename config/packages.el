@@ -1,4 +1,4 @@
-
+;;; packages.el --- Setup packages
 ;;; Commentary:
 
 ;; TODO:
@@ -115,7 +115,8 @@
 
 ;;; --- Neo-tree with icons
 (use-package neotree
-  :commands neotree
+  :ensure
+  :commands neotree-toggle
   :config
   (use-package all-the-icons
     :ensure)
@@ -129,6 +130,7 @@
 
 ;; --- Rainbow mode
 (use-package rainbow-mode
+  :ensure
   :commands rainbow-mode)
 
 ;;; --- Projectile
@@ -168,12 +170,12 @@
 
 ;;; --- Exec-path-from-shell
 (use-package exec-path-from-shell
-  :ensure
-  :config
-  (setq explicit-shell-file-name "/bin/zsh")
-  (setq shell-file-name "zsh")
-  (when (string-equal system-type "darwin")
-    (exec-path-from-shell-initialize)))
+ :ensure
+ :config
+ (setq explicit-shell-file-name "/bin/zsh")
+ (setq shell-file-name "zsh")
+ (when (memq window-system '(mac ns x))
+   (exec-path-from-shell-initialize)))
 
 ;;; --- Setup ace-window
 (use-package ace-window
@@ -190,12 +192,8 @@
 ;;; --- Ivy
 (use-package ivy
   :commands (ivy-mode ivy-switch-buffer)
-  :bind (("C-x b" . ivy-switch-buffer))
   :init (ivy-mode 1)
   :config
-  (define-key ivy-switch-buffer-map (kbd "v") nil)
-  (define-key ivy-switch-buffer-map (kbd "V") nil)
-  (define-key ivy-switch-buffer-map (kbd "r") 'ibuffer-do-revert)
   (setq ivy-use-virtual-buffers t)
   (setq ivy-height 20)
   (setq ivy-display-style 'fancy)
@@ -203,7 +201,12 @@
   (defun bjm-swiper-recenter (&rest args)
     "recenter display after swiper"
     (recenter))
-  (advice-add 'swiper :after #'bjm-swiper-recenter))
+  (advice-add 'swiper :after #'bjm-swiper-recenter)
+  :bind (("C-x b" . ivy-switch-buffer)
+         :map ivy-switch-buffer-map
+         ("v" . nil)
+         ("V" . nil)
+         ("r" . ibuffer-do-revert)))
 
 ;;; --- Swiper - better isearch
 (use-package counsel
