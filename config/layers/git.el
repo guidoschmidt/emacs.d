@@ -24,5 +24,11 @@
   (custom-set-variables
    '(git-gutter:update-interval 2)))
 
+(use-package ssh-agency
+  :ensure
+  :config
+  (ssh-agency-find-agent)
+  (ssh-agency-add-keys "~/.ssh/id_rsa.github.cube"))
+
 (provide 'git.el)
 ;;; git.el ends here
