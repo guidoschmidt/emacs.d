@@ -47,6 +47,7 @@
 
 ;;; --- Yasnippets
 (use-package yasnippet
+  :ensure
   :commands (yas-global-mode yas-minor-mode)
   :config
   (yas-global-mode 1)
@@ -55,6 +56,7 @@
 
 ;;; --- Wakatime
 (use-package wakatime-mode
+  :ensure
   :commands global-wakatime-mode
   :config
   (setq wakatime-api-key "32135691-bb0b-462e-94c2-b364aa352a6c")
@@ -160,6 +162,7 @@
 
 ;;; --- Undo-tree
 (use-package undo-tree
+  :ensure
   :commands global-undo-tree-mode
   :init (global-undo-tree-mode))
 
@@ -172,10 +175,17 @@
 (use-package exec-path-from-shell
  :ensure
  :config
- (setq explicit-shell-file-name "/bin/zsh")
- (setq shell-file-name "zsh")
+ (when (memq window-system '(w32))
+   (setq explicit-shell-file-name "c:/Users/gs/.babun/cygwin/bin/zsh.exe")
+   (setq shell-file-name "zsh"))
  (when (memq window-system '(mac ns x))
+   (setq explicit-shell-file-name "/bin/zsh")
+   (setq shell-file-name "zsh")
    (exec-path-from-shell-initialize)))
+
+(when (memq window-system '(w32))
+  (print "WIND"))
+
 
 ;;; --- Setup ace-window
 (use-package ace-window
@@ -191,6 +201,7 @@
 
 ;;; --- Ivy
 (use-package ivy
+  :ensure
   :commands (ivy-mode ivy-switch-buffer)
   :init (ivy-mode 1)
   :config
@@ -225,6 +236,7 @@
 
 ;;; --- Avy
 (use-package avy
+  :ensure
   :commands (avy-goto-char avy-goto-char-timer)
   :bind (("C-c a" . avy-goto-char)
          ("C-c o" . avy-goto-char-timer)))
@@ -241,6 +253,7 @@
 
 ;;; --- Wrap region
 (use-package wrap-region
+  :ensure
   :commands wrap-region-mode
   :config
   (wrap-region-add-wrapper "`" "`")
@@ -251,6 +264,7 @@
 
 ;;; -- Refactor
 (use-package emr
+  :ensure
   :commands emr-show-refactor-menu
   :config
   (add-hook 'prog-mode-hook 'emr-initialize)
@@ -259,6 +273,7 @@
 
 ;;; -- Aggressive indent
 (use-package aggressive-indent
+  :ensure
   :commands aggressive-indent-mode
   :config
   (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
