@@ -17,7 +17,7 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
       (setq-local flycheck-javascript-eslint-executable eslint))))
 
 (use-package indium
-  :ensure t
+  :ensure
   :config
   (flycheck-add-mode 'javascript-eslint 'js2-mode)
   (flycheck-add-mode 'javascript-eslint 'js-mode)
