@@ -141,10 +141,8 @@
   (setq projectile-completion-system 'ivy))
 
 (use-package counsel-projectile
-  :ensure
-  :after projectile
-  :config
-  (counsel-projectile-mode))
+  :commands counsel-projectile-switch-project
+  :after projectile)
 
 ;;; --- Dump-Jump
 (use-package dumb-jump
