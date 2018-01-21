@@ -175,9 +175,6 @@
 (use-package exec-path-from-shell
  :ensure
  :config
- (when (memq window-system '(w32))
-   (setq explicit-shell-file-name "c:/Users/gs/.babun/cygwin/bin/zsh.exe")
-   (setq shell-file-name "zsh"))
  (when (memq window-system '(mac ns x))
    (setq explicit-shell-file-name "/bin/zsh")
    (setq shell-file-name "zsh")
