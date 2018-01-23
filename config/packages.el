@@ -110,7 +110,7 @@
     ;; butt, chamfer, contour, curve, rounded, roundstub,
     ;; wave, zigzag, utf-8, nil
     (setq powerline-default-separator nil)
-    ;;(setq powerline-height 42)
+    (setq powerline-height 42)
     (setq powerline-gui-use-vcs-glyph t)
     ;; -- Disable spaceline segments
     ;; (spaceline-toggle-workspace-number-off)
@@ -141,16 +141,19 @@
 (use-package spaceline-all-the-icons
   :after spaceline
   :config
-  (setq spaceline-all-the-icons-separator-type 'slant)
+  ;; -- Customize spaceline
+  (set-face-attribute 
+   'spaceline-evil-normal nil :background "#fafefd" :foreground "#232323")
+  (set-face-attribute
+   'spaceline-evil-insert nil :background "#3bffde" :foreground "#232323")
+  (set-face-attribute
+   'spaceline-evil-visual nil :background "#e012a0" :foreground "#fafefd")
+  (setq spaceline-all-the-icons-separator-type 'none)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
   ;; -- Define custom segments
   (spaceline-define-segment sky-color-clock-segment
     (concat "" (sky-color-clock))
     :tight t)
-  (spaceline-define-segment evil-state-segment
-    "The current evil state.  Requires `evil-mode' to be enabled."
-    (when (bound-and-true-p evil-local-mode)
-      (s-trim (evil-state-property evil-state :tag t))))
   ;; -- Turn segemnts off
   (spaceline-toggle-all-the-icons-buffer-id-off)
   (spaceline-toggle-all-the-icons-buffer-path-off)
@@ -171,7 +174,6 @@
   (spaceline-toggle-all-the-icons-minor-modes-on)
   (spaceline-all-the-icons-theme
    'sky-color-clock-segment
-   'evil-state-segment
    'etc))
 
 ;;; --- Neo-tree with icons
@@ -262,7 +264,7 @@
   :init (ivy-mode 1)
   :config
   (setq ivy-use-virtual-buffers t)
-  (setq ivy-height 20)
+  (setq ivy-height 30)
   (setq ivy-display-style 'fancy)
   ;; Advise swiper to recenter on exit
   (defun bjm-swiper-recenter (&rest args)
@@ -272,8 +274,7 @@
   :bind (("C-x b" . ivy-switch-buffer)
          :map ivy-switch-buffer-map
          ("v" . nil)
-         ("V" . nil)
-         ("r" . ibuffer-do-revert)))
+         ("V" . nil)))
 
 ;;; --- Swiper - better isearch
 (use-package counsel
