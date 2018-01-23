@@ -110,7 +110,7 @@
     ;; butt, chamfer, contour, curve, rounded, roundstub,
     ;; wave, zigzag, utf-8, nil
     (setq powerline-default-separator nil)
-    (setq powerline-height 42)
+    ;;(setq powerline-height 42)
     (setq powerline-gui-use-vcs-glyph t)
     ;; -- Disable spaceline segments
     ;; (spaceline-toggle-workspace-number-off)
@@ -142,6 +142,7 @@
   :after spaceline
   :config
   (setq spaceline-all-the-icons-separator-type 'slant)
+  (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
   ;; -- Define custom segments
   (spaceline-define-segment sky-color-clock-segment
     (concat "" (sky-color-clock))
