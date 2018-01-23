@@ -6,6 +6,8 @@
 ;; - Setup common-lisp (slime-company)
 ;; - https://github.com/DarwinAwardWinner/ido-completing-read-plus
 ;; - https://github.com/technomancy/find-file-in-project
+;; - https://github.com/emacscollective/auto-compile
+;; - https://github.com/syohex/emacs-anzu
 
 ;;; Code:
 ;;; --- Keep .emacs.d clean
@@ -20,6 +22,7 @@
 
 ;;; --- Try packages without installing them
 (use-package try
+  :ensure
   :commands try)
 
 ;;; --- Setup which-key
@@ -47,6 +50,7 @@
 
 ;;; --- Yasnippets
 (use-package yasnippet
+  :ensure
   :commands (yas-global-mode yas-minor-mode)
   :config
   (yas-global-mode 1)
@@ -55,6 +59,7 @@
 
 ;;; --- Wakatime
 (use-package wakatime-mode
+  :ensure
   :commands global-wakatime-mode
   :config
   (setq wakatime-api-key "32135691-bb0b-462e-94c2-b364aa352a6c")
@@ -82,6 +87,12 @@
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
 
 ;;; --- Powerline & Spaceline
+(use-package sky-color-clock
+  :load-path "~/.emacs.d/github/sky-color-clock"
+  :config
+  (when calendar-latitude
+   (sky-color-clock-initialize (round calendar-latitude))))
+
 (use-package powerline
   :ensure)
 
@@ -99,19 +110,71 @@
     ;; butt, chamfer, contour, curve, rounded, roundstub,
     ;; wave, zigzag, utf-8, nil
     (setq powerline-default-separator nil)
-    (setq powerline-height 30)
-    ;; Disable spaceline segments
-    (spaceline-toggle-workspace-number-off)
-    (spaceline-toggle-minor-modes-off)
-    (spaceline-toggle-buffer-encoding-abbrev-off)
-    (spaceline-toggle-buffer-size-off)
-    (spaceline-toggle-org-clock-off)
-    ;; Enable spaceline segments
-    (spaceline-toggle-projectile-root-on)
-    (spaceline-toggle-battery-off)
-    (spaceline-toggle-selection-info-on)
-    ;; Select theme
-    (spaceline-spacemacs-theme)))
+    (setq powerline-height 42)
+    (setq powerline-gui-use-vcs-glyph t)
+    ;; -- Disable spaceline segments
+    ;; (spaceline-toggle-workspace-number-off)
+    ;; (spaceline-toggle-minor-modes-off)
+    ;; (spaceline-toggle-buffer-encoding-abbrev-off)
+    ;; (spaceline-toggle-buffer-size-off)
+    ;; (spaceline-toggle-org-clock-off)
+    ;; (spaceline-toggle-projectile-root-off)
+    ;; (spaceline-toggle-battery-off)
+    ;; (spaceline-toggle-selection-info-off)
+    ;; (spaceline-toggle-evil-state-off)
+    ;; (spaceline-toggle-buffer-id-off)
+    ;; (spaceline-toggle-major-mode-off)
+    ;; (spaceline-toggle-minor-modes-off)
+    ;; (spaceline-toggle-flycheck-error-off)
+    ;; (spaceline-toggle-flycheck-info-off)
+    ;; (spaceline-toggle-flycheck-warning-off)
+    ;; (spaceline-toggle-version-control-off)
+    ;; (spaceline-toggle-line-column-off)
+    ;; (spaceline-toggle-global-off)
+    ;; (spaceline-toggle-hud-off)
+    ;; (spaceline-toggle-buffer-position-off)
+    ;; (spaceline-toggle-buffer-modified-off)
+    )
+  :config
+  (spaceline-emacs-theme))
+
+(use-package spaceline-all-the-icons
+  :after spaceline
+  :config
+  ;; -- Customize spaceline
+  (set-face-attribute 
+   'spaceline-evil-normal nil :background "#fafefd" :foreground "#232323")
+  (set-face-attribute
+   'spaceline-evil-insert nil :background "#3bffde" :foreground "#232323")
+  (set-face-attribute
+   'spaceline-evil-visual nil :background "#e012a0" :foreground "#fafefd")
+  (setq spaceline-all-the-icons-separator-type 'none)
+  (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
+  ;; -- Define custom segments
+  (spaceline-define-segment sky-color-clock-segment
+    (concat "" (sky-color-clock))
+    :tight t)
+  ;; -- Turn segemnts off
+  (spaceline-toggle-all-the-icons-buffer-id-off)
+  (spaceline-toggle-all-the-icons-buffer-path-off)
+  (spaceline-toggle-all-the-icons-buffer-position-off)
+  (spaceline-toggle-all-the-icons-buffer-size-off)
+  (spaceline-toggle-all-the-icons-hud-off)
+  (spaceline-toggle-all-the-icons-modified-off)
+  (spaceline-toggle-all-the-icons-narrowed-off)
+  (spaceline-toggle-all-the-icons-projectile-off)
+  (spaceline-toggle-all-the-icons-region-info-off)
+  (spaceline-toggle-all-the-icons-time-off)
+  ;; -- Turn segments on
+  (spaceline-toggle-all-the-icons-flycheck-status-on)
+  (spaceline-toggle-all-the-icons-git-status-on)
+  (spaceline-toggle-all-the-icons-mode-icon-on)
+  (spaceline-toggle-all-the-icons-position-on)
+  (spaceline-toggle-all-the-icons-package-updates-on)
+  (spaceline-toggle-all-the-icons-minor-modes-on)
+  (spaceline-all-the-icons-theme
+   'sky-color-clock-segment
+   'etc))
 
 ;;; --- Neo-tree with icons
 (use-package neotree
@@ -158,6 +221,7 @@
 
 ;;; --- Undo-tree
 (use-package undo-tree
+  :ensure
   :commands global-undo-tree-mode
   :init (global-undo-tree-mode))
 
@@ -168,12 +232,16 @@
 
 ;;; --- Exec-path-from-shell
 (use-package exec-path-from-shell
- :ensure
- :config
- (setq explicit-shell-file-name "/bin/zsh")
- (setq shell-file-name "zsh")
- (when (memq window-system '(mac ns x))
-   (exec-path-from-shell-initialize)))
+  :ensure
+  :config
+  (when (memq window-system '(mac ns x))
+    (setq explicit-shell-file-name "/bin/zsh")
+    (setq shell-file-name "zsh")
+    (exec-path-from-shell-initialize)))
+
+(when (memq window-system '(w32))
+  (print "WIND"))
+
 
 ;;; --- Setup ace-window
 (use-package ace-window
@@ -189,11 +257,12 @@
 
 ;;; --- Ivy
 (use-package ivy
+  :ensure
   :commands (ivy-mode ivy-switch-buffer)
   :init (ivy-mode 1)
   :config
   (setq ivy-use-virtual-buffers t)
-  (setq ivy-height 20)
+  (setq ivy-height 30)
   (setq ivy-display-style 'fancy)
   ;; Advise swiper to recenter on exit
   (defun bjm-swiper-recenter (&rest args)
@@ -203,8 +272,7 @@
   :bind (("C-x b" . ivy-switch-buffer)
          :map ivy-switch-buffer-map
          ("v" . nil)
-         ("V" . nil)
-         ("r" . ibuffer-do-revert)))
+         ("V" . nil)))
 
 ;;; --- Swiper - better isearch
 (use-package counsel
@@ -223,6 +291,7 @@
 
 ;;; --- Avy
 (use-package avy
+  :ensure
   :commands (avy-goto-char avy-goto-char-timer)
   :bind (("C-c a" . avy-goto-char)
          ("C-c o" . avy-goto-char-timer)))
@@ -239,6 +308,7 @@
 
 ;;; --- Wrap region
 (use-package wrap-region
+  :ensure
   :commands wrap-region-mode
   :config
   (wrap-region-add-wrapper "`" "`")
@@ -249,6 +319,7 @@
 
 ;;; -- Refactor
 (use-package emr
+  :ensure
   :commands emr-show-refactor-menu
   :config
   (add-hook 'prog-mode-hook 'emr-initialize)
@@ -257,6 +328,7 @@
 
 ;;; -- Aggressive indent
 (use-package aggressive-indent
+  :ensure
   :commands aggressive-indent-mode
   :config
   (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)

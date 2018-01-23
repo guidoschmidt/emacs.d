@@ -1,9 +1,7 @@
 ;;; appearance.el --- Configure look & feel of Emacs
-
 ;;; Commentary:
 
 ;;; Code:
-
 ;;; --- Frames & windows
 ;;; Remove startup message
 (setq inhibit-startup-message t)
@@ -43,8 +41,6 @@
           (set-frame-font font-string nil t)))
     (message (concat font " not available"))))
 
-(set-font "PragmataPro" 16)
-
 (defun set-font-for-os ()
   "Set the font for a matched operating system."
   (defun set-font-by-match (entry)
@@ -54,6 +50,8 @@
         (message os)
         (set-font font-typeface size))))
   (mapc #'set-font-by-match os-font-map))
+
+(set-font-for-os)
 
 ;; TODO:
 ;; (defun scale-with (size scale)
@@ -99,4 +97,4 @@
     (smart-tabs-insinuate 'c 'javascript)))
 
 (provide 'appearance)
-;;; appearance.el ends here
+;;; appearance.el ends heres
