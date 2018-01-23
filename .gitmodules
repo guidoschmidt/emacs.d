@@ -28,3 +28,6 @@
 [submodule "github/org-confluence"]
 	path = github/org-confluence
 	url = https://github.com/sdelafond/org-confluence.git
+[submodule "github/sky-color-clock"]
+	path = github/sky-color-clock
+	url = https://github.com/zk-phi/sky-color-clock.git

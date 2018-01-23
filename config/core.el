@@ -6,6 +6,10 @@
 ;; Start the server
 (server-start)
 
+;; Setup calendar geo-location
+(setq calendar-latitude 49.329896)
+(setq calendar-longitude 8.570925)
+
 ;; Setup language environment
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
