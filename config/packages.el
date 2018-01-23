@@ -139,6 +139,7 @@
   (spaceline-emacs-theme))
 
 (use-package spaceline-all-the-icons
+  :ensure
   :after spaceline
   :config
   ;; -- Customize spaceline
