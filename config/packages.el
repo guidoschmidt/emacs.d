@@ -6,6 +6,8 @@
 ;; - Setup common-lisp (slime-company)
 ;; - https://github.com/DarwinAwardWinner/ido-completing-read-plus
 ;; - https://github.com/technomancy/find-file-in-project
+;; - https://github.com/emacscollective/auto-compile
+;; - https://github.com/syohex/emacs-anzu
 
 ;;; Code:
 ;;; --- Keep .emacs.d clean
@@ -20,6 +22,7 @@
 
 ;;; --- Try packages without installing them
 (use-package try
+  :ensure
   :commands try)
 
 ;;; --- Setup which-key
@@ -84,6 +87,12 @@
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
 
 ;;; --- Powerline & Spaceline
+(use-package sky-color-clock
+  :load-path "~/.emacs.d/github/sky-color-clock"
+  :config
+  (when calendar-latitude
+   (sky-color-clock-initialize (round calendar-latitude))))
+
 (use-package powerline
   :ensure)
 
@@ -101,19 +110,68 @@
     ;; butt, chamfer, contour, curve, rounded, roundstub,
     ;; wave, zigzag, utf-8, nil
     (setq powerline-default-separator nil)
-    (setq powerline-height 30)
-    ;; Disable spaceline segments
-    (spaceline-toggle-workspace-number-off)
-    (spaceline-toggle-minor-modes-off)
-    (spaceline-toggle-buffer-encoding-abbrev-off)
-    (spaceline-toggle-buffer-size-off)
-    (spaceline-toggle-org-clock-off)
-    ;; Enable spaceline segments
-    (spaceline-toggle-projectile-root-on)
-    (spaceline-toggle-battery-off)
-    (spaceline-toggle-selection-info-on)
-    ;; Select theme
-    (spaceline-spacemacs-theme)))
+    (setq powerline-height 42)
+    (setq powerline-gui-use-vcs-glyph t)
+    ;; -- Disable spaceline segments
+    ;; (spaceline-toggle-workspace-number-off)
+    ;; (spaceline-toggle-minor-modes-off)
+    ;; (spaceline-toggle-buffer-encoding-abbrev-off)
+    ;; (spaceline-toggle-buffer-size-off)
+    ;; (spaceline-toggle-org-clock-off)
+    ;; (spaceline-toggle-projectile-root-off)
+    ;; (spaceline-toggle-battery-off)
+    ;; (spaceline-toggle-selection-info-off)
+    ;; (spaceline-toggle-evil-state-off)
+    ;; (spaceline-toggle-buffer-id-off)
+    ;; (spaceline-toggle-major-mode-off)
+    ;; (spaceline-toggle-minor-modes-off)
+    ;; (spaceline-toggle-flycheck-error-off)
+    ;; (spaceline-toggle-flycheck-info-off)
+    ;; (spaceline-toggle-flycheck-warning-off)
+    ;; (spaceline-toggle-version-control-off)
+    ;; (spaceline-toggle-line-column-off)
+    ;; (spaceline-toggle-global-off)
+    ;; (spaceline-toggle-hud-off)
+    ;; (spaceline-toggle-buffer-position-off)
+    ;; (spaceline-toggle-buffer-modified-off)
+    )
+  :config
+  (spaceline-emacs-theme))
+
+(use-package spaceline-all-the-icons
+  :after spaceline
+  :config
+  (setq spaceline-all-the-icons-separator-type 'slant)
+  ;; -- Define custom segments
+  (spaceline-define-segment sky-color-clock-segment
+    (concat "" (sky-color-clock))
+    :tight t)
+  (spaceline-define-segment evil-state-segment
+    "The current evil state.  Requires `evil-mode' to be enabled."
+    (when (bound-and-true-p evil-local-mode)
+      (s-trim (evil-state-property evil-state :tag t))))
+  ;; -- Turn segemnts off
+  (spaceline-toggle-all-the-icons-buffer-id-off)
+  (spaceline-toggle-all-the-icons-buffer-path-off)
+  (spaceline-toggle-all-the-icons-buffer-position-off)
+  (spaceline-toggle-all-the-icons-buffer-size-off)
+  (spaceline-toggle-all-the-icons-hud-off)
+  (spaceline-toggle-all-the-icons-modified-off)
+  (spaceline-toggle-all-the-icons-narrowed-off)
+  (spaceline-toggle-all-the-icons-projectile-off)
+  (spaceline-toggle-all-the-icons-region-info-off)
+  (spaceline-toggle-all-the-icons-time-off)
+  ;; -- Turn segments on
+  (spaceline-toggle-all-the-icons-flycheck-status-on)
+  (spaceline-toggle-all-the-icons-git-status-on)
+  (spaceline-toggle-all-the-icons-mode-icon-on)
+  (spaceline-toggle-all-the-icons-position-on)
+  (spaceline-toggle-all-the-icons-package-updates-on)
+  (spaceline-toggle-all-the-icons-minor-modes-on)
+  (spaceline-all-the-icons-theme
+   'sky-color-clock-segment
+   'evil-state-segment
+   'etc))
 
 ;;; --- Neo-tree with icons
 (use-package neotree
@@ -173,12 +231,12 @@
 
 ;;; --- Exec-path-from-shell
 (use-package exec-path-from-shell
- :ensure
- :config
- (when (memq window-system '(mac ns x))
-   (setq explicit-shell-file-name "/bin/zsh")
-   (setq shell-file-name "zsh")
-   (exec-path-from-shell-initialize)))
+  :ensure
+  :config
+  (when (memq window-system '(mac ns x))
+    (setq explicit-shell-file-name "/bin/zsh")
+    (setq shell-file-name "zsh")
+    (exec-path-from-shell-initialize)))
 
 (when (memq window-system '(w32))
   (print "WIND"))
