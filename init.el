@@ -17,7 +17,7 @@
 (load "~/.emacs.d/config/core.el")
 (load "~/.emacs.d/config/keymap.el")
 (load "~/.emacs.d/config/appearance.el")
-;;(load "~/.emacs.d/config/ligatures.el")
+(load "~/.emacs.d/config/ligatures.el")
 (load "~/.emacs.d/config/themes.el")
 (load "~/.emacs.d/config/evil.el")
 
