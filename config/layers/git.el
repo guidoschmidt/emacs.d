@@ -29,7 +29,7 @@
     :ensure
     :config
     (ssh-agency-find-agent)
-    (ssh-agency-add-keys "~/.ssh/id_rsa.github.cube")))
+    (ssh-agency-add-keys '("~/.ssh/id_rsa.github.cube"))))
 
 (provide 'git.el)
 ;;; git.el ends here
