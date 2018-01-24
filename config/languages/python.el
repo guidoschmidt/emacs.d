@@ -4,7 +4,7 @@
 ;;; Code:
 ;;; --- Python
 (use-package elpy
-  :ensure t
+  :commands python-mode
   :config
   (setq elpy-rpc-python-command "python3")
   (setq python-shell-interpreter "python3")

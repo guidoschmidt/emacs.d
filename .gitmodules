@@ -31,3 +31,9 @@
 [submodule "github/sky-color-clock"]
 	path = github/sky-color-clock
 	url = https://github.com/zk-phi/sky-color-clock.git
+[submodule "github/spaceline-all-the-icons"]
+	path = github/spaceline-all-the-icons
+	url = https://github.com/domtronn/spaceline-all-the-icons.el.git
+[submodule "github/all-the-icons"]
+	path = github/all-the-icons
+	url = https://github.com/domtronn/all-the-icons.el.git
