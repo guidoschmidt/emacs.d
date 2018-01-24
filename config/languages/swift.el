@@ -4,15 +4,15 @@
 
 ;;; Code:
 (use-package swift-mode
-  :ensure t)
+  :commands swift-mode)
 
 (use-package flycheck-swift
-  :ensure t
+  :commands swift-mode
   :config
   (eval-after-load 'flycheck '(flycheck-swift-setup)))
 
 (use-package company-sourcekit
-  :ensure t
+  :commands swift-mode
   :config
   (defun company/swift-mode-hook ()
     (add-to-list 'company-backends '(company-dabbrev :with company-sourcekit))
