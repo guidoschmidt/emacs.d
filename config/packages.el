@@ -138,8 +138,16 @@
   :config
   (spaceline-emacs-theme))
 
+(use-package all-the-icons
+  :load-path "~/.emacs.d/github/all-the-icons"
+  :init
+  (when (memq window-system '(w32))
+    (add-to-list 'load-path "~/.emacs.d/github/")
+    (require 'font-lock+)))
+
 (use-package spaceline-all-the-icons
-  :after spaceline
+  :load-path "~/.emacs.d/github/spaceline-all-the-icons"
+  :after (spaceline all-the-icons)
   :config
   ;; -- Customize spaceline
   (set-face-attribute 
