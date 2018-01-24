@@ -155,7 +155,6 @@
     (concat "" (sky-color-clock))
     :tight t)
   ;; -- Turn segemnts off
-  (spaceline-toggle-all-the-icons-buffer-id-off)
   (spaceline-toggle-all-the-icons-buffer-path-off)
   (spaceline-toggle-all-the-icons-buffer-position-off)
   (spaceline-toggle-all-the-icons-buffer-size-off)
@@ -166,6 +165,7 @@
   (spaceline-toggle-all-the-icons-region-info-off)
   (spaceline-toggle-all-the-icons-time-off)
   ;; -- Turn segments on
+  (spaceline-toggle-all-the-icons-buffer-id-on)
   (spaceline-toggle-all-the-icons-flycheck-status-on)
   (spaceline-toggle-all-the-icons-git-status-on)
   (spaceline-toggle-all-the-icons-mode-icon-on)
