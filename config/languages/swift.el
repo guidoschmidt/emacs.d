@@ -9,7 +9,10 @@
 (use-package flycheck-swift
   :commands swift-mode
   :config
-  (eval-after-load 'flycheck '(flycheck-swift-setup)))
+  (eval-after-load 'flycheck '(flycheck-swift-setup))
+  (setq flycheck-swift-sdk-path "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk")
+  ;; ↑ Select the appropriate SDK version you use
+  (setq flycheck-swift-target "arm64-apple-ios10"))
 
 (use-package company-sourcekit
   :commands swift-mode
