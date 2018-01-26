@@ -3,16 +3,18 @@
 
 ;;; Code:
 (use-package clojure-mode
+  :ensure
   :commands clojure-mode
   :mode "\\.clj\\'"
-  :defer
   :config
   (add-hook 'clojure-mode-hook #'enable-paredit-mode))
 
 (use-package clojure-snippets
+  :ensure
   :commands clojure-mode)
 
 (use-package cider
+  :ensure
   :commands clojure-mode
   :config
   (setq nrepl-log-messages t)
@@ -20,6 +22,7 @@
   (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode))
 
 (use-package flycheck-clojure
+  :ensure
   :commands clojure-mode
   :config
   (eval-after-load 'flycheck '(flycheck-clojure-setup)))
