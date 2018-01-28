@@ -17,7 +17,9 @@
   :ensure
   :config
   (with-eval-after-load 'flycheck
-    (flycheck-pos-tip-mode)))
+    (flycheck-pos-tip-mode))
+  (eval-after-load 'flycheck
+  '(setq flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
 
 ;; Custom fringe indicator
 (define-fringe-bitmap 'my-flycheck-fringe-indicator
