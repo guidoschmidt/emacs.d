@@ -14,12 +14,16 @@
   :commands clojure-mode)
 
 (use-package cider
-  :ensure
-  :commands clojure-mode
+  :ensure t
+  :commands (cider-mode cider-jack-in)
+  :diminish "CDR"
+  :init
+  (setq cider-prompt-for-symbol nil)
+  (setq nrepl-log-messages nil)
   :config
-  (setq nrepl-log-messages t)
-  (setq nrepl-hide-special-buffers t)
-  (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode))
+  (add-hook 'cider-mode-hook #'eldoc-mode)
+  (add-hook 'cider-mode-hook
+            (lambda () (setq next-error-function #'flycheck-next-error-function))))
 
 (use-package flycheck-clojure
   :ensure
