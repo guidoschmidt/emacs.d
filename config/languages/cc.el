@@ -50,25 +50,61 @@
     '(progn (flycheck-add-next-checker 'c/c++-clang
                                        '(warning . c/c++-googlelint)))))
 
-;; -- YouCompleteMe
-(use-package ycmd
-  :commands c++-mode
-  :init
-  (add-hook 'c++-mode-hook 'ycmd-mode)
+;; -- Autocomplete using YouCompleteMe
+;; (use-package ycmd
+;;   :commands c++-mode
+;;   :init
+;;   (add-hook 'c++-mode-hook 'ycmd-mode)
+;;   :config
+;;   (set-variable 'ycmd-global-config
+;;                 "/Users/gs/.emacs.d/github/ycm_extra_conf.py")
+;;   (set-variable 'ycmd-server-command
+;;                 '("python" "/Users/gs/.emacs.d/github/ycmd/ycmd"))
+;;   (setq ycmd-force-semantic-completion t))
+
+;; (use-package company-ycmd
+;;   :commands c++-mode
+;;   :config (company-ycmd-setup))
+
+;; (use-package flycheck-ycmd
+;;   :commands c++-mode
+;;   :config (flycheck-ycmd-setup))
+
+;; -- Autocomplete using Irony
+;;; --- Irony - C++ IDE
+(use-package irony
+  :ensure
+  :defer
   :config
-  (set-variable 'ycmd-global-config
-                "/Users/gs/.emacs.d/github/ycm_extra_conf.py")
-  (set-variable 'ycmd-server-command
-                '("python" "/Users/gs/.emacs.d/github/ycmd/ycmd"))
-  (setq ycmd-force-semantic-completion t))
+  (use-package company-irony :ensure t)
+  (use-package company-irony-c-headers :ensure t)
+  (use-package irony-eldoc :ensure t)
+  (custom-set-variables
+   '(irony-additional-clang-options
+     '("-I/Library/Developer/CommandLineTools/usr/include/c++/v1")))
+  (defun custom/irony-mode-hook ()
+    "Hook to customize irony mode."
+    (add-to-list 'company-backends 'company-irony)
+    (add-to-list 'company-backends 'company-irony-c-headers)
+    (add-to-list 'company-backends 'company-dabbrev)
+    (define-key irony-mode-map [remap completion-at-point] 'counsel-irony)
+    (define-key irony-mode-map [remap complete-symbol] 'counsel-irony))
+  (add-hook 'irony-mode-hook 'custom/irony-mode-hook)
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+  (defun cc/irony-mode-hook ()
+    (unless (glsl-mode)
+      (irony-mode)
+      (add-hook 'irony-mode-hook #'irony-eldoc)))
+  (add-hook  'c-mode-hook '    cc/irony-mode-hook)
+  (add-hook  'c++-mode-hook '  cc/irony-mode-hook)
+(add-hook 'objc-mode-hook ' cc/irony-mode-hook))
 
-(use-package company-ycmd
-  :commands c++-mode
-  :config (company-ycmd-setup))
-
-(use-package flycheck-ycmd
-  :commands c++-mode
-  :config (flycheck-ycmd-setup))
+(use-package flycheck-irony
+  :ensure
+  :defer
+  :config
+  (eval-after-load 'flycheck
+'(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
 
 ;;; TODO: move to it's code-navigation package
 ;;; --- ctags & ggtags
