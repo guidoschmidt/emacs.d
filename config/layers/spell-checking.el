@@ -11,6 +11,8 @@
 (use-package flyspell
   :ensure t
   :config
+  (when (memq window-system '(w32))
+    (setq exec-path (append exec-path '("c:/Users/gs/.babun/cygwin/bin/"))))
   ;; Activate Flyspell by default in text & modes.
   (add-hook 'text-mode-hook 'flyspell-mode)
   (add-hook 'org-mode-hook 'turn-on-flyspell)
