@@ -21,9 +21,12 @@
 ;;; --- Re-set linum after loading a new theme.
 (use-package ample-theme :ensure :defer)
 (use-package apropospriate-theme :ensure :defer)
+(use-package boron-theme :ensure :defer)
+(use-package color-theme-sanityinc-tomorrow :ensure :defer)
 (use-package darkokai-theme :ensure :defer)
 (use-package espresso-theme :ensure :defer)
 (use-package flatui-theme :ensure :defer)
+(use-package flatland-theme :ensure :defer)
 (use-package gruvbox-theme :ensure :defer)
 (use-package hemera-theme :ensure :defer)
 (use-package jazz-theme :ensure :defer)
@@ -40,7 +43,7 @@
   ;; :load-path "~/git/develop/emacs/circadian.el/"
   :ensure
   :config
-  (setq circadian-themes '((:sunrise . nord)
+  (setq circadian-themes '((:sunrise . material-light)
                            (:sunset . ample-flat)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
