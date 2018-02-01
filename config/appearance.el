@@ -27,7 +27,7 @@
   :type 'alist
   :group 'fontset)
 (add-to-list 'os-font-map `(,os-windows . 12))
-(add-to-list 'os-font-map `(,os-mac . 16))
+(add-to-list 'os-font-map `(,os-mac . 18))
 (add-to-list 'os-font-map `(,os-linux . 20))
 
 (defun set-font (font size)
