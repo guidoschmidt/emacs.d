@@ -34,14 +34,13 @@
 (use-package soothe-theme :ensure :defer)
 (use-package subatomic-theme :ensure :defer)
 (use-package tao-theme :ensure :defer)
-(use-package paper-theme :ensure :defer)
 
 ;; --- Circadian
 (use-package circadian
   ;; :load-path "~/git/develop/emacs/circadian.el/"
   :ensure
   :config
-  (setq circadian-themes '((:sunrise . paper)
+  (setq circadian-themes '((:sunrise . material-light)
                            (:sunset . ample-flat)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
@@ -51,7 +50,7 @@
               ;; Line numbers appearance
               (setq linum-format 'linum-format-func)
               ;; Cursor
-              (set-default 'cursor-type 'box)
+              (set-default 'cursor-type 'bo)
               (set-cursor-color "#F52503")
               ;; Remove box style from modeline
               (set-face-attribute 'mode-line nil :box nil)
