@@ -37,7 +37,6 @@
   (("<C-tab>" . company-complete-common)
    ("C-c <C-tab>" . company-yasnippet)))
 
-;;; --- Company quickhelp
 (use-package company-quickhelp
   :ensure
   :commands company-mode
@@ -49,7 +48,6 @@
   :bind
   (("C-c h" . company-quickhelp-manual-begin)))
 
-;;; --- Company statistics
 (use-package company-statistics
   :ensure
   :commands company-mode
