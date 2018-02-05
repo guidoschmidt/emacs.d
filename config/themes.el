@@ -53,8 +53,10 @@
               ;; Line numbers appearance
               (setq linum-format 'linum-format-func)
               ;; Cursor
-              (set-default 'cursor-type 'box)
+              (set-default 'cursor-type 'bo)
               (set-cursor-color "#F52503")
+              ;; Remove box style from modeline
+              (set-face-attribute 'mode-line nil :box nil)
               ;; Set evil-modes cursor colors
               '(evil-emacs-state-cursor (quote ("#F52503" hbar)) t)
               '(evil-insert-state-cursor (quote ("#03F5E5" bar)) t)
