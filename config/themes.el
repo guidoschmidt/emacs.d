@@ -43,7 +43,7 @@
   ;; :load-path "~/git/develop/emacs/circadian.el/"
   :ensure
   :config
-  (setq circadian-themes '((:sunrise . material-light)
+  (setq circadian-themes '((:sunrise . apropospriate-light)
                            (:sunset . ample-flat)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
