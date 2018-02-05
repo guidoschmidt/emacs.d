@@ -2,15 +2,14 @@
 ;;; Commentary:
 
 ;; TODO:
-;; - dired hacks: https://github.com/Fuco1/dired-hacks
-;; - Setup common-lisp (slime-company)
-;; - https://github.com/DarwinAwardWinner/ido-completing-read-plus
+;; - dired hacks:
+;;   - Subtree
+;;   - dired-collapse
 ;; - https://github.com/technomancy/find-file-in-project
 ;; - https://github.com/emacscollective/auto-compile
-;; - https://github.com/syohex/emacs-anzu
 
 ;;; Code:
-;;; --- Keep .emacs.d clean
+;; --- Keep .emacs.d clean
 (use-package no-littering
   :ensure
   :config
@@ -20,35 +19,56 @@
   (add-to-list 'recentf-exclude no-littering-var-directory)
   (add-to-list 'recentf-exclude no-littering-etc-directory))
 
-;;; --- Try packages without installing them
+;; --- Try packages without installing them
 (use-package try
   :ensure
   :commands try)
 
-;;; --- Setup which-key
+;; --- Setup which-key
 (use-package which-key
   :commands which-key
   :config (which-key-mode)
   :diminish (which-key-mode . "w"))
 
-;;; --- keyfreq
+;; --- keyfreq
 (use-package keyfreq
   :ensure
   :config
   (keyfreq-mode 1)
   (keyfreq-autosave-mode 1))
 
-;;; --- Smex
+;; --- Dired-Hacks
+(use-package dired-hacks-utils
+  :commands dired-mode
+  :ensure
+  :config
+  (defconst my-dired-media-files-extensions
+    '("mp3" "mp4" "avi" "mpg" "flv" "ogg")
+    "Media files.")
+  (dired-rainbow-define html "#4e9a06" ("htm" "html" "xhtml"))
+  (dired-rainbow-define media "#ce5c00" my-dired-media-files-extensions)
+  (dired-rainbow-define log (:inherit default :italic t) ".*\\.log")
+  (dired-rainbow-define-chmod executable-unix "Green" "-[rw-]+x.*"))
+
+;; -- Anzu - show matching selections
+(use-package anzu
+  :ensure)
+
+;; --- Prodigy
+(use-package prodigy
+  :ensure)
+
+;; --- Smex
 (use-package smex
   :ensure)
 
-;;; --- EditorConfig
+;; --- EditorConfig
 (use-package editorconfig
   :ensure
   :config
   (editorconfig-mode 1))
 
-;;; --- Yasnippets
+;; --- Yasnippets
 (use-package yasnippet
   :ensure
   :commands (yas-global-mode yas-minor-mode)
@@ -57,7 +77,7 @@
   (eval-after-load 'yasnippet
     (yas-load-directory "~/.emacs.d/snippets")))
 
-;;; --- Wakatime
+;; --- Wakatime
 (use-package wakatime-mode
   :ensure
   :commands global-wakatime-mode
@@ -65,7 +85,7 @@
   (setq wakatime-api-key "32135691-bb0b-462e-94c2-b364aa352a6c")
   (global-wakatime-mode))
 
-;;; --- Hydra
+;; --- Hydra
 (use-package hydra
   :ensure
   :config
@@ -75,18 +95,18 @@
     ("<" text-scale-decrease "decrease")
     ("0" text-scale-adjust "adjust")))
 
-;;; --- Focus mode
+;; --- Focus mode
 (use-package focus
   :commands focus-mode)
 
-;;; --- Highlight indentation
+;; --- Highlight indentation
 (use-package highlight-indent-guides
   :ensure
   :config
   (setq highlight-indent-guides-method 'character)
   (add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
 
-;;; --- Neo-tree with icons
+;; --- Neo-tree with icons
 (use-package neotree
   :ensure
   :commands neotree-toggle
@@ -97,7 +117,7 @@
    '(neo-banner-face ((t :height 100))))
   (setq neo-theme (if (display-graphic-p) 'icons)))
 
-;;; --- Rainbow-delimiters
+;; --- Rainbow-delimiters
 (use-package rainbow-delimiters
   :ensure
   :config
@@ -108,7 +128,7 @@
   :ensure
   :commands rainbow-mode)
 
-;;; --- Projectile
+;; --- Projectile
 (use-package projectile
   :ensure
   :config
@@ -119,7 +139,7 @@
   :commands counsel-projectile-switch-project
   :after projectile)
 
-;;; --- Dump-Jump
+;; --- Dump-Jump
 (use-package dumb-jump
   :commands (dumb-jump-go-other-window
              dumb-jump-go
@@ -131,19 +151,19 @@
          ("M-g z" . dumb-jump-go-prefer-external-other-window))
   :config (setq dumb-jump-selector 'ivy))
 
-;;; --- Undo-tree
+;; --- Undo-tree
 (use-package undo-tree
   :ensure
   :commands global-undo-tree-mode
   :init (global-undo-tree-mode))
 
-;;; --- Auto highlight words
+;; --- Auto highlight words
 (use-package auto-highlight-symbol
   :ensure
   :config
   (global-auto-highlight-symbol-mode t))
 
-;;; --- Exec-path-from-shell
+;; --- Exec-path-from-shell
 (use-package exec-path-from-shell
   :ensure
   :config
@@ -152,7 +172,7 @@
     (setq shell-file-name "zsh")
     (exec-path-from-shell-initialize)))
 
-;;; --- Setup ace-window
+;; --- Setup ace-window
 (use-package ace-window
   :ensure
   :init (global-set-key [remap other-window] 'ace-window)
@@ -164,14 +184,15 @@
                    :foreground "white"
                    :background "black"))))))
 
-;;; --- Ivy
+;; --- Ivy
 (use-package ivy
   :ensure
   :commands (ivy-mode ivy-switch-buffer)
   :init (ivy-mode 1)
   :config
-  (setq ivy-use-virtual-buffers t)
   (setq ivy-height 30)
+  (setq ivy-use-virtual-buffers t)
+  (setq enable-recursive-minibuffers t)
   (setq ivy-display-style 'fancy)
   ;; Advise swiper to recenter on exit
   (defun bjm-swiper-recenter (&rest args)
@@ -183,7 +204,7 @@
          ("v" . nil)
          ("V" . nil)))
 
-;;; --- Swiper - better isearch
+;; --- Swiper - better isearch
 (use-package counsel
   :ensure)
 
@@ -198,14 +219,14 @@
   :config
   (define-key read-expression-map (kbd "C-r") 'counsel-expression-history))
 
-;;; --- Avy
+;; --- Avy
 (use-package avy
   :ensure
   :commands (avy-goto-char avy-goto-char-timer)
   :bind (("C-c a" . avy-goto-char)
          ("C-c o" . avy-goto-char-timer)))
 
-;;; --- Fill collumn indicator
+;; --- Fill collumn indicator
 (use-package fill-column-indicator
   :ensure
   :config
@@ -215,7 +236,7 @@
   (setq-default whitespace-style '(face trailing))
   (add-hook 'prog-mode-hook 'fci-mode))
 
-;;; --- Wrap region
+;; --- Wrap region
 (use-package wrap-region
   :ensure
   :commands wrap-region-mode
@@ -226,7 +247,7 @@
   (wrap-region-add-wrapper "'" "'")
   (wrap-region-mode t))
 
-;;; -- Refactor
+;; -- Refactor
 (use-package emr
   :ensure
   :commands emr-show-refactor-menu
@@ -235,7 +256,7 @@
   :bind
   (("<M-RET>" . emr-show-refactor-menu)))
 
-;;; -- Aggressive indent
+;; -- Aggressive indent
 (use-package aggressive-indent
   :ensure
   :commands aggressive-indent-mode
@@ -243,19 +264,19 @@
   (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
   (add-hook 'css-mode-hook #'aggressive-indent-mode))
 
-;;; --- Language specific
-;;; --- Android
+;; --- Language specific
+;; --- Android
 (use-package gradle-mode
   :commands gradle-mode)
 
-;;; --- iTerm2 Support
+;; --- iTerm2 Support
 (unless window-system
   (require 'mouse)
   (xterm-mouse-mode t)
   (defun track-mouse (e))
   (setq mouse-sel-mode t))
 
-;;; --- fish shell
+;; --- fish shell
 (use-package fish-mode
   :ensure
   :commands fish-mode
@@ -264,7 +285,7 @@
             (lambda ()
               (add-hook 'before-save-hook 'fish_indent-before-save))))
 
-;;; --- Load additional layers
+;; --- Load additional layers
 (load "~/.emacs.d/config/layers/autocomplete.company.el")
 (load "~/.emacs.d/config/layers/git.el")
 (load "~/.emacs.d/config/layers/orgmode.el")
@@ -274,7 +295,7 @@
 (load "~/.emacs.d/config/modeline.el")
 (load "~/.emacs.d/config/notifications.el")
 
-;;; --- Languages setup
+;; --- Languages setup
 (load "~/.emacs.d/config/languages/arduino.el")
 (load "~/.emacs.d/config/languages/cc.el")
 (load "~/.emacs.d/config/languages/clojure.el")
