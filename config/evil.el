@@ -33,7 +33,8 @@
     "p"       'counsel-projectile-switch-project
     "f"       'counsel-projectile-find-file
     "t"       'mc/mark-sgml-tag-pair
-    "g"       'counsel-ag))
+    "g"       'counsel-ag
+    "RET"     'eval-defun))
 
 (use-package evil-cleverparens
   :ensure
