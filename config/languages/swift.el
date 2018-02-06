@@ -4,10 +4,13 @@
 
 ;;; Code:
 (use-package swift-mode
-  :commands swift-mode)
+  :commands swift-mode
+  :ensure)
 
 (use-package flycheck-swift
   :commands swift-mode
+  :ensure
+  :defer
   :config
   (eval-after-load 'flycheck '(flycheck-swift-setup))
   (setq flycheck-swift-sdk-path "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk")
@@ -16,6 +19,7 @@
 
 (use-package company-sourcekit
   :commands swift-mode
+  :ensure
   :config
   (defun company/swift-mode-hook ()
     (add-to-list 'company-backends '(company-dabbrev :with company-sourcekit))

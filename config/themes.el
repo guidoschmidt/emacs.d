@@ -21,9 +21,12 @@
 ;;; --- Re-set linum after loading a new theme.
 (use-package ample-theme :ensure :defer)
 (use-package apropospriate-theme :ensure :defer)
+(use-package boron-theme :ensure :defer)
+(use-package color-theme-sanityinc-tomorrow :ensure :defer)
 (use-package darkokai-theme :ensure :defer)
 (use-package espresso-theme :ensure :defer)
 (use-package flatui-theme :ensure :defer)
+(use-package flatland-theme :ensure :defer)
 (use-package gruvbox-theme :ensure :defer)
 (use-package hemera-theme :ensure :defer)
 (use-package jazz-theme :ensure :defer)
@@ -34,13 +37,14 @@
 (use-package soothe-theme :ensure :defer)
 (use-package subatomic-theme :ensure :defer)
 (use-package tao-theme :ensure :defer)
+(use-package color-theme-solarized :ensure :defer)
 
 ;; --- Circadian
 (use-package circadian
   ;; :load-path "~/git/develop/emacs/circadian.el/"
   :ensure
   :config
-  (setq circadian-themes '((:sunrise . nord)
+  (setq circadian-themes '((:sunrise . solarized)
                            (:sunset . ample-flat)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
@@ -50,8 +54,10 @@
               ;; Line numbers appearance
               (setq linum-format 'linum-format-func)
               ;; Cursor
-              (set-default 'cursor-type 'box)
+              (set-default 'cursor-type 'bo)
               (set-cursor-color "#F52503")
+              ;; Remove box style from modeline
+              (set-face-attribute 'mode-line nil :box nil)
               ;; Set evil-modes cursor colors
               '(evil-emacs-state-cursor (quote ("#F52503" hbar)) t)
               '(evil-insert-state-cursor (quote ("#03F5E5" bar)) t)

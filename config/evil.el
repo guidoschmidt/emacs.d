@@ -15,7 +15,6 @@
   (define-key ibuffer-mode-map (kbd "V") nil)
   (define-key ibuffer-mode-map (kbd "r") 'ibuffer-do-revert))
 
-;;; --- Evil leader for shortcuts
 (use-package evil-leader
   :ensure
   :config
@@ -34,9 +33,9 @@
     "p"       'counsel-projectile-switch-project
     "f"       'counsel-projectile-find-file
     "t"       'mc/mark-sgml-tag-pair
-    "g"       'counsel-ag))
+    "g"       'counsel-ag
+    "RET"     'eval-defun))
 
-;;; --- Evil cleverparens
 (use-package evil-cleverparens
   :ensure
   :config
@@ -50,20 +49,17 @@
   (add-hook 'emacs-lisp-mode-hook 'evil-paredit-mode)
   (add-hook 'clojure-mode 'evil-paredit-mode))
 
-;;; --- Multiple cursors + evil multiple cursors
-(use-package multiple-cursors
-  :ensure)
-
 (use-package evil-mc
   :ensure
   :config
+  (use-package multiple-cursors
+    :ensure)
   (setq evil-mc-one-cursor-show-mode-line-text nil)
   (global-evil-mc-mode 1)
   :bind
   (("C-<" . evil-mc-make-cursor-move-next-line)
    ("C->" . evil-mc-make-cursor-move-prev-line)))
 
-;;; --- Expand region in combination with evil-leader
 (use-package expand-region
   :ensure
   :config
@@ -72,13 +68,11 @@
     '(setq expand-region-contract-fast-key "z"))
   (evil-leader/set-key "e" 'er/expand-region))
 
-;;; --- Evil-surround
 (use-package evil-surround
   :ensure
   :config
   (global-evil-surround-mode 1))
 
-;;; --- Evil collection
 (use-package evil-collection
   :ensure t
   :after evil
@@ -86,6 +80,10 @@
   (setq evil-collection-setup-minibuffer t)
   (setq evil-collection-company-use-tng nil)
   (evil-collection-init))
+
+(use-package evil-anzu
+  :commands evil-mode
+  :ensure)
 
 (provide 'evil.el)
 ;;; evil.el ends here

@@ -60,6 +60,7 @@
 
 ;; Enable flycheck globally
 (global-flycheck-mode 1)
+(add-hook 'yaml-mode-hook 'flymake-yaml-load)
 
 (provide 'syntax-checking.el)
 ;;; syntax-checking.el ends here
