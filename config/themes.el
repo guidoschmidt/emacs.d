@@ -37,13 +37,14 @@
 (use-package soothe-theme :ensure :defer)
 (use-package subatomic-theme :ensure :defer)
 (use-package tao-theme :ensure :defer)
+(use-package color-theme-solarized :ensure :defer)
 
 ;; --- Circadian
 (use-package circadian
   ;; :load-path "~/git/develop/emacs/circadian.el/"
   :ensure
   :config
-  (setq circadian-themes '((:sunrise . apropospriate-light)
+  (setq circadian-themes '((:sunrise . solarized)
                            (:sunset . ample-flat)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
