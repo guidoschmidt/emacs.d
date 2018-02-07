@@ -39,5 +39,14 @@
 (use-package use-package-ensure-system-package
   :ensure t)
 
+(use-package auto-compile
+  :ensure
+  :config
+  (setq load-prefer-newer t)
+  (package-initialize)
+  (require 'auto-compile)
+  (auto-compile-on-load-mode)
+  (auto-compile-on-save-mode))
+
 (provide 'pacman.el)
 ;;; pacman.el ends here
