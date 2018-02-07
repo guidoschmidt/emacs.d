@@ -4,13 +4,26 @@
 ;;; Setup company mode
 
 ;;; Code:
+(defvar company-mode/enable-yas t
+  "Enable yasnippet for all backends.")
+
 (use-package company
   :ensure
+  :preface
+  (defun company-mode/backend-with-yas (backend)
+    (if (or
+         (not company-mode/enable-yas)
+         (and (listp backend) (member 'company-yasnippet backend)))
+        backend
+      (append (if (consp backend) backend (list backend))
+              '(:with company-yasnippet))))
+  :init
+  (global-company-mode t)
   :config
   (setq-default company-dabbrev-other-buffers t
                 company-dabbrev-code-time-limit 0.5
-                company-idle-delay 0.1
-                company-minimum-prefix-length 1
+                company-idle-delay 0
+                company-minimum-prefix-length 2
                 company-require-match nil
                 company-dabbrev-ignore-case nil
                 company-dabbrev-downcase nil
@@ -32,7 +45,8 @@
             'company-maybe-turn-on-fci)
   (add-hook 'company-completion-cancelled-hook
             'company-maybe-turn-on-fci)
-  (global-company-mode)
+  (setq company-backends (mapcar #'company-mode/backend-with-yas
+                                 company-backends))
   :bind
   (("<C-tab>" . company-complete-common)
    ("C-c <C-tab>" . company-yasnippet)))

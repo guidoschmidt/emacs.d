@@ -77,6 +77,9 @@
   (eval-after-load 'yasnippet
     (yas-load-directory "~/.emacs.d/snippets")))
 
+(use-package yasnippet-snippets
+  :ensure)
+
 ;; --- Wakatime
 (use-package wakatime-mode
   :ensure

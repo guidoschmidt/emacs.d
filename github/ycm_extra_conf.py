@@ -31,11 +31,31 @@ import os
 
 import ycm_core
 
-default_flags = ['-x', 'c++', '-Wall', '-Wextra', '-Werror', '-std=c++14']
+default_flags = [
+    "-x",
+    "c++",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-std=c++14"
+]
 
-cpp_source_extensions = ['.cpp', '.cxx', '.cc', '.c', '.m', '.mm']
+cpp_source_extensions = [
+    ".cpp",
+    ".cxx",
+    ".cc",
+    ".c",
+    ".m",
+    ".mm"
+]
 
-header_file_extensions = ['.h', '.H', '.hxx', '.hpp', '.hh']
+header_file_extensions = [
+    ".h",
+    ".H",
+    ".hxx",
+    ".hpp",
+    ".hh"
+]
 
 completion_database = []
 
