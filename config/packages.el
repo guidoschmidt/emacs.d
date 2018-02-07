@@ -6,7 +6,7 @@
 ;;   - Subtree
 ;;   - dired-collapse
 ;; - https://github.com/technomancy/find-file-in-project
-;; - https://github.com/emacscollective/auto-compile
+;; - https://github.com/tautologyclub/feebleline
 
 ;;; Code:
 ;; --- Keep .emacs.d clean
