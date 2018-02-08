@@ -1,6 +1,9 @@
 ;;; javascript-web.el --- Javascript & co. setup
+
 ;;; Commentary:
 ;; Setup web development tools
+;; TODO:
+;; - Try tide vs tern (https://github.com/ananthakumaran/tide)
 
 ;;; Code:
 ;;; --- Javascript
