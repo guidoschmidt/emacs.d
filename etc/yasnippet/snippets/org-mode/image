@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: img
+# key: img
+# --
+#+NAME: fig:${1:name}
+#+CAPTION: ${2:caption}
+#+ATTR_HTML: :width ${3:width}px
+[[${4:./img/}]]
