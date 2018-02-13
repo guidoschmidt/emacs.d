@@ -11,6 +11,10 @@
   :config
   (use-package evil-magit
     :ensure)
+  (setq magit-diff-paint-whitespace t)
+  (defun prevent-whitespace-mode-for-magit ()
+    (not (derived-mode-p 'magit-mode)))
+  (add-function :before-while whitespace-enable-predicate 'prevent-whitespace-mode-for-magit)
   (setq magit-completing-read-function 'ivy-completing-read))
 
 (use-package gist
