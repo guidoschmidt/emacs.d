@@ -1,0 +1,32 @@
+# -*- mode: snippet -*-
+# name: sketch
+# key: sketch
+# --
+(ns ${1:namspace}.${2:project}
+  (:require [quil.core :as q]
+            [quil.middleware :as m]
+            [clj-time/formatter :as tf]))
+
+(defn setup []
+  (q/frame-rate 30)
+  (q/color-mode :hsb)
+  {${3:state}})
+
+(defn update-state [state]
+  {})
+
+(defn draw-state [state]
+  (q/background 80))
+
+(defn mouse-released [state event]
+  (q/save-frame (str (new java.util.Date) ".png"))
+  (-> state (assoc :version (+ 1 (:version state)))))
+
+(q/defsketch core
+  :title "${4:title}"
+  :features [:no-bind-output]
+  :size [${5:width} ${6:height}]
+  :setup setup
+  :update update-state
+  :draw draw-state
+  :middleware [m/fun-mode])
