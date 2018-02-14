@@ -4,12 +4,11 @@
 
 ;;; Code:
 (use-package swift-mode
-  :commands swift-mode
   :ensure)
 
 (use-package flycheck-swift3
   :commands swift-mode
-  :ensure t
+  :ensure
   :config
   (with-eval-after-load 'flycheck
     (add-hook 'flycheck-mode-hook #'flycheck-swift3-setup))
@@ -28,6 +27,11 @@
     (setq company-sourcekit-use-yasnippet t)
     (setq company-sourcekit-verbose t))
   (add-hook 'swift-mode-hook 'company/swift-mode-hook))
+
+(use-package emacs-xcode
+  :load-path "~/.emacs.d/github/emacs-xcode"
+  :ensure
+  :commands swift-mode)
 
 (provide 'swift.el)
 ;;; swift.el ends here

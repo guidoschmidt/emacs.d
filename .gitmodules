@@ -37,3 +37,6 @@
 [submodule "github/all-the-icons"]
 	path = github/all-the-icons
 	url = https://github.com/domtronn/all-the-icons.el.git
+[submodule "github/emacs-xcode"]
+	path = github/emacs-xcode
+	url = https://github.com/senny/emacs-xcode.git
