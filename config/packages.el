@@ -54,6 +54,12 @@
 (use-package anzu
   :ensure)
 
+;; -- emojify
+(use-package emojify
+  :ensure
+  :config
+  (add-hook 'after-init-hook #'global-emojify-mode))
+
 ;; --- Prodigy
 (use-package prodigy
   :ensure)
