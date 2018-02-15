@@ -16,7 +16,6 @@
 
 ;; Custom key bindings
 (global-set-key (kbd "C-;")         'comment-or-uncomment-region)
-(global-set-key (kbd "C-M-f")       'toggle-frame-fullscreen)
 (global-set-key (kbd "C-c C-k")     'compile)
 (global-set-key (kbd "C-x g")       'goto-line)
 (global-set-key (kbd "M-<up>")      'move-line-up)
