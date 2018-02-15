@@ -28,10 +28,7 @@
     (setq company-sourcekit-verbose t))
   (add-hook 'swift-mode-hook 'company/swift-mode-hook))
 
-(use-package emacs-xcode
-  :load-path "~/.emacs.d/github/emacs-xcode"
-  :ensure
-  :commands swift-mode)
+(use-package xcode-mode :ensure t)
 
 (provide 'swift.el)
 ;;; swift.el ends here
