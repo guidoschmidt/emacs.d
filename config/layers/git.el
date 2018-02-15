@@ -11,6 +11,11 @@
   :config
   (use-package evil-magit
     :ensure)
+  (use-package magit-gh-pulls
+    :ensure
+    :commands magit-status
+    :config
+    (add-hook 'magit-mode-hook 'turn-on-magit-gh-pulls))
   (setq magit-diff-paint-whitespace t)
   (defun prevent-whitespace-mode-for-magit ()
     (not (derived-mode-p 'magit-mode)))
