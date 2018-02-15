@@ -28,7 +28,8 @@
     (setq company-sourcekit-verbose t))
   (add-hook 'swift-mode-hook 'company/swift-mode-hook))
 
-(use-package xcode-mode :ensure t)
+(use-package xcode-project
+  :ensure t)
 
 (provide 'swift.el)
 ;;; swift.el ends here
