@@ -15,11 +15,20 @@
                  "-message" message
                  "-activate" "org.gnu.Emacs"))
 
-(defun notify-in(time msg)
-  (interactive
-   "Notification when (e.g: 2 minutes, 60 seconds, 3 days): \nsMessage: ")
+(defun notify-in (time msg)
+  "Notify in TIME minutes with a MSG text."
+  (interactive)
   (run-at-time time nil
                (lambda (msg) (terminal-notifier-notify "Emacs" msg)) msg))
+
+(defvar timer-minutes nil)
+(defun make-timer (time)
+  "Make a timer that will run for TIME minutes."
+  (interactive (list
+                (read-from-minibuffer
+                 "Minutes: " (car timer-minutes)
+                 nil nil 'timer-minutes)))
+  (notify-in (concat time " minutes") (concat time " minutes are over!")))
 
 (provide 'notifications.el)
 ;;; notifications.el ends here
