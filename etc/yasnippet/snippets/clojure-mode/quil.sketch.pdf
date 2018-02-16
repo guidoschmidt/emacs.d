@@ -1,0 +1,35 @@
+# -*- mode: snippet -*-
+# name: sketch-pdf
+# key: sketch-pdf
+# --
+(ns ${1:namespace}.${2:project}
+  (:use quil.core)
+  (:require [quil.core :as q]))
+
+
+(defn setup [])
+
+
+(defn draw-point [x y noise]
+  (q/push-matrix)
+  (q/with-translation [(* x noise 4)
+                       (* y noise 4)]
+    (let [size (* noise 23)]
+      (q/ellipse 0 0 size size)))
+  (q/pop-matrix))
+
+(defn draw []
+  (background 255)
+  (exit))
+
+
+(defsketch ${2:project}
+  :title "${3:title}"
+  :setup setup
+  :renderer :pdf
+  :output-file "./${4:filename}.pdf"
+  :draw draw
+  :size [${5:width} ${6:height}])
+
+
+(defn -main [] ())

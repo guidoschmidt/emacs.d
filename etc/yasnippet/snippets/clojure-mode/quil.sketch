@@ -22,7 +22,7 @@
   (q/save-frame (str (new java.util.Date) ".png"))
   (-> state (assoc :version (+ 1 (:version state)))))
 
-(q/defsketch core
+(q/defsketch ${2:project}
   :title "${4:title}"
   :features [:no-bind-output]
   :size [${5:width} ${6:height}]
@@ -30,3 +30,5 @@
   :update update-state
   :draw draw-state
   :middleware [m/fun-mode])
+
+(defn -main [& args])
