@@ -38,6 +38,7 @@
 (use-package subatomic-theme :ensure :defer)
 (use-package tao-theme :ensure :defer)
 (use-package color-theme-solarized :ensure :defer)
+(use-package abyss-theme :ensure :defer)
 
 ;; --- Circadian
 (use-package circadian
@@ -45,7 +46,7 @@
   :ensure
   :config
   (setq circadian-themes '((:sunrise . solarized)
-                           (:sunset . ample-flat)))
+                           (:sunset . abyss)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
 
