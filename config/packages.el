@@ -1,4 +1,4 @@
-;;; packages.el --- Setup packages
+;;; packages --- Setup packages
 ;;; Commentary:
 
 ;; TODO:
@@ -9,9 +9,9 @@
 ;; - https://github.com/tautologyclub/feebleline
 
 ;;; Code:
-;; --- Keep .emacs.d clean
+;; no-littering - Keep your .emacs.d clean
 (use-package no-littering
-  :ensure
+  :ensure t
   :config
   (require 'recentf)
   (setq auto-save-file-name-transforms
@@ -19,28 +19,28 @@
   (add-to-list 'recentf-exclude no-littering-var-directory)
   (add-to-list 'recentf-exclude no-littering-etc-directory))
 
-;; --- Try packages without installing them
+;; try - Try packages without installing them
 (use-package try
-  :ensure
+  :ensure t
   :commands try)
 
-;; --- Setup which-key
+;; which-key - Display available key bindings in a popup
 (use-package which-key
+  :ensure t
   :commands which-key
-  :config (which-key-mode)
-  :diminish (which-key-mode . "w"))
+  :config (which-key-mode))
 
-;; --- keyfreq
+;; keyfreq - gather statistics of key and command frequency
 (use-package keyfreq
-  :ensure
+  :ensure t
   :config
   (keyfreq-mode 1)
   (keyfreq-autosave-mode 1))
 
-;; --- Dired-Hacks
+;; Dired-Hacks - imporve dired-mode
 (use-package dired-hacks-utils
+  :ensure t
   :commands dired-mode
-  :ensure
   :config
   (defconst my-dired-media-files-extensions
     '("mp3" "mp4" "avi" "mpg" "flv" "ogg")
@@ -50,53 +50,54 @@
   (dired-rainbow-define log (:inherit default :italic t) ".*\\.log")
   (dired-rainbow-define-chmod executable-unix "Green" "-[rw-]+x.*"))
 
-;; -- Anzu - show matching selections
+;; Anzu - show matching selections on search
 (use-package anzu
-  :ensure)
-
-;; -- emojify
-(use-package emojify
-  :ensure
+  :ensure t
   :config
-  (add-hook 'after-init-hook #'global-emojify-mode))
+  (global-anzu-mode t))
 
-;; --- Prodigy
+;; emojify - convert utf-8 smileys to images 
+(use-package emojify
+  :ensure t
+  :hook (after-init . global-emojify-mode))
+
+;; Prodigy - manage external services from within Emacs
 (use-package prodigy
-  :ensure)
+  :ensure t)
 
-;; --- Smex
+;; Smex - smart M-x enhancement
 (use-package smex
-  :ensure)
+  :ensure t)
 
-;; --- EditorConfig
+;; EditorConfig - adapt Emacs to .editorconfig files
 (use-package editorconfig
-  :ensure
+  :ensure t
   :config
   (editorconfig-mode 1))
 
-;; --- Yasnippets
+;; Yasnippets - code snippets
 (use-package yasnippet
-  :ensure
+  :ensure t
   :commands (yas-global-mode yas-minor-mode)
   :config
   (yas-global-mode 1)
   (eval-after-load 'yasnippet
-    (yas-load-directory "~/.emacs.d/snippets")))
+    (yas-load-directory "~/.emacs.d/snippets"))
+  (use-package yasnippet-snippets
+    :ensure t
+    :after yasnippet))
 
-(use-package yasnippet-snippets
-  :ensure)
-
-;; --- Wakatime
+;; Wakatime - track your coding time
 (use-package wakatime-mode
-  :ensure
+  :ensure t
   :commands global-wakatime-mode
   :config
   (setq wakatime-api-key "32135691-bb0b-462e-94c2-b364aa352a6c")
   (global-wakatime-mode))
 
-;; --- Hydra
+;; Hydra - popup with options after pressing a leader key
 (use-package hydra
-  :ensure
+  :ensure t
   :config
   (defhydra hydra-text-scale (global-map "<f10>")
     "Text Zoom"
@@ -104,52 +105,59 @@
     ("<" text-scale-decrease "decrease")
     ("0" text-scale-adjust "adjust")))
 
-;; --- Focus mode
+;; Focus - visual highlight scopes
 (use-package focus
+  :ensure t
   :commands focus-mode)
 
-;; --- Highlight indentation
+;; highlight-indent-guides - Highlight indentation
 (use-package highlight-indent-guides
-  :ensure
+  :ensure t
+  :hook (prog-mode . highlight-indent-guides-mode)
   :config
-  (setq highlight-indent-guides-method 'character)
-  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode))
+  (setq highlight-indent-guides-method 'character))
 
-;; --- Neo-tree with icons
+;; neotree - provide a side panel with file tree view
 (use-package neotree
-  :ensure
+  :disabled
+  :ensure t
   :commands neotree-toggle
   :config
-  (custom-set-faces
-   '(neo-dir-link-face ((t (:weight bold :height 100))))
-   '(neo-file-link-face ((t (:weight normal :height 110))))
-   '(neo-banner-face ((t :height 100))))
+  ;; (custom-set-faces
+  ;;  '(neo-dir-link-face ((t (:weight bold :height 100))))
+  ;;  '(neo-file-link-face ((t (:weight normal :height 110))))
+  ;;  '(neo-banner-face ((t :height 100))))
   (setq neo-theme (if (display-graphic-p) 'icons)))
 
-;; --- Rainbow-delimiters
+;; rainbow-delimiters - color highlight parenthesis according to their depth
 (use-package rainbow-delimiters
-  :ensure
-  :config
-  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+  :ensure t
+  :hook
+  (prog-mode . rainbow-delimiters-mode))
 
-;; --- Rainbow mode
+;; rainbow-mode - highlight HTML color codes with the corresponding color
 (use-package rainbow-mode
-  :ensure
-  :commands rainbow-mode)
+  :ensure t
+  :commands rainbow-mode
+  :hook (prog-mode . rainbow-mode))
 
-;; --- Projectile
+;; projectile - provide a searchable interface for projects
 (use-package projectile
-  :ensure
+  :ensure t
+  :init
+  (progn
+    (setq projectile-enable-caching t)
+    (setq projectile-completion-system 'grizzl))
   :config
-  (projectile-mode)
-  (setq projectile-completion-system 'ivy))
+  (projectile-mode))
 
 (use-package counsel-projectile
   :commands counsel-projectile-switch-project
   :after projectile)
 
-;; --- Dump-Jump
+;; dump-jump - "jump to definition"
 (use-package dumb-jump
+  :ensure t
   :commands (dumb-jump-go-other-window
              dumb-jump-go
              dumb-jump-go-prefer-external
@@ -160,31 +168,31 @@
          ("M-g z" . dumb-jump-go-prefer-external-other-window))
   :config (setq dumb-jump-selector 'ivy))
 
-;; --- Undo-tree
+;; undo-tree - advanced undo actions
 (use-package undo-tree
-  :ensure
-  :commands global-undo-tree-mode
+  :ensure t
   :init (global-undo-tree-mode))
 
-;; --- Auto highlight words
+;; auto-highlight-symbol - highlight matching expressions on selection
 (use-package auto-highlight-symbol
-  :ensure
+  :ensure t
   :config
   (global-auto-highlight-symbol-mode t))
 
-;; --- Exec-path-from-shell
+;; exec-path-from-shell - executer commands from you'r systems shell
 (use-package exec-path-from-shell
-  :ensure
+  :ensure t
   :config
   (when (memq window-system '(mac ns x))
     (setq explicit-shell-file-name "/bin/zsh")
     (setq shell-file-name "zsh")
     (exec-path-from-shell-initialize)))
 
-;; --- Setup ace-window
+;; ace-window - effectively jump between frames and windows
 (use-package ace-window
-  :ensure
-  :init (global-set-key [remap other-window] 'ace-window)
+  :ensure t
+  :init
+  (global-set-key [remap other-window] 'ace-window)
   :config
   (setq aw-background nil)
   (custom-set-faces
@@ -193,61 +201,78 @@
                    :foreground "white"
                    :background "black"))))))
 
-;; --- Ivy
+;; ivy - generic completion frontend for emacs
 (use-package ivy
-  :ensure
+  :ensure t
   :commands (ivy-mode ivy-switch-buffer)
-  :init (ivy-mode 1)
   :config
-  (setq ivy-height 30)
-  (setq ivy-use-virtual-buffers t)
   (setq enable-recursive-minibuffers t)
   (setq ivy-display-style 'fancy)
-  ;; Advise swiper to recenter on exit
-  (defun bjm-swiper-recenter (&rest args)
-    "recenter display after swiper"
+  (setq ivy-height 20)
+  (setq ivy-use-virtual-buffers t)
+  (defun swiper-recenter (&rest args)
+    "Advice swiper to recenter on exit."
     (recenter))
-  (advice-add 'swiper :after #'bjm-swiper-recenter)
-  :bind (("C-x b" . ivy-switch-buffer)
-         :map ivy-switch-buffer-map
-         ("v" . nil)
-         ("V" . nil)))
+  (advice-add 'swiper :after #'swiper-recenter)
+  (ivy-mode 1)
+  :bind
+  (("C-c C-r" . ivy-resume)
+   ("C-x b"   . ivy-switch-buffer)
+   :map ivy-switch-buffer-map
+   ("v" . nil)
+   ("V" . nil)))
 
-;; --- Swiper - better isearch
+;; counsel - ivy-enhanced versiosn of Emacs-commands
 (use-package counsel
-  :ensure)
+  :ensure t
+  :bind
+  (("M-x"     . counsel-M-x)
+   ("C-c g"   . counsel-ag)
+   ("C-x C-f" . counsel-find-file)))
 
+;; swiper - isearch replacement for Emacs
 (use-package swiper
-  :ensure
+  :ensure t
   :bind
   (("C-s" . swiper)
-   ("C-c C-r" . ivy-resume)
-   ("M-x" . counsel-M-x)
-   ("C-x C-f" . counsel-find-file)
-   ("C-c g" . counsel-ag))
-  :config
-  (define-key read-expression-map (kbd "C-r") 'counsel-expression-history))
+   :map read-expression-map
+   ("C-r" . counsel-expression-history)))
 
-;; --- Avy
+;; avy - jump to characters and expressions
 (use-package avy
-  :ensure
+  :ensure t
   :commands (avy-goto-char avy-goto-char-timer)
-  :bind (("C-c a" . avy-goto-char)
-         ("C-c o" . avy-goto-char-timer)))
-
-;; --- Fill collumn indicator
-(use-package fill-column-indicator
-  :ensure
+  :custom-face
   :config
-  (setq fci-rule-width 2)
-  (setq-default fci-rule-column 80)
-  (setq-default fci-rule-color "#252525")
-  (setq-default whitespace-style '(face trailing))
-  (add-hook 'prog-mode-hook 'fci-mode))
+  (setq avy-background t)
+  (setq avy-all-windows t)
+  (custom-set-faces
+   '(avy-lead-face
+     ((t (:inherit avy-lead-face
+                   :background "#FF33B2"
+                   :foreground "white"))))
+   '(avy-lead-face-0
+     ((t (:inherit avy-lead-face-0
+                   :background "#33FFB2"
+                   :foreground "black")))))
+  :bind
+  (("C-c a" . avy-goto-char)
+   ("C-c o" . avy-goto-char-timer)
+   ("C-c e" . swiper-avy)))
 
-;; --- Wrap region
+;; fill-collumn-indicator - show a line at 80 characters
+(use-package fill-column-indicator
+  :ensure t
+  :hook (prog-mode . fci-mode)
+  :config
+  (setq fci-rule-width 1)
+  (setq-default fci-rule-column 80)
+  (setq-default fci-rule-color "#b3bbf3")
+  (setq-default whitespace-style '(face trailing)))
+
+;; Wrap region - wrap a region with 
 (use-package wrap-region
-  :ensure
+  :ensure t
   :commands wrap-region-mode
   :config
   (wrap-region-add-wrapper "`" "`")
@@ -256,70 +281,19 @@
   (wrap-region-add-wrapper "'" "'")
   (wrap-region-mode t))
 
-;; -- Refactor
+;; emr - refactor menu
 (use-package emr
-  :ensure
+  :ensure t
   :commands emr-show-refactor-menu
-  :config
-  (add-hook 'prog-mode-hook 'emr-initialize)
+  :hook (prog-mode . emr-initialize)
   :bind
   (("<M-RET>" . emr-show-refactor-menu)))
 
-;; -- Aggressive indent
+;; aggressive-indent - aggressively ensure indentation
 (use-package aggressive-indent
-  :ensure
+  :ensure t
   :commands aggressive-indent-mode
-  :config
-  (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
-  (add-hook 'css-mode-hook #'aggressive-indent-mode))
+  :hook (emacs-lisp . aggressive-indent-mode))
 
-;; --- Language specific
-;; --- Android
-(use-package gradle-mode
-  :commands gradle-mode)
-
-;; --- iTerm2 Support
-(unless window-system
-  (require 'mouse)
-  (xterm-mouse-mode t)
-  (defun track-mouse (e))
-  (setq mouse-sel-mode t))
-
-;; --- fish shell
-(use-package fish-mode
-  :ensure
-  :commands fish-mode
-  :config
-  (add-hook 'fish-mode-hook
-            (lambda ()
-              (add-hook 'before-save-hook 'fish_indent-before-save))))
-
-;; --- Load additional layers
-(load "~/.emacs.d/config/layers/autocomplete.company.el")
-(load "~/.emacs.d/config/layers/git.el")
-(load "~/.emacs.d/config/layers/orgmode.el")
-(load "~/.emacs.d/config/layers/shell.el")
-(load "~/.emacs.d/config/layers/spell-checking.el")
-(load "~/.emacs.d/config/layers/syntax-checking.el")
-(load "~/.emacs.d/config/modeline.el")
-(load "~/.emacs.d/config/notifications.el")
-
-;; --- Languages setup
-(load "~/.emacs.d/config/languages/arduino.el")
-(load "~/.emacs.d/config/languages/cc.el")
-(load "~/.emacs.d/config/languages/clojure.el")
-(load "~/.emacs.d/config/languages/common-lisp.el")
-(load "~/.emacs.d/config/languages/css.el")
-(load "~/.emacs.d/config/languages/elisp.el")
-(load "~/.emacs.d/config/languages/glsl.el")
-(load "~/.emacs.d/config/languages/haskell.el")
-(load "~/.emacs.d/config/languages/javascript.el")
-(load "~/.emacs.d/config/languages/kotlin.el")
-(load "~/.emacs.d/config/languages/markup.el")
-(load "~/.emacs.d/config/languages/php.el")
-(load "~/.emacs.d/config/languages/python.el")
-(load "~/.emacs.d/config/languages/rest.el")
-(load "~/.emacs.d/config/languages/swift.el")
-
-(provide 'packages.el)
-;;; packages.el ends here
+(provide 'packages)
+;;; packages ends here

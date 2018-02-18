@@ -8,7 +8,7 @@
   "Enable yasnippet for all backends.")
 
 (use-package company
-  :ensure
+  :ensure t
   :preface
   (defun company-mode/backend-with-yas (backend)
     (if (or
@@ -22,7 +22,7 @@
   :config
   (setq-default company-dabbrev-other-buffers t
                 company-dabbrev-code-time-limit 0.5
-                company-idle-delay 0
+                company-idle-delay 0.5
                 company-minimum-prefix-length 2
                 company-require-match nil
                 company-dabbrev-ignore-case nil
@@ -68,5 +68,5 @@
   :config
   (add-hook 'after-init-hook 'company-statistics-mode))
 
-(provide 'autocomplete.company.el)
+(provide 'autocomplete.company)
 ;;; autocomplete.company.el ends here

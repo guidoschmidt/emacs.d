@@ -1,3 +1,7 @@
+;;; ligatures --- Setup ligature support
+;;; Commentary:
+
+;;; Code:
 (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
                (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")
                (36 . ".\\(?:>\\)")
@@ -27,3 +31,6 @@
   (dolist (char-regexp alist)
     (set-char-table-range composition-function-table (car char-regexp)
                           `([,(cdr char-regexp) 0 font-shape-gstring]))))
+
+(provide 'ligatures)
+;;; ligatures ends here

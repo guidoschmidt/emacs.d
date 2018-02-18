@@ -1,6 +1,6 @@
 ;;; keymap.el --- Configure custom key bindings
-;;; Commentary:
 
+;;; Commentary:
 
 ;;; Code:
 ;; macOS key binding setup

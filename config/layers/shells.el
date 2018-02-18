@@ -1,8 +1,29 @@
-;;; shell.el --- Configure & setup eshell
+;;; shells.el --- Configure & setup eshell
+
 ;;; Commentary:
+;;; - Improve iTerm support
+;;; - Setup additional shell packages
+;;; - Setup eshell
 
 ;;; Code:
-;;; --- Try packages without installing them
+;; Improve iTerm support
+(unless window-system
+  (require 'mouse)
+  (xterm-mouse-mode t)
+  (defun track-mouse (e))
+  (setq mouse-sel-mode t))
+
+
+;; fish-mode - enable support for fish-shell
+(use-package fish-mode
+  :ensure
+  :commands fish-mode
+  :hook
+  (fish-mode . (lambda ()
+                 (add-hook 'before-save-hook 'fish_indent-before-save))))
+
+
+;; Setup eshell
 (require 'dash)
 (require 's)
 
@@ -83,5 +104,7 @@
 ;; Enable the new eshell prompt
 (setq eshell-prompt-function 'esh-prompt-func)
 
-(provide 'shell.el)
-;;; shell.el ends here
+
+
+(provide 'shells.el)
+;;; shells.el ends here

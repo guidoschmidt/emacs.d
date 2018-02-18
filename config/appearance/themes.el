@@ -1,4 +1,4 @@
-;;; themes.el --- Configure themes
+;;; themes --- Configure themes
 ;;; Commentary:
 
 ;;  Nighttime themes:
@@ -41,6 +41,7 @@
 (use-package abyss-theme :ensure :defer)
 
 ;; --- Circadian
+(require 'linum)
 (use-package circadian
   ;; :load-path "~/git/develop/emacs/circadian.el/"
   :ensure
@@ -66,4 +67,4 @@
               '(evil-visual-state-cursor (quote ("#F3F3F2" box)) t)))
 
 (provide 'themes)
-;;; themes.el ends here
+;;; themes ends here

@@ -1,8 +1,10 @@
-;;; evil.el --- Setup evil-mode like a pro
+;;; evil.config.el --- Setup evil-mode like a pro
+
 ;;; Commentary:
 
 ;;; Code:
-;;; --- Basic evil mode setup
+(require 'ibuffer)
+
 (use-package evil
   :ensure
   :init
@@ -11,15 +13,17 @@
   (evil-mode t)
   (setq evil-emacs-state-modes
         (delq 'ibuffer-mode evil-emacs-state-modes))
-  (define-key ibuffer-mode-map (kbd "v") nil)
-  (define-key ibuffer-mode-map (kbd "V") nil)
-  (define-key ibuffer-mode-map (kbd "r") 'ibuffer-do-revert))
+  :bind
+  ((:map ibuffer-mode-map
+         ("v" . nil)
+         ("V" . nil)
+         ("r" . ibuffer-do-revert))))
 
 (use-package evil-leader
   :ensure
   :config
   (global-evil-leader-mode)
-  (evil-leader/set-leader "<SPC>")
+  (eval-when-compile (evil-leader/set-leader "<SPC>"))
   (evil-leader/set-key
     "a"       'align-regexp
     "o"       'sort-lines
@@ -34,7 +38,8 @@
     "f"       'counsel-projectile-find-file
     "t"       'mc/mark-sgml-tag-pair
     "g"       'counsel-ag
-    "RET"     'eval-defun))
+    "RET"     'eval-defun
+    "v"       'undo-tree-visualize))
 
 (use-package evil-cleverparens
   :ensure
@@ -42,7 +47,6 @@
   (add-hook 'emacs-lisp-mode #'evil-cleverparens-mode)
   (add-hook 'clojure-mode #'evil-cleverparens-mode))
 
-;;; --- Paredit for evil mode
 (use-package evil-paredit
   :ensure
   :config
@@ -77,13 +81,14 @@
   :ensure t
   :after evil
   :config
+  (require 'evil-collection-company)
   (setq evil-collection-setup-minibuffer t)
-  (setq evil-collection-company-use-tng nil)
+  (eval-when-compile (setq evil-collection-company-use-tng nil))
   (evil-collection-init))
 
 (use-package evil-anzu
   :commands evil-mode
   :ensure)
 
-(provide 'evil.el)
-;;; evil.el ends here
+(provide 'evil.config)
+;;; evil.config.el ends here

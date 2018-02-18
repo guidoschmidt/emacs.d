@@ -1,26 +1,28 @@
-;;; modeline.el --- Customize modeline
+;;; modeline --- Customize modeline
 ;;; Commentary:
 
 ;;; Code:
-;; --- Powerline & Spaceline
+(require 'solar)
+
 (use-package sky-color-clock
   :load-path "~/.emacs.d/github/sky-color-clock"
   :config
-  (when calendar-latitude
-    (sky-color-clock-initialize (round calendar-latitude))))
+  (eval-when-compile
+    (when calendar-latitude
+     (sky-color-clock-initialize (round calendar-latitude)))))
 
 (use-package powerline
-  :ensure
+  :ensure t
   :config
   (setq powerline-default-separator nil)
   (setq powerline-height 42)
   (setq powerline-gui-use-vcs-glyph t))
 
 (use-package fancy-battery
-  :ensure)
+  :ensure t)
 
 (use-package spaceline
-  :ensure
+  :ensure t
   :after powerline
   ;; :init
   ;; (progn
@@ -67,7 +69,7 @@
   :after (spaceline all-the-icons)
   :config
   ;; -- Customize spaceline
-  (set-face-attribute 
+  (set-face-attribute
    'spaceline-evil-normal nil :background "#fafefd" :foreground "#232323")
   (set-face-attribute
    'spaceline-evil-insert nil :background "#3bffde" :foreground "#232323")
@@ -102,5 +104,5 @@
    'sky-color-clock-segment
    'etc))
 
-(provide 'modeline.el)
-;;; modeline.el ends here
+(provide 'modeline)
+;;; modeline ends here

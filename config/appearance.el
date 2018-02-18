@@ -2,7 +2,6 @@
 ;;; Commentary:
 
 ;;; Code:
-;;; --- Frames & windows
 ;;; Remove startup message
 (setq inhibit-startup-message t)
 
@@ -15,7 +14,8 @@
 ;; Disable scrollbars
 (scroll-bar-mode -1)
 
-;;; --- Typeface
+
+;;; Typeface
 ;; set default font in initial window and for any new window
 (defconst font-typeface "PragmataPro")
 
@@ -27,7 +27,7 @@
   :type 'alist
   :group 'fontset)
 (add-to-list 'os-font-map `(,os-windows . 12))
-(add-to-list 'os-font-map `(,os-mac . 18))
+(add-to-list 'os-font-map `(,os-mac . 14))
 (add-to-list 'os-font-map `(,os-linux . 20))
 
 (defun set-font (font size)
@@ -65,16 +65,18 @@
 ;;   :type 'alist
 ;;   :group 'fontset)
 
-;;; --- Whitespace
+
+;;; Whitespace
 (global-whitespace-mode t)
 (setq-default indicate-empty-lines t)
 (when (not indicate-empty-lines)
   (toggle-indicate-empty-lines))
 
-;;; --- Highlight current line
+;;; Highlight current line
 (global-hl-line-mode 1)
 
-;;; --- Line numbers
+
+;;; Line numbers
 ;;; TODO: replace nlinum with native line numbers:
 ;;; https://lists.gnu.org/archive/html/emacs-devel/2017-06/msg00338.html
 (use-package nlinum
@@ -89,12 +91,19 @@
   :config
   (setq nlinum-highlight-current-line t))
 
-;;; --- Indentation
+;;; Indentation
 (use-package smart-tabs-mode
   :ensure t
   :config
   (progn
     (smart-tabs-insinuate 'c 'javascript)))
 
+
+;;; Load additional appearance related package configurations
+(setq load-path (cons "~/.emacs.d/config/appearance" load-path))
+(require 'themes)
+(require 'ligatures)
+(require 'modeline)
+
 (provide 'appearance)
-;;; appearance.el ends heres
+;;; appearance.el ends here

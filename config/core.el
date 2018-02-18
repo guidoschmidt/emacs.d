@@ -1,12 +1,13 @@
 ;;; core.el --- Setup core editor behaviour
-;;; Commentary:
 
+;;; Commentary:
 
 ;;; Code:
 ;; Start the server
 (server-start)
 
 ;; Setup calendar geo location
+(require 'solar)
 (setq calendar-latitude 49.329896)
 (setq calendar-longitude 8.570925)
 
@@ -15,6 +16,7 @@
 (set-default-coding-systems 'utf-8)
 
 ;;; Apropos sortage by relevancy
+(require 'apropos)
 (setq apropos-sort-by-scores t)
 
 ;; Enable interactive do mode
@@ -54,6 +56,7 @@
   (setq initial-scratch-message ""))
 
 ;; Enable show-paren-mode
+(require 'paren)
 (setq show-paren-delay 0)
 (show-paren-mode 1)
 
@@ -75,23 +78,26 @@
 ;; Custom function for moving lines up/down
 (defun move-line (n)
   "Move the current line up or down by N lines."
-  (interactive "p")
-  (setq col (current-column))
-  (beginning-of-line) (setq start (point))
-  (end-of-line) (forward-char) (setq end (point))
-  (let ((line-text (delete-and-extract-region start end)))
+  (interactive)
+  (defvar ml-start)
+  (defvar ml-end)
+  (let ((col (current-column)))
+  (beginning-of-line) (setq ml-start (point))
+  (end-of-line) (forward-char) (setq ml-end (point))
+  (let ((line-text (delete-and-extract-region ml-start ml-end)))
     (forward-line n)
     (insert line-text)
-    ;; restore point to original column in moved line
     (forward-line -1)
-    (forward-char col)))
+    (forward-char col))))
 
 (defun move-line-up ()
+  "Move the current line one line up."
   (interactive)
   (transpose-lines 1)
   (forward-line -2))
 
 (defun move-line-down ()
+  "Move the current line one line down."
   (interactive)
   (forward-line 1)
   (transpose-lines 1)
@@ -121,7 +127,6 @@
   (interactive)
   (insert-char (string-to-char "✓")))
 
-
 ;; Custom function to create a new empty buffer in a separate frame
 (defun new-buffer-frame ()
   "Create a new frame with a new empty buffer."
@@ -129,7 +134,6 @@
   (let ((buffer (generate-new-buffer "untitled")))
     (set-buffer-major-mode buffer)
     (display-buffer buffer '(display-buffer-pop-up-frame . nil))))
-
 
 ;; Custom function to create a new empty buffer
 (defun new-buffer ()

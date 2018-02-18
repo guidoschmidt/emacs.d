@@ -7,44 +7,45 @@
 
 ;;; Code:
 
-;;; --- Enable c++-mode for .h and .hpp files
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.hpp\\'" . c++-mode))
 
-;;; --- CMake
 (use-package cmake-ide
-  :ensure
-  :defer
+  :ensure t
+  :commands (c++-mode)
+  :mode "\\.cpp\\"
   :config
   (cmake-ide-setup))
 
-;;; --- Modern C++11 font lock/syntax highlighting
+;;; modern-cpp-font-lock - Modern C++11 font lock/syntax highlighting
 (use-package modern-cpp-font-lock
-  :ensure
+  :ensure t
   :commands c++-mode
+  :mode ("\\.cpp\\'" "\\.h\\'" "\\.hpp\\'")
   :config
   (modern-c++-font-lock-global-mode t))
 
-;; --- clang-format
 (use-package clang-format
   ;; Create clang-format file using google style
   ;; clang-format -style=google -dump-config > .clang-format
-  :ensure
+  :ensure t
   :commands c++-mode
+  :mode ("\\.cpp\\'" "\\.h\\'" "\\.hpp\\'")
   :bind
   (("C-c C-f" . clang-format-region)))
 
-;; -- Add Google C++ style
 (use-package google-c-style
-  :ensure
+  :ensure t
+  :mode ("\\.cpp\\'" "\\.h\\'" "\\.hpp\\'")
+  :commands c++-mode
   :config
   (add-hook 'c-mode-common-hook 'google-set-c-style)
   (add-hook 'c++-mode-hook 'google-set-c-style)
   (add-hook 'c-mode-hook 'google-set-c-style))
 
-;; -- Add Google C++ style checker - In default, syntax checked by clang
 (use-package flycheck-google-cpplint
   :load-path "config/layers/"
+  :mode ("\\.cpp\\'" "\\.h\\'" "\\.hpp\\'")
   :commands c++-mode
   :config
   (eval-after-load 'flycheck
@@ -54,6 +55,8 @@
 ;; -- Autocomplete using YouCompleteMe
 (use-package ycmd
   :ensure t
+  :mode ("\\.cpp\\'" "\\.h\\'" "\\.hpp\\'")
+  :commands c++-mode
   :init (add-hook 'c++-mode-hook #'ycmd-mode)
   :config
   (set-variable 'ycmd-server-command '("python2" "~/.emacs.d/github/ycmd/ycmd"))
@@ -61,6 +64,9 @@
   (set-variable 'ycmd-extra-conf-whitelist '("~/Repos/*"))
   (use-package company-ycmd
     :ensure t
+    :mode ("\\.cpp\\'" "\\.h\\'" "\\.hpp\\'")
+    :commands c++-mode
+
     :init (company-ycmd-setup)
     :config (add-to-list 'company-backends
                          (company-mode/backend-with-yas 'company-ycmd))))
@@ -105,10 +111,8 @@
 ;;   (eval-after-load 'flycheck
 ;; '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
 
-;;; TODO: move to it's code-navigation package
-;;; --- ctags & ggtags
 (use-package ggtags
-  :ensure
+  :ensure t
   :commands ggtags-mode
   :diminish ggtags-mode
   :config
@@ -118,19 +122,19 @@
       (ggtags-mode 1)))
   (add-hook 'c-mode-common-hook 'ggtags/c-mode-hook))
 
-;;; -- Counsel with etags
 (use-package counsel-etags
-  :ensure
+  :ensure t
   :config
   ;; Don't ask before rereading the TAGS files if they have changed
   (setq tags-revert-without-query t)
   ;; Don't warn when TAGS files are large
   (setq large-file-warning-threshold nil)
   ;; Setup auto update now
-  (add-hook 'prog-mode-hook
-            (lambda ()
-              (add-hook 'after-save-hook
-                        'counsel-etags-virtual-update-tags 'append 'local)))
+  :hook (prog-mode . (lambda ()
+                       (add-hook 'after-save-hook
+                                 'counsel-etags-virtual-update-tags
+                                 'append
+                                 'local)))
   :bind
   (("C-1" . counsel-etags-find-tag-at-point)
    ("C-0" . xref-pop-marker-stack)

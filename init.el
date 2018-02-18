@@ -1,9 +1,9 @@
 ;;; init.el --- Main entry for Emacs configuration
+
 ;;; Commentary:
 ;;; Load configuration files from .emacs.d/config/
 
 ;;; Code:
-;;; --- Load configuration files
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -11,15 +11,13 @@
 ;; You may delete these explanatory comments.
 ;;(package-initialize)
 
-;;; --- Outsourced configuration files
 (load "~/.emacs.d/config/core.el")
+(load "~/.emacs.d/config/keymap.el")
 (load "~/.emacs.d/config/pacman.el")
 (load "~/.emacs.d/config/packages.el")
-(load "~/.emacs.d/config/keymap.el")
 (load "~/.emacs.d/config/appearance.el")
-(load "~/.emacs.d/config/ligatures.el")
-(load "~/.emacs.d/config/themes.el")
-(load "~/.emacs.d/config/evil.el")
+(load "~/.emacs.d/config/layers.el")
+(load "~/.emacs.d/config/languages.el")
 
 (setq custom-file "~/.emacs.d/local/custom-set.el")
 
