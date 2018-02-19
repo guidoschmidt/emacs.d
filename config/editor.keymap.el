@@ -24,7 +24,6 @@
 (global-set-key (kbd "M-n")         'move-line-down)
 (global-set-key (kbd "RET")         'newline-and-indent)
 (global-set-key (kbd "C-c s")       'flyspell-popup-correct)
-(global-set-key (kbd "C-;")         'comment-or-uncomment-region)
 (global-set-key (kbd "C-c x")       'insert-checkmark)
 (global-set-key (kbd "S-C-<left>")  'shrink-window-horizontally)
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
