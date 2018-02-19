@@ -1,4 +1,4 @@
-;;; packages.el --- Spell checking via flyspell
+;;; layer.spellcheck --- Spell checking via flyspell
 ;;; Commentary:
 
 ;;; Code:
@@ -41,5 +41,5 @@
 (use-package flyspell-popup
   :ensure t)
 
-(provide 'spell-checking.el)
-;;; spell-checking.el ends here
+(provide 'layer.spellcheck)
+;;; layer.spellcheck ends here

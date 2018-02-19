@@ -1,10 +1,11 @@
-;;; python.el --- Python Language/IDE settings
+;;; lang.python --- Python Language/IDE settings
+
 ;;; Commentary:
 
 ;;; Code:
-;;; --- Python
 (use-package elpy
-  :ensure
+  :ensure t
+  :mode "\\.py\\'"
   :commands python-mode
   :config
   (when (memq window-system '(w32))
@@ -19,8 +20,8 @@
   (add-hook 'python-mode-hook 'custom-python-mode-hook))
 
 (use-package company-jedi
-  :ensure
-  :commands python-mode
+  :ensure t
+  :mode "\\.py\\'"
   :config
   (when (memq window-system '(w32))
     (setq exec-path (append exec-path '("c:/Development/python3"))))
@@ -28,5 +29,5 @@
     (push 'company-jedi company-backends))
   (add-hook 'python-mode-hook 'company/python-mode-hook))
 
-(provide 'python.el)
-;;; python.el ends here
+(provide 'lang.python)
+;;; lang.python ends here

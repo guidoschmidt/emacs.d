@@ -1,4 +1,4 @@
-;;; shells.el --- Configure & setup eshell
+;;; layer.shell --- Configure & setup shells
 
 ;;; Commentary:
 ;;; - Improve iTerm support
@@ -104,7 +104,5 @@
 ;; Enable the new eshell prompt
 (setq eshell-prompt-function 'esh-prompt-func)
 
-
-
-(provide 'shells.el)
-;;; shells.el ends here
+(provide 'layer.shell)
+;;; layer.shell ends here

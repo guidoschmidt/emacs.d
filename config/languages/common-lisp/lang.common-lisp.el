@@ -1,4 +1,4 @@
-;;; common-lisp.el --- setup common lisp
+;;; lang.common-lisp --- setup common lisp
 ;;; Commentary:
 
 ;;; Code:
@@ -27,5 +27,5 @@
   :config
   (slime-setup))
 
-(provide 'common-lisp.el)
-;;; common-lisp.el ends here
+(provide 'lang.common-lisp)
+;;; lang.common-lisp ends here

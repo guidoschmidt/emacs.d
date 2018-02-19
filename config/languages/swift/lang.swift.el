@@ -1,14 +1,15 @@
-;;; swift.el --- Setup Swift programming language
+;;; lang.swift --- Setup Swift programming language
 
 ;;; Commentary:
 
 ;;; Code:
 (use-package swift-mode
-  :ensure)
+  :ensure t
+  :mode "\\.swift\\'")
 
 (use-package flycheck-swift3
-  :commands swift-mode
-  :ensure
+  :mode "\\.swift\\'"
+  :ensure t
   :config
   (with-eval-after-load 'flycheck
     (add-hook 'flycheck-mode-hook #'flycheck-swift3-setup))
@@ -18,7 +19,7 @@
   (setq flycheck-swift-target "arm64-apple-ios10"))
 
 (use-package company-sourcekit
-  :commands swift-mode
+  :mode "\\.swift\\'"
   :ensure
   :config
   (defun company/swift-mode-hook ()
@@ -28,8 +29,5 @@
     (setq company-sourcekit-verbose t))
   (add-hook 'swift-mode-hook 'company/swift-mode-hook))
 
-(use-package xcode-project
-  :ensure t)
-
-(provide 'swift.el)
-;;; swift.el ends here
+(provide 'lang.swift)
+;;; lang.swift ends here

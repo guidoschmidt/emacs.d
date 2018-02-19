@@ -1,8 +1,10 @@
-;;; css.el --- CSS settings
+;;; lang.css --- CSS settings
+
 ;;; Commentary:
 
 ;;; Code:
-;; --- CSS
+
+;; CSS
 (defun custom/css-mode-hook ()
   "Hook to customize css mode."
   (setq-default rainbow-html-colors t)
@@ -10,7 +12,8 @@
   (emmet-mode))
 (add-hook 'css-mode-hook 'custom/css-mode-hook)
 
-;; --- SASS & SCSS
+
+;; SASS & SCSS
 (use-package sass-mode
   :commands sass-mode
   :ensure-system-package (sass . "npm i -g sass")
@@ -23,7 +26,8 @@
     (setq emmet-use-sass-syntax t))
   (add-hook 'sass-mode-hook 'custom/sass-mode-hook))
 
-;; --- Stylus
+
+;; Stylus
 (use-package stylus-mode
   :commands stylus-mode
   :config
@@ -38,5 +42,5 @@
     (setq indent-tabs-mode nil))
   (add-hook 'stylus-mode-hook 'custom/stylus-mode-hook))
 
-(provide 'css.el)
-;;; css.el ends here
+(provide 'lang.css)
+;;; lang.css ends here

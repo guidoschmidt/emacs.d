@@ -1,9 +1,10 @@
-;;; javascript-web.el --- Javascript & co. setup
+;;; lang.javascript --- Javascript & co. setup
 
 ;;; Commentary:
 ;; Setup web development tools
 ;; TODO:
 ;; - Try tide vs tern (https://github.com/ananthakumaran/tide)
+;; - Refactor different languages (like Elm) into their own lang config files 
 
 ;;; Code:
 ;;; --- Javascript
@@ -144,5 +145,5 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
 (use-package web-beautify :ensure t
   :ensure-system-package (tern . "npm i -g js-beautify"))
 
-(provide 'javascript-web.el)
-;;; javascript.el ends here
+(provide 'lang.javascript)
+;;; lang.javascript ends here

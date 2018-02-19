@@ -1,4 +1,4 @@
-;;; elisp.el --- Configure elisp
+;;; lang.emacs-lisp --- Configure elisp
 ;;; Commentary:
 
 ;;; Code:
@@ -11,5 +11,5 @@
 (add-hook 'lisp-interaction-mode-hook            #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook                      #'enable-paredit-mode)
 
-(provide 'elisp.el)
-;;; elisp.el ends here
+(provide 'lang.emacs-lisp)
+;;; lang.emacs-lisp ends here

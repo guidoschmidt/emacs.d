@@ -1,6 +1,7 @@
-;;; cc.el --- Setup cc mode languages (C/C++)
+;;; lang.cpp -- Setup cc mode languages (C/C++)
 
 ;;; Commentary:
+
 ;;; Setup C/C++ features with
 ;;; - CTAGS & GTAGS
 ;;; - YouCompleteMe
@@ -13,7 +14,7 @@
 (use-package cmake-ide
   :ensure t
   :commands (c++-mode)
-  :mode "\\.cpp\\"
+  :mode "\\.cpp\\'"
   :config
   (cmake-ide-setup))
 
@@ -141,5 +142,5 @@
    ("C-2" . counsel-etags-grep-symbol-at-point)
    ("C-3" . counsel-etags-find-tag)))
 
-(provide 'cc.el)
-;;; cc.el ends here
+(provide 'lang.cpp)
+;;; lang.cpp ends here

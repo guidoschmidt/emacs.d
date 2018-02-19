@@ -1,8 +1,10 @@
-;;; markup.el --- Setup markup languages
+;;; lang.markup --- Setup markup languages
+
 ;;; Commentary:
 
 ;;; Code:
-;;; --- Emmet
+
+;;; Emmet
 (use-package emmet-mode
   :ensure t
   :init
@@ -12,9 +14,10 @@
     (add-hook  'html-mode-hook     'emmet-mode)
     (add-hook  'markdown-mode-hook 'emmet-mode)))
 
-;;; --- HTML
+;;; HTML
 (use-package web-mode
   :ensure t
+  :mode "\\.html\\'"
   :config
   (setq-default web-mode-markup-indent-offset 2)
   (setq-default web-mode-css-indent-offset 2)
@@ -29,17 +32,20 @@
 
 (use-package html-check-frag
   :ensure t
+  :mode "\\.html\\'"
   :config
-  (add-hook 'html-mode-hook
-            (lambda () (html-check-frag-mode 1))))
+  :hook (html-mode . (lambda () (html-check-frag-mode 1))))
 
-;;; --- Markdown
+;;; Markdown
 (use-package markdown-mode+
+  :mode ("\\.md\\'"
+         "\\.markdown\\'")
   :ensure t)
 
-;;; --- Yaml
+;;; YAML
 (use-package yaml-mode
+  :mode "\\.yml\\'"
   :ensure t)
 
-(provide 'markup.el)
-;;; markup.el ends here
+(provide 'lang.markup)
+;;; lang.markup ends here

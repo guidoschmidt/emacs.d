@@ -1,8 +1,8 @@
-;;; packages.el --- Syntax checking via flycheck
+;;; layer.syntaxcheck --- Syntax checking via flycheck
+
 ;;; Commentary:
 
 ;;; Code:
-;; --- Flycheck
 (use-package flycheck
   :ensure
   :config
@@ -58,9 +58,8 @@
     :fringe-bitmap bitmap
     :fringe-face 'flycheck-fringe-info))
 
-;; Enable flycheck globally
 (global-flycheck-mode 1)
 (add-hook 'yaml-mode-hook 'flymake-yaml-load)
 
-(provide 'syntax-checking.el)
-;;; syntax-checking.el ends here
+(provide 'layer.syntaxcheck)
+;;; layer.syntaxcheck ends here

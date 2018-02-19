@@ -1,4 +1,4 @@
-;;; org.el --- Setup and configure org-mode
+;;; layer.org --- Setup and configure org-mode
 
 ;;; Commentary:
 
@@ -42,5 +42,5 @@
 (global-set-key (kbd "C-c C-x C v")
                 'do-org-show-all-inline-images)
 
-(provide 'orgmode.el)
-;;; orgmode.el ends here
+(provide 'layer.org)
+;;; layer.org ends here

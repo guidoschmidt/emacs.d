@@ -1,4 +1,4 @@
-;;; evil.config.el --- Setup evil-mode like a pro
+;;; layer.evil --- Setup evil-mode
 
 ;;; Commentary:
 
@@ -81,14 +81,13 @@
   :ensure t
   :after evil
   :config
-  (require 'evil-collection-company)
   (setq evil-collection-setup-minibuffer t)
-  (eval-when-compile (setq evil-collection-company-use-tng nil))
+  (setq evil-collection-company-use-tng nil)
   (evil-collection-init))
 
 (use-package evil-anzu
   :commands evil-mode
   :ensure)
 
-(provide 'evil.config)
-;;; evil.config.el ends here
+(provide 'layer.evil)
+;;; layer.evil ends here

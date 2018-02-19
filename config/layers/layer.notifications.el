@@ -1,4 +1,5 @@
-;;; notifications.el --- Send notifications via terminal-notifier
+;;; layer.notifications --- Send notifications via terminal-notifier
+
 ;;; Commentary:
 
 ;;; Code:
@@ -30,5 +31,5 @@
                  nil nil 'timer-minutes)))
   (notify-in (concat time " minutes") (concat time " minutes are over!")))
 
-(provide 'notifications.el)
-;;; notifications.el ends here
+(provide 'layer.notifications)
+;;; layer.notifications ends here

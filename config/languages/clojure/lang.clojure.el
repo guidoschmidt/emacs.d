@@ -1,4 +1,4 @@
-;;; clojure --- Setup clojure language
+;;; lang.clojure --- Setup clojure language
 
 ;;; Commentary:
 
@@ -59,5 +59,5 @@
   :config
   (eval-after-load 'flycheck '(flycheck-clojure-setup)))
 
-(provide 'clojure)
-;;; clojure ends here
+(provide 'lang.clojure)
+;;; lang.clojure ends here

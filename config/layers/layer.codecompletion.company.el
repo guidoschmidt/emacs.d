@@ -1,4 +1,4 @@
-;;; autocomplete.company.el --- Setup auto completion
+;;; layer.codecompletion.company --- Setup code completion using company
 
 ;;; Commentary:
 ;;; Setup company mode
@@ -68,5 +68,5 @@
   :config
   (add-hook 'after-init-hook 'company-statistics-mode))
 
-(provide 'autocomplete.company)
-;;; autocomplete.company.el ends here
+(provide 'layer.codecompletion.company)
+;;; layer.codecompletion.company ends here

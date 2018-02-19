@@ -1,4 +1,4 @@
-;;; glsl.el --- Setup GLSL shader language
+;;; lang.glsl --- Setup GLSL shader language
 ;;; Commentary:
 
 ;;; Code:
@@ -20,5 +20,5 @@
   :commands glsl-mode
   :load-path "~/.emacs.d/github/flycheck-glsl")
 
-(provide 'glsl.el)
-;;; glsl.el ends here
+(provide 'lang.glsl)
+;;; lang.glsl ends here

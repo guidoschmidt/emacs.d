@@ -1,4 +1,4 @@
-;;; rest.el --- Setup rest client mode
+;;; layer.restclient --- Setup rest client mode
 
 ;;; Commentary:
 ;;; restclient-mode provides Emacs
@@ -14,5 +14,5 @@
   (add-hook 'restclient-mode-hook
             'company/restclient-mode-hook))
 
-(provide 'rest.el)
-;;; rest.el ends here
+(provide 'layer.restclient)
+;;; layer.restclient ends here

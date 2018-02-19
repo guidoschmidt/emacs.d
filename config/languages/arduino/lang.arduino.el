@@ -1,4 +1,4 @@
-;;; arduino.el --- Setup arduino features
+;;; lang.arduino --- Setup arduino features
 ;;; Commentary:
 
 ;;; Code:
@@ -12,5 +12,5 @@
      (irony-eldoc)
      (platformio-conditionally-enable))))
 
-(provide 'arduino)
-;;; arduino.el ends here
+(provide 'lang.arduino)
+;;; lang.arduino ends here

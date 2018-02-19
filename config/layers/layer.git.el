@@ -1,12 +1,12 @@
-;;; git.el --- Setup git & magit
+;;; layer.git.el --- Setup git & magit
 ;;; Commentary:
 
 ;;; Code:
 (use-package shell
-  :ensure)
+  :ensure t)
 
 (use-package magit
-  :ensure
+  :ensure t
   :commands magit-status
   :config
   (use-package evil-magit
@@ -23,10 +23,10 @@
   (setq magit-completing-read-function 'ivy-completing-read))
 
 (use-package gist
-  :ensure)
+  :ensure t)
 
 (use-package git-gutter
-  :ensure
+  :ensure t
   :config
   (global-git-gutter-mode t)
   (git-gutter:linum-setup)
@@ -35,11 +35,11 @@
 
 (when (memq window-system '(w32))
   (use-package ssh-agency
-    :ensure
+    :ensure t
     :config
     (ssh-agency-find-agent)
     (ssh-agency-add-keys '("~/.ssh/id_rsa.github.cube"
                            "~/.ssh/id_rsa.gitlab.cube"))))
 
-(provide 'git.el)
-;;; git.el ends here
+(provide 'layer.git)
+;;; layer.git ends here

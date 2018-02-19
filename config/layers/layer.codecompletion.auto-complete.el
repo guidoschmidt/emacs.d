@@ -1,13 +1,16 @@
-;;; autocomplete.auto-complete.el --- Setup auto completion
+;;; codecompletion.auto-complete --- Setup code completion using auto-complete
 
 ;;; Commentary:
-;;; Setup company mode
+
+;;; Code:
 
 (use-package fuzzy
-  :ensure t)
+  :ensure t
+  :disabled)
 
 (use-package auto-complete
   :ensure t
+  :disabled
   :init
   (setq ac-auto-start 0
         ac-delay 0.2
@@ -23,5 +26,5 @@
                                ac-source-dictionary
                                ac-source-words-in-same-mode-buffers))))
 
-(provide 'autocomplete.auto-complete.el)
-;;; autocomplete.auto-complete.el ends here
+(provide 'layer.codecompletion.auto-complete)
+;;; layer.codecompletion.auto-complete ends here

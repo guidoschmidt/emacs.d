@@ -1,4 +1,5 @@
-;;; packages --- Setup packages
+;;; editor.packages --- Setup packages
+
 ;;; Commentary:
 
 ;; TODO:
@@ -295,5 +296,5 @@
   :commands aggressive-indent-mode
   :hook (emacs-lisp . aggressive-indent-mode))
 
-(provide 'packages)
-;;; packages ends here
+(provide 'editor.packages)
+;;; editor.packages ends here
