@@ -11,9 +11,7 @@
   (add-hook 'clojure-mode-hook #'enable-paredit-mode))
 
 (use-package clojure-snippets
-  :ensure t
-  :mode "\\.clj\\'"
-  :commands clojure-mode)
+  :ensure t)
 
 (use-package cider
   :ensure t
@@ -44,14 +42,13 @@
 
 (use-package clj-refactor
   :ensure t
-  :commands clj-refactor-mode
   :config
   (defun clj-refactor-hook ()
     (clj-refactor-mode 1)
     (yas-minor-mode 1) ; for adding require/use/import statements
     ;; This choice of keybinding leaves cider-macroexpand-1 unbound
     (cljr-add-keybindings-with-prefix "C-c C-m"))
-  :hook (clojure-mode . clj-refactor-mode-hook))
+  :hook (clojure-mode . clj-refactor-mode))
 
 (use-package flycheck-clojure
   :ensure t
