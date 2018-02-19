@@ -1,4 +1,4 @@
-;;; keymap.el --- Configure custom key bindings
+;;; editor.keymap --- Configure custom key bindings
 
 ;;; Commentary:
 
@@ -15,7 +15,7 @@
 (global-set-key (kbd "C-x C-c") 'kill-buffer-and-window)
 
 ;; Custom key bindings
-(global-set-key (kbd "C-;")         'comment-or-uncomment-region)
+(global-set-key (kbd "M-;")         'comment-or-uncomment-region)
 (global-set-key (kbd "C-c C-k")     'compile)
 (global-set-key (kbd "C-x g")       'goto-line)
 (global-set-key (kbd "M-<up>")      'move-line-up)
@@ -34,5 +34,5 @@
 (global-set-key (kbd "C-c t")       'neotree-toggle)
 (global-set-key (kbd "C-c s")       'magit-status)
 
-(provide 'keymap.el)
-;;; keymap.el ends here
+(provide 'editor.keymap)
+;;; editor.keymap ends here

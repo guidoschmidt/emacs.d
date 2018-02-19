@@ -1,4 +1,4 @@
-;;; core.el --- Setup core editor behaviour
+;;; editor.core --- Setup core editor behaviour
 
 ;;; Commentary:
 
@@ -147,5 +147,5 @@
     (switch-to-buffer
      (concat bn (number-to-string num)))))
 
-(provide 'core.el)
-;;; core.el ends here
+(provide 'editor.core)
+;;; editor.core ends here
