@@ -1,4 +1,4 @@
-;;; pacman.el --- Initialize 3rd party package managing
+;;; editor.pacman.el --- Initialize package managing with MELPA
 
 ;;; Commentary:
 ;;; - Add package archives
@@ -6,7 +6,6 @@
 ;;; - Bootstrap use-package
 
 ;;; Code:
-;;; Setup melpa packages
 (require 'package)
 
 ;;; See: https://github.com/melpa/melpa
@@ -44,5 +43,5 @@
   (auto-compile-on-load-mode)
   (auto-compile-on-save-mode))
 
-(provide 'pacman.el)
-;;; pacman.el ends here
+(provide 'editor.pacman)
+;;; editor.pacman ends here
