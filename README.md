@@ -19,8 +19,6 @@ brew install emacs-plus --with-no-title-bars --without-spacemacs-icon
   `pip install pygments`
 - Install *GNU Global* with *ctags* (Source code tagging system):
   `brew install global --with-ctags`
-3. Install [**Universal CTAGS**](https://github.com/universal-ctags/ctags)
-
 
 ### Time Tracking (Wakatime)
 1. `pip3 install wakatime`
