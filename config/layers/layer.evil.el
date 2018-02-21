@@ -39,7 +39,9 @@
     "t"       'mc/mark-sgml-tag-pair
     "g"       'counsel-ag
     "RET"     'eval-defun
-    "v"       'undo-tree-visualize))
+    "v"       'undo-tree-visualize
+    "c"       'ggtags-create-tags
+    "d"       'ggtags-find-tag-dwim))
 
 (use-package evil-cleverparens
   :ensure
