@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: header
+# key: header
+# --
+// ${1:___FILENAME___}
+//
+// - Authors:
+// ${2:___FULLUSERNAME___}
+//
+// - Date: ${3:___DATE___}
+//
+// ${4:___COPYRIGHT___}
