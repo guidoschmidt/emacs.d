@@ -6,6 +6,7 @@
 
 (use-package ggtags
   :ensure t
+  :mode ggtags-mode
   :config
   (add-hook 'c-mode-common-hook
             (lambda ()
