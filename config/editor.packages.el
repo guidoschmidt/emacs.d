@@ -287,6 +287,14 @@
   :ensure t
   :commands emr-show-refactor-menu
   :hook (prog-mode . emr-initialize)
+  :config
+  ;; Fix emr popups when using fci
+  ;; (fill column indicator) mode
+  (defun toggle-fci (show-emr &rest args)
+    (fci-mode -1)
+    (apply show-emr args))
+  (advice-add 'emr-show-refactor-menu :around #'toggle-fci)
+  (advice-add 'emr-show-refactor-menu :after #'(lambda () (fci-mode)))
   :bind
   (("<M-RET>" . emr-show-refactor-menu)))
 
