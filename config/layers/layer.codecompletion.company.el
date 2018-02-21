@@ -17,8 +17,6 @@
         backend
       (append (if (consp backend) backend (list backend))
               '(:with company-yasnippet))))
-  :init
-  (global-company-mode t)
   :config
   (setq-default company-dabbrev-other-buffers t
                 company-dabbrev-code-time-limit 0.5
@@ -47,6 +45,7 @@
             'company-maybe-turn-on-fci)
   (setq company-backends (mapcar #'company-mode/backend-with-yas
                                  company-backends))
+  (global-company-mode t)
   :bind
   (("<C-tab>" . company-complete-common)
    ("C-c <C-tab>" . company-yasnippet)))
