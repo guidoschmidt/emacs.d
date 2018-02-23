@@ -5,7 +5,7 @@
 ;;; Code:
 (use-package elpy
   :ensure t
-  :mode "\\.py\\'"
+  :mode ("\\.py\\'" . python-mode)
   :commands python-mode
   :config
   (when (memq window-system '(w32))
