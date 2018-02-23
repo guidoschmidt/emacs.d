@@ -20,7 +20,7 @@
   :config
   (setq-default company-dabbrev-other-buffers t
                 company-dabbrev-code-time-limit 0.5
-                company-idle-delay 0.5
+                company-idle-delay 0.15
                 company-minimum-prefix-length 2
                 company-require-match nil
                 company-dabbrev-ignore-case nil
