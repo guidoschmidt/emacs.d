@@ -1,0 +1,21 @@
+* Common
+<Space>-e :expand region
+<Space>-z :decrease region
+<Space>-o :order lines selected region
+<Space>-a :align lines in region with regex
+
+C-M-i       :counsel-irony auto-complete
+C-c <C-tab> :auto-complete yasnippet
+C-c e       :expand yasnippet
+C-p-p       :projectile-switch-project
+C-q <tab>   :insert tab
+C-x C-+     :increase font size
+C-x C--     :decrease font size
+F3          :start keyboard macro
+F4          :define keyboard macro/insert macro
+
+* Paredit
+M-s         :paredit-splice-sexp
+#+BEGIN_SRC elisp
+((square 42)) -> (square 42)
+#+END_SRC
