@@ -8,7 +8,6 @@
 
 (use-package flycheck-kotlin
   :ensure t
-  :mode "\\.kt\\'"
   :after (flycheck kotlin-mode)
   :config
   (eval-after-load 'flycheck
