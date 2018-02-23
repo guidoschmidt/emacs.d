@@ -1,38 +1,28 @@
 # .emacs.d
 
-## Installing Emacs
+## Emacs
 Install [emacs-plus](https://github.com/d12frosted/homebrew-emacs-plus):
+
 ```
 brew tap d12frosted/emacs-plus
-brew install emacs-plus --with-no-title-bars --without-spacemacs-icon
+brew install emacs-plus --without-spacemacs-icon --with-24bit-color --with-natural-title-bar
 ```
 
-
----
-
-
-## Tools
-
+## Additional Setup
 ### Code Navigation
-1. Install **CTAGS**
-- Install *pygments*:
-  `pip install pygments`
-- Install *GNU Global* with *ctags* (Source code tagging system):
-  `brew install global --with-ctags`
-
-### Time Tracking (Wakatime)
-1. `pip3 install wakatime`
+1. Install [**GNU GLOBAL**](https://www.gnu.org/software/global/) with [**CTAGS**](https://github.com/universal-ctags/ctags): `brew install global --with-ctags`
+2. Install *pygments*: `pip install pygments`
 
 
----
+
+### Time Tracking
+1. Install [Wakatime](https://wakatime.com/) `pip3 install wakatime`
 
 
-## Languages
 
-### C++ (Irony)
+### C++ Code-Completion ([Irony](https://github.com/Sarcasm/irony-mode))
 1. Install **LLVM**: `brew install llvm`
-2. Install **IRONY SERVER**:
-`M-x irony-install-server`
+2. Install **Irony** from within Emacs: `M-x irony-install-server`
 
 **You may need to change the command to**:
 ```
@@ -45,66 +35,40 @@ CMAKE
 cmake --build . --use-stderr --config Release --target install
 ```
 
-### C++ (YouCompleteMe)
-1. `git submodule update --init --recursive` to clone `ycmd` repo into `/ycmd` dir.
-2. `cd ~/.emacs.d/ycmd`
-3. `./build.py --clang-completer`
+
+
+### C++ Code-Completion ([YouCompleteMe](https://github.com/Valloric/YouCompleteMe))
+1. Clone the YouCompleteMe reop as a submodule: `git submodule update --init --recursive` to clone `ycmd` repo into `/ycmd` dir.
+2. Build YouCompleteMe: `cd ~/.emacs.d/ycmd` & `./build.py --clang-completer`
 ```
 brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 ```
 
-### Python
+
+
+### Python Code-Completion ([Jedi](https://github.com/tkf/emacs-jedi))
 - Install virtualenv: `pip3 install virtualenv`
-- `M-x jedi:install-server` Install the jedi server
+- Install **Jedi** from within Emacs: `M-x jedi:install-server` Install the jedi server
 
-### Javascript
-1. Configure **TERN** by creating `.tern-config` file in your `$HOME` dir:
 
-```json
-{
-  "libs": [
-    "browser",
-    "jquery"
-  ],
-  "loadEagerly": [
-  ],
-  "plugins": {
-    "requirejs": {
-      "baseURL": "./",
-      "paths": {}
-    }
-  }
-}
-```
 
-### Swift
-1. Install [SourceKittenDaemon](https://github.com/terhechte/SourceKittenDaemon/releases/) first.
+### Javascript Code-Completion ([Tern](https://github.com/ternjs/tern))
+1. Configure **Tern** (copy `configs/external/.tern-config` file into your `$HOME` dir):
 
-### Haskell
-1. Install **Docker*: `brew install docker` to use **intero**.
+
+
+### Swift Code-Completion ([SourceKittenDaemon](https://github.com/terhechte/SourceKittenDaemon/releases/))
+1. Install **SourceKittenDaemon** :cat:
+
+
+
+### Haskell Code-Completion ([Intero](https://github.com/commercialhaskell/intero))
+1. Install **Docker*: `brew install docker` to use **intero**
 2. Install **Stack*: `brew install stack`
-3. Setup Stack via `stack setup`.
+3. Setup Stack via `stack setup`
 
 Make sure to use `ghc` version larger than `8.2.1`. Intero seems to fail an `8.0.2`
-according to this [github issue](https://github.com/commercialhaskell/intero/issues/428).
+according to this [github issue](https://github.com/commercialhaskell/intero/issues/428)
 
-
----
-
-
-## Shortcuts
- -  `C-M-i` = counsel-irony auto-complete
- -  `C-p-p` = projectile-switch-project
- -  `C-q <tab>` = insert tab
- -  `C-x C--` = decrease font size
- -  `C-x C-+` = increase font size
- -  `F3` = start keyboard macro
- -  `F4` = define keyboard macro/insert macro
- -  `C-c e` = expand yasnippet
- -  `C-c <C-tab>` = auto-complete yasnippet
- -  `C-=` = expand region
-
-#### Paredit
-- `((square 42))` -> `(square 42)`: **paredit-splice-sexp** `M-s`
 
 
