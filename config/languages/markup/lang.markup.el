@@ -38,9 +38,9 @@
 
 ;;; Markdown
 (use-package markdown-mode+
-  :mode ("\\.md\\'"
-         "\\.markdown\\'")
-  :ensure t)
+  :ensure t
+  :mode (("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode)))
 
 ;;; YAML
 (use-package yaml-mode
