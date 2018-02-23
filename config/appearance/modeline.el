@@ -70,11 +70,11 @@
   :config
   ;; -- Customize spaceline
   (set-face-attribute
-   'spaceline-evil-normal nil :background "#fafefd" :foreground "#232323")
+   'spaceline-evil-normal nil :background "#F6EDDF" :foreground "#232323")
   (set-face-attribute
-   'spaceline-evil-insert nil :background "#3bffde" :foreground "#232323")
+   'spaceline-evil-insert nil :background "#B2EFE5" :foreground "##1A7162")
   (set-face-attribute
-   'spaceline-evil-visual nil :background "#e012a0" :foreground "#fafefd")
+   'spaceline-evil-visual nil :background "#E9391D" :foreground "#FFA96F")
   (setq spaceline-all-the-icons-separator-type 'none)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
   ;; -- Define custom segments
