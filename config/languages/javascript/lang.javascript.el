@@ -7,7 +7,8 @@
 ;; - Refactor different languages (like Elm) into their own lang config files 
 
 ;;; Code:
-;;; --- Javascript
+
+;;; Javascript
 (defun my/use-eslint-from-node-modules ()
   "Use local eslint from node_modules before global.
 src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-eslint-executable"
@@ -21,45 +22,51 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
       (setq-local flycheck-javascript-eslint-executable eslint))))
 
 (use-package indium
-  :ensure
+  :ensure t
+  :commands (indium-run-chrome indium-run-node)
   :config
   (flycheck-add-mode 'javascript-eslint 'js2-mode)
   (flycheck-add-mode 'javascript-eslint 'js-mode)
-  (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules))
+  :hook (flycheck-mode . my/use-eslint-from-node-modules))
 
 (use-package js2-refactor
   :ensure t
   :config
-  (add-hook 'js2-mode-hook #'js2-refactor-mode)
-  (add-hook 'js-mode #'js2-refactor-mode)
-  (js2r-add-keybindings-with-prefix "C-c C-m"))
+  (js2r-add-keybindings-with-prefix "C-c C-m")
+  :hook ((js2-mode . js2-refactor-mode)
+         (js-mode . js2-refactor-mode)))
 
-;;; --- Docstrings
+;;; Javascript docstrings
 (add-to-list 'load-path "~/.emacs.d/config/languages/javascript/")
 (load "nd-js")
 (add-hook 'js-mode-hook
           (lambda () (local-set-key (kbd "C-c d") #'nd-js-doc)))
 
-;;; --- JSON
+
+;;; JSON
 (use-package json-mode
   :ensure t
+  :mode "\\.json\\'"
   :config
   (setq js-indent-level 2))
 
-;;; --- Twig templates
-(use-package twig-mode
-  :ensure t)
 
-;;; --- Typoscript
+;;; Twig templates
+(use-package twig-mode
+  :ensure t
+  :mode "\\.twig\\'")
+
+
+;;; Typoscript
 (use-package typoscript-mode
   :ensure t
-  :config
-  (add-to-list 'auto-mode-alist
-               '("\\.ts\\'" . typoscript-mode)))
+  :mode "\\.ts\\'")
 
-;;; --- Vue.js
+
+;;; Vue.js
 (use-package vue-mode
   :ensure t
+  :mode "\\.vue\\'"
   :config
   (defun emmet/vue-mode-hook ()
     (emmet-mode))
@@ -71,9 +78,11 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (setq mmm-submode-decoration-level 0)
   (flycheck-add-mode 'javascript-eslint 'vue-mode))
 
-;;; --- JSX & React
+
+;;; JSX & React
 (use-package rjsx-mode
   :ensure t
+  :mode "\\.js\\'"
   :config
   (use-package react-snippets :ensure t)
   (defun emmet/rjsx-mode-hook ()
@@ -83,9 +92,12 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (setq-default rjsx-indent-level 2)
   (flycheck-add-mode 'javascript-eslint 'rjsx-mode))
 
-;;; --- Elm
+
+;;; Elm
 (use-package elm-mode
   :ensure t
+  :mode "\\.elm\\'"
+  :commands elm-mode
   :config
   (use-package elm-yasnippets :ensure t)
   (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
@@ -96,24 +108,30 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
 
 (use-package flycheck-elm
   :ensure t
+  :commands flycheck-elm-setup
   :config
   (eval-after-load 'flycheck
     '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup)))
 
-;;; --- Flow
+
+;;; Flow
 (use-package company-flow
   :ensure t
+  :commands company-flow
   :config
   (eval-after-load 'company
     '(add-to-list 'company-backends 'company-flow)))
 
-;;; --- Tern
+
+;;; Tern
 (use-package tern
   :ensure t
+  :commands company-tern
   :ensure-system-package (tern . "npm i -g tern"))
 
 (use-package company-tern
   :ensure t
+  :commands company-tern
   :config
   (defun company/js-mode-hook ()
     (tern-mode t)
@@ -122,9 +140,10 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (add-hook 'js2-mode-hook 'company/js-mode-hook)
   (add-hook 'vue-mode-hook 'company/js-mode-hook))
 
-;;; --- Prettier.js
+
+;;; Prettier.js
 (use-package prettier-js
-  :ensure
+  :ensure t
   :ensure-system-package (vue-prettier . "npm i -g vue-prettier")
   :config
   (setq prettier-js-command "~/.nvm/versions/node/v9.4.0/bin/vue-prettier")
@@ -141,9 +160,11 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
                                (enable-minor-mode
                                 '("\\.jsx?\\'" . prettier-js-mode)))))
 
-;;; --- Web beautify for prettier HTML auto formatting
+
+;;; web-beautify - pretty HTML auto formatting
 (use-package web-beautify :ensure t
   :ensure-system-package (tern . "npm i -g js-beautify"))
+
 
 (provide 'lang.javascript)
 ;;; lang.javascript ends here
