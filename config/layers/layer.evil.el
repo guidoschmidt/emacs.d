@@ -41,7 +41,9 @@
     "RET"     'eval-defun
     "v"       'undo-tree-visualize
     "c"       'ggtags-create-tags
-    "d"       'ggtags-find-tag-dwim))
+    "d"       'ggtags-find-tag-dwim
+    "<up>"    'beginning-of-defun
+    "<down>"  'end-of-defun))
 
 (use-package evil-cleverparens
   :ensure
