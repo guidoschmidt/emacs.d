@@ -3,10 +3,15 @@
 ;;; Commentary:
 
 ;;; Code:
+(use-package python
+  :ensure t
+  :commands python-mode
+  :mode ("\\.py\\'" . python-mode)
+  :interpreter ("python" . python-mode))
+
 (use-package elpy
   :ensure t
-  :mode ("\\.py\\'" . python-mode)
-  :commands python-mode
+  :commands elpy-mode
   :config
   (when (memq window-system '(w32))
     (setq exec-path (append exec-path '("C:/Development/python3/"))))
@@ -21,7 +26,6 @@
 
 (use-package company-jedi
   :ensure t
-  :mode "\\.py\\'"
   :config
   (when (memq window-system '(w32))
     (setq exec-path (append exec-path '("c:/Development/python3"))))
