@@ -8,6 +8,8 @@
 ;;   - dired-collapse
 ;; - https://github.com/technomancy/find-file-in-project
 ;; - https://github.com/tautologyclub/feebleline
+;; - https://github.com/jacktasia/dumb-jump
+;; - https://github.com/Ruin0x11/intellij-lsp-server
 
 ;;; Code:
 ;; no-littering - Keep your .emacs.d clean
