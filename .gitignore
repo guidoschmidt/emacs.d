@@ -6,6 +6,9 @@ recentf
 .mc-lists.el
 auto-save/
 
+# Privacy - ignore private modules
+config/private/
+
 # Python IDE
 .python-environments/
 
