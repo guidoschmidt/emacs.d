@@ -7,6 +7,7 @@
   :mode "\\.kt\\'")
 
 (use-package flycheck-kotlin
+  :if (string-equal (system-name) "Emma.local")
   :ensure t
   :after (flycheck kotlin-mode)
   :config
