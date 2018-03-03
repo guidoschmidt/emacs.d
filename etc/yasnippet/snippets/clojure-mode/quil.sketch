@@ -2,33 +2,36 @@
 # name: sketch
 # key: sketch
 # --
-(ns ${1:namspace}.${2:project}
+(ns ${1:namespace}.${2:project}
   (:require [quil.core :as q]
             [quil.middleware :as m]
-            [clj-time/formatter :as tf]))
+            [clj-time.format :as tf]
+            [clj-time.local :as locale]))
 
 (defn setup []
-  (q/frame-rate 30)
-  (q/color-mode :hsb)
-  {${3:state}})
+  {})
 
 (defn update-state [state]
-  {})
+  state)
 
 (defn draw-state [state]
   (q/background 80))
 
-(defn mouse-released [state event]
-  (q/save-frame (str (new java.util.Date) ".png"))
-  (-> state (assoc :version (+ 1 (:version state)))))
+(defn save-png [event]
+  (let [formatter (tf/formatter "YY-MM-dd-HH-mm-SS")
+        date (locale/local-now)]
+   (q/save-frame
+    (str (tf/unparse formatter date) ".png"))))
 
-(q/defsketch ${2:project}
-  :title "${4:title}"
+(q/defsketch pixel-sorting
+  :title ${3:title}
   :features [:no-bind-output]
-  :size [${5:width} ${6:height}]
+  :size [${4:width} ${5:height}]
   :setup setup
   :update update-state
+  :key-released save-png
   :draw draw-state
+  :renderer :opengl
   :middleware [m/fun-mode])
 
 (defn -main [& args])
