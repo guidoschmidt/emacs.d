@@ -6,6 +6,8 @@
 ;; Start the server
 (server-start)
 
+(setq auto-window-vscroll nil)
+
 ;; Setup calendar geo location
 (require 'solar)
 (setq calendar-latitude 49.329896)
