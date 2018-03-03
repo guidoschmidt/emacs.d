@@ -18,6 +18,7 @@
 
 (require 'editor.core)
 (require 'editor.pacman)
+(require 'private.keys)
 (require 'editor.packages)
 (require 'editor.keymap)
 (require 'editor.appearance)

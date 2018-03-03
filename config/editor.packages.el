@@ -93,7 +93,7 @@
   :ensure t
   :commands global-wakatime-mode
   :config
-  (setq wakatime-api-key "32135691-bb0b-462e-94c2-b364aa352a6c")
+  (setq wakatime-api-key apikey-wakatime)
   (global-wakatime-mode))
 
 ;; Hydra - popup with options after pressing a leader key
