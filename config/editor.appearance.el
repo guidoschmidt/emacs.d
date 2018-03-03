@@ -38,32 +38,55 @@
     (add-to-list 'default-frame-alist `(font . ,font-string))
     (if (member font (font-family-list))
         (progn
-          (set-frame-font font-string nil t)))
-    (message (concat font " not available"))))
+          (set-frame-font font-string nil t))
+      (message (concat font " not available")))
+    (message (concat "Emacs typeface: " font " @ size " (number-to-string size)))))
 
-(defun set-font-for-os ()
+(defun scale-with (size scalar)
+  "Scale a typeface SIZE with a SCALAR."
+  (round (* size scalar)))
+
+(defconst host-roxy "Roxy.local")
+(defconst host-emma "Emma.local")
+(defcustom host-type-scales '()
+  "List of typographic scales used at different hosts."
+  :type 'alist
+  :group 'fontset)
+(add-to-list 'host-type-scales `(,host-roxy . 0.8125))
+(add-to-list 'host-type-scales `(,host-emma . 1.125))
+
+(require 'cl-lib)
+(defun scale-from-host ()
+  "Determine the typographic scale from the host."
+  (cl-first
+   (cl-remove-if-not (lambda (config)
+                       (let ((c-hostname (car config)))
+                         (string-equal c-hostname (system-name))))
+                     host-type-scales)))
+
+(defun font-for-os ()
   "Set the font for a matched operating system."
-  (defun set-font-by-match (entry)
-    (let ((os (car entry))
-          (size (cdr entry)))
-      (when (string-equal system-type os)
-        (message os)
-        (set-font font-typeface size))))
-  (mapc #'set-font-by-match os-font-map))
+  (cl-first
+   (cl-remove-if-not (lambda (entry)
+                       (let ((os (car entry))
+                             (size (cdr entry)))
+                         (string-equal system-type os)))
+                     os-font-map)))
 
-(set-font-for-os)
 
-;; TODO:
-;; (defun scale-with (size scale)
-;;   (round (* size scale)))
-;;
-;; (defconst host-roxy "Roxy.local")
-;; (defconst host-emma "Emma.local")
-;; (defcustom host-type-scales '((host-roxy . 0.875)
-;;                               (host-emma . 1.125))
-;;   "List of typographic scales used at different hosts."
-;;   :type 'alist
-;;   :group 'fontset)
+(defun typescale (scale)
+  "Adjust the typescale of the current system."
+  (interactive)
+  ;; TODO: add interactive prompt for parameters
+  ;; TODO: add assoc list update
+  (let ((host-scalar (cdr (scale-from-host)))
+        (os-typescale (cdr (font-for-os)))
+        (host (car (scale-from-host))))
+    (let ((scalar (/ scale (float os-typescale))))
+      (add-to-list 'host-type-scales `(,host . ,scalar))
+      (set-font font-typeface (scale-with os-typescale scalar)))))
+
+(typescale 15)
 
 ;; Whitespace
 (global-whitespace-mode t)
