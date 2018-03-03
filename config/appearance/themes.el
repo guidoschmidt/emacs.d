@@ -47,7 +47,7 @@
   :ensure
   :config
   (setq circadian-themes '((:sunrise . gruvbox-light-hard)
-                           (:sunset . abyss)))
+                           (:sunset . gruvbox-dark-hard)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
 
