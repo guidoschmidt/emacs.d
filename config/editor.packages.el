@@ -92,6 +92,7 @@
 
 ;; Wakatime - track your coding time
 (use-package wakatime-mode
+  :if apikey-wakatime
   :ensure t
   :commands global-wakatime-mode
   :config
