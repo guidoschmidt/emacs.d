@@ -48,12 +48,14 @@
 
 (defconst host-roxy "Roxy.local")
 (defconst host-emma "Emma.local")
+(defconst host-cube "Cube")
 (defcustom host-type-scales '()
   "List of typographic scales used at different hosts."
   :type 'alist
   :group 'fontset)
 (add-to-list 'host-type-scales `(,host-roxy . 0.8125))
 (add-to-list 'host-type-scales `(,host-emma . 1.125))
+(add-to-list 'host-type-scales `(,host-cube . 1.0))
 
 (require 'cl-lib)
 (defun scale-from-host ()
@@ -74,19 +76,21 @@
                      os-font-map)))
 
 
-(defun typescale (scale)
-  "Adjust the typescale of the current system."
+(defun typescale (&optional scale)
+  "Adjust the typescale of the current system and store SCALE for current host."
   (interactive)
   ;; TODO: add interactive prompt for parameters
-  ;; TODO: add assoc list update
   (let ((host-scalar (cdr (scale-from-host)))
         (os-typescale (cdr (font-for-os)))
         (host (car (scale-from-host))))
-    (let ((scalar (/ scale (float os-typescale))))
-      (add-to-list 'host-type-scales `(,host . ,scalar))
-      (set-font font-typeface (scale-with os-typescale scalar)))))
+    ;; TODO: add assoc list update
+    (when scale
+      (let ((scalar (/ scale (float os-typescale))))
+       (add-to-list 'host-type-scales `(,host . ,scalar))))
+    ;; Set the font size
+    (set-font font-typeface (scale-with os-typescale host-scalar))))
 
-(typescale 15)
+(typescale)
 
 ;; Whitespace
 (global-whitespace-mode t)
