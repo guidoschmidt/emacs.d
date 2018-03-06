@@ -188,8 +188,6 @@
   :ensure t
   :config
   (when (memq window-system '(mac ns x))
-    (setq explicit-shell-file-name "/bin/zsh")
-    (setq shell-file-name "zsh")
     (exec-path-from-shell-initialize)))
 
 ;; ace-window - effectively jump between frames and windows
