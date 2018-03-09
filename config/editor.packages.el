@@ -92,12 +92,12 @@
 
 ;; Wakatime - track your coding time
 (use-package wakatime-mode
-  :if apikey-wakatime
-  :ensure t
-  :commands global-wakatime-mode
-  :config
-  (setq wakatime-api-key apikey-wakatime)
-  (global-wakatime-mode))
+ :if (boundp 'apikey-wakatime)
+ :ensure t
+ :commands global-wakatime-mode
+ :config
+ (setq wakatime-api-key apikey-wakatime)
+ (global-wakatime-mode))
 
 ;; Hydra - popup with options after pressing a leader key
 (use-package hydra

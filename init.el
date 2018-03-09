@@ -18,9 +18,12 @@
   (normal-top-level-add-to-load-path '("."))
   (normal-top-level-add-subdirs-to-load-path))
 
+;; Private 
+(require 'private.keys nil t)
+
+;; Core
 (require 'editor.core)
 (require 'editor.pacman)
-(require 'private.keys)
 (require 'editor.packages)
 (require 'editor.keymap)
 
