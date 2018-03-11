@@ -11,6 +11,11 @@
 ;; You may delete these explanatory comments.
 ;;(package-initialize)
 
+;; Avoid garbage collection during startup
+(setq gc-cons-threshold 402653184
+      gc-cons-percentage 0.6)
+
+
 (setq custom-file "~/.emacs.d/local/custom-set.el")
 
 ; Setup the load path
@@ -62,6 +67,11 @@
 (require 'lang.php)
 (require 'lang.python)
 (require 'lang.swift)
+
+;; Then reset GC as late as possible
+(add-hook 'emacs-startup-hook
+  (setq gc-cons-threshold 16777216
+        gc-cons-percentage 0.1))
 
 (provide 'init.el)
 ;;; init.el ends here
