@@ -7,12 +7,14 @@
 ;;; Code:
 (use-package restclient
   :ensure t
-  :config
-  (use-package company-restclient :ensure t)
-  (defun company/restclient-mode-hook ()
-    (push 'company-restclient company-backends))
-  (add-hook 'restclient-mode-hook
-            'company/restclient-mode-hook))
+  :commands (restclient-mode))
+
+(use-package company-restclient
+  :ensure t
+  :init
+   (defun company/restclient-mode-hook ()
+     (push 'company-restclient company-backends))
+   :hook (restclient-mode . company/restclient-mode-hook))
 
 (provide 'layer.restclient)
 ;;; layer.restclient ends here

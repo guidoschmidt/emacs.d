@@ -1,4 +1,4 @@
-;;; modeline --- Customize modeline
+;;; modeline --- Customize modeline -*- lexical-binding: t -*-
 ;;; Commentary:
 
 ;;; Code:
@@ -11,62 +11,28 @@
     (when calendar-latitude
      (sky-color-clock-initialize (round calendar-latitude)))))
 
-(use-package powerline
-  :ensure t
-  :config
-  (setq powerline-default-separator nil)
-  (setq powerline-height 42)
-  (setq powerline-gui-use-vcs-glyph t))
+;; (use-package powerline
+;;   :ensure t
+;;   :config
+;;   (setq powerline-default-separator nil)
+;;   (setq powerline-gui-use-vcs-glyph t)
+;;   (setq powerline-height 60)
+;;   (powerline-reset))
 
-(use-package fancy-battery
-  :ensure t)
-
-(use-package spaceline
-  :ensure t
-  :after powerline
-  ;; :init
-  ;; (progn
-  ;;   (require 'spaceline-config)
-  ;;     ;;; -- Powerline seperator styles:
-  ;;     alternate, arrow, arrow-fade, bar, box, brace,
-  ;;     butt, chamfer, contour, curve, rounded, roundstub,
-  ;;     wave, zigzag, utf-8, nil
-  ;;     ;;; -- Disable spaceline segments
-  ;;     (spaceline-toggle-workspace-number-off)
-  ;;     (spaceline-toggle-minor-modes-off)
-  ;;     (spaceline-toggle-buffer-encoding-abbrev-off)
-  ;;     (spaceline-toggle-buffer-size-off)
-  ;;     (spaceline-toggle-org-clock-off)
-  ;;     (spaceline-toggle-projectile-root-off)
-  ;;     (spaceline-toggle-battery-off)
-  ;;     (spaceline-toggle-selection-info-off)
-  ;;     (spaceline-toggle-evil-state-off)
-  ;;     (spaceline-toggle-buffer-id-off)
-  ;;     (spaceline-toggle-major-mode-off)
-  ;;     (spaceline-toggle-minor-modes-off)
-  ;;     (spaceline-toggle-flycheck-error-off)
-  ;;     (spaceline-toggle-flycheck-info-off)
-  ;;     (spaceline-toggle-flycheck-warning-off)
-  ;;     (spaceline-toggle-version-control-off)
-  ;;     (spaceline-toggle-line-column-off)
-  ;;     (spaceline-toggle-global-off)
-  ;;     (spaceline-toggle-hud-off)
-  ;;     (spaceline-toggle-buffer-position-off)
-  ;;     (spaceline-toggle-buffer-modified-off))
-  ;; :config
-  ;; (spaceline-emacs-theme)
-)
+;; (use-package spaceline
+;;   :ensure t
+;;   :after powerline)
 
 (use-package all-the-icons
-  :load-path "~/.emacs.d/github/all-the-icons"
+  :ensure t
   :init
   (when (memq window-system '(w32))
     (add-to-list 'load-path "~/.emacs.d/github/")
     (require 'font-lock+)))
 
 (use-package spaceline-all-the-icons
-  :load-path "~/.emacs.d/github/spaceline-all-the-icons"
-  :after (spaceline all-the-icons)
+  :ensure t
+  ;; :after (spaceline all-the-icons)
   :config
   ;; -- Customize spaceline
   (set-face-attribute

@@ -1,4 +1,4 @@
-;;; editor.core --- Setup core editor behaviour
+;;; editor.core --- Setup core editor behaviour -*- lexical-binding: t -*-
 
 ;;; Commentary:
 

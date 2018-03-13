@@ -1,4 +1,4 @@
-;;; editor.keymap --- Configure custom key bindings
+;;; editor.keymap --- Configure custom key bindings -*- lexical-binding: t -*-
 
 ;;; Commentary:
 

@@ -127,7 +127,8 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
 (use-package tern
   :ensure t
   :commands company-tern
-  :ensure-system-package (tern . "npm i -g tern"))
+  ;; :ensure-system-package (tern . "npm i -g tern")
+  )
 
 (use-package company-tern
   :ensure t
@@ -144,7 +145,7 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
 ;;; Prettier.js
 (use-package prettier-js
   :ensure t
-  :ensure-system-package (vue-prettier . "npm i -g vue-prettier")
+  ;; :ensure-system-package (vue-prettier . "npm i -g vue-prettier")
   :config
   (setq prettier-js-command "~/.nvm/versions/node/v9.4.0/bin/vue-prettier")
   (add-hook 'js2-mode-hook 'prettier-js-mode)
@@ -163,7 +164,8 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
 
 ;;; web-beautify - pretty HTML auto formatting
 (use-package web-beautify :ensure t
-  :ensure-system-package (tern . "npm i -g js-beautify"))
+  ;; :ensure-system-package (tern . "npm i -g js-beautify")
+)
 
 
 (provide 'lang.javascript)

@@ -1,4 +1,4 @@
-;;; editor.pacman.el --- Initialize package managing with MELPA
+;;; editor.pacman.el --- Initialize package managing with MELPA -*- lexical-binding: t -*-
 
 ;;; Commentary:
 ;;; - Add package archives

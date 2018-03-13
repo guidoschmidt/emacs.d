@@ -1,4 +1,4 @@
-;;; editor.appearance --- Configure look & feel of Emacs
+;;; editor.appearance --- Configure look & feel of Emacs -*- lexical-binding: t -*-
 
 ;;; Commentary:
 

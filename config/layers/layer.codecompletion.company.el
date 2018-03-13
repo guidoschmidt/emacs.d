@@ -9,6 +9,7 @@
 
 (use-package company
   :ensure t
+  :diminish company-mode
   :preface
   (defun company-mode/backend-with-yas (backend)
     (if (or

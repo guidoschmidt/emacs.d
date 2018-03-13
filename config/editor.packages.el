@@ -1,4 +1,4 @@
-;;; editor.packages --- Setup packages
+;;; editor.packages --- Setup packages -*- lexical-binding: t -*-
 
 ;;; Commentary:
 
@@ -12,6 +12,8 @@
 ;; - Language Server Protocol
 ;;   - https://github.com/Ruin0x11/intellij-lsp-server
 ;;   - https://github.com/emacs-lsp/lsp-mode
+;;
+;; - Include ranger.el
 ;;
 ;; - Pretty-mode for ligatures
 
@@ -34,8 +36,19 @@
 ;; which-key - Display available key bindings in a popup
 (use-package which-key
   :ensure t
-  :commands which-key
-  :config (which-key-mode))
+  :diminish which-key-mode
+  :init (which-key-mode)
+  :config
+  (which-key-setup-side-window-right-bottom)
+  (setq which-key-sort-order 'which-key-key-order-alpha
+        which-key-side-window-max-width 0.33
+        which-key-idle-delay 0.05))
+
+;; smooth-scrolling - smooth scrolling and minimap
+(use-package smooth-scrolling
+  :ensure t
+  :config
+  (smooth-scrolling-mode 1))
 
 ;; keyfreq - gather statistics of key and command frequency
 (use-package keyfreq
@@ -60,6 +73,7 @@
 ;; Anzu - show matching selections on search
 (use-package anzu
   :ensure t
+  :diminish anzu-mode
   :config
   (global-anzu-mode t))
 
@@ -79,6 +93,7 @@
 ;; EditorConfig - adapt Emacs to .editorconfig files
 (use-package editorconfig
   :ensure t
+  :diminish editorconfig-mode
   :config
   (editorconfig-mode 1))
 
@@ -147,11 +162,16 @@
 (use-package rainbow-mode
   :ensure t
   :commands rainbow-mode
+  :diminish rainbow-mode
   :hook (prog-mode . rainbow-mode))
 
 ;; projectile - provide a searchable interface for projects
+(use-package diminish
+  :ensure t)
+
 (use-package projectile
   :ensure t
+  :diminish projectile-mode
   :init
   (progn
     (setq projectile-enable-caching t)
@@ -179,6 +199,7 @@
 ;; undo-tree - advanced undo actions
 (use-package undo-tree
   :ensure t
+  :diminish undo-tree-mode
   :init (global-undo-tree-mode))
 
 ;; auto-highlight-symbol - highlight matching expressions on selection
@@ -211,6 +232,7 @@
 (use-package ivy
   :ensure t
   :commands (ivy-mode ivy-switch-buffer)
+  :diminish ivy-mode
   :config
   (setq enable-recursive-minibuffers t)
   (setq ivy-display-style 'fancy)

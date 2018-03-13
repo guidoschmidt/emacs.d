@@ -11,12 +11,13 @@
   (add-hook 'clojure-mode-hook #'enable-paredit-mode))
 
 (use-package clojure-snippets
-  :ensure t)
+  :ensure t
+  :defer)
 
 (use-package cider
   :ensure t
   :commands (cider-mode cider-jack-in)
-  :diminish "CDR"
+  :diminish "Cider"
   :config
   (setq cider-prompt-for-symbol nil)
   (setq nrepl-log-messages nil)

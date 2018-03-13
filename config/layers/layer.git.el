@@ -22,11 +22,9 @@
   (add-function :before-while whitespace-enable-predicate 'prevent-whitespace-mode-for-magit)
   (setq magit-completing-read-function 'ivy-completing-read))
 
-(use-package gist
-  :ensure t)
-
 (use-package git-gutter
   :ensure t
+  :diminish git-gutter-mode
   :config
   (global-git-gutter-mode t)
   (git-gutter:linum-setup)

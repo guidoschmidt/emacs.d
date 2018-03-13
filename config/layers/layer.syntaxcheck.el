@@ -4,17 +4,18 @@
 
 ;;; Code:
 (use-package flycheck
-  :ensure
+  :ensure t
+  :diminish flycheck-mode
   :config
   (setq-default flycheck-temp-prefix ".flycheck"))
 
 (use-package flycheck-package
-  :ensure
+  :ensure t
   :config
   (add-hook 'flycheck-mode-hook 'flycheck-package-setup))
 
 (use-package flycheck-pos-tip
-  :ensure
+  :ensure t
   :config
   (with-eval-after-load 'flycheck
     (flycheck-pos-tip-mode))
