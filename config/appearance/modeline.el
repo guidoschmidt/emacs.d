@@ -11,17 +11,18 @@
     (when calendar-latitude
      (sky-color-clock-initialize (round calendar-latitude)))))
 
-;; (use-package powerline
-;;   :ensure t
-;;   :config
-;;   (setq powerline-default-separator nil)
-;;   (setq powerline-gui-use-vcs-glyph t)
-;;   (setq powerline-height 60)
-;;   (powerline-reset))
+(use-package powerline
+  :ensure t
+  :config
+  (setq powerline-default-separator nil)
+  (setq powerline-gui-use-vcs-glyph t)
+  (setq powerline-height 42)
+  (powerline-reset))
 
-;; (use-package spaceline
-;;   :ensure t
-;;   :after powerline)
+(use-package spaceline
+  :ensure t
+  :after powerline
+  :config)
 
 (use-package all-the-icons
   :ensure t
@@ -32,9 +33,11 @@
 
 (use-package spaceline-all-the-icons
   :ensure t
-  ;; :after (spaceline all-the-icons)
+  :after (spaceline all-the-icons)
+  :requires spaceline
   :config
-  ;; -- Customize spaceline
+  (require 'spaceline-config)
+  ;; Customize spaceline
   (set-face-attribute
    'spaceline-evil-normal nil :background "#F6EDDF" :foreground "#232323")
   (set-face-attribute
@@ -43,18 +46,18 @@
    'spaceline-evil-visual nil :background "#E9391D" :foreground "#FFA96F")
   (setq spaceline-all-the-icons-separator-type 'none)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
-  ;; -- Define custom segments
+  ;; Define custom segments
   (spaceline-define-segment sky-color-clock-segment
     (concat "" (sky-color-clock))
     :tight t)
-  ;; -- Turn segemnts off
+  ;; Turn segemnts off
   (spaceline-toggle-all-the-icons-buffer-path-off)
   (spaceline-toggle-all-the-icons-buffer-position-off)
   (spaceline-toggle-all-the-icons-buffer-size-off)
   (spaceline-toggle-all-the-icons-modified-off)
   (spaceline-toggle-all-the-icons-region-info-off)
   (spaceline-toggle-all-the-icons-time-off)
-  ;; -- Turn segments on
+  ;; Turn segments on
   (spaceline-toggle-all-the-icons-buffer-id-on)
   (spaceline-toggle-all-the-icons-buffer-size-on)
   (spaceline-toggle-all-the-icons-flycheck-status-on)
@@ -66,7 +69,8 @@
   (spaceline-toggle-all-the-icons-package-updates-on)
   (spaceline-toggle-all-the-icons-position-on)
   (spaceline-toggle-all-the-icons-projectile-on)
-  (spaceline-all-the-icons-theme
+  ;; Enable the theme
+  (spaceline-emacs-theme
    'sky-color-clock-segment
    'etc))
 
