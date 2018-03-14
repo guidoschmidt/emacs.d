@@ -6,6 +6,9 @@
 ;;; Remove startup message
 (setq inhibit-startup-message t)
 
+;; Pixelwise resizing of frames
+(setq frame-resize-pixelwise t)
+
 ;; Disable menubar
 (menu-bar-mode -1)
 
