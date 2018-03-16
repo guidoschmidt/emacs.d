@@ -14,9 +14,9 @@
 (use-package powerline
   :ensure t
   :config
-  (setq powerline-default-separator nil)
+  (setq powerline-default-separator 'bar)
   (setq powerline-gui-use-vcs-glyph t)
-  (setq powerline-height 42)
+  (setq powerline-height 38)
   (powerline-reset))
 
 (use-package spaceline
@@ -29,9 +29,6 @@
   (spaceline-define-segment sky-color-clock-segment
     (concat "" (sky-color-clock))
     :tight t)
-
-  (setq powerline-height 42)
-  (powerline-reset)
 
   ;; Edit evil state colcos
   (set-face-attribute
