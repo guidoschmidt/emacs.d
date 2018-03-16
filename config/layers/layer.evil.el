@@ -43,6 +43,7 @@
     "c"       'ggtags-create-tags
     "d"       'ggtags-find-tag-dwim
     "<up>"    'beginning-of-defun
+    "w"       'save-buffer
     "<down>"  'end-of-defun))
 
 (use-package evil-cleverparens
