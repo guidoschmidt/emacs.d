@@ -18,6 +18,9 @@
 ;; Disable scrollbars
 (scroll-bar-mode -1)
 
+;; Minimize the fringe of windows
+(fringe-mode 1)
+
 ;; Whitespace
 (global-whitespace-mode t)
 (setq-default indicate-empty-lines t)
