@@ -57,6 +57,12 @@
   (keyfreq-mode 1)
   (keyfreq-autosave-mode 1))
 
+;; ranger - improved file browser
+(use-package ranger
+  :ensure t
+  :diminish ranger-mode
+  :commands ranger)
+
 ;; Dired-Hacks - imporve dired-mode
 (use-package dired-hacks-utils
   :ensure t
@@ -180,6 +186,7 @@
   (projectile-mode))
 
 (use-package counsel-projectile
+  :ensure t
   :commands counsel-projectile-switch-project
   :after projectile)
 
