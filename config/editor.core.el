@@ -37,6 +37,10 @@
 ;; Electric pairs
 (electric-pair-mode 1)
 
+;; AutoFill mode
+(setq-default fill-column 80)
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+
 ;; Use yes-or-no shortcut
 (defalias 'yes-or-no-p 'y-or-n-p)
 
