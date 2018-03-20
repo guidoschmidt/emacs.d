@@ -2,21 +2,6 @@
 
 ;;; Commentary:
 
-;; TODO:
-;; - dired hacks:
-;;   - Subtree
-;;   - dired-collapse
-;;
-;; - https://github.com/technomancy/find-file-in-project
-;;
-;; - Language Server Protocol
-;;   - https://github.com/Ruin0x11/intellij-lsp-server
-;;   - https://github.com/emacs-lsp/lsp-mode
-;;
-;; - Include ranger.el
-;;
-;; - Pretty-mode for ligatures
-
 ;;; Code:
 ;; no-littering - Keep your .emacs.d clean
 (use-package no-littering
