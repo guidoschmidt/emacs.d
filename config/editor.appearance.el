@@ -58,5 +58,11 @@
   (progn
     (smart-tabs-insinuate 'c 'javascript)))
 
+;; pretty-mode
+(use-package pretty-mode
+  :ensure t
+  :config
+  (global-pretty-mode t))
+
 (provide 'editor.appearance)
 ;;; editor.appearance ends here

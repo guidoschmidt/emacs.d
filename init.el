@@ -33,7 +33,6 @@
 
 ;; Appearance
 (require 'editor.appearance)
-(require 'ligatures)
 (require 'modeline)
 (require 'themes)
 
