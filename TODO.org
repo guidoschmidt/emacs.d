@@ -8,5 +8,4 @@
 - https://github.com/Ruin0x11/intellij-lsp-server
 - https://github.com/emacs-lsp/lsp-mode
 ** ranger.el
-** Pretty-mode for ligatures
 ** Lispy (https://github.com/abo-abo/lispy)
