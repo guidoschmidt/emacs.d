@@ -179,8 +179,6 @@
 
 ;; (global-prettify-symbols-mode +1)
 
-(when (window-system)
-  (set-frame-font "Fira Code"))
 (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
                (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")
                (36 . ".\\(?:>\\)")
