@@ -78,6 +78,7 @@
 
 ;; beacon - cursor light
 (use-package beacon
+  :ensure t
   :init
   (setq beacon-color "#F8E19D")
   (setq beacon-blink-delay 0.5)
