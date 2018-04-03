@@ -3,7 +3,9 @@
 
 ;;; Code:
 (use-package glsl-mode
-  :commands glsl-mode
+  :ensure t
+  :commands python-mode
+  :mode ("\\.glsl\\'" . python-mode)
   :config
   (add-hook 'glsl-mode-hook
             (lambda()

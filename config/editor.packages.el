@@ -80,6 +80,7 @@
 ;; emojify - convert utf-8 smileys to images 
 (use-package emojify
   :ensure t
+  :disabled
   :hook (after-init . global-emojify-mode))
 
 ;; Prodigy - manage external services from within Emacs
