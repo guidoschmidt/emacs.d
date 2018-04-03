@@ -22,7 +22,7 @@
   (normal-top-level-add-to-load-path '("."))
   (normal-top-level-add-subdirs-to-load-path))
 
-;; Private 
+;; Private
 (require 'private.keys nil t)
 
 ;; Core
@@ -33,9 +33,9 @@
 
 ;; Appearance
 (require 'editor.appearance)
-(require 'ligatures)
 (require 'modeline)
 (require 'themes)
+(require 'ligatures)
 
 ;; Layers
 (require 'layer.codecompletion.auto-complete)

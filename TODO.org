@@ -1,0 +1,11 @@
+* TODO:
+
+** dired hacks:
+- Subtree
+- dired-collapse
+** https://github.com/technomancy/find-file-in-project
+** Language Server Protocol
+- https://github.com/Ruin0x11/intellij-lsp-server
+- https://github.com/emacs-lsp/lsp-mode
+** ranger.el
+** Lispy (https://github.com/abo-abo/lispy)

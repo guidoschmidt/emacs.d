@@ -2,21 +2,6 @@
 
 ;;; Commentary:
 
-;; TODO:
-;; - dired hacks:
-;;   - Subtree
-;;   - dired-collapse
-;;
-;; - https://github.com/technomancy/find-file-in-project
-;;
-;; - Language Server Protocol
-;;   - https://github.com/Ruin0x11/intellij-lsp-server
-;;   - https://github.com/emacs-lsp/lsp-mode
-;;
-;; - Include ranger.el
-;;
-;; - Pretty-mode for ligatures
-
 ;;; Code:
 ;; no-littering - Keep your .emacs.d clean
 (use-package no-littering
@@ -56,6 +41,12 @@
   :config
   (keyfreq-mode 1)
   (keyfreq-autosave-mode 1))
+
+;; ranger - improved file browser
+(use-package ranger
+  :ensure t
+  :diminish ranger-mode
+  :commands ranger)
 
 ;; Dired-Hacks - imporve dired-mode
 (use-package dired-hacks-utils
@@ -181,6 +172,7 @@
   (projectile-mode))
 
 (use-package counsel-projectile
+  :ensure t
   :commands counsel-projectile-switch-project
   :after projectile)
 
@@ -333,6 +325,14 @@
   :ensure t
   :commands aggressive-indent-mode
   :hook (emacs-lisp . aggressive-indent-mode))
+
+;; visual-regexp
+(use-package visual-regexp
+  :ensure t
+  :bind
+  (("C-c r" . vr/replace)
+   ("C-c q" . vr/query-replace)
+   ("C-c m" . vr/mc-mark)))
 
 (provide 'editor.packages)
 ;;; editor.packages ends here

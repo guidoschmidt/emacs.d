@@ -1,4 +1,4 @@
-;;; editor.appearance --- Configure look & feel of Emacs -*- lexical-binding: t -*-
+;;; editor.appearance --- Configure ligatures for fonts -*- lexical-binding: t -*-
 
 ;;; Commentary:
 
@@ -17,6 +17,9 @@
 
 ;; Disable scrollbars
 (scroll-bar-mode -1)
+
+;; Minimize the fringe of windows
+(fringe-mode 1)
 
 ;; Whitespace
 (global-whitespace-mode t)
@@ -54,6 +57,33 @@
   :config
   (progn
     (smart-tabs-insinuate 'c 'javascript)))
+
+;; pretty-mode
+(use-package pretty-mode
+  :ensure t
+  :config
+  (global-pretty-mode t)
+  (pretty-deactivate-groups
+   '(:equality
+     :ordering
+     :ordering-double
+     :ordering-triple
+     :arrows
+     :arrows-twoheaded
+     :punctuation
+     :logic
+     :sets))
+  (pretty-deactivate-patterns
+   '(:lambda)))
+
+;; beacon - cursor light
+(use-package beacon
+  :init
+  (setq beacon-color "#F8E19D")
+  (setq beacon-blink-delay 0.5)
+  (setq beacon-blink-duration 0.5)
+  :config
+  (beacon-mode 1))
 
 (provide 'editor.appearance)
 ;;; editor.appearance ends here
