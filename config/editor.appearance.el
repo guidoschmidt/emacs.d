@@ -1,4 +1,4 @@
-;;; editor.appearance --- Configure look & feel of Emacs -*- lexical-binding: t -*-
+;;; editor.appearance --- Configure ligatures for fonts -*- lexical-binding: t -*-
 
 ;;; Commentary:
 
@@ -62,10 +62,24 @@
 (use-package pretty-mode
   :ensure t
   :config
-  (global-pretty-mode t))
+  (global-pretty-mode t)
+  (pretty-deactivate-groups
+   '(:equality
+     :ordering
+     :ordering-double
+     :ordering-triple
+     :arrows
+     :arrows-twoheaded
+     :punctuation
+     :logic
+     :sets))
+  (pretty-deactivate-patterns
+   '(:lambda)))
 
 ;; beacon - cursor light
 (use-package beacon
+  :init
+  (setq beacon-color "#F8E19D")
   :config
   (beacon-mode 1))
 
