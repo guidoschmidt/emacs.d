@@ -64,5 +64,10 @@
   :config
   (global-pretty-mode t))
 
+;; beacon - cursor light
+(use-package beacon
+  :config
+  (beacon-mode 1))
+
 (provide 'editor.appearance)
 ;;; editor.appearance ends here
