@@ -80,6 +80,8 @@
 (use-package beacon
   :init
   (setq beacon-color "#F8E19D")
+  (setq beacon-blink-delay 0.5)
+  (setq beacon-blink-duration 0.5)
   :config
   (beacon-mode 1))
 
