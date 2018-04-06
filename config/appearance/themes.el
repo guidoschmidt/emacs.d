@@ -39,6 +39,7 @@
 (use-package tao-theme :ensure :defer)
 (use-package color-theme-solarized :ensure :defer)
 (use-package abyss-theme :ensure :defer)
+(use-package challenger-deep-theme :ensure :defer)
 
 ;; --- Circadian
 (require 'linum)
@@ -47,7 +48,7 @@
   :ensure
   :config
   (setq circadian-themes '((:sunrise . gruvbox-light-hard)
-                           (:sunset . gruvbox-dark-hard)))
+                           (:sunset . challenger-deep)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
 
