@@ -35,6 +35,7 @@
   (use-package ssh-agency
     :ensure t
     :config
+    (setenv "SSH_ASKPASS" "git-gui--askpass")
     (ssh-agency-find-agent)
     (ssh-agency-add-keys '("~/.ssh/id_rsa.github.cube"
                            "~/.ssh/id_rsa.gitlab.cube"))))
