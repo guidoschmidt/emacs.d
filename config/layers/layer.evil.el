@@ -44,14 +44,21 @@
     "d"       'ggtags-find-tag-dwim
     "<up>"    'beginning-of-defun
     "w"       'save-buffer
-    "<down>"  'end-of-defun))
+    "<down>"  'end-of-defun
+    "j"       'counsel-imenu))
 
 (use-package lispy
   :ensure t
   :hook ((clojure-mode       . lispy-mode)
          (clojurescript-mode . lispy-mode)
          (common-lisp-mode   . lispy-mode)
-         (emacs-lisp-mode    . lispy-mode)))
+         (emacs-lisp-mode    . lispy-mode))
+  :config
+  ;; Enable lispy in the eval expression mini-buffer
+  (defun conditionally-enable-lispy ()
+    (when (eq this-command 'eval-expression)
+      (lispy-mode 1)))
+  (add-hook 'minibuffer-setup-hook 'conditionally-enable-lispy))
 
 (use-package lispyville
   :ensure t
@@ -68,6 +75,11 @@
   :bind
   (("C-<" . evil-mc-make-cursor-move-next-line)
    ("C->" . evil-mc-make-cursor-move-prev-line)))
+
+(use-package evil-multiedit
+  :ensure t
+  :config
+  (evil-multiedit-default-keybinds))
 
 (use-package expand-region
   :ensure
@@ -91,8 +103,7 @@
   (evil-collection-init))
 
 (use-package evil-anzu
-  :commands evil-mode
-  :ensure)
+  :ensure t)
 
 (provide 'layer.evil)
 ;;; layer.evil ends here
