@@ -68,7 +68,7 @@
   :config
   (global-anzu-mode t))
 
-;; emojify - convert utf-8 smileys to images 
+;; emojify - convert utf-8 smileys to images
 (use-package emojify
   :ensure t
   :disabled
@@ -76,6 +76,7 @@
 
 ;; Prodigy - manage external services from within Emacs
 (use-package prodigy
+  :disabled
   :ensure t)
 
 ;; Smex - smart M-x enhancement
@@ -92,7 +93,6 @@
 ;; Yasnippets - code snippets
 (use-package yasnippet
   :ensure t
-  :commands (yas-global-mode yas-minor-mode)
   :config
   (yas-global-mode 1)
   (eval-after-load 'yasnippet
@@ -123,6 +123,7 @@
 ;; Focus - visual highlight scopes
 (use-package focus
   :ensure t
+  :disabled
   :commands focus-mode)
 
 ;; highlight-indent-guides - Highlight indentation
@@ -293,10 +294,11 @@
   (setq-default fci-rule-color "#b3bbf3")
   (setq-default whitespace-style '(face trailing)))
 
-;; Wrap region - wrap a region with 
+;; Wrap region - wrap a region with
 (use-package wrap-region
   :ensure t
   :commands wrap-region-mode
+  :disabled
   :config
   (wrap-region-add-wrapper "`" "`")
   (wrap-region-add-wrapper "*" "*")
@@ -307,6 +309,7 @@
 ;; emr - refactor menu
 (use-package emr
   :ensure t
+  :disabled
   :commands emr-show-refactor-menu
   :hook (prog-mode . emr-initialize)
   :config
@@ -333,6 +336,12 @@
   (("C-c r" . vr/replace)
    ("C-c q" . vr/query-replace)
    ("C-c m" . vr/mc-mark)))
+
+;; hungry-delete
+(use-package hungry-delete
+  :ensure t
+  :config
+  (global-hungry-delete-mode))
 
 (provide 'editor.packages)
 ;;; editor.packages ends here
