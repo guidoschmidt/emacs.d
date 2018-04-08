@@ -66,11 +66,9 @@
   (add-hook 'lispy-mode-hook #'lispyville-mode))
 
 (use-package evil-mc
-  :ensure
+  :ensure t
   :config
-  (use-package multiple-cursors
-    :ensure)
-  (setq evil-mc-one-cursor-show-mode-line-text nil)
+  (setq evil-mc-one-cursor-show-mode-line-text t)
   (global-evil-mc-mode 1)
   :bind
   (("C-<" . evil-mc-make-cursor-move-next-line)
