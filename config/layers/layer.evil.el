@@ -6,7 +6,7 @@
 (require 'ibuffer)
 
 (use-package evil
-  :ensure
+  :ensure t
   :init
   (setq evil-want-integration nil)
   :config
@@ -20,7 +20,7 @@
          ("r" . ibuffer-do-revert))))
 
 (use-package evil-leader
-  :ensure
+  :ensure t
   :config
   (global-evil-leader-mode)
   (eval-when-compile (evil-leader/set-leader "<SPC>"))
@@ -80,7 +80,7 @@
   (evil-multiedit-default-keybinds))
 
 (use-package expand-region
-  :ensure
+  :ensure t
   :config
   (eval-after-load
       "evil"
@@ -88,7 +88,7 @@
   (evil-leader/set-key "e" 'er/expand-region))
 
 (use-package evil-surround
-  :ensure
+  :ensure t
   :config
   (global-evil-surround-mode 1))
 
