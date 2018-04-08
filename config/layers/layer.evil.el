@@ -46,17 +46,17 @@
     "w"       'save-buffer
     "<down>"  'end-of-defun))
 
-(use-package evil-cleverparens
-  :ensure
-  :config
-  (add-hook 'emacs-lisp-mode #'evil-cleverparens-mode)
-  (add-hook 'clojure-mode #'evil-cleverparens-mode))
+(use-package lispy
+  :ensure t
+  :hook ((clojure-mode       . lispy-mode)
+         (clojurescript-mode . lispy-mode)
+         (common-lisp-mode   . lispy-mode)
+         (emacs-lisp-mode    . lispy-mode)))
 
-(use-package evil-paredit
-  :ensure
+(use-package lispyville
+  :ensure t
   :config
-  (add-hook 'emacs-lisp-mode-hook 'evil-paredit-mode)
-  (add-hook 'clojure-mode 'evil-paredit-mode))
+  (add-hook 'lispy-mode-hook #'lispyville-mode))
 
 (use-package evil-mc
   :ensure
