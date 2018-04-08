@@ -8,4 +8,5 @@
 - https://github.com/Ruin0x11/intellij-lsp-server
 - https://github.com/emacs-lsp/lsp-mode
 ** ranger.el
-** Lispy (https://github.com/abo-abo/lispy)
+** Learn lispy.el code commands
+** Lispyville
