@@ -3,6 +3,9 @@
 ;;; Commentary:
 
 ;;; Code:
+;;; Set title bar text color
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
+
 ;;; Remove startup message
 (setq inhibit-startup-message t)
 
@@ -80,7 +83,7 @@
 (use-package beacon
   :ensure t
   :init
-  (setq beacon-color "#F8E19D")
+  (setq beacon-color "#E300A3")
   (setq beacon-blink-delay 0.5)
   (setq beacon-blink-duration 0.5)
   :config
