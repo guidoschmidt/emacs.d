@@ -1,0 +1,44 @@
+# -*- mode: snippet -*-
+# name: rxflow-flow
+# key: flow
+# --
+// $1.swift
+//
+// - Authors:
+// Guido Schmidt
+//
+// - Date: `(format-time-string "%d.%m.%Y")`
+//
+// Copyright © 2018 Immundiagnostik AG. All rights reserved.
+
+
+import UIKit
+import PreventisBase
+import PreventisAnalysis
+import LogSwifty
+import RxSwift
+import RxFlow
+
+public class ${1:Name}: Flow {
+    // MARK: - Public properties
+    public var root: Presentable {
+        return self.rootViewController
+    }
+
+    // MARK: - Private properties
+    private var rootViewController: UINavigationController()
+
+    // MARK: - Init
+    init() {
+    }
+
+    // MARK: - Step navigation switch
+    public func navigate(to step: Step) -> NextFlowItems {
+        Log.d("$1 FLOW | Step: -> \(step)")
+        guard let step = step as? ${2:Step} else { return NextFlowItems.none }
+        switch step {
+            default:
+                return NextFlowItems.none
+        }
+    }
+}
