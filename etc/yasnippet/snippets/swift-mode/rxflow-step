@@ -1,0 +1,20 @@
+# -*- mode: snippet -*-
+# name: rxflow-step
+# key: step
+# --
+// $1.swift
+//
+// - Authors:
+// Guido Schmidt
+//
+// - Date: `(format-time-string "%d.%m.%Y")`
+//
+// Copyright © 2018 Immundiagnostik AG. All rights reserved.
+
+import Foundation
+import RxFlow
+
+enum ${1:Name}: Step {
+    case ${2:Case}
+}
+
