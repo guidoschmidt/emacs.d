@@ -64,6 +64,7 @@
 ;; pretty-mode
 (use-package pretty-mode
   :ensure t
+  :disabled
   :config
   (global-pretty-mode t)
   (pretty-deactivate-groups
