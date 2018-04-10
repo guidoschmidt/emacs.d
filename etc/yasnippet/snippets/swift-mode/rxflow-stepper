@@ -1,0 +1,23 @@
+# -*- mode: snippet -*-
+# name: rxflow-stepper
+# key: stepper
+# --
+// $1.swift
+//
+// - Authors:
+// Guido Schmidt
+//
+// - Date: `(format-time-string "%d.%m.%Y")`
+//
+// Copyright © 2018 Immundiagnostik AG. All rights reserved.
+
+import Foundation
+import PreventisBase
+import RxSwift
+import RxFlow
+import LogSwifty
+
+public class ${1:Name}: Stepper {
+    public init() {
+    }
+}

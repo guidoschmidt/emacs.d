@@ -9,11 +9,11 @@
 
 (use-package flycheck-swift3
   :ensure t
-  :after (flycheck)
+  :after flycheck
   :config
   (add-hook 'flycheck-mode-hook #'flycheck-swift3-setup)
   (setq flycheck-swift-sdk-path
-        "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk")
+        "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk")
   ;; ↑ Select the appropriate SDK version you use
   (setq flycheck-swift-target "arm64-apple-ios10"))
 
