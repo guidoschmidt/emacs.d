@@ -347,5 +347,12 @@ Text Scaling
   :config
   (global-hungry-delete-mode))
 
+;; counsel-spotify - control spotify from within Emacs
+(use-package counsel-spotify
+  :ensure t
+  :config
+  (setq counsel-spotify-client-id "b5b801a1c93741f09888dc6ac1bf11d0"
+        counsel-spotify-client-secret "b03b24495a824f03ba70ae0e8da2a5a6"))
+
 (provide 'editor.packages)
 ;;; editor.packages ends here
