@@ -77,7 +77,6 @@ _k_: previous
 _n_: skip + next
 _p_: skip + previous
 _m_: make cursor
-_a_: make all cursors
 "
     ("j" evil-mc-make-cursor-move-next-line "next")
     ("k" evil-mc-make-cursor-move-prev-line "previous")
