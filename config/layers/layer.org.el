@@ -25,6 +25,19 @@
         ("DONE"    . (:foreground "green"  :weight bold))
         ("WONTDO"  . (:foreground "green"  :weight bold))))
 
+(defhydra hydra-org (:color blue :hint nil)
+  "
+Org Mode
+
+_j_: mark
+_k_: save
+"
+  ("j" org-cycle-level)
+  ("k" org-cycle))
+
+(evil-leader/set-key
+  "z" 'hydra-org/body)
+
 ;; Kanban board
 ;;(load "~/.emacs.d/github/org-kanban/org-kanban.el")
 
