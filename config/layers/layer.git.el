@@ -37,8 +37,8 @@
     :config
     (setenv "SSH_ASKPASS" "git-gui--askpass")
     (ssh-agency-find-agent)
-    (ssh-agency-add-keys '("~/.ssh/id_rsa.github.cube"
-                           "~/.ssh/id_rsa.gitlab.cube"))))
+    (setq ssh-agency-keys '("~/.ssh/id_rsa.github.cube"
+                            "~/.ssh/id_rsa.gitlab.cube"))))
 
 (provide 'layer.git)
 ;;; layer.git ends here
