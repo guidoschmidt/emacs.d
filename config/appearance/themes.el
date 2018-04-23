@@ -22,6 +22,7 @@
 (use-package ample-theme :ensure :defer)
 (use-package apropospriate-theme :ensure :defer)
 (use-package boron-theme :ensure :defer)
+(use-package birds-of-paradise-plus-theme :ensure :defer)
 (use-package color-theme-sanityinc-tomorrow :ensure :defer)
 (use-package darkokai-theme :ensure :defer)
 (use-package espresso-theme :ensure :defer)
@@ -47,8 +48,9 @@
   ;; :load-path "~/git/develop/emacs/circadian.el/"
   :ensure
   :config
-  (setq circadian-themes '((:sunrise . challenger-deep)
-                           (:sunset . challenger-deep)))
+  (setq circadian-themes '((:sunrise . gruvbox-light-hard)
+                           (:sunset . birds-of-paradise-plus)))
+
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
 

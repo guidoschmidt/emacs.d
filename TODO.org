@@ -10,3 +10,5 @@
 ** ranger.el
 ** Learn lispy.el code commands
 ** Lispyville
+** Python
+*** IN https://github.com/anachronic/importmagic.el

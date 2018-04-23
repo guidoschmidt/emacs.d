@@ -54,11 +54,8 @@
          (common-lisp-mode   . lispy-mode)
          (emacs-lisp-mode    . lispy-mode))
   :config
-  ;; Enable lispy in the eval expression mini-buffer
-  (defun conditionally-enable-lispy ()
-    (when (eq this-command 'eval-expression)
-      (lispy-mode 1)))
-  (add-hook 'minibuffer-setup-hook 'conditionally-enable-lispy))
+  (evil-leader/set-key
+    "l"  'hydra-lispy-x/body))
 
 (use-package lispyville
   :ensure t
@@ -70,9 +67,24 @@
   :config
   (setq evil-mc-one-cursor-show-mode-line-text t)
   (global-evil-mc-mode 1)
-  :bind
-  (("C-<" . evil-mc-make-cursor-move-next-line)
-   ("C->" . evil-mc-make-cursor-move-prev-line)))
+  :config
+  (defhydra hydra-evil-mc (:color black)
+    "
+Cursors
+
+_j_: next
+_k_: previous
+_n_: skip + next
+_p_: skip + previous
+_m_: make cursor
+"
+    ("j" evil-mc-make-cursor-move-next-line "next")
+    ("k" evil-mc-make-cursor-move-prev-line "previous")
+    ("n" evil-mc-skip-and-goto-next-match "skip + next")
+    ("p" evil-mc-skip-and-goto-prev-match "skip + previous")
+    ("m" evil-mc-make-cursor-here "cursor"))
+  (evil-leader/set-key
+    "m" 'hydra-evil-mc/body))
 
 (use-package evil-multiedit
   :ensure t

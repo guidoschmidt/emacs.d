@@ -113,11 +113,16 @@
 (use-package hydra
   :ensure t
   :config
-  (defhydra hydra-text-scale (global-map "<f10>")
-    "Text Zoom"
+  (defhydra hydra-text-scale ()
+    "
+Text Scaling
+
+"
     ("+" text-scale-increase "increase")
     ("<" text-scale-decrease "decrease")
-    ("0" text-scale-adjust "adjust")))
+    ("0" text-scale-adjust "adjust"))
+  (evil-leader/set-key
+    "+" 'hydra-text-scale/body))
 
 ;; Focus - visual highlight scopes
 (use-package focus
@@ -341,6 +346,13 @@
   :ensure t
   :config
   (global-hungry-delete-mode))
+
+;; counsel-spotify - control spotify from within Emacs
+(use-package counsel-spotify
+  :ensure t
+  :config
+  (setq counsel-spotify-client-id "b5b801a1c93741f09888dc6ac1bf11d0"
+        counsel-spotify-client-secret "b03b24495a824f03ba70ae0e8da2a5a6"))
 
 (provide 'editor.packages)
 ;;; editor.packages ends here
