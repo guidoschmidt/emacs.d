@@ -52,7 +52,7 @@
    ("C-c <C-tab>" . company-yasnippet)))
 
 (use-package company-quickhelp
-  :ensure
+  :ensure t
   :commands company-mode
   :if window-system
   :config
