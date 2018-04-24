@@ -19,6 +19,11 @@
          ("V" . nil)
          ("r" . ibuffer-do-revert))))
 
+(use-package evil-lion
+ :ensure t
+ :config
+  (evil-lion-mode))
+
 (use-package evil-leader
   :ensure t
   :config

@@ -29,8 +29,8 @@
   "
 Org Mode
 
-_j_: mark
-_k_: save
+_j_: org-cycle-level ->
+_k_: org-cycle <-
 "
   ("j" org-cycle-level)
   ("k" org-cycle))

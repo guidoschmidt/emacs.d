@@ -1,5 +1,6 @@
 * TODO:
 
+** Evil
 ** dired hacks:
 - Subtree
 - dired-collapse
