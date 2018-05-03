@@ -354,5 +354,11 @@ Text Scaling
   (setq counsel-spotify-client-id "b5b801a1c93741f09888dc6ac1bf11d0"
         counsel-spotify-client-secret "b03b24495a824f03ba70ae0e8da2a5a6"))
 
+;; fzf - fuzzy file finder
+(use-package fzf
+  :ensure t
+  :config
+  (evil-leader/set-key "y" 'fzf))
+
 (provide 'editor.packages)
 ;;; editor.packages ends here
