@@ -12,6 +12,10 @@
 ;; Pixelwise resizing of frames
 (setq frame-resize-pixelwise t)
 
+(setq default-frame-alist
+      '((ns-transparent-titlebar . t)
+        (ns-appearance . 'nil)))
+
 ;; Disable menubar
 (menu-bar-mode -1)
 
