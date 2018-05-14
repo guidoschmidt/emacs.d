@@ -48,6 +48,13 @@
   :diminish ranger-mode
   :commands ranger)
 
+;; dashboard - Startup dashboard
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook)
+  (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*"))))
+
 ;; Dired-Hacks - imporve dired-mode
 (use-package dired-hacks-utils
   :ensure t
