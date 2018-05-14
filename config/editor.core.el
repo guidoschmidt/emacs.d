@@ -78,7 +78,7 @@
 ;; Indentation settings
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
-(setq-default c-basic-offset 1)
+(setq-default c-basic-offset 2)
 (setq-default js-indent-level 2)
 
 ;; Custom function for moving lines up/down
