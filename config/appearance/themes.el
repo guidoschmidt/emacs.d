@@ -49,7 +49,7 @@
   ;; :load-path "~/git/develop/emacs/circadian.el/"
   :ensure
   :config
-  (setq circadian-themes '((:sunrise . srcery)
+  (setq circadian-themes '((:sunrise . gruvbox-light-medium)
                            (:sunset . challenger-deep)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
