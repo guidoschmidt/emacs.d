@@ -42,6 +42,7 @@
 (use-package abyss-theme :ensure :defer)
 (use-package challenger-deep-theme :ensure :defer)
 (use-package srcery-theme :ensure :defer)
+(use-package zerodark-theme :ensure :defer)
 
 ;; --- Circadian
 (require 'linum)
@@ -49,7 +50,7 @@
   ;; :load-path "~/git/develop/emacs/circadian.el/"
   :ensure
   :config
-  (setq circadian-themes '((:sunrise . gruvbox-light-medium)
+  (setq circadian-themes '((:sunrise . hemera)
                            (:sunset . challenger-deep)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
