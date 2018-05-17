@@ -13,8 +13,6 @@
 
 (use-package cmake-ide
   :ensure t
-  :commands (c++-mode)
-  :mode "\\.cpp\\'"
   :config
   (cmake-ide-setup))
 

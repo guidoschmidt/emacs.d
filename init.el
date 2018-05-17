@@ -50,7 +50,7 @@
 (require 'editor.appearance)
 (require 'modeline)
 (require 'themes)
-(require 'ligatures)
+;; (require 'ligatures)
 
 ;; Languages
 (require 'lang.android)
