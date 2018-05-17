@@ -28,14 +28,7 @@
 ;; Core
 (require 'editor.core)
 (require 'editor.pacman)
-(require 'editor.packages)
 (require 'editor.keymap)
-
-;; Appearance
-(require 'editor.appearance)
-(require 'modeline)
-(require 'themes)
-(require 'ligatures)
 
 ;; Layers
 (require 'layer.codecompletion.auto-complete)
@@ -49,6 +42,15 @@
 (require 'layer.shell)
 (require 'layer.spellcheck)
 (require 'layer.syntaxcheck)
+
+;; Additional packages
+(require 'editor.packages)
+
+;; Appearance
+(require 'editor.appearance)
+(require 'modeline)
+(require 'themes)
+;; (require 'ligatures)
 
 ;; Languages
 (require 'lang.android)

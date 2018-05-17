@@ -9,7 +9,7 @@
   :config
   (add-hook 'glsl-mode-hook
             (lambda()
-              (defvar c-basic-offset 1)
+              (defvar c-basic-offset 2)
               (setq tab-width 2))))
 
 (use-package company-glsl

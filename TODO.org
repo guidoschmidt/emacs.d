@@ -13,3 +13,8 @@
 ** Lispyville
 ** Python
 *** IN https://github.com/anachronic/importmagic.el
+** Dashboard
+https://github.com/rakanalh/emacs-dashboard
+** Olivetti
+Writing env for Emacs
+** Aniki-Mode

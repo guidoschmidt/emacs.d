@@ -18,12 +18,12 @@
 (setq org-todo-keywords
       '((sequence "IN" "TODO" "BLOCKED" "WIP" "|" "DONE" "WONTDO")))
 (setq org-todo-keyword-faces
-      '(("IN"      . (:foreground "white"  :weight bold))
-        ("TOOD"    . (:foreground "orange" :weight bold))
-        ("BLOCKED" . (:foreground "red"    :weight bold))
-        ("WIP"     . (:foreground "orange" :weight bold))
-        ("DONE"    . (:foreground "green"  :weight bold))
-        ("WONTDO"  . (:foreground "green"  :weight bold))))
+      '(("IN"      . (:foreground "#333"  :weight bold))
+        ("TOOD"    . (:foreground "#FFB204" :weight bold))
+        ("BLOCKED" . (:foreground "#FE042B"    :weight bold))
+        ("WIP"     . (:foreground "#FFB204" :weight bold))
+        ("DONE"    . (:foreground "#12DA73"  :weight bold))
+        ("WONTDO"  . (:foreground "#12DA73"  :weight bold))))
 
 (defhydra hydra-org (:color blue :hint nil)
   "
