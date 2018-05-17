@@ -28,7 +28,8 @@
     (setq-default web-mode-code-indent-offset 2))
   (add-hook 'web-mode-hook 'custom-web-mode-hook)
   (add-to-list 'auto-mode-alist
-               '("\\.mustache\\'" . web-mode)))
+               '("\\.mustache\\'" . web-mode)
+               '("\\.hbs\\'" . web-mode)))
 
 (use-package html-check-frag
   :ensure t
