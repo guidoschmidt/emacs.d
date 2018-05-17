@@ -110,8 +110,8 @@ _m_: make cursor
   (global-evil-surround-mode 1))
 
 (use-package evil-collection
-  :ensure t
   :after evil
+  :ensure t
   :config
   (setq evil-collection-setup-minibuffer t)
   (setq evil-collection-company-use-tng nil)
