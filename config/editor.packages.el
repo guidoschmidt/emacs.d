@@ -367,5 +367,21 @@ Text Scaling
   :config
   (evil-leader/set-key "y" 'fzf))
 
+;; Hideshow - code folding
+(defhydra hydra-hideshow (:color "#F2D30B" :hint nil)
+  "
+Hideshow
+
+_k_: hide block
+_j_: show block
+_t_: toggle block
+"
+  ("j" hs-hide-block)
+  ("k" hs-show-block)
+  ("t" hs-toggle-hiding))
+
+(evil-leader/set-key
+  "h" 'hydra-hideshow/body)
+
 (provide 'editor.packages)
 ;;; editor.packages ends here
