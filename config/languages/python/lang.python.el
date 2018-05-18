@@ -9,24 +9,28 @@
   :mode ("\\.py\\'" . python-mode)
   :interpreter ("python" . python-mode)
   :config
-  (setq exec-path
-        (append exec-path
-                '("c:/Program Files/Derivative/TouchDesigner099/bin/python")))
+  (setq python-indent-guess-indent-offset nil)
+;;; macOS
+  (when (memq window-system '(ns))
+    (setq exec-path
+          (append exec-path
+                  '("/usr/local/bin/"))))
+;;; Windows
   (when (memq window-system '(w32))
     (setq exec-path
           (append exec-path
-                  '("c:/Program Files/Derivative/TouchDesigner099/bin/"))))
-  (setenv "PYTHONPATH"
-          (concat
-           "c:/Program Files/Derivative/TouchDesigner099/bin"
-           path-separator
-           "c:/Program Files/Derivative/TouchDesigner099/bin/Lib/site-packages"
-           path-separator
-           "c:/Users/gs/AppData/Local/Temp"
-           path-separator
-           "c:/Users/gs/Desktop/Touchdesigner/Autocompletion/export"
-           path-separator
-           "c:/Users/gs/Desktop/Touchdesigner/python")))
+                  '("c:/Program Files/Derivative/TouchDesigner099/bin/")))
+    (setenv "PYTHONPATH"
+            (concat
+             "c:/Program Files/Derivative/TouchDesigner099/bin"
+             path-separator
+             "c:/Program Files/Derivative/TouchDesigner099/bin/Lib/site-packages"
+             path-separator
+             "c:/Users/gs/AppData/Local/Temp"
+             path-separator
+             "c:/Users/gs/Desktop/Touchdesigner/Autocompletion/export"
+             path-separator
+             "c:/Users/gs/Desktop/Touchdesigner/python"))))
 
 (use-package elpy
   :ensure t
@@ -54,6 +58,11 @@
   :config
   (with-eval-after-load 'flycheck
     (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup)))
+
+(use-package importmagic
+  ;; pip install importmagic epc
+  :ensure t
+  :hook (importmagic-mode . python-mode))
 
 (provide 'lang.python)
 ;;; lang.python ends here
