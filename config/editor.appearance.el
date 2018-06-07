@@ -44,19 +44,7 @@
   (alfontzo-init))
 
 ;; Line numbers
-;; TODO: replace nlinum with native line numbers:
-;; https://lists.gnu.org/archive/html/emacs-devel/2017-06/msg00338.html
-(use-package nlinum
-  :ensure t
-  :config
-  (global-nlinum-mode)
-  (setq nlinum-format "%4d"))
-
-(use-package nlinum-hl
-  :ensure t
-  :after nlinum
-  :config
-  (setq nlinum-highlight-current-line t))
+(global-display-line-numbers-mode 1)
 
 ;; Indentation
 (use-package smart-tabs-mode
