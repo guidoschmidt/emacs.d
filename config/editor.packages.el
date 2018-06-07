@@ -102,7 +102,7 @@
   :ensure t
   :config
   (setq yas-triggers-in-field t)
-  (yas-global-mode 1) 
+  (yas-global-mode 1)
   (use-package yasnippet-snippets
     :ensure t
     :after yasnippet))
@@ -360,6 +360,27 @@ Text Scaling
   :config
   (setq counsel-spotify-client-id "b5b801a1c93741f09888dc6ac1bf11d0"
         counsel-spotify-client-secret "b03b24495a824f03ba70ae0e8da2a5a6"))
+
+;; parnifer - improved lisp editing
+(use-package parinfer
+  :ensure t
+  :bind
+  (("C-," . parinfer-toggle-mode))
+  :init
+  (progn
+    (setq parinfer-extensions
+          '(defaults
+             pretty-parens
+             evil
+             lispy
+             paredit
+             smart-tab
+             smart-yank))
+    (add-hook 'clojure-mode-hook #'parinfer-mode)
+    (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
+    (add-hook 'common-lisp-mode-hook #'parinfer-mode)
+    (add-hook 'scheme-mode-hook #'parinfer-mode)
+    (add-hook 'lisp-mode-hook #'parinfer-mode)))
 
 ;; fzf - fuzzy file finder
 (use-package fzf

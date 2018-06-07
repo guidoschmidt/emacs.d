@@ -54,10 +54,6 @@
 
 (use-package lispy
   :ensure t
-  :hook ((clojure-mode       . lispy-mode)
-         (clojurescript-mode . lispy-mode)
-         (common-lisp-mode   . lispy-mode)
-         (emacs-lisp-mode    . lispy-mode))
   :config
   (evil-leader/set-key
     "l"  'hydra-lispy-x/body))
