@@ -27,7 +27,6 @@
   :diminish git-gutter-mode
   :config
   (global-git-gutter-mode t)
-  (git-gutter:linum-setup)
   (custom-set-variables
    '(git-gutter:update-interval 2)))
 
