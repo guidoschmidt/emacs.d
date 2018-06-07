@@ -45,7 +45,6 @@
 (use-package zerodark-theme :ensure :defer)
 
 ;; --- Circadian
-(require 'linum)
 (use-package circadian
   ;; :load-path "~/git/develop/emacs/circadian.el/"
   :ensure
@@ -57,15 +56,14 @@
 
 (add-hook 'circadian-after-load-theme-hook
           #'(lambda (theme)
-              ;; Line numbers appearance
-              (setq linum-format 'linum-format-func)
+              ;; (setq linum-format 'linum-format-func)
               ;; Cursor
               (set-default 'cursor-type 'bo)
-              (set-cursor-color "#F52503")
+              (set-cursor-color "#F55D13")
               ;; Remove box style from modeline
               (set-face-attribute 'mode-line nil :box nil)
               ;; Set evil-modes cursor colors
-              '(evil-emacs-state-cursor (quote ("#F52503" hbar)) t)
+              '(evil-emacs-state-cursor (quote ("#F55D13" hbar)) t)
               '(evil-insert-state-cursor (quote ("#03F5E5" bar)) t)
               '(evil-normal-state-cursor (quote ("#F52503" box)) t)
               '(evil-visual-state-cursor (quote ("#F3F3F2" box)) t)))
