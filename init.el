@@ -50,6 +50,7 @@
 (require 'editor.appearance)
 (require 'modeline)
 (require 'themes)
+(require 'transparency)
 (require 'ligatures)
 
 ;; Languages
