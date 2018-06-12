@@ -39,7 +39,7 @@
 (require 'layer.notifications)
 (require 'layer.org)
 (require 'layer.restclient)
-(require 'layer.shell)
+;; (require 'layer.shell)
 (require 'layer.spellcheck)
 (require 'layer.syntaxcheck)
 

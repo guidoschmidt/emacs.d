@@ -15,6 +15,7 @@
 
 ;; SASS & SCSS
 (use-package sass-mode
+  :ensure t
   :commands sass-mode
   :ensure-system-package (sass . "npm i -g sass")
   :config
@@ -29,6 +30,7 @@
 
 ;; Stylus
 (use-package stylus-mode
+  :ensure t
   :commands stylus-mode
   :config
   (defun custom/stylus-mode-hook ()
