@@ -116,5 +116,11 @@ _m_: make cursor
 (use-package evil-anzu
   :ensure t)
 
+(use-package evil-goggles
+  :ensure t
+  :config
+  (evil-goggles-mode)
+  (evil-goggles-use-diff-faces))
+
 (provide 'layer.evil)
 ;;; layer.evil ends here
