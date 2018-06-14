@@ -42,6 +42,7 @@
 (require 'layer.shell)
 (require 'layer.spellcheck)
 (require 'layer.syntaxcheck)
+(require 'layer.pdf)
 
 ;; Additional packages
 (require 'editor.packages)
