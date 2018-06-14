@@ -1,4 +1,4 @@
-;;; paraiso-theme.el --- Theme 
+;;; paraiso-theme.el --- Theme
 
 ;; Copyright (C) 2016 , Guido Schmidt
 
@@ -51,11 +51,11 @@
    'paraiso
    `(default ((,class (:background ,bg1 :foreground ,fg1))))
    `(font-lock-builtin-face ((,class (:foreground ,builtin))))
-   `(font-lock-comment-face ((,class (:foreground ,comment))))
+   `(font-lock-comment-face ((,class (:foreground ,bg4))))
    `(font-lock-negation-char-face ((,class (:foreground ,const))))
    `(font-lock-reference-face ((,class (:foreground ,const))))
    `(font-lock-constant-face ((,class (:foreground ,const))))
-   `(font-lock-doc-face ((,class (:foreground ,comment))))
+   `(font-lock-doc-face ((,class (:foreground ,bg4))))
    `(font-lock-function-name-face ((,class (:foreground ,func ))))
    `(font-lock-keyword-face ((,class (:bold ,class :foreground ,keyword))))
    `(font-lock-string-face ((,class (:foreground ,str))))
@@ -65,7 +65,7 @@
    `(region ((,class (:background ,fg1 :foreground ,bg1))))
    `(highlight ((,class (:foreground ,fg3 :background ,bg3))))
    `(hl-line ((,class (:background  ,bg2))))
-   `(fringe ((,class (:background ,bg2 :foreground ,fg4))))
+   `(fringe ((,class (:background ,bg4 :foreground ,fg4))))
    `(cursor ((,class (:background ,bg3))))
    `(show-paren-match-face ((,class (:background ,warning))))
    `(isearch ((,class (:bold t :foreground ,warning :background ,bg3))))
@@ -73,16 +73,18 @@
    ;; mode line & powerline
    `(powerline-active1	((t (:foreground ,type))))
    `(powerline-active2	((t (:foreground ,type))))
-   `(mode-line-inactive ((t (:background ,bg2 :foreground ,bg2))))
+   `(mode-line-inactive ((t (:background ,bg2 :foreground ,bg4))))
+   `(powerline-inactive0	((t (:background ,bg2 :foreground ,bg4))))
+   `(powerline-inactive1	((t (:background ,bg2 :foreground ,bg4))))
+   `(powerline-inactive2	((t (:background ,bg2 :foreground ,bg4))))
    `(mode-line		((t (:background ,bg1 :foreground ,bg3))))
-   `(linum ((t (:background nil :foreground ,fg1))))
    `(popup-tip-face ((t (:background ,builtin :foreground ,bg2))))
    `(header-line ((t (:background ,type :foreground ,bg2))))
    `(button  ((t (:foreground ,fg4 :background nil :underline t))))
    `(mode-line-buffer-id ((,class (:bold t :foreground ,func :background nil))))
    `(mode-line-highlight ((,class (:foreground ,keyword :box nil :weight bold))))
    `(mode-line-emphasis ((,class (:foreground ,fg1))))
-   `(vertical-border ((,class (:foreground ,fg3))))
+   `(vertical-border ((,class (:foreground ,bg1))))
 
    `(minibuffer-prompt ((,class (:bold t :foreground ,keyword))))
    `(default-italic ((,class (:italic t))))
@@ -143,7 +145,7 @@
    `(js3-function-param-face ((,class (:foreground ,fg2))))
    `(js3-jsdoc-tag-face ((,class (:foreground ,keyword))))
    `(js3-instance-member-face ((,class (:foreground ,const))))
-   `(warning ((,class (:foreground ,warning)))) 
+   `(warning ((,class (:foreground ,warning))))
    `(ac-completion-face ((,class (:underline t :foreground ,keyword))))
    `(info-quoted-name ((,class (:foreground ,builtin))))
    `(info-string ((,class (:foreground ,str))))
@@ -216,12 +218,13 @@
    `(helm-source-go-package-godoc-description ((,class (:foreground ,str))))
    `(helm-bookmark-w3m ((,class (:foreground ,type))))
    `(company-echo-common ((,class (:foreground ,bg1 :background ,fg1))))
-   `(company-preview ((,class (:background ,bg1 :foreground ,var))))
+   `(company-preview ((,class (:background ,fg1 :foreground ,bg1))))
    `(company-preview-common ((,class (:foreground ,bg2 :foreground ,fg3))))
    `(company-preview-search ((,class (:foreground ,type :background ,bg1))))
    `(company-scrollbar-bg ((,class (:background ,bg3))))
    `(company-scrollbar-fg ((,class (:foreground ,keyword))))
-   `(company-tooltip ((,class (:foreground ,fg2 :background ,bg1 :bold t))))
+   `(company-tooltip ((,class (:foreground ,fg1 :background ,bg1 :bold t))))
+
    `(company-tooltop-annotation ((,class (:foreground ,const))))
    `(company-tooltip-common ((,class ( :foreground ,fg3))))
    `(company-tooltip-common-selection ((,class (:foreground ,str))))
