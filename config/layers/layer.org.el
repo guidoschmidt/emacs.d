@@ -38,14 +38,6 @@ _k_: org-cycle <-
 (evil-leader/set-key
   "z" 'hydra-org/body)
 
-;; Kanban board
-;;(load "~/.emacs.d/github/org-kanban/org-kanban.el")
-
-;; Confluence
-(use-package ox-confluence
-  :load-path "~/.emacs.d/github/org-confluence"
-  :commands org-confluence-export-as-confluence)
-
 ;; Show inline images
 (setq org-image-actual-width nil)
 (setq org-image-actual-width '(400))
