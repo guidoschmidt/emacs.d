@@ -1,4 +1,4 @@
-;;; layer.evil --- Setup evil-mode
+;; layer.evil --- Setup evil-mode
 
 ;;; Commentary:
 
@@ -121,6 +121,14 @@ _m_: make cursor
   :config
   (evil-goggles-mode)
   (evil-goggles-use-diff-faces))
+
+(use-package evil-org
+  :ensure t
+  :config
+  (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys)
+  :hook org-mode)
 
 (provide 'layer.evil)
 ;;; layer.evil ends here
