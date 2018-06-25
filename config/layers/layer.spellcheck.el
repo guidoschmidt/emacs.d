@@ -41,5 +41,8 @@
 (use-package flyspell-popup
   :ensure t)
 
+(use-package flyspell-correct-ivy
+  :ensure t)
+
 (provide 'layer.spellcheck)
 ;;; layer.spellcheck ends here

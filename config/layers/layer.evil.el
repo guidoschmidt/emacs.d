@@ -38,7 +38,7 @@
     "k"       'ido-kill-buffer
     "s"       'magit-status
     "TAB"     'indent-region
-    "?"       'ispell-word
+    "?"       'flyspell-correct-word-generic
     "p"       'counsel-projectile-switch-project
     "f"       'counsel-projectile-find-file
     "t"       'mc/mark-sgml-tag-pair
