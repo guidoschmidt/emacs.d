@@ -31,12 +31,14 @@
 
 ;; smooth-scrolling - smooth scrolling and minimap
 (use-package smooth-scrolling
+  :disabled
   :ensure t
   :config
   (smooth-scrolling-mode 1))
 
 ;; keyfreq - gather statistics of key and command frequency
 (use-package keyfreq
+  :disabled
   :ensure t
   :config
   (keyfreq-mode 1)
@@ -45,6 +47,7 @@
 ;; ranger - improved file browser
 (use-package ranger
   :ensure t
+  :disabled
   :diminish ranger-mode
   :commands ranger)
 
@@ -58,6 +61,7 @@
 ;; Dired-Hacks - imporve dired-mode
 (use-package dired-hacks-utils
   :ensure t
+  :disabled
   :commands dired-mode
   :config
   (defconst my-dired-media-files-extensions
@@ -109,12 +113,13 @@
 
 ;; Wakatime - track your coding time
 (use-package wakatime-mode
- :if (boundp 'apikey-wakatime)
- :ensure t
- :commands global-wakatime-mode
- :config
- (setq wakatime-api-key apikey-wakatime)
- (global-wakatime-mode))
+  :disabled
+  :if (boundp 'apikey-wakatime)
+  :ensure t
+  :commands global-wakatime-mode
+  :config
+  (setq wakatime-api-key apikey-wakatime)
+  (global-wakatime-mode))
 
 ;; Hydra - popup with options after pressing a leader key
 (use-package hydra
@@ -139,6 +144,7 @@ Text Scaling
 
 ;; highlight-indent-guides - Highlight indentation
 (use-package highlight-indent-guides
+  :disabled
   :ensure t
   :hook (prog-mode . highlight-indent-guides-mode)
   :config
@@ -179,9 +185,8 @@ Text Scaling
   :init
   (progn
     (setq projectile-enable-caching t)
-    (setq projectile-completion-system 'grizzl))
   :config
-  (projectile-mode))
+  (projectile-mode)))
 
 (use-package counsel-projectile
   :ensure t
@@ -354,13 +359,6 @@ Text Scaling
   :config
   (global-hungry-delete-mode))
 
-;; counsel-spotify - control spotify from within Emacs
-(use-package counsel-spotify
-  :ensure t
-  :config
-  (setq counsel-spotify-client-id "b5b801a1c93741f09888dc6ac1bf11d0"
-        counsel-spotify-client-secret "b03b24495a824f03ba70ae0e8da2a5a6"))
-
 ;; parnifer - improved lisp editing
 (use-package parinfer
   :ensure t
@@ -389,6 +387,22 @@ Text Scaling
   (evil-leader/set-key "y" 'fzf))
 
 ;; Hideshow - code folding
+(defvar hs-special-modes-alist
+  (mapcar 'purecopy
+          '((c-mode "{" "}" "/[*/]" nil nil)
+            (c++-mode "{" "}" "/[*/]" nil nil)
+            (bibtex-mode ("@\\S(*\\(\\s(\\)" 1))
+            (java-mode "{" "}" "/[*/]" nil nil)
+            (js-mode "{" "}" "/[*/]" nil)
+            (javascript-mode "{" "}" "/[*/]" nil))))
+
+(add-hook 'c-mode-common-hook   'hs-minor-mode)
+(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
+(add-hook 'java-mode-hook       'hs-minor-mode)
+(add-hook 'lisp-mode-hook       'hs-minor-mode)
+(add-hook 'perl-mode-hook       'hs-minor-mode)
+(add-hook 'sh-mode-hook         'hs-minor-mode)
+
 (defhydra hydra-hideshow (:color "#F2D30B" :hint nil)
   "
 Hideshow
@@ -403,6 +417,10 @@ _t_: toggle block
 
 (evil-leader/set-key
   "h" 'hydra-hideshow/body)
+
+;; Smartparens
+(use-package smartparens
+  :ensure t)
 
 (provide 'editor.packages)
 ;;; editor.packages ends here
