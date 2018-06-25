@@ -387,6 +387,22 @@ Text Scaling
   (evil-leader/set-key "y" 'fzf))
 
 ;; Hideshow - code folding
+(defvar hs-special-modes-alist
+  (mapcar 'purecopy
+          '((c-mode "{" "}" "/[*/]" nil nil)
+            (c++-mode "{" "}" "/[*/]" nil nil)
+            (bibtex-mode ("@\\S(*\\(\\s(\\)" 1))
+            (java-mode "{" "}" "/[*/]" nil nil)
+            (js-mode "{" "}" "/[*/]" nil)
+            (javascript-mode "{" "}" "/[*/]" nil))))
+
+(add-hook 'c-mode-common-hook   'hs-minor-mode)
+(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
+(add-hook 'java-mode-hook       'hs-minor-mode)
+(add-hook 'lisp-mode-hook       'hs-minor-mode)
+(add-hook 'perl-mode-hook       'hs-minor-mode)
+(add-hook 'sh-mode-hook         'hs-minor-mode)
+
 (defhydra hydra-hideshow (:color "#F2D30B" :hint nil)
   "
 Hideshow
@@ -401,6 +417,10 @@ _t_: toggle block
 
 (evil-leader/set-key
   "h" 'hydra-hideshow/body)
+
+;; Smartparens
+(use-package smartparens
+  :ensure t)
 
 (provide 'editor.packages)
 ;;; editor.packages ends here
