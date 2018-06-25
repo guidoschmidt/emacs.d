@@ -8,6 +8,9 @@
 
 (setq auto-window-vscroll nil)
 
+;; Network security
+(setq network-security-level 'high)
+
 ;; Setup calendar geo location
 (require 'solar)
 (setq calendar-latitude 49.329896)
