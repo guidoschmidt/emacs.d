@@ -5,7 +5,7 @@
 ;;; Code:
 '(org-clock-into-drawer "timetracking")
 
-(setq org-directory "~/Google Drive/Notes/")
+(setq org-directory "~/Dropbox/Notes/")
 
 
 (defun sa-find-org-file-recursively (&optional directory filext)
@@ -30,11 +30,11 @@ If FILEXT is provided, return files with extension FILEXT instead."
       (add-to-list 'org-file-list org-file)))))))
 
 (setq org-agenda-files
-      (append (sa-find-org-file-recursively "~/Google Drive/Notes/")))
+      (append (sa-find-org-file-recursively "~/Dropbox/Notes/")))
 
 (setq org-agenda-text-search-extra-files
-      (append (sa-find-org-file-recursively "~/Google Drive/Notes/" "org")
-              (sa-find-org-file-recursively "~/Google Drive/Notes/" "org")))
+      (append (sa-find-org-file-recursively "~/Dropbox/Notes/" "org")
+              (sa-find-org-file-recursively "~/Dropbox/Notes/" "org")))
 
 (use-package org-bullets
   :ensure t
