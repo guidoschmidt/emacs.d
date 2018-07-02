@@ -44,63 +44,72 @@
                                        '(warning . c/c++-googlelint)))))
 
 ;; -- Autocomplete using YouCompleteMe
-;; (use-package ycmd
-;;   :ensure t
-;;   :mode ("\\.cpp\\'" "\\.h\\'" "\\.hpp\\'")
-;;   :commands c++-mode
-;;   :init (add-hook 'c++-mode-hook #'ycmd-mode)
-;;   :config
-;;   (set-variable 'ycmd-server-command '("python2" "~/.emacs.d/github/ycmd/ycmd"))
-;;   (set-variable 'ycmd-global-config (expand-file-name "~/.emacs.d/config/external/ycm_extra_conf.py"))
-;;   (set-variable 'ycmd-extra-conf-whitelist '("~/Repos/*"))
-;;   (use-package company-ycmd
-;;     :ensure t
-;;     :mode ("\\.cpp\\'" "\\.h\\'" "\\.hpp\\'")
-;;     :commands c++-mode
+(use-package ycmd
+  :disabled
+  :ensure t
+  :commands c++-mode
+  :init (add-hook 'c++-mode-hook #'ycmd-mode)
+  :config
+  (set-variable 'ycmd-server-command '("python2" "~/.emacs.d/github/ycmd/ycmd"))
+  (set-variable 'ycmd-global-config (expand-file-name "~/.emacs.d/config/external/ycm_extra_conf.py"))
+  (set-variable 'ycmd-extra-conf-whitelist '("~/Repos/*"))
+  (use-package company-ycmd
+    :ensure t
+    :mode ("\\.cpp\\'" "\\.h\\'" "\\.hpp\\'")
+    :commands c++-mode
+    :init (company-ycmd-setup)
+    :config (add-to-list 'company-backends
+                         (company-mode/backend-with-yas 'company-ycmd))))
 
-;;     :init (company-ycmd-setup)
-;;     :config (add-to-list 'company-backends
-;;                          (company-mode/backend-with-yas 'company-ycmd))))
-
-;; (use-package flycheck-ycmd
-;;   :commands (flycheck-ycmd-setup)
-;;   :init (add-hook 'ycmd-mode-hook 'flycheck-ycmd-setup))
+(use-package flycheck-ycmd
+  :disabled
+  :commands (flycheck-ycmd-setup)
+  :init (add-hook 'ycmd-mode-hook 'flycheck-ycmd-setup))
 
 ;; -- Autocomplete using Irony
+(use-package company-irony :ensure t)
+(use-package company-irony-c-headers :ensure t)
+(use-package irony-eldoc :ensure t)
 (use-package irony
-  :ensure
-  :defer
+  :ensure t
+  :disabled
   :config
-  (use-package company-irony :ensure t)
-  (use-package company-irony-c-headers :ensure t)
-  (use-package irony-eldoc :ensure t)
+  (add-hook 'c++-mode-hook  'irony-mode)
+  (add-hook 'c-mode-hook    'irony-mode)
+  (add-hook 'objc-mode-hook 'irony-mode)
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   (custom-set-variables
    '(irony-additional-clang-options
      '("-I/Library/Developer/CommandLineTools/usr/include/c++/v1")))
-  (defun custom/irony-mode-hook ()
+  (defun company/irony-mode-hook ()
     "Hook to customize irony mode."
-    (add-to-list 'company-backends 'company-irony)
-    (add-to-list 'company-backends 'company-irony-c-headers)
-    (add-to-list 'company-backends 'company-dabbrev)
-    (define-key irony-mode-map [remap completion-at-point] 'counsel-irony)
-    (define-key irony-mode-map [remap complete-symbol] 'counsel-irony))
-  (add-hook 'irony-mode-hook 'custom/irony-mode-hook)
-  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+    (add-to-list 'company-backends '(company-irony))
+    (add-to-list 'company-backends '(company-irony-c-headers)))
+    ;; (add-to-list 'company-backends 'company-dabbrev)
+    ;; (add-to-list 'company-backends 'company-rtags)
+    ;; (add-to-list 'company-backends 'company-yasnippet))
+  (add-hook 'irony-mode-hook 'company/irony-mode-hook)
   (defun cc/irony-mode-hook ()
     (unless (glsl-mode)
       (irony-mode)
       (add-hook 'irony-mode-hook #'irony-eldoc)))
   (add-hook  'c-mode-hook '    cc/irony-mode-hook)
   (add-hook  'c++-mode-hook '  cc/irony-mode-hook)
-(add-hook 'objc-mode-hook ' cc/irony-mode-hook))
+  (add-hook 'objc-mode-hook ' cc/irony-mode-hook))
 
+
+(require 'cl)
+(setq company-backends (remove-if (lambda (e) (equal 'company-clang (car e))) company-backends))
+
+
+;; -- Flycheck
 (use-package flycheck-irony
-  :ensure
-  :defer
+  :ensure t
   :config
   (eval-after-load 'flycheck
-'(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
+    '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
 
+;; -- GGTags
 (use-package ggtags
   :ensure t
   :commands ggtags-mode
@@ -112,6 +121,28 @@
       (ggtags-mode 1)))
   (add-hook 'c-mode-common-hook 'ggtags/c-mode-hook))
 
+;; -- RTags
+(use-package rtags
+  :ensure t
+  :config
+  (add-to-list 'company-backends '(company-rtags :with company-yasnippet)))
+
+(print company-backends)
+
+(use-package company-rtags
+  :ensure t
+  :config
+  (defhydra hydra-rtag (:color blue :hint nil)
+    "
+RTags
+
+_j_: goto symbol under point
+"
+    ("j" rtags-find-symbol-at-point))
+  (evil-leader/set-key
+    "r" 'hydra-rtag/body))
+
+;; -- Counsel etags
 (use-package counsel-etags
   :ensure t
   :config

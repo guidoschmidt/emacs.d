@@ -20,7 +20,7 @@ brew install emacs-plus --without-spacemacs-icon --with-24bit-color --with-natur
 
 
 
-### C++ Code-Completion ([Irony](https://github.com/Sarcasm/irony-mode))
+### C++ Code-Completion ([Irony](https://github.com/Sarcasm/irony-mode) + RTags)
 1. Install **LLVM**: `brew install llvm`
 2. Install **Irony** from within Emacs: `M-x irony-install-server`
 
@@ -34,6 +34,19 @@ CMAKE
 &&
 cmake --build . --use-stderr --config Release --target install
 ```
+
+1. Install rtags: `M-x rtags-install`
+2. `cd ~/.emacs.d/elpa/rtags-20180619.823/rtags-2.18`
+3. `make install`
+
+Before using RTags, start the rtags daemon with `rdm &`. You then need to start
+the RTags client (`rc`) from within your project root:
+`make -nk | rc -c -`
+
+Or provide `compile_commands.json` and start with `rc -J`.
+You can use [**xcpretty**](https://github.com/supermarin/xcpretty) on macOS or
+[**bear**](https://github.com/rizsotto/Bear) on other plattforms:
+`xcodebuild | xcpretty -r json-compilation-database -o compile_commands.json`
 
 
 
