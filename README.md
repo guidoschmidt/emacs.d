@@ -45,7 +45,9 @@ the RTags client (`rc`) from within your project root:
 
 Or provide `compile_commands.json` and start with `rc -J`.
 You can use [**xcpretty**](https://github.com/supermarin/xcpretty) on macOS or
-[**bear**](https://github.com/rizsotto/Bear) on other plattforms.
+[**bear**](https://github.com/rizsotto/Bear) on other plattforms:
+`xcodebuild | xcpretty -r json-compilation-database -o compile_commands.json`
+
 
 
 ### C++ Code-Completion ([YouCompleteMe](https://github.com/Valloric/YouCompleteMe))
