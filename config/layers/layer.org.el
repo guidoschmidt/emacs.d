@@ -46,7 +46,7 @@ If FILEXT is provided, return files with extension FILEXT instead."
 
 ;; --- Setup TODO states
 (setq org-todo-keywords
-      '((sequence "IN" "TODO" "BLOCKED" "WIP" "|" "DONE" "WONTDO")))
+      '((sequence "IN(i)" "TODO(t)" "BLOCKED(b)" "WIP(w)" "|" "DONE(d)" "WONTDO(n)")))
 (setq org-todo-keyword-faces
       '(("IN"      . (:foreground "#333"  :weight bold))
         ("TOOD"    . (:foreground "#FFB204" :weight bold))
@@ -55,18 +55,21 @@ If FILEXT is provided, return files with extension FILEXT instead."
         ("DONE"    . (:foreground "#12DA73"  :weight bold))
         ("WONTDO"  . (:foreground "#12DA73"  :weight bold))))
 
-(defhydra hydra-org (:color blue :hint nil)
-  "
+(eval-after-load "evil-leader"
+  '(progn
+     (defhydra hydra-org (:color blue :hint nil)
+       "
 Org Mode
 
 _j_: org-cycle-level ->
 _k_: org-cycle <-
+_t_: org-todo
 "
-  ("j" org-cycle-level)
-  ("k" org-cycle))
-
-(evil-leader/set-key
-  "z" 'hydra-org/body)
+       ("j" org-cycle-level)
+       ("k" org-cycle)
+       ("t" org-todo))
+     (evil-leader/set-key
+       "z" 'hydra-org/body)))
 
 ;; Kanban board
 ;;(load "~/.emacs.d/github/org-kanban/org-kanban.el")
