@@ -383,8 +383,16 @@ Text Scaling
 ;; fzf - fuzzy file finder
 (use-package fzf
   :ensure t
+  :ensure-system-package (fzf . "brew install fzf")
   :config
   (evil-leader/set-key "y" 'fzf))
+
+;; deadgrep
+(use-package deadgrep
+  :ensure t
+  :ensure-system-package (ripgrep . "brew install ripgrep")
+  :config
+  (evil-leader/set-key "ü" 'deadgrep))
 
 ;; Hideshow - code folding
 (defvar hs-special-modes-alist
