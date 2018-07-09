@@ -240,6 +240,12 @@ Text Scaling
                    :foreground "white"
                    :background "black"))))))
 
+;; ace-link - effectively jump between links
+(use-package ace-link
+  :ensure t
+  :config
+  (ace-link-setup-default))
+
 ;; ivy - generic completion frontend for emacs
 (use-package ivy
   :ensure t
