@@ -75,10 +75,16 @@ _t_: org-todo
 (setq org-image-actual-width nil)
 (setq org-image-actual-width '(400))
 (defun do-org-show-all-inline-images ()
+  "Show all images inside an org file."
   (interactive)
   (org-display-inline-images t t))
 (global-set-key (kbd "C-c C-x C v")
                 'do-org-show-all-inline-images)
+
+(defun org-current-date ()
+  "Insert the current date."
+  (interactive
+   (insert (format-time-string "%d.%m. — %A"))))
 
 (provide 'layer.org)
 ;;; layer.org ends here
