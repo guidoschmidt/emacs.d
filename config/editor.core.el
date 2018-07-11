@@ -95,13 +95,13 @@
   (defvar ml-start)
   (defvar ml-end)
   (let ((col (current-column)))
-  (beginning-of-line) (setq ml-start (point))
-  (end-of-line) (forward-char) (setq ml-end (point))
-  (let ((line-text (delete-and-extract-region ml-start ml-end)))
-    (forward-line n)
-    (insert line-text)
-    (forward-line -1)
-    (forward-char col))))
+    (beginning-of-line) (setq ml-start (point))
+    (end-of-line) (forward-char) (setq ml-end (point))
+    (let ((line-text (delete-and-extract-region ml-start ml-end)))
+      (forward-line n)
+      (insert line-text)
+      (forward-line -1)
+      (forward-char col))))
 
 (defun move-line-up ()
   "Move the current line one line up."
@@ -159,6 +159,23 @@
       (setq num (1+ num)))
     (switch-to-buffer
      (concat bn (number-to-string num)))))
+
+;; iedit customization's
+(advice-add 'iedit-mode
+            :after (lambda (&optional ignore)
+                     (when iedit-mode
+                       (minibuffer-message "iedit session started. Press C-; to end."))))
+
+(defun ap/iedit-mode (orig-fn)
+  "Call `iedit-mode' with function-local scope by default, or global scope if called with a universal prefix."
+  (interactive)
+  (pcase current-prefix-arg
+    ('nil (funcall orig-fn '(0)))
+    ('(4) (funcall orig-fn))
+    (_ (user-error "`ap/iedit-mode' called with prefix: %s" prefix))))
+
+;; Override default `iedit-mode' function with advice.
+(advice-add #'iedit-mode :around #'ap/iedit-mode)
 
 (provide 'editor.core)
 ;;; editor.core ends here

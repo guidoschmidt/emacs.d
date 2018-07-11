@@ -24,10 +24,11 @@
   :diminish which-key-mode
   :init (which-key-mode)
   :config
-  (which-key-setup-side-window-right-bottom)
   (setq which-key-sort-order 'which-key-key-order-alpha
-        which-key-side-window-max-width 0.33
-        which-key-idle-delay 0.05))
+        which-key-side-window-max-width 0.333
+        which-key-idle-delay 0
+        which-key-popup-type 'side-window
+        which-key-side-window-location 'left))
 
 ;; smooth-scrolling - smooth scrolling and minimap
 (use-package smooth-scrolling

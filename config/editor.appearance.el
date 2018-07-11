@@ -76,9 +76,9 @@
 (use-package beacon
   :ensure t
   :init
-  (setq beacon-color "#E300A3")
-  (setq beacon-blink-delay 0.5)
-  (setq beacon-blink-duration 0.5)
+  (setq beacon-color "#EEA090")
+  (setq beacon-blink-delay 0.01)
+  (setq beacon-blink-duration 0.75)
   :config
   (beacon-mode 1))
 
