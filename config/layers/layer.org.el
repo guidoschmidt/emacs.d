@@ -61,13 +61,15 @@ If FILEXT is provided, return files with extension FILEXT instead."
        "
 Org Mode
 
-_j_: org-cycle-level ->
-_k_: org-cycle <-
+_j_: org-cycle-level ->     _o_: org-sort
+_k_: org-cycle <-           _i_: insert current date
 _t_: org-todo
 "
        ("j" org-cycle-level)
        ("k" org-cycle)
-       ("t" org-todo))
+       ("t" org-todo)
+       ("o" org-sort)
+       ("i" org-current-date))
      (evil-leader/set-key
        "z" 'hydra-org/body)))
 
