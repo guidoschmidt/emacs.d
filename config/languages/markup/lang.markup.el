@@ -17,7 +17,6 @@
 ;;; HTML
 (use-package web-mode
   :ensure t
-  :mode "\\.html\\'"
   :config
   (setq-default web-mode-markup-indent-offset 2)
   (setq-default web-mode-css-indent-offset 2)
@@ -33,7 +32,6 @@
 
 (use-package html-check-frag
   :ensure t
-  :mode "\\.html\\'"
   :config
   :hook (html-mode . (lambda () (html-check-frag-mode 1))))
 
