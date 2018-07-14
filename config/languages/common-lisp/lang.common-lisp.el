@@ -14,7 +14,7 @@
                            slime-indentation
                            slime-sbcl-exts
                            slime-scratch)
-          inferior-lisp-program "sbcl")
+          inferior-lisp-program "ros run")
     (push 'slime-company slime-contribs)
     (defun slime/disable-smartparens ()
       (smartparens-strict-mode -1)
