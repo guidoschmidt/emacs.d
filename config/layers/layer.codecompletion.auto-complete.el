@@ -13,8 +13,8 @@
   :disabled
   :init
   (setq ac-auto-start 0
-        ac-delay 0.2
-        ac-quick-help-delay 0.5
+        ac-delay 0.01
+        ac-quick-help-delay 0.01
         ac-use-fuzzy t
         ac-fuzzy-enable t
         tab-always-indent 'complete

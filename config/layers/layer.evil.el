@@ -73,7 +73,7 @@
     "
 Cursors
 
-_j_: next
+_j_: next                 _i_: iedit-mode
 _k_: previous
 _n_: skip + next
 _p_: skip + previous
@@ -83,7 +83,8 @@ _m_: make cursor
     ("k" evil-mc-make-cursor-move-prev-line "previous")
     ("n" evil-mc-skip-and-goto-next-match "skip + next")
     ("p" evil-mc-skip-and-goto-prev-match "skip + previous")
-    ("m" evil-mc-make-cursor-here "cursor"))
+    ("m" evil-mc-make-cursor-here "cursor")
+    ("i" iedit-mode))
   (evil-leader/set-key
     "m" 'hydra-evil-mc/body))
 
