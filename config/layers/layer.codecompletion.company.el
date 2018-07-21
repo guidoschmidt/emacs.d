@@ -21,10 +21,11 @@
   :config
   (setq-default company-dabbrev-other-buffers t
                 company-dabbrev-code-time-limit 0.5
-                company-idle-delay 0.15
-                company-minimum-prefix-length 2
+                company-idle-delay 0.1
+                company-minimum-prefix-length 1
                 company-require-match nil
                 company-dabbrev-ignore-case nil
+                company-tooltip-align-annotations t
                 company-dabbrev-downcase nil
                 company-tooltip-limit 20
                 company-show-numbers t
@@ -50,6 +51,12 @@
   :bind
   (("<C-tab>" . company-complete-common)
    ("C-c <C-tab>" . company-yasnippet)))
+
+(use-package company-box
+  :ensure t
+  :after company
+  :diminish
+  :hook (company-mode . company-box-mode))
 
 (use-package company-quickhelp
   :ensure t
