@@ -17,7 +17,7 @@
 (use-package sass-mode
   :ensure t
   :commands sass-mode
-  :ensure-system-package (sass . "npm i -g sass")
+  ;; :ensure-system-package (sass . "npm i -g sass")
   :config
   (defun custom/sass-mode-hook ()
     (setq-default rainbow-html-colors t)
