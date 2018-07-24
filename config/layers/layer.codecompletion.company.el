@@ -56,7 +56,9 @@
   :ensure t
   :after company
   :diminish
-  :hook (company-mode . company-box-mode))
+  :hook (company-mode . company-box-mode)
+  :config
+  (setq company-box--height 400))
 
 (use-package company-quickhelp
   :ensure t
