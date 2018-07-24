@@ -44,27 +44,27 @@
                                        '(warning . c/c++-googlelint)))))
 
 ;; -- Autocomplete using YouCompleteMe
-(use-package ycmd
-  :disabled
-  :ensure t
-  :commands c++-mode
-  :init (add-hook 'c++-mode-hook #'ycmd-mode)
-  :config
-  (set-variable 'ycmd-server-command '("python2" "~/.emacs.d/github/ycmd/ycmd"))
-  (set-variable 'ycmd-global-config (expand-file-name "~/.emacs.d/config/external/ycm_extra_conf.py"))
-  (set-variable 'ycmd-extra-conf-whitelist '("~/Repos/*"))
-  (use-package company-ycmd
-    :ensure t
-    :mode ("\\.cpp\\'" "\\.h\\'" "\\.hpp\\'")
-    :commands c++-mode
-    :init (company-ycmd-setup)
-    :config (add-to-list 'company-backends
-                         (company-mode/backend-with-yas 'company-ycmd))))
+;; (use-package ycmd
+;;   :disabled
+;;   :ensure t
+;;   :commands c++-mode
+;;   :init (add-hook 'c++-mode-hook #'ycmd-mode)
+;;   :config
+;;   (set-variable 'ycmd-server-command '("python2" "~/.emacs.d/github/ycmd/ycmd"))
+;;   (set-variable 'ycmd-global-config (expand-file-name "~/.emacs.d/config/external/ycm_extra_conf.py"))
+;;   (set-variable 'ycmd-extra-conf-whitelist '("~/Repos/*"))
+;;   (use-package company-ycmd
+;;     :ensure t
+;;     :mode ("\\.cpp\\'" "\\.h\\'" "\\.hpp\\'")
+;;     :commands c++-mode
+;;     :init (company-ycmd-setup)
+;;     :config (add-to-list 'company-backends
+;;                          (company-mode/backend-with-yas 'company-ycmd))))
 
-(use-package flycheck-ycmd
-  :disabled
-  :commands (flycheck-ycmd-setup)
-  :init (add-hook 'ycmd-mode-hook 'flycheck-ycmd-setup))
+;; (use-package flycheck-ycmd
+;;   :disabled
+;;   :commands (flycheck-ycmd-setup)
+;;   :init (add-hook 'ycmd-mode-hook 'flycheck-ycmd-setup))
 
 ;; -- Autocomplete using Irony
 (use-package company-irony :ensure t)
