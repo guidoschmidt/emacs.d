@@ -38,7 +38,7 @@ If FILEXT is provided, return files with extension FILEXT instead."
 (use-package org-bullets
   :ensure t
   :config
-  (setq org-bullets-bullet-list '("☰" "➟" "●" "✕"))
+  (setq org-bullets-bullet-list '("✕" "‒" "⇻" →""))
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 ;; -- Enable syntax highlighting by default
@@ -48,12 +48,12 @@ If FILEXT is provided, return files with extension FILEXT instead."
 (setq org-todo-keywords
       '((sequence "IN(i)" "TODO(t)" "BLOCKED(b)" "WIP(w)" "|" "DONE(d)" "WONTDO(n)")))
 (setq org-todo-keyword-faces
-      '(("IN"      . (:foreground "#333"  :weight bold))
-        ("TOOD"    . (:foreground "#FFB204" :weight bold))
-        ("BLOCKED" . (:foreground "#FE042B"    :weight bold))
+      '(("IN"      . (:foreground "#E2F2E2" :weight bold))
+        ("TODO"    . (:foreground "#FE6264" :weight bold :box nil))
+        ("BLOCKED" . (:foreground "#FE042B" :weight bold :box nil))
         ("WIP"     . (:foreground "#FFB204" :weight bold))
-        ("DONE"    . (:foreground "#12DA73"  :weight bold))
-        ("WONTDO"  . (:foreground "#12DA73"  :weight bold))))
+        ("DONE"    . (:foreground "#12DA73" :weight bold))
+        ("WONTDO"  . (:foreground "#12DA73" :weight bold :strike-through t))))
 
 (eval-after-load "evil-leader"
   '(progn
