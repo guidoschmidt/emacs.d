@@ -84,10 +84,10 @@
   (defun company/irony-mode-hook ()
     "Hook to customize irony mode."
     (add-to-list 'company-backends '(company-irony))
-    (add-to-list 'company-backends '(company-irony-c-headers)))
-    ;; (add-to-list 'company-backends 'company-dabbrev)
-    ;; (add-to-list 'company-backends 'company-rtags)
-    ;; (add-to-list 'company-backends 'company-yasnippet))
+    (add-to-list 'company-backends '(company-irony-c-headers))
+    (add-to-list 'company-backends 'company-dabbrev)
+    (add-to-list 'company-backends 'company-rtags)
+    (add-to-list 'company-backends 'company-yasnippet))
   (add-hook 'irony-mode-hook 'company/irony-mode-hook)
   (defun cc/irony-mode-hook ()
     (unless (glsl-mode)
@@ -120,6 +120,13 @@
     (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
       (ggtags-mode 1)))
   (add-hook 'c-mode-common-hook 'ggtags/c-mode-hook))
+;; TODO: add Hydra for ggtags
+;; (define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
+;; (define-key ggtags-mode-map (kbd "C-c g h") 'ggtags-view-tag-history)
+;; (define-key ggtags-mode-map (kbd "C-c g r") 'ggtags-find-reference)
+;; (define-key ggtags-mode-map (kbd "C-c g f") 'ggtags-find-file)
+;; (define-key ggtags-mode-map (kbd "C-c g c") 'ggtags-create-tags)
+;; (define-key ggtags-mode-map (kbd "C-c g u") 'ggtags-update-tags)
 
 ;; -- RTags
 (use-package rtags
