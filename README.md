@@ -35,18 +35,35 @@ CMAKE
 cmake --build . --use-stderr --config Release --target install
 ```
 
+#### RTags
 1. Install rtags: `M-x rtags-install`
 2. `cd ~/.emacs.d/elpa/rtags-20180619.823/rtags-2.18`
 3. `make install`
 
-Before using RTags, start the rtags daemon with `rdm &`. You then need to start
-the RTags client (`rc`) from within your project root:
-`make -nk | rc -c -`
+Before using RTags, start the rtags daemon with `rdm &`.
 
-Or provide `compile_commands.json` and start with `rc -J`.
+A.) You then need to start the rtags client daemon (`rc`) from within your
+project root: `make -nk | rc -c -`
+B.) If you have a `compile_commands.json` file in your project root, you can start
+the rtags daemon with `rc -J`.
+
+#### Generate `compile_commands.json`
+Or provide `compile_commands.json` and start with .
 You can use [**xcpretty**](https://github.com/supermarin/xcpretty) on macOS or
 [**bear**](https://github.com/rizsotto/Bear) on other plattforms:
 `xcodebuild | xcpretty -r json-compilation-database -o compile_commands.json`
+
+#### Generate `.clang_complete`
+Install `https://github.com/Rip-Rip/clang_complete` and use it to generate
+`.clang_compile` file by:
+
+```bash
+cd ~/.vim/bin/
+chmod +x cc_args.py
+
+cd $YOUR_PROJECT_DIR
+make CC='~/.vim/bin/cc_args.py gcc' CXX='~/.vim/bin/cc_args.py g++' -B
+```
 
 
 
