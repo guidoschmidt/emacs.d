@@ -7,6 +7,8 @@
 ;;; - YouCompleteMe/Irony for Autocompletion
 
 ;;; Code:
+(require 'cl)
+
 (add-to-list 'auto-mode-alist '("\\.cc\\'"  . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.h\\'"   . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.hpp\\'" . c++-mode))
@@ -72,35 +74,25 @@
 (use-package irony-eldoc :ensure t)
 (use-package irony
   :ensure t
-  :disabled
   :config
-  (add-hook 'c++-mode-hook  'irony-mode)
-  (add-hook 'c-mode-hook    'irony-mode)
-  (add-hook 'objc-mode-hook 'irony-mode)
-  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-  (custom-set-variables
-   '(irony-additional-clang-options
-     '("-I/Library/Developer/CommandLineTools/usr/include/c++/v1")))
   (defun company/irony-mode-hook ()
     "Hook to customize irony mode."
-    (add-to-list 'company-backends '(company-irony))
-    (add-to-list 'company-backends '(company-irony-c-headers))
+    (add-to-list 'company-backends 'company-irony)
+    (add-to-list 'company-backends 'company-irony-c-headers)
     (add-to-list 'company-backends 'company-dabbrev)
     (add-to-list 'company-backends 'company-rtags)
     (add-to-list 'company-backends 'company-yasnippet))
   (add-hook 'irony-mode-hook 'company/irony-mode-hook)
-  (defun cc/irony-mode-hook ()
-    (unless (glsl-mode)
-      (irony-mode)
-      (add-hook 'irony-mode-hook #'irony-eldoc)))
-  (add-hook  'c-mode-hook '    cc/irony-mode-hook)
-  (add-hook  'c++-mode-hook '  cc/irony-mode-hook)
-  (add-hook 'objc-mode-hook ' cc/irony-mode-hook))
-
-
-(require 'cl)
-(setq company-backends (remove-if (lambda (e) (equal 'company-clang (car e))) company-backends))
-
+  (add-hook 'c++-mode-hook 'irony-mode)
+  (add-hook 'c-mode-hook 'irony-mode)
+  (add-hook 'objc-mode-hook 'irony-mode)
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+  (setq company-backends
+        (remove-if (lambda (e)
+                     (equal 'company-clang (car e)))
+                   company-backends))
+  :bind
+  (("<C-tab>" . company-irony)))
 
 ;; -- Flycheck
 (use-package flycheck-irony
