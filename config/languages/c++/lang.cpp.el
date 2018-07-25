@@ -8,6 +8,7 @@
 
 ;;; Code:
 (require 'cl)
+(require 'cc-mode)
 
 (add-to-list 'auto-mode-alist '("\\.cc\\'"  . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.h\\'"   . c++-mode))
@@ -77,22 +78,19 @@
   :config
   (defun company/irony-mode-hook ()
     "Hook to customize irony mode."
-    (add-to-list 'company-backends 'company-irony)
-    (add-to-list 'company-backends 'company-irony-c-headers)
-    (add-to-list 'company-backends 'company-dabbrev)
-    (add-to-list 'company-backends 'company-rtags)
-    (add-to-list 'company-backends 'company-yasnippet))
+    (add-to-list 'company-backends '(company-irony :with company-irony-c-headers)))
   (add-hook 'irony-mode-hook 'company/irony-mode-hook)
   (add-hook 'c++-mode-hook 'irony-mode)
   (add-hook 'c-mode-hook 'irony-mode)
   (add-hook 'objc-mode-hook 'irony-mode)
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-  (setq company-backends
-        (remove-if (lambda (e)
-                     (equal 'company-clang (car e)))
-                   company-backends))
+  ;; (setq company-backends
+  ;;       (remove-if (lambda (e)
+  ;;                    (equal 'company-clang (car e)))
+  ;;                  company-backends))
   :bind
-  (("<C-tab>" . company-irony)))
+  ((:map c-mode-map
+         ("<C-tab>" . company-irony))))
 
 ;; -- Flycheck
 (use-package flycheck-irony
