@@ -38,7 +38,7 @@ If FILEXT is provided, return files with extension FILEXT instead."
 (use-package org-bullets
   :ensure t
   :config
-  (setq org-bullets-bullet-list '("✕" "‒" "⇻" →""))
+  (setq org-bullets-bullet-list '("✕" "‒" "⇻" "→"))
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 ;; -- Enable syntax highlighting by default
