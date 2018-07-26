@@ -1,6 +1,5 @@
 * TODO:
 
-** Evil
 ** dired hacks:
 - Subtree
 - dired-collapse
@@ -13,8 +12,8 @@
 ** Lispyville
 ** Python
 *** IN https://github.com/anachronic/importmagic.el
-** Dashboard
-https://github.com/rakanalh/emacs-dashboard
 ** Olivetti
 Writing env for Emacs
-** Aniki-Mode
+** Anki-Mode
+** Doom Modeline
+https://github.com/seagle0128/doom-modeline
