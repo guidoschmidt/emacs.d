@@ -12,6 +12,7 @@
 
 (use-package powerline
   :ensure t
+  :disabled
   :config
   (setq powerline-default-separator 'bar)
   (setq powerline-gui-use-vcs-glyph t)
@@ -20,6 +21,7 @@
 
 (use-package spaceline
   :ensure t
+  :disabled
   :after powerline
   :config
   (require 'spaceline-config)
@@ -51,6 +53,11 @@
   (spaceline-emacs-theme
    'sky-color-clock-segment
    'etc))
+
+(use-package doom-modeline
+      :ensure t
+      :defer t
+      :hook (after-init . doom-modeline-init))
 
 (provide 'modeline)
 ;;; modeline ends here
