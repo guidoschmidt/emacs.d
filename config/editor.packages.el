@@ -371,6 +371,7 @@ Text Scaling
 ;; parnifer - improved lisp editing
 (use-package parinfer
   :ensure t
+  :after lispy
   :bind
   (("C-," . parinfer-toggle-mode))
   :init
