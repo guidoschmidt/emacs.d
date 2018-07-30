@@ -48,7 +48,7 @@ If FILEXT is provided, return files with extension FILEXT instead."
 (setq org-todo-keywords
       '((sequence "IN(i)" "TODO(t)" "BLOCKED(b)" "WIP(w)" "|" "DONE(d)" "WONTDO(n)")))
 (setq org-todo-keyword-faces
-      '(("IN"      . (:foreground "#E2F2E2" :weight bold))
+      '(("IN"      . (:foreground "#D5B5C5" :weight bold))
         ("TODO"    . (:foreground "#FE6264" :weight bold :box nil))
         ("BLOCKED" . (:foreground "#FE042B" :weight bold :box nil))
         ("WIP"     . (:foreground "#FFB204" :weight bold))
