@@ -29,7 +29,6 @@
 (fringe-mode 1)
 
 ;; Whitespace
-(global-whitespace-mode t)
 (setq-default indicate-empty-lines t)
 (when (not indicate-empty-lines)
   (toggle-indicate-empty-lines))
@@ -76,9 +75,9 @@
 (use-package beacon
   :ensure t
   :init
-  (setq beacon-color "#EEA090")
+  (setq beacon-color "#FEBB9F")
   (setq beacon-blink-delay 0.01)
-  (setq beacon-blink-duration 0.75)
+  (setq beacon-blink-duration 1.75)
   :config
   (beacon-mode 1))
 
