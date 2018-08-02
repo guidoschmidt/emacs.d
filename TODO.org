@@ -1,19 +1,19 @@
 * TODO:
 
-** dired hacks:
+** TODO dired hacks:
 - Subtree
 - dired-collapse
-** https://github.com/technomancy/find-file-in-project
-** Language Server Protocol
+** TODO Find File in Project
+https://github.com/technomancy/find-file-in-project
+** TODO Language Server Protocol
 - https://github.com/Ruin0x11/intellij-lsp-server
 - https://github.com/emacs-lsp/lsp-mode
-** ranger.el
-** Learn lispy.el code commands
-** Lispyville
+- LSP Outline: https://github.com/bizzyman/LSP-Symbol-Outline
+** TODO ranger.el
+** TODO Learn lispy.el code commands
+** TODO Lispyville
 ** Python
-*** IN https://github.com/anachronic/importmagic.el
+*** TODO https://github.com/anachronic/importmagic.el
 ** Olivetti
 Writing env for Emacs
 ** Anki-Mode
-** Doom Modeline
-https://github.com/seagle0128/doom-modeline
