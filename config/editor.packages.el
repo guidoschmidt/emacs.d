@@ -57,7 +57,9 @@
   :ensure t
   :config
   (dashboard-setup-startup-hook)
-  (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*"))))
+  (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
+  (setq dashboard-banner-logo-title "Emacs — At your service")
+  (setq dashboard-startup-banner 'official))
 
 ;; Dired-Hacks - imporve dired-mode
 (use-package dired-hacks-utils
@@ -444,9 +446,20 @@ _t_: toggle block
 (use-package smart-hungry-delete
   :ensure t
   :bind (("C-<backspace>" . smart-hungry-delete-backward-char)
-		     ("C-d" . smart-hungry-delete-forward-char))
+         ("C-d" . smart-hungry-delete-forward-char))
   :defer nil ;; dont defer so we can add our functions to hooks
   :config (smart-hungry-delete-add-default-hooks))
+
+;; Treemacs
+(use-package treemacs
+  :ensure t)
+
+(use-package treemacs-evil
+  :ensure t)
+
+;; Helpful
+(use-package helpful
+  :ensure t)
 
 (provide 'editor.packages)
 ;;; editor.packages ends here
