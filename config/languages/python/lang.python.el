@@ -36,7 +36,7 @@
   :ensure t
   :commands elpy-mode
   :config
-  (setq elpy-rpc-python-command "python")
+  (setq elpy-rpc-python-command "python3")
   (setq elpy-rpc-backend "jedi")
   (defun custom-python-mode-hook ()
     (setq python-indent-offset 2)
@@ -60,8 +60,8 @@
     (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup)))
 
 (use-package importmagic
-  ;; pip install importmagic epc
   :ensure t
+  :diminish
   :hook (importmagic-mode . python-mode))
 
 (provide 'lang.python)
