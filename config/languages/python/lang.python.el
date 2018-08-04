@@ -18,25 +18,13 @@
 ;;; Windows
   (when (memq window-system '(w32))
     (setq exec-path
-          (append exec-path
-                  '("c:/Program Files/Derivative/TouchDesigner099/bin/")))
-    (setenv "PYTHONPATH"
-            (concat
-             "c:/Program Files/Derivative/TouchDesigner099/bin"
-             path-separator
-             "c:/Program Files/Derivative/TouchDesigner099/bin/Lib/site-packages"
-             path-separator
-             "c:/Users/gs/AppData/Local/Temp"
-             path-separator
-             "c:/Users/gs/Desktop/Touchdesigner/Autocompletion/export"
-             path-separator
-             "c:/Users/gs/Desktop/Touchdesigner/python"))))
+          (append exec-path '("c:/Development/python/3.6")))))
 
 (use-package elpy
   :ensure t
   :commands elpy-mode
   :config
-  (setq elpy-rpc-python-command "python3")
+  (setq elpy-rpc-python-command "python")
   (setq elpy-rpc-backend "jedi")
   (defun custom-python-mode-hook ()
     (setq python-indent-offset 2)
@@ -58,6 +46,7 @@
   :config
   (with-eval-after-load 'flycheck
     (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup)))
+
 
 (use-package importmagic
   :ensure t
