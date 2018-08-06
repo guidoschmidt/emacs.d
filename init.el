@@ -33,6 +33,7 @@
 ;; Layers
 (require 'layer.codecompletion.auto-complete)
 (require 'layer.codecompletion.company)
+(require 'layer.lsp)
 (require 'layer.codenavigation)
 (require 'layer.evil)
 (require 'layer.git)
