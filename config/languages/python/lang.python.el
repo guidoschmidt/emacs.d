@@ -18,7 +18,7 @@
 ;;; Windows
   (when (memq window-system '(w32))
     (setq exec-path
-          (append exec-path '("c:/Development/python/3.6")))))
+          (append exec-path '("c:/Development/python/anaconda/envs/td/python.exe")))))
 
 (use-package elpy
   :ensure t
@@ -46,7 +46,6 @@
   :config
   (with-eval-after-load 'flycheck
     (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup)))
-
 
 (use-package importmagic
   :ensure t
