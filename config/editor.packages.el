@@ -483,5 +483,10 @@ _t_: toggle block
   ;; look at interactive functions.
   (global-set-key (kbd "C-h C") #'helpful-command))
 
+;; Writeroom mode
+(use-package writeroom-mode
+  :ensure t
+  :commands writeroom-mode)
+
 (provide 'editor.packages)
 ;;; editor.packages ends here
