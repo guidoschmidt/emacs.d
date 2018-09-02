@@ -64,6 +64,7 @@
 (require 'lang.csharp)
 (require 'lang.css)
 (require 'lang.emacs-lisp)
+(require 'lang.fsharp)
 (require 'lang.glsl)
 (require 'lang.haskell)
 (require 'lang.javascript)
