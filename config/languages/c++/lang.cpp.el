@@ -166,5 +166,14 @@ _j_: goto symbol under point
     (add-hook 'before-save-hook #'bazel-format nil t))
   :hook (bazel-mode . 'bazel-format-on-save))
 
+(defun cpp-endline ()
+  "Insert semicolon and move point/cursor to the next line."
+  (interactive)
+  (insert ";")
+  (next-line)
+  (move-beginning-of-line 1))
+
+(define-key c++-mode-map (kbd "<C-return>") 'cpp-endline)
+
 (provide 'lang.cpp)
 ;;; lang.cpp ends here
