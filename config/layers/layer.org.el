@@ -46,12 +46,22 @@ If FILEXT is provided, return files with extension FILEXT instead."
 
 ;; --- Setup TODO states
 (setq org-todo-keywords
-      '((sequence "IN(i)" "TODO(t)" "BLOCKED(b)" "WIP(w)" "|" "DONE(d)" "WONTDO(n)")))
+      '((sequence "IN(i)"
+                  "TODO(t)"
+                  "WIP(w)"
+                  "SET(s)"
+                  "PROJ(p)"
+                  "BLOCKED(b)"
+                  "|"
+                  "DONE(d)"
+                  "WONTDO(n)")))
 (setq org-todo-keyword-faces
-      '(("IN"      . (:foreground "#D5B5C5" :weight bold))
+      '(("IN"      . (:foreground "#DFFDFF" :weight bold))
         ("TODO"    . (:foreground "#FE6264" :weight bold :box nil))
-        ("BLOCKED" . (:foreground "#FE042B" :weight bold :box nil))
         ("WIP"     . (:foreground "#FFB204" :weight bold))
+        ("SET"     . (:foreground "#00D0F3" :weight bold))
+        ("PROJ"    . (:foreground "#0050F3" :weight bold))
+        ("BLOCKED" . (:foreground "#FE042B" :weight bold :box nil))
         ("DONE"    . (:foreground "#12DA73" :weight bold))
         ("WONTDO"  . (:foreground "#12DA73" :weight bold :strike-through t))))
 
