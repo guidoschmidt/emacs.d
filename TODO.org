@@ -1,20 +1,20 @@
 * TODO:
-
-** TODO dired hacks:
-- Subtree
-- dired-collapse
-** TODO Find File in Project
-https://github.com/technomancy/find-file-in-project
-** TODO Language Server Protocol
+** WIP Language Server Protocol
 - https://github.com/Ruin0x11/intellij-lsp-server
 - https://github.com/emacs-lsp/lsp-mode
 - LSP Outline: https://github.com/bizzyman/LSP-Symbol-Outline
-** TODO ranger.el
-** TODO Learn lispy.el code commands
-** TODO Lispyville
-** Python
+** TODO Cleanup git submodules
+** IN dired hacks:
+- Subtree
+- dired-collapse
+** IN Find File in Project
+https://github.com/technomancy/find-file-in-project
+** IN ranger.el
+** IN Learn lispy.el code commands
+** IN Lispyville
+** IN Python
 *** TODO https://github.com/anachronic/importmagic.el
-** Anki-Mode
-** straight.el
+** IN Anki-Mode
+** IN straight.el
 Next generation package manager for the Emacs Hacker
 https://github.com/raxod502/straight.el
