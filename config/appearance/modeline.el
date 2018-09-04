@@ -8,7 +8,8 @@
   :config
   (eval-when-compile
     (when calendar-latitude
-     (sky-color-clock-initialize (round calendar-latitude)))))
+      (sky-color-clock-initialize (round calendar-latitude))))
+  (push '(:eval (sky-color-clock)) (default-value 'mode-line-format)))
 
 (use-package powerline
   :ensure t

@@ -10,11 +10,12 @@
   :commands slime-mode
   :init
   (progn
+    (load (expand-file-name "~/.roswell/helper.el"))
     (setq slime-contribs '(slime-fancy
                            slime-indentation
                            slime-sbcl-exts
                            slime-scratch)
-          inferior-lisp-program "ros run")
+          inferior-lisp-program "ros -Q run")
     (push 'slime-company slime-contribs)
     (defun slime/disable-smartparens ()
       (smartparens-strict-mode -1)

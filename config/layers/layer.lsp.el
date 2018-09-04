@@ -3,8 +3,6 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'lsp-imenu)
-
 (use-package lsp-mode
   :ensure t
   :hook (lsp-after-open . lsp-enable-imenu)
