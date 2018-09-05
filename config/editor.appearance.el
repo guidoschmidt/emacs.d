@@ -38,7 +38,7 @@
 
 ;; Font configuration
 (use-package alfontzo
-  :load-path "~/git/develop/emacs/alfontzo"
+  :load-path "~/.emacs.d/github/alfontzo"
   :config
   (alfontzo-init))
 

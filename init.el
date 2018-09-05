@@ -61,6 +61,7 @@
 (require 'lang.clojure)
 (require 'lang.common-lisp)
 (require 'lang.cpp)
+(require 'lang.csharp)
 (require 'lang.css)
 (require 'lang.emacs-lisp)
 (require 'lang.fsharp)
