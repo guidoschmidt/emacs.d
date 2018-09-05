@@ -18,3 +18,5 @@ https://github.com/technomancy/find-file-in-project
 ** IN straight.el
 Next generation package manager for the Emacs Hacker
 https://github.com/raxod502/straight.el
+** IN evil-easymotion
+https://github.com/PythonNut/evil-easymotion
