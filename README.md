@@ -1,4 +1,12 @@
 # .emacs.d
+### My Emacs configuration.
+
+**Beware:** under heavy development and change — I'm still
+feeling like I have to learn how to best structure this configuration.
+
+![Screenshot](screenshots/2018-09-08.png)
+
+---
 
 ## Emacs
 Install [emacs-plus](https://github.com/d12frosted/homebrew-emacs-plus):
