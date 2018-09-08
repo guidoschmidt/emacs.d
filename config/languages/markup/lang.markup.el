@@ -39,7 +39,8 @@
 (use-package markdown-mode+
   :ensure t
   :mode (("\\.md\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode)))
+         ("\\.markdown\\'" . markdown-mode)
+         ("\\.mdx\\'" . markdown-mode)))
 
 ;;; YAML
 (use-package yaml-mode
