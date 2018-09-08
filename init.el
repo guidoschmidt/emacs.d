@@ -21,10 +21,11 @@
 (let ((default-directory  "~/.emacs.d/config/"))
   (normal-top-level-add-to-load-path
    '("."
-     "/Volumes/Keybase (gs)/private/guidoschmidt/emacs.d/"))
+     "/Volumes/Keybase (gs)/private/guidoschmidt/.emacs.d/"))
   (normal-top-level-add-subdirs-to-load-path))
 
 ;; Private
+;; TODO: print warning when private.keys wasn't found
 (require 'private.keys nil t)
 
 ;; Core
