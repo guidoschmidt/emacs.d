@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: react.func
+# key: react.func
+# --
+export default () => {
+  return (
+    $1    
+  )
+}
