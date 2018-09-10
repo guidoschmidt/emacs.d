@@ -20,3 +20,5 @@ Next generation package manager for the Emacs Hacker
 https://github.com/raxod502/straight.el
 ** IN evil-easymotion
 https://github.com/PythonNut/evil-easymotion
+** IN Cleverparens
+   Cheatsheet: https://gist.github.com/pvik/8eb5755cc34da0226e3fc23a320a3c95
