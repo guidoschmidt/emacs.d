@@ -1,4 +1,12 @@
 # .emacs.d
+### My Emacs configuration.
+
+**Beware:** under heavy development and change — I'm still
+feeling like I have to learn how to best structure this configuration.
+
+![Screenshot](screenshots/2018-09-08.png)
+
+---
 
 ## Emacs
 Install [emacs-plus](https://github.com/d12frosted/homebrew-emacs-plus):
@@ -98,7 +106,12 @@ brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 3. Setup Stack via `stack setup`
 
 Make sure to use `ghc` version larger than `8.2.1`. Intero seems to fail an `8.0.2`
-according to this [github issue](https://github.com/commercialhaskell/intero/issues/428)
+according to this [github
+issue](https://github.com/commercialhaskell/intero/issues/428)
+
+
+### Spell-Checking
+Install aspell via `brew install aspell`
 
 
 
