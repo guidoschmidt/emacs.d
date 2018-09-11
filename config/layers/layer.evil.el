@@ -21,6 +21,7 @@
 
 (use-package key-chord
   :ensure t
+  :after evil
   :config
   (setq key-chord-two-keys-delay 0.5)
   (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
