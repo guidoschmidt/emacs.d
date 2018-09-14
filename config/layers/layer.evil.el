@@ -58,7 +58,8 @@
     "<up>"    'beginning-of-defun
     "w"       'save-buffer
     "<down>"  'end-of-defun
-    "j"       'counsel-imenu))
+    "j"       'counsel-imenu
+    "e"       'newline-and-indent))
 
 (use-package lispy
   :ensure t
