@@ -58,8 +58,9 @@
     "<up>"    'beginning-of-defun
     "w"       'save-buffer
     "<down>"  'end-of-defun
-    "j"       'counsel-imenu
-    "e"       'newline-and-indent))
+    "q"       'counsel-imenu
+    "e"       'newline-and-indent
+    "j"       'swiper-avy))
 
 (use-package lispy
   :ensure t
@@ -139,6 +140,11 @@ _m_: make cursor
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys)
   :hook org-mode)
+
+(use-package evil-indent-plus
+  :ensure t
+  :config
+  (evil-indent-plus-default-bindings))
 
 (provide 'layer.evil)
 ;;; layer.evil ends here
