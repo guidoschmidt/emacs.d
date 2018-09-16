@@ -146,5 +146,16 @@ _m_: make cursor
   :config
   (evil-indent-plus-default-bindings))
 
+(use-package evil-snipe
+  :ensure t
+  :config
+  (evil-snipe-mode +1)
+  (evil-snipe-override-mode +1))
+
+(use-package evil-commentary
+  :ensure t
+  :config
+  (evil-commentary-mode))
+
 (provide 'layer.evil)
 ;;; layer.evil ends here
