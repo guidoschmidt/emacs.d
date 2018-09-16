@@ -14,6 +14,8 @@
   :ensure t
   :commands magit-status
   :config
+  (exec-path-from-shell-copy-env "SSH_AGENT_PID")
+  (exec-path-from-shell-copy-env "SSH_AUTH_SOCK")
   (setq magit-diff-paint-whitespace t)
   (setq magit-completing-read-function 'ivy-completing-read))
 
