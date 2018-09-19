@@ -11,11 +11,11 @@
   ;; use either projectile-project-root or ffip-get-project-root-directory
   ;; or any other function that can be used to find the root directory of
   ;; a project
-  (setenv "PYTHONPATH" "c:/Users/gs/Desktop/Touchdesigner/Autocompletion/export/")
+  ;; (setenv "PYTHONPATH" "c:/Users/gs/Desktop/Touchdesigner/Autocompletion/export/")
   (lsp-define-stdio-client lsp-python
                            "python"
                            #'projectile-project-root
-                           '("c:/Development/python/anaconda/envs/td/Scripts/pyls"))
+                           '("~/.pyenv/versions/3.6.6/bin/pyls"))
   ;; Activate generated lsp macro with `python-mode'.
   ;; `lsp-python-enable' is created by `lsp-define-stdio-client' above.
   (add-hook 'python-mode-hook
