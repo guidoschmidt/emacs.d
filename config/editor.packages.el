@@ -39,7 +39,6 @@
 
 ;; keyfreq - gather statistics of key and command frequency
 (use-package keyfreq
-  :disabled
   :ensure t
   :config
   (keyfreq-mode 1)

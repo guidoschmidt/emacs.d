@@ -44,5 +44,11 @@
 (use-package flyspell-correct-ivy
   :ensure t)
 
+(use-package synosaurus
+  :ensure t
+  :config
+  (synosaurus-mode)
+  (setq synosaurus-choose-method 'ido))
+
 (provide 'layer.spellcheck)
 ;;; layer.spellcheck ends here
