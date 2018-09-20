@@ -24,3 +24,6 @@ https://github.com/PythonNut/evil-easymotion
    Cheatsheet: https://gist.github.com/pvik/8eb5755cc34da0226e3fc23a320a3c95
 ** IN org
 *** https://github.com/alphapapa/org-super-agenda
+* INSPIRATION:
+** Castlemacs
+    https://github.com/freetonik/castlemacs/blob/master/init.el
