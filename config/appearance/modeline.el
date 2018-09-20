@@ -56,9 +56,18 @@
    'etc))
 
 (use-package doom-modeline
-      :ensure t
-      :defer t
-      :hook (after-init . doom-modeline-init))
+  :ensure t
+  :defer t
+  :config
+  (defvar skycolor-clock)
+  (doom-modeline-def-segment skycolor-clock
+    (sky-color-clock))
+  (doom-modeline-def-modeline 'gs
+                              '(workspace-number window-number bar evil-state matches " " buffer-info buffer-position " " selection-info)
+                              '(global buffer-encoding major-mode process vcs flycheck skycolor-clock))
+  (doom-modeline-set-modeline 'gs t) 
+  (setq doom-modeline-height 60)
+  :hook (after-init . doom-modeline-init))
 
 (provide 'modeline)
 ;;; modeline ends here
