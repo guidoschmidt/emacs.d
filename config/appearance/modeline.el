@@ -3,6 +3,7 @@
 
 ;;; Code:
 (require 'solar)
+
 (use-package sky-color-clock
   :load-path "~/.emacs.d/github/sky-color-clock"
   :config
@@ -11,49 +12,30 @@
       (sky-color-clock-initialize (round calendar-latitude))))
   (push '(:eval (sky-color-clock)) (default-value 'mode-line-format)))
 
-(use-package powerline
-  :ensure t
-  :disabled
-  :config
-  (setq powerline-default-separator 'bar)
-  (setq powerline-gui-use-vcs-glyph t)
-  (setq powerline-height 38)
-  (powerline-reset))
 
-(use-package spaceline
-  :ensure t
-  :disabled
-  :after powerline
-  :config
-  (require 'spaceline-config)
-  ;; Define custom segments
-  (spaceline-define-segment sky-color-clock-segment
-    (concat "" (sky-color-clock))
-    :tight t)
-  ;; Edit evil state colcos
-  (set-face-attribute
-   'spaceline-evil-normal nil :background "#F6EDDF" :foreground "#232323")
-  (set-face-attribute
-   'spaceline-evil-insert nil :background "#B2EFE5" :foreground "##1A7162")
-  (set-face-attribute
-   'spaceline-evil-visual nil :background "#E9391D" :foreground "#FFA96F")
-  (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
-  ;; Turn segments OFF
-  (spaceline-toggle-buffer-position-off)
-  (spaceline-toggle-anzu-off)
-  (spaceline-toggle-buffer-encoding-abbrev-off)
-  ;; Turn segments ON
-  (spaceline-toggle-buffer-size-on)
-  (spaceline-toggle-buffer-modified-on)
-  (spaceline-toggle-version-control-on)
-  (spaceline-toggle-hud-on)
-  (spaceline-toggle-minor-modes-off)
-  (spaceline-toggle-point-position-off)
-  (spaceline-toggle-projectile-root-on)
-  ;; Setup modeline theme
-  (spaceline-emacs-theme
-   'sky-color-clock-segment
-   'etc)) 
+(defface evil-normal-state-face
+  `((t (:foreground "#F7B2EE"
+        :background "#A273FF"
+        :weight ultra-bold)))
+  "Face for warnings in the modeline. Used by `*flycheck'")
+
+(defface evil-insert-state-face
+  `((t (:foreground "#1A7162" :background "#B2EFE5" :weight ultra-bold)))
+  "Face for warnings in the modeline. Used by `*flycheck'")
+
+(defface evil-visual-state-face
+  `((t (:foreground "#E9391D" :background "#FFA96F" :weight ultra-bold)))
+  "Face for warnings in the modeline. Used by `*flycheck'")
+
+(defun evil-state-char ()
+  "Show starting character of evil state and propertize with respective face."
+ (let ((state (symbol-value 'evil-state)))
+   (cond ((equal 'normal state) (propertize "  N  "
+                                            'face 'evil-normal-state-face))
+         ((equal 'insert state) (propertize "  I  "
+                                            'face 'evil-insert-state-face))
+         ((equal 'visual state) (propertize "  V  "
+                                            'face 'evil-visual-state-face)))))
 
 (use-package doom-modeline
   :ensure t
@@ -61,15 +43,30 @@
   :config
   (defvar skycolor-clock)
   (doom-modeline-def-segment skycolor-clock
-    (sky-color-clock))
+    (concat " " (sky-color-clock) " "))
 
   (defvar custom-evil-state)
   (doom-modeline-def-segment custom-evil-state
-    (concat " " (upcase (substring (prin1-to-string evil-state) 0 1)) " "))
-  (doom-modeline-def-modeline 'gs
-                              '(bar workspace-number window-number custom-evil-state matches " " buffer-info buffer-position " " selection-info)
-                              '(global buffer-encoding major-mode process vcs flycheck skycolor-clock))
-  (doom-modeline-set-modeline 'gs t) 
+    (evil-state-char))
+  (doom-modeline-def-modeline
+   'gs
+   ;; Left mode line segments
+   '(bar
+     workspace-number
+     window-number
+     custom-evil-state
+     "   "
+     matches
+     "   "
+     buffer-info
+     "   "
+     selection-info)
+   ;; Right mode line segments
+   '(major-mode
+     vcs
+     flycheck
+     skycolor-clock))
+  (doom-modeline-set-modeline 'gs t)
   (setq doom-modeline-height 42)
   :hook (after-init . doom-modeline-init))
 
