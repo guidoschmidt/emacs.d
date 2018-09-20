@@ -53,7 +53,7 @@
   ;; Setup modeline theme
   (spaceline-emacs-theme
    'sky-color-clock-segment
-   'etc))
+   'etc)) 
 
 (use-package doom-modeline
   :ensure t
@@ -62,11 +62,15 @@
   (defvar skycolor-clock)
   (doom-modeline-def-segment skycolor-clock
     (sky-color-clock))
+
+  (defvar custom-evil-state)
+  (doom-modeline-def-segment custom-evil-state
+    (concat " " (upcase (substring (prin1-to-string evil-state) 0 1)) " "))
   (doom-modeline-def-modeline 'gs
-                              '(workspace-number window-number bar evil-state matches " " buffer-info buffer-position " " selection-info)
+                              '(bar workspace-number window-number custom-evil-state matches " " buffer-info buffer-position " " selection-info)
                               '(global buffer-encoding major-mode process vcs flycheck skycolor-clock))
   (doom-modeline-set-modeline 'gs t) 
-  (setq doom-modeline-height 60)
+  (setq doom-modeline-height 42)
   :hook (after-init . doom-modeline-init))
 
 (provide 'modeline)
