@@ -487,5 +487,10 @@ _t_: toggle block
   :ensure t
   :commands writeroom-mode)
 
+;; Docker
+(use-package docker
+  :ensure t
+  :bind ("C-c d" . docker))
+
 (provide 'editor.packages)
 ;;; editor.packages ends here
