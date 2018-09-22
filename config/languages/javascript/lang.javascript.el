@@ -18,8 +18,9 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
          (eslint (and root
                       (expand-file-name "node_modules/eslint/bin/eslint.js"
                                         root))))
-    (when (and eslint (file-executable-p eslint))
-      (setq-local flycheck-javascript-eslint-executable eslint))))
+    (if (and eslint (file-executable-p eslint))
+        (setq-local flycheck-javascript-eslint-executable eslint)
+      (setq-local flycheck-javascript-eslint-executable "~/.nvm/versions/node/v10.11.0/bin/eslint"))))
 
 (use-package indium
   :ensure t
