@@ -8,7 +8,11 @@
 (use-package evil
   :ensure t
   :init
-  (setq evil-want-integration nil)
+  (progn
+    (setq evil-want-C-u-scroll  t
+          evil-want-integration nil
+          evil-want-integration nil
+          evil-want-keybinding  nil))
   :config
   (evil-mode t)
   (setq evil-emacs-state-modes
@@ -121,6 +125,7 @@ _m_: make cursor
   :after evil
   :ensure t
   :config
+  (setq evil-want-integration nil)
   (setq evil-collection-setup-minibuffer t)
   (setq evil-collection-company-use-tng nil)
   (evil-collection-init))
