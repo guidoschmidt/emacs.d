@@ -28,6 +28,14 @@ brew install emacs-plus --without-spacemacs-icon --with-24bit-color --with-natur
 
 
 
+### C++ Code-Completion ([CCLS](https://github.com/MaskRay/ccls))
+1. Install **CCLS**: `brew tap twlz0ne/homebrew-ccls; brew install ccls`
+2. Generate `compile_commands.json` (using
+   [XcodeCompilationDatabase](https://github.com/jerrymarino/XcodeCompilationDatabase)
+   or [bear](https://github.com/rizsotto/Bear)
+
+
+
 ### C++ Code-Completion ([Irony](https://github.com/Sarcasm/irony-mode) + RTags)
 1. Install **LLVM**: `brew install llvm`
 2. Install **Irony** from within Emacs: `M-x irony-install-server`
