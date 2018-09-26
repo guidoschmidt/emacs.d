@@ -1,5 +1,4 @@
-;;; layer.lsp.el ‒ Language server protocol client
-
+;;; layer.lsp.el ‒-- Language server protocol client
 ;;; Commentary:
 
 ;;; Code:
@@ -7,6 +6,7 @@
   :ensure t
   :hook (lsp-after-open . lsp-enable-imenu)
   :config
+  ;; --- PYTHON ---
   ;; Get lsp-python-enable defined
   ;; use either projectile-project-root or ffip-get-project-root-directory
   ;; or any other function that can be used to find the root directory of
@@ -18,13 +18,10 @@
                            '("~/.pyenv/versions/3.6.6/bin/pyls"))
   ;; Activate generated lsp macro with `python-mode'.
   ;; `lsp-python-enable' is created by `lsp-define-stdio-client' above.
-  (add-hook 'python-mode-hook
-            (lambda ()
-              (lsp-python-enable)))
+  (add-hook 'python-mode-hook (lambda ()) (lsp-python-enable))
   ;; NB: only required if you prefer flake8 instead of the default
   (defun lsp-set-cfg ()
     (let ((lsp-cfg `(:pyls (:configurationSources ("flake8")))))
-
       (lsp--set-configuration lsp-cfg)))
   (add-hook 'lsp-after-initialize-hook 'lsp-set-cfg))
 
