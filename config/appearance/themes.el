@@ -49,7 +49,7 @@
   :load-path "~/git/develop/emacs/circadian.el/"
   :ensure t
   :config
-  (setq circadian-themes '((:sunrise . material-light)
+  (setq circadian-themes '((:sunrise . kaolin-bubblegum)
                            (:sunset  . srcery)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
