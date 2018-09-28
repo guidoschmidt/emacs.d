@@ -51,6 +51,7 @@
     "s"       'magit-status
     "TAB"     'indent-region
     "?"       'flyspell-correct-word-generic
+    "!"       'flyspell-add-word-to-dict
     "/"       'synosaurus-choose-and-replace
     "p"       'counsel-projectile-switch-project
     "f"       'counsel-projectile-find-file

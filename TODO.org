@@ -1,14 +1,14 @@
 * TODO:
-** WIP Language Server Protocol
-- https://github.com/Ruin0x11/intellij-lsp-server
-- https://github.com/emacs-lsp/lsp-mode
-- LSP Outline: https://github.com/bizzyman/LSP-Symbol-Outline
+** WIP Language Server Protocol [1/3]
+    - [ ] https://github.com/Ruin0x11/intellij-lsp-server
+    - [ ] LSP Outline: https://github.com/bizzyman/LSP-Symbol-Outline
+    - [X] https://github.com/emacs-lsp/lsp-mode
 ** TODO Cleanup git submodules
-** IN dired hacks:
-- Subtree
-- dired-collapse
+** IN dired hacks [0/2]
+    - [ ] Subtree
+    - [ ] dired-collapse
 ** IN Find File in Project
-https://github.com/technomancy/find-file-in-project
+   https://github.com/technomancy/find-file-in-project
 ** IN ranger.el
 ** IN Learn lispy.el code commands
 ** IN Lispyville
@@ -16,14 +16,15 @@ https://github.com/technomancy/find-file-in-project
 *** TODO https://github.com/anachronic/importmagic.el
 ** IN Anki-Mode
 ** IN straight.el
-Next generation package manager for the Emacs Hacker
-https://github.com/raxod502/straight.el
+    Next generation package manager for the Emacs Hacker
+    https://github.com/raxod502/straight.el
+    Use to integrate git only hosted packages
 ** IN evil-easymotion
-https://github.com/PythonNut/evil-easymotion
+   https://github.com/PythonNut/evil-easymotion
 ** IN Cleverparens
    Cheatsheet: https://gist.github.com/pvik/8eb5755cc34da0226e3fc23a320a3c95
 ** IN org
-*** https://github.com/alphapapa/org-super-agenda
+    https://github.com/alphapapa/org-super-agenda
 * INSPIRATION:
 ** Castlemacs
     https://github.com/freetonik/castlemacs/blob/master/init.el

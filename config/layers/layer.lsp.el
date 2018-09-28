@@ -1,5 +1,4 @@
-;;; layer.lsp.el ‒ Language server protocol client
-
+;;; layer.lsp.el ‒-- Language server protocol client
 ;;; Commentary:
 
 ;;; Code:

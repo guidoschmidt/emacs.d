@@ -3,8 +3,7 @@
 ;;; Commentary:
 ;; Setup web development tools
 ;; TODO:
-;; - Try tide vs tern (https://github.com/ananthakumaran/tide)
-;; - Refactor different languages (like Elm) into their own lang config files 
+;; - Refactor different languages (like Elm) into their own lang config files
 
 ;;; Code:
 
@@ -20,7 +19,8 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
                                         root))))
     (if (and eslint (file-executable-p eslint))
         (setq-local flycheck-javascript-eslint-executable eslint)
-      (setq-local flycheck-javascript-eslint-executable "~/.nvm/versions/node/v10.11.0/bin/eslint"))))
+      (setq-local flycheck-javascript-eslint-executable
+                  "~/.nvm/versions/node/v10.11.0/bin/eslint"))))
 
 (use-package indium
   :ensure t
@@ -73,8 +73,8 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
     (emmet-mode))
   (add-hook 'vue-mode-hook 'emmet/vue-mode-hook)
   (defun company/vue-mode-hook ()
-    (add-to-list 'company-backends 'company-tern)
-    (add-to-list 'company-backends 'company-css))
+    (add-to-list 'company-backends '(company-tern :with company-yasnippet))
+    (add-to-list 'company-backends '(company-css :with company-yasnippet)))
   (add-hook 'vue-mode-hook 'company/vue-mode-hook)
   (setq mmm-submode-decoration-level 0)
   (flycheck-add-mode 'javascript-eslint 'vue-mode))
@@ -114,7 +114,6 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (eval-after-load 'flycheck
     '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup)))
 
-
 ;;; Flow
 (use-package company-flow
   :ensure t
@@ -123,30 +122,29 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (eval-after-load 'company
     '(add-to-list 'company-backends 'company-flow)))
 
-
 ;;; Tern
 (use-package tern
   :ensure t
-  :commands company-tern
-  ;; :ensure-system-package (tern . "npm i -g tern")
-  )
+  :disabled
+  :commands company-tern)
 
 (use-package company-tern
   :ensure t
+  :disabled
   :commands company-tern
   :config
   (defun company/js-mode-hook ()
     (tern-mode t)
-    (push 'company-tern company-backends))
+    (add-to-list 'company-backends '(company-tern :with company-yasnippet))
+    (add-to-list 'company-backends '(company-css :with company-yasnippet)))
   (add-hook 'js-mode-hook 'company/js-mode-hook)
   (add-hook 'js2-mode-hook 'company/js-mode-hook)
-  (add-hook 'vue-mode-hook 'company/js-mode-hook))
-
+  (add-hook 'vue-mode-hook 'company/js-mode-hook)
+  (add-hook 'rjsx-mode-hook 'company/js-mode-hook))
 
 ;;; Prettier.js
 (use-package prettier-js
   :ensure t
-  ;; :ensure-system-package (vue-prettier . "npm i -g vue-prettier")
   :config
   (setq prettier-js-command "~/.nvm/versions/node/v9.4.0/bin/vue-prettier")
   (add-hook 'js2-mode-hook 'prettier-js-mode)
@@ -162,12 +160,35 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
                                (enable-minor-mode
                                 '("\\.jsx?\\'" . prettier-js-mode)))))
 
+;;; Language server client for JavaScript
+(defun my-company-transformer (candidates)
+  "Custom company transformer for CANDIDATES."
+  (let ((completion-ignore-case t))
+    (all-completions (company-grab-symbol) candidates)))
 
-;;; web-beautify - pretty HTML auto formatting
-(use-package web-beautify :ensure t
-  ;; :ensure-system-package (tern . "npm i -g js-beautify")
-)
+(defun my-js-hook nil
+  "Custom hook for using custom company transformer."
+  (make-local-variable 'company-transformers)
+  (push 'my-company-transformer company-transformers))
 
+(use-package lsp-javascript-typescript
+  :ensure t
+  :config
+  (add-hook 'js-mode-hook         #'lsp-javascript-typescript-enable)
+  (add-hook 'typescript-mode-hook #'lsp-javascript-typescript-enable)
+  (add-hook 'js3-mode-hook        #'lsp-javascript-typescript-enable)
+  (add-hook 'rjsx-mode            #'lsp-javascript-typescript-enable)
+  (add-hook 'js-mode-hook 'my-js-hook)
+  (add-hook 'rjsx-mode-hook 'my-js-hook))
+
+(use-package lsp-typescript
+  :ensure t
+  :disabled
+  :config
+  (add-hook 'js-mode-hook  #'lsp-typescript-enable)
+  (add-hook 'js2-mode-hook #'lsp-typescript-enable)
+  (add-hook 'rjsx-mode     #'lsp-typescript-enable))
+  
 
 (provide 'lang.javascript)
 ;;; lang.javascript ends here
