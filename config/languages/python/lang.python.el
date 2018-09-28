@@ -52,5 +52,20 @@
   :diminish
   :hook (importmagic-mode . python-mode))
 
+(lsp-define-stdio-client lsp-python
+                         "python"
+                         #'projectile-project-root
+                         '("~/.pyenv/versions/3.6.6/bin/pyls"))
+
+(add-hook 'python-mode-hook
+          (lambda ()
+            (lsp-python-enable)))
+
+(defun lsp-set-cfg ()
+  (let ((lsp-cfg `(:pyls (:configurationSources ("flake8")))))
+
+    (lsp--set-configuration lsp-cfg)))
+(add-hook 'lsp-after-initialize-hook 'lsp-set-cfg)
+
 (provide 'lang.python)
 ;;; lang.python ends here
