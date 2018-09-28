@@ -50,7 +50,7 @@
   :ensure t
   :config
   (setq circadian-themes '((:sunrise . kaolin-bubblegum)
-                           (:sunset  . srcery)))
+                           (:sunset  . challenger-deep)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
 
