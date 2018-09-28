@@ -18,7 +18,6 @@
   (add-to-list 'package-archives
                '("gnu" . "https://elpa.gnu.org/packages/")))
 
-(package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
 
@@ -26,6 +25,8 @@
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+
+(package-initialize)
 
 (eval-when-compile
   (require 'use-package))
@@ -38,7 +39,6 @@
   :ensure
   :config
   (setq load-prefer-newer t)
-  (package-initialize)
   (require 'auto-compile)
   (auto-compile-on-load-mode)
   (auto-compile-on-save-mode))

@@ -47,34 +47,43 @@
                                        '(warning . c/c++-googlelint)))))
 
 ;; -- Autocomplete using YouCompleteMe
-;; (use-package ycmd
-;;   :disabled
-;;   :ensure t
-;;   :commands c++-mode
-;;   :init (add-hook 'c++-mode-hook #'ycmd-mode)
-;;   :config
-;;   (set-variable 'ycmd-server-command '("python2" "~/.emacs.d/github/ycmd/ycmd"))
-;;   (set-variable 'ycmd-global-config (expand-file-name "~/.emacs.d/config/external/ycm_extra_conf.py"))
-;;   (set-variable 'ycmd-extra-conf-whitelist '("~/Repos/*"))
-;;   (use-package company-ycmd
-;;     :ensure t
-;;     :mode ("\\.cpp\\'" "\\.h\\'" "\\.hpp\\'")
-;;     :commands c++-mode
-;;     :init (company-ycmd-setup)
-;;     :config (add-to-list 'company-backends
-;;                          (company-mode/backend-with-yas 'company-ycmd))))
+(use-package ycmd
+  :disabled
+  :ensure t
+  :commands c++-mode
+  :init (add-hook 'c++-mode-hook #'ycmd-mode)
+  :config
+  (set-variable 'ycmd-server-command '("python2" "~/.emacs.d/github/ycmd/ycmd"))
+  (set-variable 'ycmd-global-config (expand-file-name "~/.emacs.d/config/external/ycm_extra_conf.py"))
+  (set-variable 'ycmd-extra-conf-whitelist '("~/Repos/*"))
+  (use-package company-ycmd
+    :ensure t
+    :mode ("\\.cpp\\'" "\\.h\\'" "\\.hpp\\'")
+    :commands c++-mode
+    :init (company-ycmd-setup)
+    :config (add-to-list 'company-backends
+                         (company-mode/backend-with-yas 'company-ycmd))))
 
-;; (use-package flycheck-ycmd
-;;   :disabled
-;;   :commands (flycheck-ycmd-setup)
-;;   :init (add-hook 'ycmd-mode-hook 'flycheck-ycmd-setup))
+(use-package flycheck-ycmd
+  :disabled
+  :commands (flycheck-ycmd-setup)
+  :init (add-hook 'ycmd-mode-hook 'flycheck-ycmd-setup))
 
 ;; -- Autocomplete using Irony
-(use-package company-irony :ensure t)
-(use-package company-irony-c-headers :ensure t)
-(use-package irony-eldoc :ensure t)
+(use-package company-irony :ensure t
+  :disabled)
+
+(use-package company-irony-c-headers
+  :ensure t
+  :disabled)
+
+(use-package irony-eldoc
+  :ensure t
+  :disabled)
+
 (use-package irony
   :ensure t
+  :disabled
   :config
   (defun company/irony-mode-hook ()
     "Hook to customize irony mode."
@@ -84,10 +93,6 @@
   (add-hook 'c-mode-hook 'irony-mode)
   (add-hook 'objc-mode-hook 'irony-mode)
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-  ;; (setq company-backends
-  ;;       (remove-if (lambda (e)
-  ;;                    (equal 'company-clang (car e)))
-  ;;                  company-backends))
   :bind
   ((:map c-mode-map
          ("<C-tab>" . company-irony))))
@@ -174,6 +179,27 @@ _j_: goto symbol under point
   (move-beginning-of-line 1))
 
 (define-key c++-mode-map (kbd "<C-return>") 'cpp-endline)
+
+;; Language server protocol
+(with-eval-after-load 'projectile
+  (setq projectile-project-root-files-top-down-recurring
+        (append '("compile_commands.json"
+                  ".ccls")
+                projectile-project-root-files-top-down-recurring)))
+
+(defun ccls//enable ()
+  "Enable ccls for C++ language server."
+  (condition-case nil
+      (lsp-ccls-enable)
+    (user-error nil)))
+
+(use-package ccls
+  :ensure t
+  :commands lsp-ccls-enable
+  :init
+  (add-hook 'c-mode-hook #'ccls//enable)
+  (add-hook 'c++-mode-hook #'ccls//enable))
+  
 
 (provide 'lang.cpp)
 ;;; lang.cpp ends here

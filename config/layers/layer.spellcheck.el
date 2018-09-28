@@ -44,5 +44,22 @@
 (use-package flyspell-correct-ivy
   :ensure t)
 
+(use-package synosaurus
+  :ensure t
+  :config
+  (synosaurus-mode)
+  (setq synosaurus-choose-method 'ido))
+
+(defun flyspell-add-word-to-dict ()
+  "Use flyspell to add word to ~/.apsell.LANG.pws."
+  (interactive)
+  (let ((current-location (point))
+        (word (flyspell-get-word)))
+    (when (consp word)
+      (flyspell-do-correct 'save nil
+                           (car word) current-location
+                           (cadr word)
+                           (caddr word) current-location))))
+
 (provide 'layer.spellcheck)
 ;;; layer.spellcheck ends here

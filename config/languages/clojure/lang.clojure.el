@@ -53,7 +53,6 @@
 
 (use-package flycheck-clojure
   :ensure t
-  :commands clojure-mode
   :config
   (eval-after-load 'flycheck '(flycheck-clojure-setup)))
 

@@ -39,7 +39,6 @@
 
 ;; keyfreq - gather statistics of key and command frequency
 (use-package keyfreq
-  :disabled
   :ensure t
   :config
   (keyfreq-mode 1)
@@ -169,7 +168,9 @@ Text Scaling
 (use-package rainbow-delimiters
   :ensure t
   :hook
-  (prog-mode . rainbow-delimiters-mode))
+  ((clojurescript-mode . rainbow-delimiters-mode)
+   (clojure-mode . rainbow-delimiters-mode)
+   (prog-mode . rainbow-delimiters-mode)))
 
 ;; rainbow-mode - highlight HTML color codes with the corresponding color
 (use-package rainbow-mode
@@ -487,6 +488,11 @@ _t_: toggle block
 (use-package writeroom-mode
   :ensure t
   :commands writeroom-mode)
+
+;; Docker
+(use-package docker
+  :ensure t
+  :bind ("C-c d" . docker))
 
 (provide 'editor.packages)
 ;;; editor.packages ends here

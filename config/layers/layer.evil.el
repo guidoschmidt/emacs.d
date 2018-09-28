@@ -8,7 +8,11 @@
 (use-package evil
   :ensure t
   :init
-  (setq evil-want-integration nil)
+  (progn
+    (setq evil-want-C-u-scroll  t
+          evil-want-integration nil
+          evil-want-integration nil
+          evil-want-keybinding  nil))
   :config
   (evil-mode t)
   (setq evil-emacs-state-modes
@@ -47,6 +51,8 @@
     "s"       'magit-status
     "TAB"     'indent-region
     "?"       'flyspell-correct-word-generic
+    "!"       'flyspell-add-word-to-dict
+    "/"       'synosaurus-choose-and-replace
     "p"       'counsel-projectile-switch-project
     "f"       'counsel-projectile-find-file
     "t"       'mc/mark-sgml-tag-pair
@@ -58,8 +64,9 @@
     "<up>"    'beginning-of-defun
     "w"       'save-buffer
     "<down>"  'end-of-defun
-    "j"       'counsel-imenu
-    "e"       'newline-and-indent))
+    "q"       'counsel-imenu
+    "e"       'newline-and-indent
+    "j"       'swiper-avy))
 
 (use-package lispy
   :ensure t
@@ -119,6 +126,7 @@ _m_: make cursor
   :after evil
   :ensure t
   :config
+  (setq evil-want-integration nil)
   (setq evil-collection-setup-minibuffer t)
   (setq evil-collection-company-use-tng nil)
   (evil-collection-init))
@@ -139,6 +147,22 @@ _m_: make cursor
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys)
   :hook org-mode)
+
+(use-package evil-indent-plus
+  :ensure t
+  :config
+  (evil-indent-plus-default-bindings))
+
+(use-package evil-snipe
+  :ensure t
+  :config
+  (evil-snipe-mode +1)
+  (evil-snipe-override-mode +1))
+
+(use-package evil-commentary
+  :ensure t
+  :config
+  (evil-commentary-mode))
 
 (provide 'layer.evil)
 ;;; layer.evil ends here
