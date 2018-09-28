@@ -18,6 +18,7 @@
 ** IN straight.el
     Next generation package manager for the Emacs Hacker
     https://github.com/raxod502/straight.el
+    Use to integrate git only hosted packages
 ** IN evil-easymotion
    https://github.com/PythonNut/evil-easymotion
 ** IN Cleverparens
