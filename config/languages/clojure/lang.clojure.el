@@ -56,5 +56,14 @@
   :config
   (eval-after-load 'flycheck '(flycheck-clojure-setup)))
 
+(lsp-define-stdio-client lsp-clojure
+                         "clojure"
+                         #'projectile-project-root
+                         '("~/Downloads/clojure-lsp"))
+
+(add-hook 'clojure-mode-hook
+          (lambda ()
+            (lsp-clojure-enable)))
+
 (provide 'lang.clojure)
 ;;; lang.clojure ends here
