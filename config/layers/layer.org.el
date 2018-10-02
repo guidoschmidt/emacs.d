@@ -98,8 +98,10 @@ _t_: org-todo
   (interactive
    (insert (format-time-string "%d.%m. — %A"))))
 
+(defvar org-format-latex-options '())
 (setq org-format-latex-options
       (plist-put org-format-latex-options :scale 3.0))
+
 
 (provide 'layer.org)
 ;;; layer.org ends here
