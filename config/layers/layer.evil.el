@@ -36,6 +36,10 @@
  :config
   (evil-lion-mode))
 
+(defun insert-dash ()
+  (interactive)
+  (insert-char (string-to-char "—")))
+
 (use-package evil-leader
   :ensure t
   :config
@@ -65,8 +69,8 @@
     "w"       'save-buffer
     "<down>"  'end-of-defun
     "q"       'counsel-imenu
-    "e"       'newline-and-indent
-    "j"       'swiper-avy))
+    "j"       'swiper-avy
+    "-"       'insert-dash))
 
 (use-package lispy
   :ensure t
