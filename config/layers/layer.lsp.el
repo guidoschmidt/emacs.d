@@ -1,4 +1,4 @@
-;;; layer.lsp.el ‒-- Language server protocol client
+;;; layer.lsp --- Language server protocol client
 ;;; Commentary:
 
 ;;; Code:
@@ -15,6 +15,16 @@
 (use-package company-lsp
     :config
     (push 'company-lsp company-backends))
+
+(use-package lsp-symbol-outline
+  :load-path "~/.emacs.d/github/lsp-symbol-outline"
+  :init
+  (progn
+    (use-package outline-magic
+      :ensure t)
+    (use-package cquery
+      :ensure t)
+    (require 'lsp-symbol-outline-C)))
 
 (provide 'layer.lsp)
 ;;; layer.lsp ends here

@@ -40,3 +40,6 @@
 [submodule "github/emacs-xcode"]
 	path = github/emacs-xcode
 	url = https://github.com/senny/emacs-xcode.git
+[submodule "github/lsp-symbol-outline"]
+	path = github/lsp-symbol-outline
+	url = https://github.com/bizzyman/LSP-Symbol-Outline.git
