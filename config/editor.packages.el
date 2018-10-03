@@ -57,8 +57,8 @@
   :config
   (dashboard-setup-startup-hook)
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
-  (setq dashboard-banner-logo-title "Emacs — At your service")
-  (setq dashboard-startup-banner 'official))
+  (setq dashboard-banner-logo-title "")
+  (setq dashboard-startup-banner "~/.emacs.d/img/emacs.png"))
 
 ;; Dired-Hacks - imporve dired-mode
 (use-package dired-hacks-utils
