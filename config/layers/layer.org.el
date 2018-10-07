@@ -102,6 +102,21 @@ _t_: org-todo
 (setq org-format-latex-options
       (plist-put org-format-latex-options :scale 3.0))
 
+(setq org-startup-indented t
+      org-bullets-bullet-list '(" ") ;; no bullets, needs org-bullets package
+      org-ellipsis "  " ;; folding symbol
+      org-pretty-entities t
+      org-hide-emphasis-markers t
+      ;; show actually italicized text instead of /italicized text/
+      org-agenda-block-separator ""
+      org-fontify-whole-heading-line t
+      org-fontify-done-headline t
+      org-fontify-quote-and-verse-blocks t)
+
+(use-package org-pretty-table
+  :load-path "~/.emacs.d/config/layers/org"
+  :hook (org-mode . org-pretty-table-mode))
+
 
 (provide 'layer.org)
 ;;; layer.org ends here
