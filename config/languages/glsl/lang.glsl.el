@@ -16,7 +16,7 @@
   :commands glsl-mode
   :config
   (when (executable-find "glslangValidator")
-    (add-to-list 'company-backends 'company-glsl)))
+    (add-to-list 'company-backends '(company-glsl :with company-yasnippet))))
 
 (use-package flycheck-glsl
   :commands glsl-mode
