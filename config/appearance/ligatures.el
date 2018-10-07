@@ -38,5 +38,11 @@
 (add-hook 'ediff-mode-hook
           (lambda () (setq-local auto-composition-mode nil)))
 
+(add-hook 'c++-mode-hook
+          (lambda () (setq-local auto-composition-mode nil)))
+
+(add-hook 'org-mode-hook
+          (lambda () (setq-local auto-composition-mode nil)))
+
 (provide 'ligatures)
 ;;; ligatures ends here

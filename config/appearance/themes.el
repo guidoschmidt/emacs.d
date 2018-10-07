@@ -43,13 +43,14 @@
 (use-package challenger-deep-theme          :ensure :defer)
 (use-package srcery-theme                   :ensure :defer)
 (use-package zerodark-theme                 :ensure :defer)
+(use-package spacemacs-theme                :ensure :defer)
 
 ;; --- Circadian
 (use-package circadian
   :load-path "~/git/develop/emacs/circadian.el/"
   :ensure t
   :config
-  (setq circadian-themes '((:sunrise . gruvbox-light-hard)
+  (setq circadian-themes '((:sunrise . spacemacs-light)
                            (:sunset  . challenger-deep)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
