@@ -57,8 +57,8 @@
   :config
   (dashboard-setup-startup-hook)
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
-  (setq dashboard-banner-logo-title "")
-  (setq dashboard-startup-banner "~/.emacs.d/img/emacs.png"))
+  (setq dashboard-banner-logo-title ""))
+  ;; (setq dashboard-startup-banner "~/.emacs.d/img/emacs.png"))
 
 ;; Dired-Hacks - imporve dired-mode
 (use-package dired-hacks-utils
@@ -487,7 +487,12 @@ _t_: toggle block
 ;; Writeroom mode
 (use-package writeroom-mode
   :ensure t
-  :commands writeroom-mode)
+  :hook (org-mode . writeroom-mode)
+  :config
+  (setq writeroom-extra-line-spacing (round (/ (alfontzo-scale-for-host) 1.5)))
+  (setq writeroom-fullscreen-effect nil)
+  (setq writeroom-bottom-divider-width 0)
+  (setq writeroom-width 0.8))
 
 ;; Docker
 (use-package docker
