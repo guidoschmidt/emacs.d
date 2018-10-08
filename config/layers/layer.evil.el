@@ -10,7 +10,7 @@
   :init
   (progn
     (setq evil-want-C-u-scroll  t
-          evil-want-integration nil
+          evil-want-integration t
           evil-want-integration nil
           evil-want-keybinding  nil))
   :config
@@ -37,6 +37,7 @@
   (evil-lion-mode))
 
 (defun insert-dash ()
+  "Insert dash at current cursor position."
   (interactive)
   (insert-char (string-to-char "—")))
 
@@ -72,10 +73,11 @@
     "j"       'swiper-avy
     "-"       'insert-dash))
 
-(use-package lispy
+(use-package evil-lispy
   :ensure t
   :config
   (evil-leader/set-key
+    "("  'lispy-parens
     "l"  'hydra-lispy-x/body))
 
 (use-package lispyville
@@ -129,6 +131,8 @@ _m_: make cursor
 (use-package evil-collection
   :after evil
   :ensure t
+  :init
+  (defvar evil-collection-company-use-tng)
   :config
   (setq evil-want-integration nil)
   (setq evil-collection-setup-minibuffer t)
@@ -167,6 +171,9 @@ _m_: make cursor
   :ensure t
   :config
   (evil-commentary-mode))
+
+(use-package evil-paredit
+  :ensure t)
 
 (provide 'layer.evil)
 ;;; layer.evil ends here
