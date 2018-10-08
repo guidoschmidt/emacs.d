@@ -77,7 +77,6 @@
   :ensure t
   :config
   (evil-leader/set-key
-    "("  'lispy-parens
     "l"  'hydra-lispy-x/body))
 
 (use-package lispyville
@@ -174,6 +173,11 @@ _m_: make cursor
 
 (use-package evil-paredit
   :ensure t)
+
+(use-package evil-cleverparens
+  :ensure t
+  :hook ((emacs-lisp-mode . evil-cleverparens-mode)
+         (clojure-mode . evil-cleverparens-mode)))
 
 (provide 'layer.evil)
 ;;; layer.evil ends here
