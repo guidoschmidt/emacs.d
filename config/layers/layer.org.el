@@ -3,10 +3,8 @@
 ;;; Commentary:
 
 ;;; Code:
-'(org-clock-into-drawer "timetracking")
 
-(setq org-directory "~/Dropbox/Notes/")
-
+;; Utility functions
 (defun sa-find-org-file-recursively (&optional directory filext)
   "Return .org and .org_archive files recursively from DIRECTORY.
 If FILEXT is provided, return files with extension FILEXT instead."
@@ -28,23 +26,54 @@ If FILEXT is provided, return files with extension FILEXT instead."
                           org-file-list) ; add files found to result
           (add-to-list 'org-file-list org-file)))))))
 
-(setq org-agenda-files
-      (append (sa-find-org-file-recursively "~/Dropbox/Notes/")))
+(defun do-org-show-all-inline-images ()
+  "Show all images inside an org file."
+  (interactive)
+  (org-display-inline-images t t))
+(global-set-key (kbd "C-c C-x C v")
+                'do-org-show-all-inline-images)
 
+(defun org-current-date ()
+  "Insert the current date."
+  (interactive
+   (insert (format-time-string "%d.%m. — %A"))))
+
+;; Setup org with org-files, variable configuration and keywords
+(defvar org-directory "~/Dropbox/Notes")
+
+(defvar org-agenda-files '("~/Dropbox/Notes/TODO.org"))
+
+(defvar org-agenda-text-search-extra-files)
 (setq org-agenda-text-search-extra-files
       (append (sa-find-org-file-recursively "~/Dropbox/Notes/" "org")
               (sa-find-org-file-recursively "~/Dropbox/Notes/" "org")))
 
-(use-package org-bullets
-  :ensure t
-  :config
-  (setq org-bullets-bullet-list '("✕" "‒" "⇻" "→"))
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+(defvar org-startup-indented)
+(defvar org-bullets-bullet-list)
+(defvar org-ellipsis)
+(defvar org-pretty-entities)
+(defvar org-hide-emphasis-markers)
+(defvar org-agenda-block-separator)
+(defvar org-src-fontify-natively)
+(defvar org-fontify-whole-heading-line)
+(defvar org-fontify-done-headline)
+(defvar org-fontify-quote-and-verse-blocks)
 
-;; -- Enable syntax highlighting by default
-(setq org-src-fontify-natively t)
+(setq org-startup-indented t
+      org-bullets-bullet-list '(" ")
+      org-ellipsis "  "
+      org-pretty-entities t
+      org-hide-emphasis-markers t
+      org-agenda-block-separator ""
+      org-src-fontify-natively t
+      org-fontify-whole-heading-line t
+      org-fontify-done-headline t
+      org-fontify-quote-and-verse-blocks t)
 
-;; --- Setup TODO states
+(defvar org-image-actual-width)
+(setq org-image-actual-width '(400))
+
+(defvar org-todo-keywords)
 (setq org-todo-keywords
       '((sequence "IN(i)"
                   "TODO(t)"
@@ -55,6 +84,8 @@ If FILEXT is provided, return files with extension FILEXT instead."
                   "|"
                   "DONE(d)"
                   "WONTDO(n)")))
+
+(defvar org-todo-keyword-faces)
 (setq org-todo-keyword-faces
       '(("IN"      . (:foreground "#DFFDFF" :weight bold))
         ("TODO"    . (:foreground "#FE6264" :weight bold :box nil))
@@ -65,6 +96,33 @@ If FILEXT is provided, return files with extension FILEXT instead."
         ("DONE"    . (:foreground "#12DA73" :weight bold))
         ("WONTDO"  . (:foreground "#12DA73" :weight bold :strike-through t))))
 
+;; LaTeX configuration
+(defvar org-format-latex-options '())
+
+(setq org-format-latex-options
+      (plist-put org-format-latex-options :scale 3.0))
+
+;; Third party packages
+(use-package org-bullets
+  :ensure t
+  :config
+  (setq org-bullets-bullet-list '("✕" "‒" "⇻" "→"))
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+(use-package org-pretty-table
+  :load-path "~/.emacs.d/config/layers/org"
+  :hook (org-mode . org-pretty-table-mode))
+
+(use-package writeroom-mode
+  :ensure t
+  :hook (org-mode . writeroom-mode)
+  :config
+  (setq writeroom-extra-line-spacing (round (/ (alfontzo-scale-for-host) 1.5)))
+  (setq writeroom-fullscreen-effect nil)
+  (setq writeroom-bottom-divider-width 0)
+  (setq writeroom-width 0.8))
+
+;; Hydra
 (eval-after-load "evil-leader"
   '(progn
      (defhydra hydra-org (:color blue :hint nil)
@@ -82,41 +140,6 @@ _t_: org-todo
        ("i" org-current-date))
      (evil-leader/set-key
        "z" 'hydra-org/body)))
-
-;; Show inline images
-(setq org-image-actual-width nil)
-(setq org-image-actual-width '(400))
-(defun do-org-show-all-inline-images ()
-  "Show all images inside an org file."
-  (interactive)
-  (org-display-inline-images t t))
-(global-set-key (kbd "C-c C-x C v")
-                'do-org-show-all-inline-images)
-
-(defun org-current-date ()
-  "Insert the current date."
-  (interactive
-   (insert (format-time-string "%d.%m. — %A"))))
-
-(defvar org-format-latex-options '())
-(setq org-format-latex-options
-      (plist-put org-format-latex-options :scale 3.0))
-
-(setq org-startup-indented t
-      org-bullets-bullet-list '(" ") ;; no bullets, needs org-bullets package
-      org-ellipsis "  " ;; folding symbol
-      org-pretty-entities t
-      org-hide-emphasis-markers t
-      ;; show actually italicized text instead of /italicized text/
-      org-agenda-block-separator ""
-      org-fontify-whole-heading-line t
-      org-fontify-done-headline t
-      org-fontify-quote-and-verse-blocks t)
-
-(use-package org-pretty-table
-  :load-path "~/.emacs.d/config/layers/org"
-  :hook (org-mode . org-pretty-table-mode))
-
 
 (provide 'layer.org)
 ;;; layer.org ends here
