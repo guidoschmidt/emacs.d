@@ -26,8 +26,6 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(package-initialize)
-
 (eval-when-compile
   (require 'use-package))
 
