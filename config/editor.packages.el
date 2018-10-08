@@ -384,7 +384,6 @@ Text Scaling
              pretty-parens
              evil
              lispy
-             paredit
              smart-tab
              smart-yank))
     (add-hook 'clojure-mode-hook #'parinfer-mode)
@@ -439,10 +438,6 @@ _t_: toggle block
 (evil-leader/set-key
   "h" 'hydra-hideshow/body)
 
-;; Smartparens
-(use-package smartparens
-  :ensure t)
-
 ;; Smart hungry delete
 (use-package smart-hungry-delete
   :ensure t
@@ -483,16 +478,6 @@ _t_: toggle block
   ;; don't find this very useful, but it's frequently useful to only
   ;; look at interactive functions.
   (global-set-key (kbd "C-h C") #'helpful-command))
-
-;; Writeroom mode
-(use-package writeroom-mode
-  :ensure t
-  :hook (org-mode . writeroom-mode)
-  :config
-  (setq writeroom-extra-line-spacing (round (/ (alfontzo-scale-for-host) 1.5)))
-  (setq writeroom-fullscreen-effect nil)
-  (setq writeroom-bottom-divider-width 0)
-  (setq writeroom-width 0.8))
 
 ;; Docker
 (use-package docker

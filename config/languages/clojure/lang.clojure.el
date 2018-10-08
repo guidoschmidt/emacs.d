@@ -7,8 +7,7 @@
   :ensure t
   :commands clojure-mode
   :mode "\\.clj\\'"
-  :config
-  (add-hook 'clojure-mode-hook #'enable-paredit-mode))
+  :hook (clojure-mode-hook . lispy-mode))
 
 (use-package clojure-snippets
   :ensure t
