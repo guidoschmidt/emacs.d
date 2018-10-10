@@ -40,7 +40,10 @@
   (c-mode-hook        . google-set-c-style))
 
 (use-package flycheck-google-cpplint
-  :load-path "~/.emacs.d/config/languages/c++/"
+  :straight (flycheck-google-cpplint
+             :type git
+             :host github
+             :repo "flycheck/flycheck-google-cpplint")
   :config
   (eval-after-load 'flycheck
     '(progn (flycheck-add-next-checker 'c/c++-clang

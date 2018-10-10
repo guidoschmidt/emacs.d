@@ -7,8 +7,10 @@
 
 ;;; Code:
 (require 'package)
+(package-initialize)
 
-;;; See: https://github.com/melpa/melpa
+;; use-package -----------------------------------------------------------------
+;;; https://github.com/melpa/melpa
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
        (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
@@ -29,10 +31,28 @@
 (eval-when-compile
   (require 'use-package))
 
-;; Install system dependencies automatically
-(use-package use-package-ensure-system-package
-  :ensure t)
+;; straight.el -----------------------------------------------------------------
+(with-eval-after-load 'gnutls
+  (add-to-list 'gnutls-trustfiles "/usr/local/etc/libressl/cert.pem"))
 
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el"
+                         user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+;; integrate with use-package
+(straight-use-package 'use-package)
+
+;; Additional helpers ----------------------------------------------------------
 (use-package auto-compile
   :ensure
   :config

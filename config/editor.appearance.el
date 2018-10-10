@@ -42,7 +42,11 @@
 
 ;; Font configuration
 (use-package alfontzo
-  :load-path "~/.emacs.d/github/alfontzo"
+  :ensure t
+  :straight (alfontzo
+             :type git
+             :host github
+             :repo "guidoschmidt/alfontzo")
   :config
   (alfontzo-init))
 

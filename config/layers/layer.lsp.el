@@ -17,7 +17,10 @@
     (push 'company-lsp company-backends))
 
 (use-package lsp-symbol-outline
-  :load-path "~/.emacs.d/github/lsp-symbol-outline"
+  :straight (lsp-symbol-outline
+             :type git
+             :host github
+             :repo "bizzyman/LSP-Symbol-Outline")
   :init
   (progn
     (use-package outline-magic

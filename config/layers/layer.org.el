@@ -87,14 +87,14 @@ If FILEXT is provided, return files with extension FILEXT instead."
 
 (defvar org-todo-keyword-faces)
 (setq org-todo-keyword-faces
-      '(("IN"      . (:foreground "#DFFDFF" :weight bold))
+      '(("IN"      . (:foreground "#AFBDBF" :weight bold))
         ("TODO"    . (:foreground "#FE6264" :weight bold :box nil))
         ("WIP"     . (:foreground "#FFB204" :weight bold))
         ("SET"     . (:foreground "#00D0F3" :weight bold))
         ("PROJ"    . (:foreground "#0050F3" :weight bold))
         ("BLOCKED" . (:foreground "#FE042B" :weight bold :box nil))
         ("DONE"    . (:foreground "#12DA73" :weight bold))
-        ("WONTDO"  . (:foreground "#12DA73" :weight bold :strike-through t))))
+        ("WONTDO"  . (:foreground "#12DA73" :weight bold  :strike-through t))))
 
 ;; LaTeX configuration
 (defvar org-format-latex-options '())
@@ -106,12 +106,14 @@ If FILEXT is provided, return files with extension FILEXT instead."
 (use-package org-bullets
   :ensure t
   :config
-  (setq org-bullets-bullet-list '("✕" "‒" "⇻" "→"))
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (use-package org-pretty-table
-  :load-path "~/.emacs.d/config/layers/org"
-  :hook (org-mode . org-pretty-table-mode))
+  :ensure t
+  :straight (org-pretty-table
+             :type git
+             :host github
+             :repo "Fuco1/org-pretty-table"))
 
 (use-package writeroom-mode
   :ensure t

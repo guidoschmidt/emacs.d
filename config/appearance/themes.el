@@ -47,7 +47,6 @@
 
 ;; --- Circadian
 (use-package circadian
-  :load-path "~/git/develop/emacs/circadian.el/"
   :ensure t
   :config
   (setq circadian-themes '((:sunrise . spacemacs-light)

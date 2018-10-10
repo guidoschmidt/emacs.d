@@ -5,13 +5,9 @@
 (require 'solar)
 
 (use-package sky-color-clock
-  :load-path "~/.emacs.d/github/sky-color-clock"
-  :config
-  (eval-when-compile
-    (when calendar-latitude
-      (sky-color-clock-initialize (round calendar-latitude))))
-  (push '(:eval (sky-color-clock)) (default-value 'mode-line-format)))
-
+  :straight (sky-color-clock :type git
+                             :host github
+                             :repo "zk-phi/sky-color-clock"))
 
 (defface evil-normal-state-face
   `((t (:foreground "#F7B2EE"
