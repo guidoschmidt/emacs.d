@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: prop-types
+# key: propt
+# --
+import PropTypes from 'prop-types';
