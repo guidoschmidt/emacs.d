@@ -7,39 +7,12 @@
 [submodule "github/emacs-hemera-theme"]
 	path = github/emacs-hemera-theme
 	url = git@github.com:GuidoSchmidt/emacs-hemera-theme.git
-[submodule "github/flycheck-glsl"]
-	path = github/flycheck-glsl
-	url = git@github.com:rochg/flycheck-glsl.git
 [submodule "github/company-glsl"]
 	path = github/company-glsl
 	url = git@github.com:rochg/flycheck-glsl.git
-[submodule "github/prettier-emacs"]
-	path = github/prettier-emacs
-	url = git@github.com:prettier/prettier-emacs.git
-[submodule "github/org-kanban"]
-	path = github/org-kanban
-	url = https://github.com/hagmonk/org-kanban.git
 [submodule "github/ycmd"]
 	path = github/ycmd
 	url = https://github.com/Valloric/ycmd.git
 [submodule "ycmd"]
 	path = ycmd
 	url = https://github.com/Valloric/ycmd.git
-[submodule "github/org-confluence"]
-	path = github/org-confluence
-	url = https://github.com/sdelafond/org-confluence.git
-[submodule "github/sky-color-clock"]
-	path = github/sky-color-clock
-	url = https://github.com/zk-phi/sky-color-clock.git
-[submodule "github/spaceline-all-the-icons"]
-	path = github/spaceline-all-the-icons
-	url = https://github.com/domtronn/spaceline-all-the-icons.el.git
-[submodule "github/all-the-icons"]
-	path = github/all-the-icons
-	url = https://github.com/domtronn/all-the-icons.el.git
-[submodule "github/emacs-xcode"]
-	path = github/emacs-xcode
-	url = https://github.com/senny/emacs-xcode.git
-[submodule "github/lsp-symbol-outline"]
-	path = github/lsp-symbol-outline
-	url = https://github.com/bizzyman/LSP-Symbol-Outline.git
