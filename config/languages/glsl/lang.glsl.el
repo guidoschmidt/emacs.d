@@ -19,11 +19,7 @@
     (add-to-list 'company-backends '(company-glsl :with company-yasnippet))))
 
 (use-package flycheck-glsl
-  :ensure t
-  :straight (flycheck-glsl
-             :type git
-             :host github
-             :repo "guidoschmidt/flycheck-glsl"))
+  :disabled)
 
 (provide 'lang.glsl)
 ;;; lang.glsl ends here

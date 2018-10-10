@@ -42,7 +42,6 @@
 
 ;; Font configuration
 (use-package alfontzo
-  :ensure t
   :straight (alfontzo
              :type git
              :host github

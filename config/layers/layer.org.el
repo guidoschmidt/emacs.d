@@ -109,7 +109,6 @@ If FILEXT is provided, return files with extension FILEXT instead."
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (use-package org-pretty-table
-  :ensure t
   :straight (org-pretty-table
              :type git
              :host github

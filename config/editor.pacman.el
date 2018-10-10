@@ -9,6 +9,9 @@
 (require 'package)
 (package-initialize)
 
+(with-eval-after-load 'gnutls
+  (add-to-list 'gnutls-trustfiles "/usr/local/etc/libressl/cert.pem"))
+
 ;; use-package -----------------------------------------------------------------
 ;;; https://github.com/melpa/melpa
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -32,9 +35,6 @@
   (require 'use-package))
 
 ;; straight.el -----------------------------------------------------------------
-(with-eval-after-load 'gnutls
-  (add-to-list 'gnutls-trustfiles "/usr/local/etc/libressl/cert.pem"))
-
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el"
