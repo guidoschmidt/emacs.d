@@ -52,7 +52,7 @@
 (require 'modeline)
 (require 'themes)
 (require 'transparency)
-;; (require 'ligatures)
+(require 'ligatures)
 
 ;; Languages
 (require 'lang.android)
