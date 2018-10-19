@@ -44,6 +44,7 @@
 (use-package srcery-theme                   :ensure :defer)
 (use-package zerodark-theme                 :ensure :defer)
 (use-package spacemacs-theme                :ensure :defer)
+(use-package kooten-theme                   :ensure :defer)
 
 ;; --- Circadian
 (use-package circadian

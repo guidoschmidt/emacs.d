@@ -8,6 +8,7 @@
 ;;; Code:
 
 ;;; Javascript
+(defvar flycheck-javascript-eslint-executable)
 (defun my/use-eslint-from-node-modules ()
   "Use local eslint from node_modules before global.
 src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-eslint-executable"
@@ -79,7 +80,6 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (setq mmm-submode-decoration-level 0)
   (flycheck-add-mode 'javascript-eslint 'vue-mode))
 
-
 ;;; JSX & React
 (use-package rjsx-mode
   :ensure t
@@ -92,7 +92,6 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (add-hook 'rjsx-mode-hook 'emmet/rjsx-mode-hook)
   (setq-default rjsx-indent-level 2)
   (flycheck-add-mode 'javascript-eslint 'rjsx-mode))
-
 
 ;;; Elm
 (use-package elm-mode
@@ -149,16 +148,7 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (setq prettier-js-command "~/.nvm/versions/node/v9.4.0/bin/vue-prettier")
   (add-hook 'js2-mode-hook 'prettier-js-mode)
   (add-hook 'vue-mode-hook 'prettier-js-mode)
-  (defun enable-minor-mode (my-pair)
-    (if (buffer-file-name)
-        (if (string-match (car my-pair) buffer-file-name)
-            (funcall (cdr my-pair)))))
-  (add-hook 'rjsx-mode-hook #'(lambda ()
-                                (enable-minor-mode
-                                 '("\\.jsx?\\'" . prettier-js-mode))))
-  (add-hook 'web-mode-hook #'(lambda ()
-                               (enable-minor-mode
-                                '("\\.jsx?\\'" . prettier-js-mode)))))
+  (add-hook 'rjsx-mode-hook 'prettier-js-mode))
 
 ;;; Language server client for JavaScript
 (defun my-company-transformer (candidates)
