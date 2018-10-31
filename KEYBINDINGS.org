@@ -19,3 +19,13 @@ M-s         :paredit-splice-sexp
 #+BEGIN_SRC elisp
 ((square 42)) -> (square 42)
 #+END_SRC
+* Evil
+~o~ insert  blank line below current line
+~O~ insert blank line above current line
+~ci~ *cut inner* + character -> cut text between the character, eg. ~ci)~ will cut text
+between two parentheses
+~cw~ *cut word* -> cut the next word
+~de~ delete to end of word
+
+*Links:*
+https://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/
