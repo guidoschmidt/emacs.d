@@ -448,10 +448,12 @@ _t_: toggle block
 
 ;; Treemacs
 (use-package treemacs
-  :ensure t)
+  :ensure t
+  :disabled)
 
 (use-package treemacs-evil
-  :ensure t)
+  :ensure t
+  :disabled)
 
 ;; Helpful
 (use-package helpful
