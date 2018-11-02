@@ -71,7 +71,8 @@
     "<down>"  'end-of-defun
     "q"       'counsel-imenu
     "j"       'swiper-avy
-    "-"       'insert-dash))
+    "-"       'insert-dash
+    "o"       'objed-activate))
 
 (use-package evil-lispy
   :ensure t
@@ -178,6 +179,15 @@ _m_: make cursor
   :ensure t
   :hook ((emacs-lisp-mode . evil-cleverparens-mode)
          (clojure-mode . evil-cleverparens-mode)))
+
+(use-package objed
+  :straight (objed
+             :type git
+             :host github
+             :repo "clemera/objed")
+  :config
+  (setq objed-cursor-color "#25D3E2")
+  (objed-mode))
 
 (provide 'layer.evil)
 ;;; layer.evil ends here
