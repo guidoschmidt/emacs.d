@@ -5,9 +5,14 @@
 (require 'solar)
 
 (use-package sky-color-clock
-  :straight (sky-color-clock :type git
-                             :host github
-                             :repo "zk-phi/sky-color-clock"))
+  :straight (sky-color-clock
+             :type git
+             :host github
+             :repo "zk-phi/sky-color-clock")
+  :config
+  (eval-when-compile
+    (when calendar-latitude
+      (sky-color-clock-initialize (round calendar-latitude)))))
 
 (defface evil-normal-state-face
   `((t (:foreground "#F7B2EE"
@@ -25,13 +30,13 @@
 
 (defun evil-state-char ()
   "Show starting character of evil state and propertize with respective face."
- (let ((state (symbol-value 'evil-state)))
-   (cond ((equal 'normal state) (propertize "  N  "
-                                            'face 'evil-normal-state-face))
-         ((equal 'insert state) (propertize "  I  "
-                                            'face 'evil-insert-state-face))
-         ((equal 'visual state) (propertize "  V  "
-                                            'face 'evil-visual-state-face)))))
+  (let ((state (symbol-value 'evil-state)))
+    (cond ((equal 'normal state) (propertize "  N  "
+                                             'face 'evil-normal-state-face))
+          ((equal 'insert state) (propertize "  I  "
+                                             'face 'evil-insert-state-face))
+          ((equal 'visual state) (propertize "  V  "
+                                             'face 'evil-visual-state-face)))))
 
 (use-package doom-modeline
   :ensure t
