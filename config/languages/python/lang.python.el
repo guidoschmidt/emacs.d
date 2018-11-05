@@ -53,22 +53,28 @@
   :diminish
   :hook (importmagic-mode . python-mode))
 
-(defvar lsp-python)
-(lsp-define-stdio-client lsp-python
-                         "python"
-                         #'projectile-project-root
-                         '("~/.pyenv/versions/3.6.6/bin/pyls"))
+;; (defvar lsp-python)
+;; (lsp-define-stdio-client lsp-python
+;;                          "python"
+;;                          #'projectile-project-root
+;;                          '("~/.pyenv/versions/3.6.6/bin/pyls"))
 
-(add-hook 'python-mode-hook
-          (lambda ()
-            (lsp-python-enable)))
+;; (add-hook 'python-mode-hook
+;;           (lambda ()
+;;             (lsp-python-enable)))
 
-(defun lsp-set-cfg ()
-  "Setup language server configuration."
-  (let ((lsp-cfg `(:pyls (:configurationSources ("flake8")))))
+;; (defun lsp-set-cfg ()
+;;   "Setup language server configuration."
+;;   (let ((lsp-cfg `(:pyls (:configurationSources ("flake8")))))
 
-    (lsp--set-configuration lsp-cfg)))
-(add-hook 'lsp-after-initialize-hook 'lsp-set-cfg)
+;;     (lsp--set-configuration lsp-cfg)))
+;; (add-hook 'lsp-after-initialize-hook 'lsp-set-cfg)
+
+(use-package eglot
+  :ensure t
+  :config
+  (add-to-list 'eglot-server-programs
+               `(python-mode . ("localhost:4500"))))
 
 (provide 'lang.python)
 ;;; lang.python ends here
