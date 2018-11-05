@@ -11,6 +11,9 @@
 ;; Avoid the pitfall of loading old bytecode indstead of newer
 (setq load-prefer-newer t)
 
+(when (memq system-type '(windows-nt ms-dos))
+ (package-initialize))
+
 (setq custom-file "~/.emacs.d/local/custom-set.el")
 
 ; Setup the load path
