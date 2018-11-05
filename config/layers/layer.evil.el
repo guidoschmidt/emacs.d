@@ -5,24 +5,6 @@
 ;;; Code:
 (require 'ibuffer)
 
-(use-package evil
-  :ensure t
-  :init
-  (progn
-    (setq evil-want-C-u-scroll  t
-          evil-want-integration t
-          evil-want-integration nil
-          evil-want-keybinding  nil))
-  :config
-  (evil-mode t)
-  (setq evil-emacs-state-modes
-        (delq 'ibuffer-mode evil-emacs-state-modes))
-  :bind
-  ((:map ibuffer-mode-map
-         ("v" . nil)
-         ("V" . nil)
-         ("r" . ibuffer-do-revert))))
-
 (use-package key-chord
   :ensure t
   :after evil
@@ -44,7 +26,6 @@
 (use-package evil-leader
   :ensure t
   :config
-  (global-evil-leader-mode)
   (eval-when-compile (evil-leader/set-leader "<SPC>"))
   (evil-leader/set-key
     "a"       'align-regexp
@@ -73,6 +54,25 @@
     "j"       'swiper-avy
     "-"       'insert-dash
     "o"       'objed-activate))
+
+(use-package evil
+  :ensure t
+  :after evil-leader
+  :init
+  (progn
+    (setq evil-want-C-u-scroll  t
+          evil-want-integration t
+          evil-want-integration nil)
+    (global-evil-leader-mode))
+  :config
+  (evil-mode t)
+  (setq evil-emacs-state-modes
+        (delq 'ibuffer-mode evil-emacs-state-modes))
+  :bind
+  ((:map ibuffer-mode-map
+         ("v" . nil)
+         ("V" . nil)
+         ("r" . ibuffer-do-revert))))
 
 (use-package evil-lispy
   :ensure t
@@ -132,9 +132,11 @@ _m_: make cursor
   :after evil
   :ensure t
   :init
-  (defvar evil-collection-company-use-tng)
+  (progn
+    (defvar evil-collection-company-use-tng)
+    (setq evil-want-integration nil)
+    (setq evil-want-keybinding nil))
   :config
-  (setq evil-want-integration nil)
   (setq evil-collection-setup-minibuffer t)
   (setq evil-collection-company-use-tng nil)
   (evil-collection-init))
