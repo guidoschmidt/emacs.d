@@ -25,6 +25,7 @@
   :commands elpy-mode
   :config
   (setq elpy-rpc-python-command "python3")
+  (defvar elpy-rpc-backend)
   (setq elpy-rpc-backend "jedi")
   (defun custom-python-mode-hook ()
     (setq python-indent-offset 2)
@@ -52,6 +53,7 @@
   :diminish
   :hook (importmagic-mode . python-mode))
 
+(defvar lsp-python)
 (lsp-define-stdio-client lsp-python
                          "python"
                          #'projectile-project-root
@@ -62,6 +64,7 @@
             (lsp-python-enable)))
 
 (defun lsp-set-cfg ()
+  "Setup language server configuration."
   (let ((lsp-cfg `(:pyls (:configurationSources ("flake8")))))
 
     (lsp--set-configuration lsp-cfg)))
