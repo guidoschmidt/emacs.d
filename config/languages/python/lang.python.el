@@ -7,8 +7,8 @@
   :ensure t
   :commands python-mode
   :mode ("\\.py\\'" . python-mode)
-  :interpreter ("python" . python-mode)
   :config
+  (setq python-python-command "/usr/local/bin/python3")
   (setq python-indent-guess-indent-offset nil)
 ;;; macOS
   (when (memq window-system '(ns))
