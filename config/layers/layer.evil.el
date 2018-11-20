@@ -57,7 +57,8 @@
     "q"       'counsel-imenu
     "j"       'swiper-avy
     "-"       'insert-dash
-    "o"       'objed-activate))
+    "o"       'objed-activate
+    "0"       'switch-window))
 
 (use-package evil
   :ensure t
