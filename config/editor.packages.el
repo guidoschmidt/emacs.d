@@ -256,7 +256,10 @@ Text Scaling
   :commands (ivy-mode ivy-switch-buffer)
   :diminish ivy-mode
   :config
-  (use-package wgrep :ensure t)
+  (use-package wgrep
+    :ensure t
+    :config
+    (setq wgrep-change-readonly-file t))
   (use-package wgrep-ag :ensure t)
   (setq enable-recursive-minibuffers t)
   (setq ivy-display-style 'fancy)
