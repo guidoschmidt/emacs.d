@@ -5,6 +5,10 @@
 ;;; Code:
 (require 'ibuffer)
 
+(setq evil-want-C-u-scroll  t
+      evil-want-integration nil
+      evil-want-keybinding nil)
+
 (use-package key-chord
   :ensure t
   :after evil
@@ -59,11 +63,7 @@
   :ensure t
   :after evil-leader
   :init
-  (progn
-    (setq evil-want-C-u-scroll  t
-          evil-want-integration t
-          evil-want-integration nil)
-    (global-evil-leader-mode))
+  (global-evil-leader-mode)
   :config
   (evil-mode t)
   (setq evil-emacs-state-modes
@@ -131,11 +131,6 @@ _m_: make cursor
 (use-package evil-collection
   :after evil
   :ensure t
-  :init
-  (progn
-    (defvar evil-collection-company-use-tng)
-    (setq evil-want-integration nil)
-    (setq evil-want-keybinding nil))
   :config
   (setq evil-collection-setup-minibuffer t)
   (setq evil-collection-company-use-tng nil)
