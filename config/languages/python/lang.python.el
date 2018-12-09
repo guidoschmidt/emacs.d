@@ -1,5 +1,3 @@
-;;; lang.python --- Python Language/IDE settings
-
 ;;; Commentary:
 
 ;;; Code:
