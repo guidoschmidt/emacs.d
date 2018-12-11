@@ -9,8 +9,7 @@
       gc-cons-percentage 0.6)
 
 ;; Initialize package.el if not already done
-(when (not package--initialized)
-  (package-initialize))
+(package-initialize)
 
 ;; Avoid the pitfall of loading old bytecode indstead of newer
 (setq load-prefer-newer t)
