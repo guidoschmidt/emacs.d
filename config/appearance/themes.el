@@ -45,13 +45,14 @@
 (use-package zerodark-theme                 :ensure :defer)
 (use-package spacemacs-theme                :ensure :defer)
 (use-package kooten-theme                   :ensure :defer)
+(use-package panda-theme                    :ensure :defer)
 
 ;; --- Circadian
 (use-package circadian
   ;; :load-path "~/git/develop/emacs/circadian.el"
   :ensure t
   :config
-  (setq circadian-themes '((:sunrise . zerodark)
+  (setq circadian-themes '((:sunrise . panda)
                            (:sunset  . challenger-deep)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))

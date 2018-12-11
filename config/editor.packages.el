@@ -234,6 +234,7 @@ Text Scaling
 ;; ace-window - effectively jump between frames and windows
 (use-package ace-window
   :ensure t
+  :disabled
   :init
   (global-set-key [remap other-window] 'ace-window)
   :config
@@ -243,6 +244,10 @@ Text Scaling
      ((t (:inherit ace-jump-face-forground
                    :foreground "white"
                    :background "black"))))))
+
+;; switch-window - drop ace-window in favor of this
+(use-package switch-window
+  :ensure t)
 
 ;; ace-link - effectively jump between links
 (use-package ace-link
@@ -256,7 +261,10 @@ Text Scaling
   :commands (ivy-mode ivy-switch-buffer)
   :diminish ivy-mode
   :config
-  (use-package wgrep :ensure t)
+  (use-package wgrep
+    :ensure t
+    :config
+    (setq wgrep-change-readonly-file t))
   (use-package wgrep-ag :ensure t)
   (setq enable-recursive-minibuffers t)
   (setq ivy-display-style 'fancy)
