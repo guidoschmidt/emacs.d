@@ -8,9 +8,6 @@
 (setq gc-cons-threshold 402653184
       gc-cons-percentage 0.6)
 
-;; Initialize package.el if not already done
-(package-initialize)
-
 ;; Avoid the pitfall of loading old bytecode indstead of newer
 (setq load-prefer-newer t)
 

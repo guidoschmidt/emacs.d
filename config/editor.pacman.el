@@ -7,8 +7,8 @@
 
 ;;; Code:
 (require 'package)
-;; (package-initialize)
 
+(defvar gnutls-trustfiles)
 (with-eval-after-load 'gnutls
   (add-to-list 'gnutls-trustfiles "/usr/local/etc/libressl/cert.pem"))
 
