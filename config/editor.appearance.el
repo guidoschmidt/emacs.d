@@ -3,13 +3,6 @@
 ;;; Commentary:
 
 ;;; Code:
-;;; Set title bar text color
-(add-to-list 'default-frame-alist
-             '(ns-transparent-titlebar . t))
-
-(add-to-list 'default-frame-alist
-             '(ns-appearance . light))
-
 ;;; Remove startup message
 (setq inhibit-startup-message t)
 
@@ -18,7 +11,7 @@
 
 (setq default-frame-alist
       '((ns-transparent-titlebar . t)
-        (ns-appearance . 'nil)))
+        (ns-appearance . 'light)))
 
 ;; Disable menubar
 (menu-bar-mode -1)
@@ -38,19 +31,20 @@
   (toggle-indicate-empty-lines))
 
 ;; Highlight current line
-(global-hl-line-mode 1)
+(global-hl-line-mode t)
 
 ;; Font configuration
 (use-package alfontzo
-  :straight (alfontzo
-             :type git
-             :host github
-             :repo "guidoschmidt/alfontzo")
+  :straight
+  (alfontzo
+   :type git
+   :host github
+   :repo "guidoschmidt/alfontzo")
   :config
   (alfontzo-init))
 
 ;; Line numbers
-(global-display-line-numbers-mode 1)
+(global-display-line-numbers-mode t)
 
 ;; Indentation
 (use-package smart-tabs-mode
@@ -82,11 +76,11 @@
 (use-package beacon
   :ensure t
   :init
-  (setq beacon-color "#FEBB9F")
+  (setq beacon-color "#FFFFFF")
   (setq beacon-blink-delay 0.01)
   (setq beacon-blink-duration 1.75)
   :config
-  (beacon-mode 1))
+  (beacon-mode t))
 
 (provide 'editor.appearance)
 ;;; editor.appearance ends here

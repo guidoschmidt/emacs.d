@@ -3,6 +3,11 @@
 ;;; Commentary:
 
 ;;; Code:
+(require 'solar)
+(require 'apropos)
+(require 'ido)
+(require 'paren)
+
 ;; Start the server
 (server-start)
 
@@ -10,20 +15,17 @@
 (setq auto-window-vscroll nil)
 
 ;; Setup calendar geo location
-(require 'solar)
-(setq calendar-latitude 49.329896)
+(setq calendar-latitude  49.329896)
 (setq calendar-longitude 8.570925)
 
 ;; Setup language environment
-(set-language-environment "UTF-8")
+(set-language-environment   "utf-8")
 (set-default-coding-systems 'utf-8)
 
 ;;; Apropos sortage by relevancy
-(require 'apropos)
 (setq apropos-sort-by-scores t)
 
 ;; Enable interactive do mode
-(require 'ido)
 (ido-mode t)
 
 ;; Move backup files
@@ -67,7 +69,6 @@
   (setq initial-scratch-message ""))
 
 ;; Enable show-paren-mode
-(require 'paren)
 (setq show-paren-delay 0)
 (show-paren-mode 1)
 
@@ -114,7 +115,6 @@
   (transpose-lines 1)
   (forward-line -1))
 
-;; Custom function for reloading a currently opened file
 (defun reload-current-file ()
   "Reload the file loaded in current buffer from the disk."
   (interactive)
@@ -123,9 +123,8 @@
                 (message "File reloaded.")))
         (t (message "Not editing a file."))))
 
-;; Custom function to duplicate a whole line
 (defun duplicate-line()
-  "Duplicate a line"
+  "Duplicate a line."
   (interactive)
   (move-beginning-of-line 1)
   (kill-line)
@@ -133,12 +132,11 @@
   (forward-line 1)
   (yank))
 
-;; Custom function to insert a checkmark
 (defun insert-checkmark()
+  "Custom function to insert a check mark."
   (interactive)
   (insert-char (string-to-char "✓")))
 
-;; Custom function to create a new empty buffer in a separate frame
 (defun new-buffer-frame ()
   "Create a new frame with a new empty buffer."
   (interactive)
@@ -146,7 +144,6 @@
     (set-buffer-major-mode buffer)
     (display-buffer buffer '(display-buffer-pop-up-frame . nil))))
 
-;; Custom function to create a new empty buffer
 (defun new-buffer ()
   "Create a new empty buffer."
   (interactive)
@@ -157,23 +154,6 @@
       (setq num (1+ num)))
     (switch-to-buffer
      (concat bn (number-to-string num)))))
-
-;; iedit customization's
-(advice-add 'iedit-mode
-            :after (lambda (&optional ignore)
-                     (when iedit-mode
-                       (minibuffer-message "iedit session started. Press C-; to end."))))
-
-(defun ap/iedit-mode (orig-fn)
-  "Call `iedit-mode' with function-local scope by default, or global scope if called with a universal prefix."
-  (interactive)
-  (pcase current-prefix-arg
-    ('nil (funcall orig-fn '(0)))
-    ('(4) (funcall orig-fn))
-    (_ (user-error "`ap/iedit-mode' called with prefix: %s" prefix))))
-
-;; Override default `iedit-mode' function with advice.
-(advice-add #'iedit-mode :around #'ap/iedit-mode)
 
 (provide 'editor.core)
 ;;; editor.core ends here
