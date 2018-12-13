@@ -7,20 +7,22 @@
   :hook (lsp-after-open . lsp-enable-imenu))
 
 (use-package lsp-ui
-    :ensure t
-    :config
-    (setq lsp-ui-sideline-ignore-duplicate t)
-    (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+  :ensure t
+  :config
+  (setq lsp-ui-sideline-ignore-duplicate t)
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
 
 (use-package company-lsp
-    :config
-    (push 'company-lsp company-backends))
+  :ensure t
+  :config
+  (push 'company-lsp company-backends))
 
 (use-package lsp-symbol-outline
-  :straight (lsp-symbol-outline
-             :type git
-             :host github
-             :repo "bizzyman/LSP-Symbol-Outline")
+  :straight
+  (lsp-symbol-outline
+   :type git
+   :host github
+   :repo "bizzyman/LSP-Symbol-Outline")
   :init
   (progn
     (use-package outline-magic

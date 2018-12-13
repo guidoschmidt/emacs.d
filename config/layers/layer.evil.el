@@ -5,9 +5,9 @@
 ;;; Code:
 (require 'ibuffer)
 
-(setq evil-want-C-u-scroll  t
-      evil-want-integration nil
-      evil-want-keybinding nil)
+(setq-default evil-want-C-u-scroll  t)
+(setq-default evil-want-integration t)
+(setq-default evil-want-keybinding nil)
 
 (use-package key-chord
   :ensure t
