@@ -5,7 +5,7 @@
 (use-package glsl-mode
   :ensure t
   :commands python-mode
-  :mode ("\\.glsl\\'" . python-mode)
+  :mode ("\\.glsl\\'" . glsl-mode)
   :config
   (add-hook 'glsl-mode-hook
             (lambda()
