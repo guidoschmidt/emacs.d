@@ -5,6 +5,10 @@ ido.last
 recentf
 .mc-lists.el
 auto-save/
+.cache/
+.init.el.un~
+init.el~
+server/
 
 # Privacy - ignore private modules
 config/private/

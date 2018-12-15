@@ -6,17 +6,19 @@
   :commands python-mode
   :mode ("\\.py\\'" . python-mode)
   :config
-  (setq python-python-command "/usr/local/bin/python3")
+  
   (setq python-indent-guess-indent-offset nil)
 ;;; macOS
   (when (memq window-system '(ns))
+    (setq python-python-command "/usr/local/bin/python3")
     (setq exec-path
           (append exec-path
                   '("/usr/local/bin/"))))
 ;;; Windows
   (when (memq window-system '(w32))
+    (setq python-python-command "c:/Development/python/3.6/python.exe")
     (setq exec-path
-          (append exec-path '("c:/Development/python/anaconda/envs/td/python.exe")))))
+          (append exec-path '("c:/Development/python/3.5/")))))
 
 (use-package elpy
   :ensure t

@@ -8,12 +8,11 @@
 (setq gc-cons-threshold 402653184
       gc-cons-percentage 0.6)
 
-;; Initialize package.el if not already done
-(when (not package--initialized)
-  (package-initialize))
-
 ;; Avoid the pitfall of loading old bytecode indstead of newer
 (setq load-prefer-newer t)
+
+(when (memq system-type '(windows-nt ms-dos))
+ (package-initialize))
 
 (setq custom-file "~/.emacs.d/local/custom-set.el")
 

@@ -151,34 +151,14 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (add-hook 'rjsx-mode-hook 'prettier-js-mode))
 
 ;;; Language server client for JavaScript
-(defun my-company-transformer (candidates)
-  "Custom company transformer for CANDIDATES."
-  (let ((completion-ignore-case t))
-    (all-completions (company-grab-symbol) candidates)))
-
-(defun my-js-hook nil
-  "Custom hook for using custom company transformer."
-  (make-local-variable 'company-transformers)
-  (push 'my-company-transformer company-transformers))
-
-(use-package lsp-javascript-typescript
-  :ensure t
-  :config
-  (add-hook 'js-mode-hook         #'lsp-javascript-typescript-enable)
-  (add-hook 'typescript-mode-hook #'lsp-javascript-typescript-enable)
-  (add-hook 'js3-mode-hook        #'lsp-javascript-typescript-enable)
-  (add-hook 'rjsx-mode            #'lsp-javascript-typescript-enable)
-  (add-hook 'js-mode-hook 'my-js-hook)
-  (add-hook 'rjsx-mode-hook 'my-js-hook))
-
-(use-package lsp-typescript
-  :ensure t
-  :disabled
-  :config
-  (add-hook 'js-mode-hook  #'lsp-typescript-enable)
-  (add-hook 'js2-mode-hook #'lsp-typescript-enable)
-  (add-hook 'rjsx-mode     #'lsp-typescript-enable))
-  
+(require 'lsp)
+(require 'lsp-clients)
+(add-hook 'js-mode-hook         #'lsp)
+(add-hook 'typescript-mode-hook #'lsp)
+(add-hook 'js3-mode-hook        #'lsp)
+(add-hook 'rjsx-mode            #'lsp)
+(add-hook 'js-mode-hook         #'lsp)
+(add-hook 'rjsx-mode-hook       #'lsp)
 
 (provide 'lang.javascript)
 ;;; lang.javascript ends here

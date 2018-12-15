@@ -4,9 +4,9 @@
 
 ;;; Code:
 ;; macOS key binding setup
-(setq mac-option-modifier nil
-      mac-command-modifier 'meta
-      select-enable-clipboard t)
+(setq mac-option-modifier nil)
+(setq mac-command-modifier 'meta)
+(setq select-enable-clipboard t)
 
 ;; Disable macOS minfication
 (global-set-key (kbd "C-z") nil)

@@ -3,11 +3,12 @@
 ;;; Commentary:
 
 ;;; Code:
+(require 'recentf)
+
 ;; no-littering - Keep your .emacs.d clean
 (use-package no-littering
   :ensure t
   :config
-  (require 'recentf)
   (setq auto-save-file-name-transforms
         `((".*" ,(no-littering-expand-var-file-name "auto-save/") t)))
   (add-to-list 'recentf-exclude no-littering-var-directory)
@@ -30,26 +31,12 @@
         which-key-popup-type 'side-window
         which-key-side-window-location 'left))
 
-;; smooth-scrolling - smooth scrolling and minimap
-(use-package smooth-scrolling
-  :disabled
-  :ensure t
-  :config
-  (smooth-scrolling-mode 1))
-
 ;; keyfreq - gather statistics of key and command frequency
 (use-package keyfreq
   :ensure t
   :config
   (keyfreq-mode 1)
   (keyfreq-autosave-mode 1))
-
-;; ranger - improved file browser
-(use-package ranger
-  :ensure t
-  :disabled
-  :diminish ranger-mode
-  :commands ranger)
 
 ;; dashboard - Startup dashboard
 (use-package dashboard
@@ -58,21 +45,6 @@
   (dashboard-setup-startup-hook)
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
   (setq dashboard-banner-logo-title ""))
-  ;; (setq dashboard-startup-banner "~/.emacs.d/img/emacs.png"))
-
-;; Dired-Hacks - imporve dired-mode
-(use-package dired-hacks-utils
-  :ensure t
-  :disabled
-  :commands dired-mode
-  :config
-  (defconst my-dired-media-files-extensions
-    '("mp3" "mp4" "avi" "mpg" "flv" "ogg")
-    "Media files.")
-  (dired-rainbow-define html "#4e9a06" ("htm" "html" "xhtml"))
-  (dired-rainbow-define media "#ce5c00" my-dired-media-files-extensions)
-  (dired-rainbow-define log (:inherit default :italic t) ".*\\.log")
-  (dired-rainbow-define-chmod executable-unix "Green" "-[rw-]+x.*"))
 
 ;; Anzu - show matching selections on search
 (use-package anzu
@@ -80,17 +52,6 @@
   :diminish anzu-mode
   :config
   (global-anzu-mode t))
-
-;; emojify - convert utf-8 smileys to images
-(use-package emojify
-  :ensure t
-  :disabled
-  :hook (after-init . global-emojify-mode))
-
-;; Prodigy - manage external services from within Emacs
-(use-package prodigy
-  :disabled
-  :ensure t)
 
 ;; Smex - smart M-x enhancement
 (use-package smex
@@ -108,61 +69,30 @@
   :ensure t
   :config
   (setq yas-triggers-in-field t)
-  (yas-global-mode 1)
-  (use-package yasnippet-snippets
-    :ensure t
-    :after yasnippet))
+  (yas-global-mode 1))
 
-;; Wakatime - track your coding time
-(use-package wakatime-mode
-  :disabled
-  :if (boundp 'apikey-wakatime)
+(use-package yasnippet-snippets
   :ensure t
-  :commands global-wakatime-mode
-  :config
-  (setq wakatime-api-key apikey-wakatime)
-  (global-wakatime-mode))
+  :after yasnippet)
 
 ;; Hydra - popup with options after pressing a leader key
 (use-package hydra
-  :ensure t
-  :config
-  (defhydra hydra-text-scale ()
-    "
-Text Scaling
+  :ensure t)
 
-"
-    ("+" text-scale-increase "increase")
-    ("<" text-scale-decrease "decrease")
-    ("0" text-scale-adjust "adjust"))
-  (evil-leader/set-key
-    "+" 'hydra-text-scale/body))
+(defhydra hydra-text-scale ()
+  "Text Scaling"
+  ("+" text-scale-increase "increase")
+  ("<" text-scale-decrease "decrease")
+  ("0" text-scale-adjust "adjust"))
 
-;; Focus - visual highlight scopes
-(use-package focus
-  :ensure t
-  :disabled
-  :commands focus-mode)
+(evil-leader/set-key "+" 'hydra-text-scale/body)
 
 ;; highlight-indent-guides - Highlight indentation
 (use-package highlight-indent-guides
-  :disabled
   :ensure t
   :hook (prog-mode . highlight-indent-guides-mode)
   :config
   (setq highlight-indent-guides-method 'character))
-
-;; neotree - provide a side panel with file tree view
-(use-package neotree
-  :disabled
-  :ensure t
-  :commands neotree-toggle
-  :config
-  ;; (custom-set-faces
-  ;;  '(neo-dir-link-face ((t (:weight bold :height 100))))
-  ;;  '(neo-file-link-face ((t (:weight normal :height 110))))
-  ;;  '(neo-banner-face ((t :height 100))))
-  (setq neo-theme (if (display-graphic-p) 'icons)))
 
 ;; rainbow-delimiters - color highlight parenthesis according to their depth
 (use-package rainbow-delimiters
@@ -187,10 +117,9 @@ Text Scaling
   :ensure t
   :diminish projectile-mode
   :init
-  (progn
-    (setq projectile-enable-caching t)
+  (setq projectile-enable-caching t)
   :config
-  (projectile-mode)))
+  (projectile-mode))
 
 (use-package counsel-projectile
   :ensure t
@@ -223,6 +152,8 @@ Text Scaling
   (global-auto-highlight-symbol-mode t))
 
 ;; exec-path-from-shell - executer commands from you'r systems shell
+(defvar explicit-shell-file-name)
+
 (use-package exec-path-from-shell
   :ensure t
   :config
@@ -230,20 +161,6 @@ Text Scaling
     (setq explicit-shell-file-name "/bin/zsh")
     (setq shell-file-name "zsh")
     (exec-path-from-shell-initialize)))
-
-;; ace-window - effectively jump between frames and windows
-(use-package ace-window
-  :ensure t
-  :disabled
-  :init
-  (global-set-key [remap other-window] 'ace-window)
-  :config
-  (setq aw-background nil)
-  (custom-set-faces
-   '(aw-leading-char-face
-     ((t (:inherit ace-jump-face-forground
-                   :foreground "white"
-                   :background "black"))))))
 
 ;; switch-window - drop ace-window in favor of this
 (use-package switch-window
@@ -256,21 +173,24 @@ Text Scaling
   (ace-link-setup-default))
 
 ;; ivy - generic completion frontend for emacs
+(use-package wgrep
+  :ensure t
+  :config
+  (setq wgrep-change-readonly-file t))
+
+(use-package wgrep-ag
+  :ensure t)
+
 (use-package ivy
   :ensure t
   :commands (ivy-mode ivy-switch-buffer)
   :diminish ivy-mode
   :config
-  (use-package wgrep
-    :ensure t
-    :config
-    (setq wgrep-change-readonly-file t))
-  (use-package wgrep-ag :ensure t)
   (setq enable-recursive-minibuffers t)
   (setq ivy-display-style 'fancy)
   (setq ivy-height 20)
   (setq ivy-use-virtual-buffers t)
-  (defun swiper-recenter (&rest args)
+  (defun swiper-recenter ()
     "Advice swiper to recenter on exit."
     (recenter))
   (advice-add 'swiper :after #'swiper-recenter)
@@ -294,9 +214,7 @@ Text Scaling
 (use-package swiper
   :ensure t
   :bind
-  (("C-s" . swiper)
-   :map read-expression-map
-   ("C-r" . counsel-expression-history)))
+  (("C-s" . swiper)))
 
 ;; avy - jump to characters and expressions
 (use-package avy
@@ -373,12 +291,6 @@ Text Scaling
    ("C-c q" . vr/query-replace)
    ("C-c m" . vr/mc-mark)))
 
-;; hungry-delete
-(use-package hungry-delete
-  :ensure t
-  :config
-  (global-hungry-delete-mode))
-
 ;; parnifer - improved lisp editing
 (use-package parinfer
   :ensure t
@@ -432,13 +344,11 @@ Text Scaling
 (add-hook 'sh-mode-hook         'hs-minor-mode)
 
 (defhydra hydra-hideshow (:color "#F2D30B" :hint nil)
-  "
-Hideshow
+  "Hideshow
 
 _k_: hide block
 _j_: show block
-_t_: toggle block
-"
+_t_: toggle block"
   ("j" hs-hide-block)
   ("k" hs-show-block)
   ("t" hs-toggle-hiding))
@@ -454,39 +364,15 @@ _t_: toggle block
   :defer nil ;; dont defer so we can add our functions to hooks
   :config (smart-hungry-delete-add-default-hooks))
 
-;; Treemacs
-(use-package treemacs
-  :ensure t
-  :disabled)
-
-(use-package treemacs-evil
-  :ensure t
-  :disabled)
-
 ;; Helpful
 (use-package helpful
   :ensure t
   :config
-  ;; Note that the built-in `describe-function' includes both functions
-  ;; and macros. `helpful-function' is functions only, so we provide
-  ;; `helpful-callable' as a drop-in replacement.
   (global-set-key (kbd "C-h f") #'helpful-callable)
   (global-set-key (kbd "C-h v") #'helpful-variable)
   (global-set-key (kbd "C-h k") #'helpful-key)
-
-  ;; Lookup the current symbol at point. C-c C-d is a common keybinding
-  ;; for this in lisp modes.
   (global-set-key (kbd "C-c C-d") #'helpful-at-point)
-
-  ;; Look up *F*unctions (excludes macros).
-  ;; By default, C-h F is bound to `Info-goto-emacs-command-node'. Helpful
-  ;; already links to the manual, if a function is referenced there.
   (global-set-key (kbd "C-h F") #'helpful-function)
-
-  ;; Look up *C*ommands.
-  ;; By default, C-h C is bound to describe `describe-coding-system'. I
-  ;; don't find this very useful, but it's frequently useful to only
-  ;; look at interactive functions.
   (global-set-key (kbd "C-h C") #'helpful-command))
 
 ;; Docker
