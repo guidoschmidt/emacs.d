@@ -17,6 +17,9 @@
   (setq magit-diff-paint-whitespace t)
   (setq magit-completing-read-function 'ivy-completing-read))
 
+(use-package forge
+  :ensure t)
+
 (use-package git-gutter
   :ensure t
   :diminish git-gutter-mode
