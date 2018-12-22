@@ -6,14 +6,15 @@
   :commands python-mode
   :mode ("\\.py\\'" . python-mode)
   :config
-  
   (setq python-indent-guess-indent-offset nil)
 ;;; macOS
   (when (memq window-system '(ns))
-    (setq python-python-command "/usr/local/bin/python3")
+    (setq python-python-command "/Users/gs/.pyenv/versions/3.6.6/bin/python3")
     (setq exec-path
           (append exec-path
-                  '("/usr/local/bin/"))))
+                  '("/usr/local/bin/")))
+    (setenv "PYTHONPATH"
+            "/Applications/Rhinoceros.app/Contents/Resources/ManagedPlugIns/RhinoDLR_Python.rhp/RssLib/"))
 ;;; Windows
   (when (memq window-system '(w32))
     (setq python-python-command "c:/Development/python/3.6/python.exe")
@@ -53,28 +54,28 @@
   :diminish
   :hook (importmagic-mode . python-mode))
 
-;; (defvar lsp-python)
-;; (lsp-define-stdio-client lsp-python
-;;                          "python"
-;;                          #'projectile-project-root
-;;                          '("~/.pyenv/versions/3.6.6/bin/pyls"))
+(defvar lsp-python)
+(lsp-define-stdio-client lsp-python
+                         "python"
+                         #'projectile-project-root
+                         '("~/.pyenv/versions/3.6.6/bin/pyls"))
 
-;; (add-hook 'python-mode-hook
-;;           (lambda ()
-;;             (lsp-python-enable)))
+(add-hook 'python-mode-hook
+          (lambda ()
+            (lsp-python-enable)))
 
-;; (defun lsp-set-cfg ()
-;;   "Setup language server configuration."
-;;   (let ((lsp-cfg `(:pyls (:configurationSources ("flake8")))))
+(defun lsp-set-cfg ()
+  "Setup language server configuration."
+  (let ((lsp-cfg `(:pyls (:configurationSources ("flake8")))))
 
-;;     (lsp--set-configuration lsp-cfg)))
-;; (add-hook 'lsp-after-initialize-hook 'lsp-set-cfg)
+    (lsp--set-configuration lsp-cfg)))
+(add-hook 'lsp-after-initialize-hook 'lsp-set-cfg)
 
-(use-package eglot
-  :ensure t
-  :config
-  (add-to-list 'eglot-server-programs
-               `(python-mode . ("localhost:4500"))))
+;; (use-package eglot
+;;   :ensure t
+;;   :config
+;;   (add-to-list 'eglot-server-programs
+;;                `(python-mode . ("localhost:4500"))))
 
 (provide 'lang.python)
 ;;; lang.python ends here
