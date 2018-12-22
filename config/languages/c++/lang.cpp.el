@@ -198,12 +198,10 @@ _j_: goto symbol under point
     (user-error nil)))
 
 (use-package ccls
-  :ensure t
-  :commands lsp-ccls-enable
-  :init
-  (add-hook 'c-mode-hook #'ccls//enable)
-  (add-hook 'c++-mode-hook #'ccls//enable))
-  
+  :config
+  (setq ccls-executable "/usr/local/bin/ccls")
+  :hook ((c-mode c++-mode objc-mode) .
+         (lambda () (require 'ccls) (lsp))))
 
 (provide 'lang.cpp)
 ;;; lang.cpp ends here
