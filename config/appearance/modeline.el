@@ -28,14 +28,18 @@
   `((t (:foreground "#E9391D" :background "#FFA96F" :weight ultra-bold)))
   "Face for warnings in the modeline. Used by `*flycheck'")
 
+(defface evil-leader-state-face
+  `((t (:foreground "#FFFFFF" :background "#000000" :weight ultra-bold)))
+  "Face for warnings in the modeline. Used by `*flycheck'")
+
 (defun evil-state-char ()
   "Show starting character of evil state and propertize with respective face."
   (let ((state (symbol-value 'evil-state)))
-    (cond ((equal 'normal state) (propertize "  N  "
+    (cond ((equal 'normal state) (propertize " N "
                                              'face 'evil-normal-state-face))
-          ((equal 'insert state) (propertize "  I  "
+          ((equal 'insert state) (propertize " I "
                                              'face 'evil-insert-state-face))
-          ((equal 'visual state) (propertize "  V  "
+          ((equal 'visual state) (propertize " V "
                                              'face 'evil-visual-state-face)))))
 
 (use-package doom-modeline
@@ -56,11 +60,9 @@
      workspace-number
      window-number
      custom-evil-state
-     "   "
+     "  "
      matches
-     "   "
      buffer-info
-     "   "
      selection-info)
    ;; Right mode line segments
    '(major-mode
@@ -68,7 +70,7 @@
      flycheck
      skycolor-clock))
   (doom-modeline-set-modeline 'gs t)
-  (setq doom-modeline-height 42)
+  (setq doom-modeline-height 30)
   :hook (after-init . doom-modeline-init))
 
 (provide 'modeline)

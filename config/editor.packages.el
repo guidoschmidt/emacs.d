@@ -227,7 +227,7 @@
   (custom-set-faces
    '(avy-lead-face
      ((t (:inherit avy-lead-face
-                   :background "#FF33B2"
+                   :background "#000000"
                    :foreground "white"))))
    '(avy-lead-face-0
      ((t (:inherit avy-lead-face-0
