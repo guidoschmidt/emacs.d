@@ -35,10 +35,7 @@
                                 (cider-company-enable-fuzzy-completion))))
          (cider-mode      . (lambda ()
                               (eval-when-compile
-                                (cider-company-enable-fuzzy-completion))))
-         (cider-mode      . (lambda ()
-                              (setq next-error-function
-                                    #'flycheck-next-error-function)))))
+                                (cider-company-enable-fuzzy-completion))))))
 
 (use-package clj-refactor
   :ensure t
@@ -52,17 +49,16 @@
 
 (use-package flycheck-clojure
   :ensure t
+  :disabled
   :config
   (eval-after-load 'flycheck '(flycheck-clojure-setup)))
 
-(lsp-define-stdio-client lsp-clojure
-                         "clojure"
-                         #'projectile-project-root
-                         '("~/Downloads/clojure-lsp"))
+(lsp-register-client
+ (make-lsp--client :new-connection (lsp-stdio-connection "clojure-lps")
+                   :major-mode '(clojure-mode)
+                   :server-id 'cljlsp))
 
-(add-hook 'clojure-mode-hook
-          (lambda ()
-            (lsp-clojure-enable)))
+(add-hook 'clojure-mode-hook #'lsp)
 
 (provide 'lang.clojure)
 ;;; lang.clojure ends here
