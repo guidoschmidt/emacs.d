@@ -7,6 +7,12 @@
   :ensure t
   :commands clojure-mode
   :mode "\\.clj\\'"
+  :config
+  (lsp-register-client
+   (make-lsp--client :new-connection (lsp-stdio-connection "clojure-lps")
+                     :major-mode '(clojure-mode)
+                     :server-id 'cljlsp))
+  (add-hook 'clojure-mode-hook #'lsp)
   :hook (clojure-mode-hook . lispy-mode))
 
 (use-package clojure-snippets
@@ -52,13 +58,6 @@
   :disabled
   :config
   (eval-after-load 'flycheck '(flycheck-clojure-setup)))
-
-(lsp-register-client
- (make-lsp--client :new-connection (lsp-stdio-connection "clojure-lps")
-                   :major-mode '(clojure-mode)
-                   :server-id 'cljlsp))
-
-(add-hook 'clojure-mode-hook #'lsp)
 
 (provide 'lang.clojure)
 ;;; lang.clojure ends here
