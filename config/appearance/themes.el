@@ -52,8 +52,8 @@
   ;; :load-path "~/git/develop/emacs/circadian.el"
   :ensure t
   :config
-  (setq circadian-themes '((:sunrise . nyx)
-                           (:sunset  . challenger-deep)))
+  (setq circadian-themes '((:sunrise . kaolin-light)
+                           (:sunset  . soothe)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
 
