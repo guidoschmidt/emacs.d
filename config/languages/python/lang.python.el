@@ -29,8 +29,8 @@
   (defvar elpy-rpc-backend)
   (setq elpy-rpc-backend "jedi")
   (defun custom-python-mode-hook ()
-    (setq python-indent-offset 2)
-    (setq tab-width 2)
+    (setq python-indent-offset 4)
+    (setq tab-width 4)
     (setq indent-tabs-mode nil)
     (elpy-enable))
   (add-hook 'python-mode-hook 'custom-python-mode-hook))
@@ -54,15 +54,12 @@
   :diminish
   :hook (importmagic-mode . python-mode))
 
-(defvar lsp-python)
-(lsp-define-stdio-client lsp-python
-                         "python"
-                         #'projectile-project-root
-                         '("~/.pyenv/versions/3.6.6/bin/pyls"))
+(lsp-register-client
+ (make-lsp--client :new-connection (lsp-stdio-connection "pyls")
+                   :major-modes '(python-mode)
+                   :server-id 'pyls))
 
-(add-hook 'python-mode-hook
-          (lambda ()
-            (lsp-python-enable)))
+(add-hook 'python-mode-hook #'lsp)
 
 (defun lsp-set-cfg ()
   "Setup language server configuration."
