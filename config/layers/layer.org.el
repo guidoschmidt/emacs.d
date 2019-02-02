@@ -41,7 +41,11 @@ If FILEXT is provided, return files with extension FILEXT instead."
 ;; Setup org with org-files, variable configuration and keywords
 (defvar org-directory "~/Dropbox/Notes")
 
-(defvar org-agenda-files '("~/Dropbox/Notes/TODO.org"))
+(defvar org-agenda-files '("~/Dropbox/Notes/TODO.org"
+                           "~/Dropbox/Notes/PROJECTS.org"
+                           "~/Dropbox/Notes/DAILY.org"
+                           "~/Dropbox/Notes/ARCHIVE.org"
+                           "~/Dropbox/Notes/INBOX.org"))
 
 (defvar org-agenda-text-search-extra-files)
 (setq org-agenda-text-search-extra-files
