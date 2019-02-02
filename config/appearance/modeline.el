@@ -67,7 +67,6 @@
    ;; Right mode line segments
    '(major-mode
      vcs
-     flycheck
      skycolor-clock))
   (doom-modeline-set-modeline 'gs t)
   (setq doom-modeline-height 30)
