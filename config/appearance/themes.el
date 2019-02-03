@@ -53,7 +53,7 @@
   :ensure t
   :config
   (setq circadian-themes '((:sunrise . srcery)
-                           (:sunset  . challenger-deep)))
+                           (:sunset  . apropospriate-dark)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
 
