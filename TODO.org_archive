@@ -14,3 +14,24 @@ Archived entries from file /Users/gs/.emacs.d/TODO.org
   :END:
    - https://github.com/joostkremers/writeroom-mode
    - https://github.com/rnkn/olivetti
+
+* DONE straight.el
+:PROPERTIES:
+:ARCHIVE_TIME: 2019-02-03 Sun 22:22
+:ARCHIVE_FILE: ~/.emacs.d/TODO.org
+:ARCHIVE_OLPATH: TODO:
+:ARCHIVE_CATEGORY: TODO
+:ARCHIVE_TODO: DONE
+:END:
+    Next generation package manager for the Emacs Hacker
+    https://github.com/raxod502/straight.el
+    Use to integrate git only hosted packages
+
+* DONE Cleanup git submodules
+:PROPERTIES:
+:ARCHIVE_TIME: 2019-02-03 Sun 22:22
+:ARCHIVE_FILE: ~/.emacs.d/TODO.org
+:ARCHIVE_OLPATH: TODO:
+:ARCHIVE_CATEGORY: TODO
+:ARCHIVE_TODO: DONE
+:END:
