@@ -7,15 +7,16 @@
   :mode ("\\.py\\'" . python-mode)
   :config
   (setq python-indent-guess-indent-offset nil)
-;;; macOS
+  ;;; macOS
   (when (memq window-system '(ns))
+    (setq python-shell-interpreter "/Users/gs/.pyenv/versions/3.6.6/bin/python3")
     (setq python-python-command "/Users/gs/.pyenv/versions/3.6.6/bin/python3")
     (setq exec-path
           (append exec-path
                   '("/usr/local/bin/")))
     (setenv "PYTHONPATH"
             "/Applications/Rhinoceros.app/Contents/Resources/ManagedPlugIns/RhinoDLR_Python.rhp/RssLib/"))
-;;; Windows
+  ;;; Windows
   (when (memq window-system '(w32))
     (setq python-python-command "c:/Development/python/3.6/python.exe")
     (setq exec-path
@@ -49,16 +50,10 @@
   (with-eval-after-load 'flycheck
     (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup)))
 
-(use-package importmagic
-  :ensure t
-  :diminish
-  :hook (importmagic-mode . python-mode))
-
 (lsp-register-client
  (make-lsp--client :new-connection (lsp-stdio-connection "pyls")
                    :major-modes '(python-mode)
                    :server-id 'pyls))
-
 (add-hook 'python-mode-hook #'lsp)
 
 (defun lsp-set-cfg ()
@@ -67,12 +62,6 @@
 
     (lsp--set-configuration lsp-cfg)))
 (add-hook 'lsp-after-initialize-hook 'lsp-set-cfg)
-
-;; (use-package eglot
-;;   :ensure t
-;;   :config
-;;   (add-to-list 'eglot-server-programs
-;;                `(python-mode . ("localhost:4500"))))
 
 (provide 'lang.python)
 ;;; lang.python ends here
