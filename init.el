@@ -7,6 +7,8 @@
 ;; Avoid garbage collection during startup
 (setq gc-cons-threshold 402653184
       gc-cons-percentage 0.6)
+;; Don’t compact font caches during GC.
+(setq inhibit-compacting-font-caches t)
 
 ;; Avoid the pitfall of loading old bytecode indstead of newer
 (setq load-prefer-newer t)
@@ -52,7 +54,7 @@
 
 ;; Appearance
 (require 'editor.appearance)
-;; (require 'modeline)
+(require 'modeline)
 (require 'themes)
 ;; (require 'transparency)
 (require 'ligatures)

@@ -44,33 +44,30 @@
 
 (use-package doom-modeline
   :ensure t
-  :defer t
   :config
+  ;; Custom doom-modeline segments
   (defvar skycolor-clock)
   (doom-modeline-def-segment skycolor-clock
-    (concat " " (sky-color-clock) " "))
-
+    (sky-color-clock))
   (defvar custom-evil-state)
   (doom-modeline-def-segment custom-evil-state
     (evil-state-char))
-  (doom-modeline-def-modeline
-   'gs
-   ;; Left mode line segments
-   '(bar
-     workspace-number
-     window-number
-     custom-evil-state
-     "  "
-     matches
-     buffer-info
-     selection-info)
-   ;; Right mode line segments
-   '(major-mode
-     vcs
-     skycolor-clock))
-  (doom-modeline-set-modeline 'gs t)
-  (setq doom-modeline-height 30)
-  :hook (after-init . doom-modeline-init))
+  ;; Configure doom-modeline variables
+  (setq find-file-visit-truename t)
+  (setq doom-modeline-bar-width 3)
+  (setq doom-modeline-height 20)
+  (setq doom-modeline-buffer-file-name-style 'truncate-upto-project)
+  (setq doom-modeline-icon nil)
+  (setq doom-modeline-lsp t)
+  ;; Define custom doom-modeline configuration
+  (doom-modeline-def-modeline 'gs
+    '(custom-evil-state vcs buffer-encoding buffer-info)
+    '(skycolor-clock))
+  (defun setup-custom-doom-modeline ()
+    (doom-modeline-set-modeline 'gs 'default)) 
+  (add-hook 'doom-modeline-mode-hook 'setup-custom-doom-modeline)
+  :hook
+  (after-init . doom-modeline-mode))
 
 (provide 'modeline)
 ;;; modeline ends here
