@@ -55,13 +55,13 @@
   ;; Configure doom-modeline variables
   (setq find-file-visit-truename t)
   (setq doom-modeline-bar-width 3)
-  (setq doom-modeline-height 20)
+  (setq doom-modeline-height 22)
   (setq doom-modeline-buffer-file-name-style 'truncate-upto-project)
   (setq doom-modeline-icon nil)
   (setq doom-modeline-lsp t)
   ;; Define custom doom-modeline configuration
   (doom-modeline-def-modeline 'gs
-    '(custom-evil-state vcs buffer-encoding buffer-info)
+    '(bar custom-evil-state vcs buffer-encoding buffer-info)
     '(skycolor-clock))
   (defun setup-custom-doom-modeline ()
     (doom-modeline-set-modeline 'gs 'default)) 
