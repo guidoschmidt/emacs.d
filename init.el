@@ -77,6 +77,8 @@
 ;; (require 'lang.php)
 (require 'lang.python)
 (require 'lang.swift)
+(require 'lang.urscript)
+
 
 ;; Then reset GC as late as possible
 (defun reenable-gc ()
