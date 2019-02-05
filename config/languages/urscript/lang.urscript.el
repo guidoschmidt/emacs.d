@@ -3,8 +3,11 @@
 
 ;;; Code:
 (use-package urscript-mode
-  :load-path "~/git/emacs/urscript-mode"
+  :straight (urscript-mode
+             :type git
+             :host github
+             :repo "guidoschmidt/urscript-mode")
   :mode ("\\.urscript\\'" . urscript-mode))
-
+  
 (provide 'lang.urscript)
 ;;; lang.urscript.el ends here
