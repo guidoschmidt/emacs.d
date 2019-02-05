@@ -38,6 +38,58 @@ If FILEXT is provided, return files with extension FILEXT instead."
   (interactive
    (insert (format-time-string "%d.%m. — %A"))))
 
+(defun org-date-plus-x (offset)
+  "Insert the current date plus OFFSET days."
+  (interactive
+   (list
+    (read-from-minibuffer
+     (concat "Day offset: ")
+     nil
+     nil
+     nil
+     nil)))
+  (let ((today-day (nth 3 (decode-time)))
+        (today-year (string-to-number (format-time-string "%Y")))
+        (today-month (string-to-number (format-time-string "%m"))))
+    (insert (concat (number-to-string today-year) "-"
+                   (number-to-string today-month) "-"
+                   (number-to-string today-day)
+                   "T12:00:00-0:0"))))
+
+(require 'parse-time)
+(require 'solar)
+
+(defun datetime-with-offset (offset)
+  "Get the current date and time with day OFFSET."
+  (let ((now (decode-time (current-time))))
+    (setcar (nthcdr 3 now) (+ offset (nth 3 now)))
+    (let ((secs  (nth 0 now))
+          (mins  (nth 1 now))
+          (hrs   (nth 2 now))
+          (day   (nth 3 now))
+          (month (nth 4 now))
+          (year  (nth 5 now)))
+      `(,secs ,mins ,hrs ,day ,month ,year 2 nil 3600))))
+
+(defun org-insert-date-with-offset (offset)
+  "Insert the current date with day OFFSET."
+  (let ((datestring (format-time-string
+                     "%d.%m. — %A"
+                     (encode-time (datetime-with-offset offset)))))
+    (insert (concat "** " datestring "  [/]"))
+   (newline)))
+
+(defun org-insert-date-for ()
+  "Insert the current day with a given day offset from the mini buffer."
+  (interactive
+   (let ((offset (string-to-number (read-from-minibuffer "Day offset: "))))
+     (org-insert-date-with-offset offset))))
+
+(defun org-insert-week ()
+  "Insert a whole week from today."
+  (interactive
+   (mapcar #'org-insert-date-with-offset '(0 1 2 3 4 5 6))))
+
 ;; Setup org with org-files, variable configuration and keywords
 (defvar org-directory "~/Dropbox/Notes")
 
