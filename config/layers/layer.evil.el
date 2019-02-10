@@ -54,11 +54,12 @@
     "<up>"    'beginning-of-defun
     "w"       'save-buffer
     "<down>"  'end-of-defun
-    "q"       'counsel-imenu
+    "q"       'objed-occur
     "j"       'swiper-avy
     "-"       'insert-dash
     "o"       'objed-activate
     "0"       'switch-window))
+    
 
 (use-package evil
   :ensure t
@@ -174,7 +175,7 @@ _m_: make cursor
   :ensure t)
 
 (use-package evil-cleverparens
-  :ensure t
+ :ensure t
   :hook ((emacs-lisp-mode . evil-cleverparens-mode)
          (clojure-mode . evil-cleverparens-mode)))
 
@@ -185,6 +186,7 @@ _m_: make cursor
              :repo "clemera/objed")
   :config
   (setq objed-cursor-color "#25D3E2")
+  (setq objed-modeline-hint-p nil)
   (objed-mode))
 
 (provide 'layer.evil)
