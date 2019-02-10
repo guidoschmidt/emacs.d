@@ -29,7 +29,7 @@
         which-key-side-window-max-width 0.333
         which-key-idle-delay 0
         which-key-popup-type 'side-window
-        which-key-side-window-location 'left))
+        which-key-side-window-location 'bottom))
 
 ;; keyfreq - gather statistics of key and command frequency
 (use-package keyfreq
