@@ -53,7 +53,7 @@
   :ensure t
   :config
   (setq circadian-themes '((:sunrise . srcery)
-                           (:sunset  . apropospriate-dark)))
+                           (:sunset  . gruvbox)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
 
