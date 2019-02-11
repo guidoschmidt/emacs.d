@@ -17,6 +17,8 @@
     https://github.com/wasamasa/shackle
 ** IN org
     https://github.com/alphapapa/org-super-agenda
+** IN notifications
+- https://github.com/jwiegley/alert
 * LANGUAGES
 ** PROJ python
 *** WONTDO https://github.com/anachronic/importmagic.el
