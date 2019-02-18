@@ -2,9 +2,6 @@
 ;;; Commentary:
 
 ;;; Code:
-(use-package evil-magit
-  :ensure t)
-
 (use-package magit-gh-pulls
   :ensure t
   :disabled

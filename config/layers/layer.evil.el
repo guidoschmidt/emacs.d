@@ -189,5 +189,11 @@ _m_: make cursor
   (setq objed-modeline-hint-p nil)
   (objed-mode))
 
+(use-package evil-magit
+  :ensure t
+  :config
+  (setq evil-magit-use-y-for-yank t))
+  
+
 (provide 'layer.evil)
 ;;; layer.evil ends here
