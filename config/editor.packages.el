@@ -380,5 +380,9 @@ _t_: toggle block"
   :ensure t
   :bind ("C-c d" . docker))
 
+;; SHX
+(use-package shx
+  :ensure t)
+
 (provide 'editor.packages)
 ;;; editor.packages ends here
