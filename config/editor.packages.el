@@ -76,16 +76,16 @@
   :after yasnippet)
 
 ;; Hydra - popup with options after pressing a leader key
-(use-package hydra
-  :ensure t)
+;; (use-package hydra
+;;   :ensure t)
 
-(defhydra hydra-text-scale ()
-  "Text Scaling"
-  ("+" text-scale-increase "increase")
-  ("<" text-scale-decrease "decrease")
-  ("0" text-scale-adjust "adjust"))
+;; (defhydra hydra-text-scale ()
+;;   "Text Scaling"
+;;   ("+" text-scale-increase "increase")
+;;   ("<" text-scale-decrease "decrease")
+;;   ("0" text-scale-adjust "adjust"))
 
-(evil-leader/set-key "+" 'hydra-text-scale/body)
+;; (evil-leader/set-key "+" 'hydra-text-scale/body)
 
 ;; highlight-indent-guides - Highlight indentation
 (use-package highlight-indent-guides
@@ -343,18 +343,18 @@
 (add-hook 'perl-mode-hook       'hs-minor-mode)
 (add-hook 'sh-mode-hook         'hs-minor-mode)
 
-(defhydra hydra-hideshow (:color "#F2D30B" :hint nil)
-  "Hideshow
+;; (defhydra hydra-hideshow (:color "#F2D30B" :hint nil)
+;;   "Hideshow
 
-_k_: hide block
-_j_: show block
-_t_: toggle block"
-  ("j" hs-hide-block)
-  ("k" hs-show-block)
-  ("t" hs-toggle-hiding))
+;; _k_: hide block
+;; _j_: show block
+;; _t_: toggle block"
+;;   ("j" hs-hide-block)
+;;   ("k" hs-show-block)
+;;   ("t" hs-toggle-hiding))
 
-(evil-leader/set-key
-  "h" 'hydra-hideshow/body)
+;; (evil-leader/set-key
+;;   "h" 'hydra-hideshow/body)
 
 ;; Smart hungry delete
 (use-package smart-hungry-delete

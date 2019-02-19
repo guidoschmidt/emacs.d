@@ -14,11 +14,13 @@
 (setq load-prefer-newer t)
 
 (when (memq system-type '(windows-nt ms-dos))
- (package-initialize))
+  (package-initialize))
+
+(package-initialize)
 
 (setq custom-file "~/.emacs.d/local/custom-set.el")
 
-; Setup the load path
+;; Setup the load path
 (let ((default-directory  "~/.emacs.d/config/"))
   (normal-top-level-add-to-load-path
    '("."
@@ -35,8 +37,8 @@
 (require 'editor.keymap)
 
 ;; Layers
-(require 'layer.arduino)
-(require 'layer.codecompletion.auto-complete)
+;;(require 'layer.arduino)
+;;(require 'layer.codecompletion.auto-complete)
 (require 'layer.codecompletion.company)
 (require 'layer.codenavigation)
 (require 'layer.evil)
@@ -44,7 +46,7 @@
 (require 'layer.lsp)
 (require 'layer.notifications)
 (require 'layer.org)
-(require 'layer.pdf)
+;;(require 'layer.pdf)
 (require 'layer.restclient)
 (require 'layer.spellcheck)
 (require 'layer.syntaxcheck)
@@ -64,12 +66,12 @@
 ;; (require 'lang.arduino)
 ;; (require 'lang.clojure)
 ;; (require 'lang.common-lisp)
-;; (require 'lang.cpp)
-;; (require 'lang.csharp)
+(require 'lang.cpp)
+(require 'lang.csharp)
 (require 'lang.css)
 (require 'lang.emacs-lisp)
 ;; (require 'lang.fsharp)
-;; (require 'lang.glsl)
+(require 'lang.glsl)
 ;; (require 'lang.haskell)
 ;; (require 'lang.javascript)
 ;; (require 'lang.kotlin)
@@ -78,7 +80,6 @@
 (require 'lang.python)
 (require 'lang.swift)
 (require 'lang.urscript)
-
 
 ;; Then reset GC as late as possible
 (defun reenable-gc ()

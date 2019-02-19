@@ -5,6 +5,12 @@
 ;;; Code:
 (require 'ibuffer)
 
+(use-package undo-tree
+  :straight (undo-tree
+             :type git
+             :host github
+             :repo "emacsmirror/undo-tree"))
+
 (setq-default evil-want-C-u-scroll  t)
 (setq-default evil-want-integration t)
 (setq-default evil-want-keybinding nil)
@@ -18,8 +24,8 @@
   (key-chord-mode 1))
 
 (use-package evil-lion
- :ensure t
- :config
+  :ensure t
+  :config
   (evil-lion-mode))
 
 (defun insert-dash ()
@@ -28,6 +34,10 @@
   (insert-char (string-to-char "—")))
 
 (use-package evil-leader
+  :straight (evil-leader
+             :type git
+             :host github
+             :repo "cofi/evil-leader")
   :ensure t
   :config
   (eval-when-compile (evil-leader/set-leader "<SPC>"))
@@ -48,7 +58,6 @@
     "t"       'mc/mark-sgml-tag-pair
     "g"       'counsel-ag
     "RET"     'eval-defun
-    "v"       'undo-tree-visualize
     "c"       'ggtags-create-tags
     "d"       'ggtags-find-tag-dwim
     "<up>"    'beginning-of-defun
@@ -58,8 +67,10 @@
     "j"       'swiper-avy
     "-"       'insert-dash
     "o"       'objed-activate
-    "0"       'switch-window))
-    
+    "0"       'switch-window
+    "("       'lispy-parens
+    "{"       'lispy-braces
+    "["       'lispy-brackets))
 
 (use-package evil
   :ensure t
@@ -175,7 +186,7 @@ _m_: make cursor
   :ensure t)
 
 (use-package evil-cleverparens
- :ensure t
+  :ensure t
   :hook ((emacs-lisp-mode . evil-cleverparens-mode)
          (clojure-mode . evil-cleverparens-mode)))
 
@@ -193,7 +204,6 @@ _m_: make cursor
   :ensure t
   :config
   (setq evil-magit-use-y-for-yank t))
-  
 
 (provide 'layer.evil)
 ;;; layer.evil ends here

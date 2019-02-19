@@ -180,23 +180,23 @@ If FILEXT is provided, return files with extension FILEXT instead."
   (setq writeroom-width 0.8))
 
 ;; Hydra
-(eval-after-load "evil-leader"
-  '(progn
-     (defhydra hydra-org (:color blue :hint nil)
-       "
-Org Mode
+;; (eval-after-load "evil-leader"
+;;   '(progn
+;;      (defhydra hydra-org (:color blue :hint nil)
+;;        "
+;; Org Mode
 
-_j_: org-cycle-level ->     _o_: org-sort
-_k_: org-cycle <-           _i_: insert current date
-_t_: org-todo
-"
-       ("j" org-cycle-level)
-       ("k" org-cycle)
-       ("t" org-todo)
-       ("o" org-sort)
-       ("i" org-current-date))
-     (evil-leader/set-key
-       "z" 'hydra-org/body)))
+;; _j_: org-cycle-level ->     _o_: org-sort
+;; _k_: org-cycle <-           _i_: insert current date
+;; _t_: org-todo
+;; "
+;;        ("j" org-cycle-level)
+;;        ("k" org-cycle)
+;;        ("t" org-todo)
+;;        ("o" org-sort)
+;;        ("i" org-current-date))
+;;      (evil-leader/set-key
+;;        "z" 'hydra-org/body)))
 
 (provide 'layer.org)
 ;;; layer.org ends here
