@@ -58,6 +58,7 @@ If FILEXT is provided, return files with extension FILEXT instead."
 
 (require 'parse-time)
 (require 'solar)
+(require 'timekeeper)
 
 (defun datetime-with-offset (offset)
   "Get the current date and time with day OFFSET."
@@ -174,7 +175,7 @@ If FILEXT is provided, return files with extension FILEXT instead."
   :ensure t
   :hook (org-mode . writeroom-mode)
   :config
-  (setq writeroom-extra-line-spacing (round (/ (alfontzo-scale-for-host) 1.5)))
+  ;; (setq writeroom-extra-line-spacing (round (/ (alfontzo-scale-for-host) 1.5)))
   (setq writeroom-fullscreen-effect nil)
   (setq writeroom-bottom-divider-width 0)
   (setq writeroom-width 0.8))
