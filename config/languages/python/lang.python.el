@@ -7,21 +7,36 @@
   :mode ("\\.py\\'" . python-mode)
   :config
   (setq python-indent-guess-indent-offset nil)
-  ;;; macOS
-  (when (memq window-system '(ns))
+
+  ;;; macOS: Macbook Pro Vreni
+  (when (and (equalp (system-name) "Vreni")
+             (memq window-system '(ns)))
     (setq python-shell-interpreter "/Users/gs/.pyenv/versions/3.6.6/bin/python3")
-    (setq python-python-command "/Users/gs/.pyenv/versions/3.6.6/bin/python3")
     (setq exec-path
           (append exec-path
-                  '("/usr/local/bin/")))
+                  '("/usr/local/bin")))
     (setenv "PYTHONPATH"
-            "/Applications/Rhinoceros.app/Contents/Resources/ManagedPlugIns/RhinoDLR_Python.rhp/RssLib/"))
-  ;;; Windows
-  (when (memq window-system '(w32))
-    (setq python-python-command "c:/Development/python/3.6/python.exe")
-    (setq exec-path
-          (append exec-path '("c:/Development/python/3.5/")))))
+            "/Applications/Rhinoceros.app/Contents/Resources/ManagedPlugIns/RhinoDLR_Python.rhp/RssLib"))
 
+  ;;; Windows: Cube
+  (when (and (equalp (system-name) "Cube")
+             (memq window-system '(w32)))
+    (setq python-shell-interpreter "c:/Development/python/3.6/python.exe")
+    (setq exec-path
+          (append exec-path '("c:/Development/python/3.6")))
+    (setenv "PYTHONPATH"
+            ""))
+
+  ;;; Windows: NSYNK
+  (when (and (equalp (system-name) "WOLFGANG")
+             (memq window-system '(w32)))
+    (setq python-shell-interpreter "d:/python/python.exe")
+    (setq exec-path
+          (append exec-path '("d:/python/python")))
+    (setenv "PYTHONPATH"
+            "")))
+
+k
 (use-package elpy
   :ensure t
   :commands elpy-mode
