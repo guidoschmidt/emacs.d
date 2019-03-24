@@ -70,7 +70,8 @@
     "0"       'switch-window
     "("       'lispy-parens
     "{"       'lispy-braces
-    "["       'lispy-brackets))
+    "["       'lispy-brackets
+    "\""      'lispy-quotes))
 
 (use-package evil
   :ensure t

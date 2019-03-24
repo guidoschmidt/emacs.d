@@ -384,5 +384,9 @@
 (use-package shx
   :ensure t)
 
+;; Focus-mode
+(use-package focus
+  :ensure t)
+
 (provide 'editor.packages)
 ;;; editor.packages ends here

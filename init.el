@@ -16,8 +16,6 @@
 (when (memq system-type '(windows-nt ms-dos))
   (package-initialize))
 
-(package-initialize)
-
 (setq custom-file "~/.emacs.d/local/custom-set.el")
 
 ;; Setup the load path
@@ -78,7 +76,7 @@
 (require 'lang.markup)
 ;; (require 'lang.php)
 (require 'lang.python)
-(require 'lang.swift)
+;; (require 'lang.swift)
 (require 'lang.urscript)
 
 ;; Then reset GC as late as possible

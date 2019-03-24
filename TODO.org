@@ -17,8 +17,14 @@
     https://github.com/wasamasa/shackle
 ** IN org
     https://github.com/alphapapa/org-super-agenda
+** IN disk-usage
+    - https://gitlab.com/ambrevar/emacs-disk-usage
 ** IN notifications
+** 
+** IN 
 - https://github.com/jwiegley/alert
+** IN frog-jump-buffer
+https://github.com/waymondo/frog-jump-buffer
 * LANGUAGES
 ** PROJ python
 *** WONTDO https://github.com/anachronic/importmagic.el
@@ -29,3 +35,5 @@
     https://github.com/freetonik/castlemacs/blob/master/init.el
 ** doom
     https://github.com/hlissner/doom-emacs/wiki/FAQ#how-is-dooms-startup-so-fast
+** dmacs
+    https://github.com/dakra/dmacs/blob/master/init.org#borg

@@ -197,7 +197,9 @@ _j_: goto symbol under point
       (lsp-ccls-enable)
     (user-error nil)))
 
+(defvar ccls-executable)
 (use-package ccls
+  :ensure
   :config
   (setq ccls-executable "/usr/local/bin/ccls")
   :hook ((c-mode c++-mode objc-mode) .

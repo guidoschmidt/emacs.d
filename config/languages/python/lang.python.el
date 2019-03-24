@@ -17,6 +17,7 @@
                   '("/usr/local/bin")))
     (setenv "PYTHONPATH"
             "/Applications/Rhinoceros.app/Contents/Resources/ManagedPlugIns/RhinoDLR_Python.rhp/RssLib"))
+            "/usr/local/Cellar/opencv@3/3.4.5/lib/python3.7/site-packages"
 
   ;;; Windows: Cube
   (when (and (equalp (system-name) "Cube")
@@ -36,7 +37,6 @@
     (setenv "PYTHONPATH"
             "")))
 
-k
 (use-package elpy
   :ensure t
   :commands elpy-mode
