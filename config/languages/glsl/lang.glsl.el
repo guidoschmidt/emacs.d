@@ -21,5 +21,13 @@
 (use-package flycheck-glsl
   :disabled)
 
+(use-package shaderlab-mode
+  :disabled
+  :straight (shaderlab-mode
+             :type hg
+             :host bitbucket
+             :repo "bbbscarter/emacs-shaderlab-mode")
+  :ensure t)
+
 (provide 'lang.glsl)
 ;;; lang.glsl ends here
