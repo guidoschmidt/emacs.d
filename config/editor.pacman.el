@@ -29,6 +29,9 @@ There are two things you can do about this warning:
     ;; For important compatibility libraries like cl-lib
     (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
 
+(when (not package--initialized)
+  (package-initialize))
+
 (when (not package-archive-contents)
   (package-refresh-contents))
 
