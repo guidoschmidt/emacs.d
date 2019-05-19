@@ -76,16 +76,14 @@
   :after yasnippet)
 
 ;; Hydra - popup with options after pressing a leader key
-;; (use-package hydra
-;;   :ensure t)
+(use-package hydra
+  :ensure t)
 
-;; (defhydra hydra-text-scale ()
-;;   "Text Scaling"
-;;   ("+" text-scale-increase "increase")
-;;   ("<" text-scale-decrease "decrease")
-;;   ("0" text-scale-adjust "adjust"))
-
-;; (evil-leader/set-key "+" 'hydra-text-scale/body)
+(defhydra hydra-text-scale ()
+  "Text Scaling"
+  ("+" text-scale-increase "increase")
+  ("<" text-scale-decrease "decrease")
+  ("0" text-scale-adjust "adjust"))
 
 ;; highlight-indent-guides - Highlight indentation
 (use-package highlight-indent-guides
