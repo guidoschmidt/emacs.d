@@ -2,34 +2,32 @@
 ;;; Commentary:
 
 ;;; Code:
-(use-package lsp-mode
-  :ensure t
-  :hook (lsp-after-open . lsp-enable-imenu))
 
-(use-package lsp-ui
+(use-package lsp-mode
+  :commands lsp
   :ensure t
   :config
-  (setq lsp-ui-sideline-ignore-duplicate t)
-  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+  (setq lsp-auto-guess-root t)
+  (setf (lsp-session-folders-blacklist (lsp-session)) nil)
+  (lsp--persist-session (lsp-session)))
+
+(use-package lsp-ui :commands lsp-ui-mode :ensure t)
 
 (use-package company-lsp
   :ensure t
-  :config
-  (push 'company-lsp company-backends))
+  :commands company-lsp
+  :config (push 'company-lsp company-backends))
 
-(use-package lsp-symbol-outline
-  :straight
-  (lsp-symbol-outline
-   :type git
-   :host github
-   :repo "bizzyman/LSP-Symbol-Outline")
-  :init
-  (progn
-    (use-package outline-magic
-      :ensure t)
-    (use-package cquery
-      :ensure t)
-    (require 'lsp-symbol-outline-C)))
+(use-package ccls
+  :ensure t
+  :config
+  (setq ccls-executable "/usr/local/bin/ccls")
+  (setq lsp-prefer-flymake nil)
+  (setq-default flycheck-disabled-checkers '(c/c++-gcc
+                                             c/c++-cppcheck
+                                             c/c++-clang))
+  :hook ((c-mode c++-mode objc-mode) .
+         (lambda () (require 'ccls) (lsp))))
 
 (provide 'layer.lsp)
 ;;; layer.lsp ends here
