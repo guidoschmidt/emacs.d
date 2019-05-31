@@ -8,7 +8,6 @@
   :ensure t
   :config
   (setq lsp-auto-guess-root t)
-  (setf (lsp-session-folders-blacklist (lsp-session)) nil)
   (lsp--persist-session (lsp-session)))
 
 (use-package lsp-ui :commands lsp-ui-mode :ensure t)

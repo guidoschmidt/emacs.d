@@ -30,3 +30,6 @@ tramp
 
 # straight.el
 straight/
+
+# lsp
+.lsp-session-*
