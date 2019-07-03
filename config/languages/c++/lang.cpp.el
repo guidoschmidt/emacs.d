@@ -129,10 +129,9 @@
 ;; -- RTags
 (use-package rtags
   :ensure t
+  :disabled
   :config
   (add-to-list 'company-backends '(company-rtags :with company-yasnippet)))
-
-(print company-backends)
 
 (use-package company-rtags
   :ensure t
