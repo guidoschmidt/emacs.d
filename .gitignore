@@ -30,3 +30,6 @@ tramp
 
 # straight.el
 straight/
+
+# windows - dir for executables on windows, e.g. ag.exe
+windows/

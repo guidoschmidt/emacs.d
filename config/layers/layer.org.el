@@ -92,7 +92,7 @@ If FILEXT is provided, return files with extension FILEXT instead."
    (mapcar #'org-insert-date-with-offset '(0 1 2 3 4 5 6))))
 
 ;; Setup org with org-files, variable configuration and keywords
-(defvar org-directory "~/Dropbox/Notes")
+;;(defvar org-directory "~/Dropbox/Notes")
 
 (defvar org-agenda-files '("~/Dropbox/Notes/TODO.org"
                            "~/Dropbox/Notes/PROJECTS.org"

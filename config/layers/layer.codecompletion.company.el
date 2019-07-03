@@ -21,9 +21,8 @@
   :config
   (setq-default company-dabbrev-other-buffers t
                 company-dabbrev-code-time-limit 0.5
-                company-idle-delay 0.1
+                company-idle-delay 0.2
                 company-minimum-prefix-length 1
-                company-require-match nil
                 company-dabbrev-ignore-case nil
                 company-tooltip-align-annotations t
                 company-dabbrev-downcase nil

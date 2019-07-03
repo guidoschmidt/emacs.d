@@ -4,11 +4,11 @@
 ;;; Code:
 
 (use-package lsp-mode
-  :commands lsp
+  :commands (lsp lsp-deferred)
   :ensure t
+  :hook (prog-mode . lsp)
   :config
   (setq lsp-auto-guess-root t)
-  (setf (lsp-session-folders-blacklist (lsp-session)) nil)
   (lsp--persist-session (lsp-session)))
 
 (use-package lsp-ui :commands lsp-ui-mode :ensure t)
@@ -28,6 +28,9 @@
                                              c/c++-clang))
   :hook ((c-mode c++-mode objc-mode) .
          (lambda () (require 'ccls) (lsp))))
+
+(use-package dap-mode
+  :ensure t)
 
 (provide 'layer.lsp)
 ;;; layer.lsp ends here

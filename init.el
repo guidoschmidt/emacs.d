@@ -37,10 +37,10 @@
 ;; Layers
 (require 'layer.codecompletion.company)
 (require 'layer.codenavigation)
-(require 'layer.evil)
 (require 'layer.git)
+(require 'layer.evil)
 (require 'layer.lsp)
-(require 'layer.org)
+;;(require 'layer.org)
 (require 'layer.restclient)
 (require 'layer.spellcheck)
 (require 'layer.syntaxcheck)
@@ -60,9 +60,9 @@
 ;; (require 'lang.clojure)
 ;; (require 'lang.common-lisp)
 ;; (require 'lang.cpp)
-;; (require 'lang.csharp)
+(require 'lang.csharp)
 ;; (require 'lang.css)
-;; (require 'lang.emacs-lisp)
+(require 'lang.emacs-lisp)
 ;; (require 'lang.fsharp)
 ;; (require 'lang.glsl)
 ;; (require 'lang.haskell)
@@ -81,6 +81,7 @@
         gc-cons-percentage 0.1))
 
 (add-hook 'emacs-startup-hook #'reenable-gc)
+
 
 (provide 'init.el)
 ;;; init.el ends here
