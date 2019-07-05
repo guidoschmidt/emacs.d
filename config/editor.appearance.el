@@ -13,7 +13,10 @@
       '((ns-transparent-titlebar . t)
         (ns-appearance . 'light)))
 
+;; Disable window decoration in Windows
+
 ;; Disable menubar
+(set-frame-parameter nil 'undecorated t)
 (menu-bar-mode -1)
 
 ;; Disable toolbar
