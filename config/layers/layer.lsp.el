@@ -7,7 +7,6 @@
   :commands lsp
   :ensure t
   :config
-  (setq lsp-auto-guess-root t)
   (lsp--persist-session (lsp-session)))
 
 (use-package lsp-ui :commands lsp-ui-mode :ensure t)
@@ -15,7 +14,11 @@
 (use-package company-lsp
   :ensure t
   :commands company-lsp
-  :config (push 'company-lsp company-backends))
+  :config
+  (push 'company-lsp company-backends)
+  (setq company-transformers nil
+        company-lsp-async t
+        company-lsp-cache-candidates nil))
 
 (use-package ccls
   :ensure t
