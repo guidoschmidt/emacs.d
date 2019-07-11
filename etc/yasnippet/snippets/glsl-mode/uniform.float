@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: uniform float
+# key: uf
+# --
+uniform float u_$1;

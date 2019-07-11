@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: uniform vec4
+# key: u4
+# --
+uniform vec4 u_$1;

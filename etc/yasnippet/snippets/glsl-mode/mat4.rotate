@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: mat4 rotate
+# key: rt
+# --
+mat4 rotateZ(in float a) {
+  mat4 rotate = mat4(cos(a), -sin(a), 0, 0,
+  sin(a),  cos(a), 0, 0,
+  0,       0,      1, 0,
+  0,       0,      0, 1);
+  return rotate;
+}
