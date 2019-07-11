@@ -14,9 +14,10 @@
         (ns-appearance . 'light)))
 
 ;; Disable window decoration in Windows
+(when (memq system-type '(windows-nt))
+  (set-frame-parameter nil 'undecorated t))
 
 ;; Disable menubar
-(set-frame-parameter nil 'undecorated t)
 (menu-bar-mode -1)
 
 ;; Disable toolbar
