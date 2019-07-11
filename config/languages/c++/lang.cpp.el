@@ -182,7 +182,7 @@ _j_: goto symbol under point
 
 (define-key c++-mode-map (kbd "<C-return>") 'cpp-endline)
 
-;; Language server protocol
+;; C++ Language Server
 (defvar projectile-project-root-files-top-down-recurring)
 (with-eval-after-load 'projectile
   (setq projectile-project-root-files-top-down-recurring
@@ -190,19 +190,25 @@ _j_: goto symbol under point
                   ".ccls")
                 projectile-project-root-files-top-down-recurring)))
 
-(defun ccls//enable ()
-  "Enable ccls for C++ language server."
-  (condition-case nil
-      (lsp-ccls-enable)
-    (user-error nil)))
-
-(defvar ccls-executable)
 (use-package ccls
-  :ensure
+  :ensure t
   :config
   (setq ccls-executable "/usr/local/bin/ccls")
+  (setq lsp-prefer-flymake nil)
+  (setq-default flycheck-disabled-checkers '(c/c++-gcc
+                                             c/c++-cppcheck
+                                             c/c++-clang))
   :hook ((c-mode c++-mode objc-mode) .
          (lambda () (require 'ccls) (lsp))))
+
+(use-package cquery
+  :ensure t
+  :config
+  (setq cquery-executable "/urs/local/bin/cquery")
+  (setq cquery-extra-init-params
+        '(:index (:comments 2) :cacheFormat "msgpack"))
+  :hook ((c-mode c++-mode objc-mode) .
+         (lambda () (require 'cquery) (lsp))))
 
 (provide 'lang.cpp)
 ;;; lang.cpp ends here

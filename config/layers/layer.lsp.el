@@ -21,17 +21,7 @@
         company-lsp-async t
         company-lsp-cache-candidates nil))
 
-(use-package ccls
-  :ensure t
-  :config
-  (setq ccls-executable "/usr/local/bin/ccls")
-  (setq lsp-prefer-flymake nil)
-  (setq-default flycheck-disabled-checkers '(c/c++-gcc
-                                             c/c++-cppcheck
-                                             c/c++-clang))
-  :hook ((c-mode c++-mode objc-mode) .
-         (lambda () (require 'ccls) (lsp))))
-
+;; @TODO
 (use-package dap-mode
   :ensure t)
 
