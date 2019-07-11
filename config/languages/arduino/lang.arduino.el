@@ -2,6 +2,9 @@
 ;;; Commentary:
 
 ;;; Code:
+(use-package arduino-mode
+  :ensure t)
+
 (use-package platformio-mode
   :ensure t
   :commands (arduino-mode platformio-mode)
