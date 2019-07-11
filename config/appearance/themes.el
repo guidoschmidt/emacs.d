@@ -46,13 +46,16 @@
 (use-package spacemacs-theme                :ensure :defer)
 (use-package kooten-theme                   :ensure :defer)
 (use-package panda-theme                    :ensure :defer)
+(use-package brutalist-theme                :ensure :defer)
+(use-package atom-dark-theme                :ensure :defer)
+(use-package atom-one-dark-theme            :ensure :defer)
 
 ;; --- Circadian
 (use-package circadian
   ;; :load-path "~/git/develop/emacs/circadian.el"
   :ensure t
   :config
-  (setq circadian-themes '((:sunrise . srcery)
+  (setq circadian-themes '((:sunrise . atom-one-dark)
                            (:sunset  . gruvbox)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
