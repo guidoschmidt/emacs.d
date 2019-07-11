@@ -62,7 +62,7 @@
   ;; Define custom doom-modeline configuration
   (doom-modeline-def-modeline 'gs
     '(bar custom-evil-state vcs buffer-encoding buffer-info)
-    '(skycolor-clock))
+    '(lsp major-mode skycolor-clock))
   (defun setup-custom-doom-modeline ()
     (doom-modeline-set-modeline 'gs 'default)) 
   (add-hook 'doom-modeline-mode-hook 'setup-custom-doom-modeline)
