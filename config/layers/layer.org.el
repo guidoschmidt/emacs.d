@@ -199,5 +199,38 @@ _t_: org-todo
      (evil-leader/set-key
        "z" 'hydra-org/body)))
 
+(use-package org-brain
+  :ensure t
+  :init
+  (setq org-brain-path "~/Dropbox/org")
+  (with-eval-after-load 'evil
+    (evil-set-initial-state 'org-brain-visualize-mode 'emacs))
+  :config
+  (setq org-id-track-globally t))
+
+(defun screenshot (&optional arg)
+  "Take a screenshot with optional ARG and insert org link.
+with prefix arg, minimize Emacs first.
+Only works on macOS."
+  (interactive "P")
+  (let ((dirname "img"))
+    (when arg
+      (suspend-frame))
+    (unless (f-directory? dirname)
+      (make-directory dirname))
+    (sit-for 0.2)
+    (let ((fname (concat (format-time-string "date-%d-%m-%Y-time-%H-%M-%S" (current-time)) ".png")))
+      (do-applescript
+       (mapconcat
+        'identity
+        (list (format "set screenshotFilePath to \"%s\"" (expand-file-name fname dirname))
+              "do shell script \"screencapture \" & \"-s\" & \" \" & quoted form of screenshotFilePath"
+              (concat "set result to \"[[./" fname "]]\"")
+              "set the clipboard to result")
+        "\n"))
+      (insert (format "\n\n#+attr_org: :width 300\n[[./%s]]\n\n" (concat dirname "/" fname)))
+      (org-redisplay-inline-images)
+      (raise-frame))))
+
 (provide 'layer.org)
 ;;; layer.org ends here
