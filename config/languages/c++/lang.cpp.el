@@ -49,64 +49,6 @@
     '(progn (flycheck-add-next-checker 'c/c++-clang
                                        '(warning . c/c++-googlelint)))))
 
-;; -- Autocomplete using YouCompleteMe
-(use-package ycmd
-  :disabled
-  :ensure t
-  :commands c++-mode
-  :init (add-hook 'c++-mode-hook #'ycmd-mode)
-  :config
-  (set-variable 'ycmd-server-command '("python2" "~/.emacs.d/github/ycmd/ycmd"))
-  (set-variable 'ycmd-global-config (expand-file-name "~/.emacs.d/config/external/ycm_extra_conf.py"))
-  (set-variable 'ycmd-extra-conf-whitelist '("~/Repos/*"))
-  (use-package company-ycmd
-    :ensure t
-    :mode ("\\.cpp\\'" "\\.h\\'" "\\.hpp\\'")
-    :commands c++-mode
-    :init (company-ycmd-setup)
-    :config (add-to-list 'company-backends
-                         (company-mode/backend-with-yas 'company-ycmd))))
-
-(use-package flycheck-ycmd
-  :disabled
-  :commands (flycheck-ycmd-setup)
-  :init (add-hook 'ycmd-mode-hook 'flycheck-ycmd-setup))
-
-;; -- Autocomplete using Irony
-(use-package company-irony :ensure t
-  :disabled)
-
-(use-package company-irony-c-headers
-  :ensure t
-  :disabled)
-
-(use-package irony-eldoc
-  :ensure t
-  :disabled)
-
-(use-package irony
-  :ensure t
-  :disabled
-  :config
-  (defun company/irony-mode-hook ()
-    "Hook to customize irony mode."
-    (add-to-list 'company-backends '(company-irony :with company-irony-c-headers)))
-  (add-hook 'irony-mode-hook 'company/irony-mode-hook)
-  (add-hook 'c++-mode-hook 'irony-mode)
-  (add-hook 'c-mode-hook 'irony-mode)
-  (add-hook 'objc-mode-hook 'irony-mode)
-  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-  :bind
-  ((:map c-mode-map
-         ("<C-tab>" . company-irony))))
-
-;; -- Flycheck
-(use-package flycheck-irony
-  :ensure t
-  :config
-  (eval-after-load 'flycheck
-    '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)))
-
 ;; -- GGTags
 (use-package ggtags
   :ensure t
@@ -182,7 +124,7 @@ _j_: goto symbol under point
 
 (define-key c++-mode-map (kbd "<C-return>") 'cpp-endline)
 
-;; C++ Language Server
+;; -- C++ Language Server
 (defvar projectile-project-root-files-top-down-recurring)
 (with-eval-after-load 'projectile
   (setq projectile-project-root-files-top-down-recurring
