@@ -31,5 +31,10 @@ tramp
 # straight.el
 straight/
 
-# lsp
+# windows - dir for executables on windows, e.g. ag.exe
+windows/
+
+# LSP
 .lsp-session-*
+
+transient/

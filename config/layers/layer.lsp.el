@@ -4,8 +4,9 @@
 ;;; Code:
 
 (use-package lsp-mode
-  :commands lsp
+  :commands (lsp lsp-deferred)
   :ensure t
+  :hook (prog-mode . lsp)
   :config
   (lsp--persist-session (lsp-session)))
 
@@ -30,6 +31,9 @@
                                              c/c++-clang))
   :hook ((c-mode c++-mode objc-mode) .
          (lambda () (require 'ccls) (lsp))))
+
+(use-package dap-mode
+  :ensure t)
 
 (provide 'layer.lsp)
 ;;; layer.lsp ends here
