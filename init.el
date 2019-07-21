@@ -66,6 +66,7 @@
 ;; (require 'lang.fsharp)
 ;; (require 'lang.glsl)
 (require 'lang.hlsl)
+(require 'lang.shader)
 ;; (require 'lang.haskell)
 ;; (require 'lang.javascript)
 ;; (require 'lang.kotlin)
