@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: feynman
+# key: feynman
+# --
+* ${1:Name of the Concept}
+** Explanation
+   ${2:Explain the concept shortly in easy language.}
+** Terms 
+   ${3:Write down all the special terms/vocabulary}
+** Examples
+   ${4:Write down same examples (use-cases, math examples, graphics)}
+** Issues
+   ${5:Find holes in the explanation, rewrite complicated language}
+** Related
+   ${6:Link to related topics}
