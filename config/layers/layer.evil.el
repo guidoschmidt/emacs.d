@@ -27,7 +27,6 @@
 (use-package evil-lion
   :ensure t
   :after evil
-  :disabled
   :config
   (evil-lion-mode))
 
@@ -76,7 +75,8 @@
     "("       'lispy-parens
     "{"       'lispy-braces
     "["       'lispy-brackets
-    "\""      'lispy-quotes))
+    "\""      'lispy-quotes
+    "*"       'lispy-asterisk))
 
 (use-package evil
   :ensure t
@@ -95,7 +95,10 @@
   :after evil
   :config
   (evil-leader/set-key
-    "l"  'hydra-lispy-x/body))
+    "l"  'hydra-lispy-x/body)
+  (defalias 'lispy-asterisk
+      (lispy-pair "*" "*" 'lispy-parens-preceding-syntax-alist)
+    "`lispy-pair' with **."))
 
 (use-package lispyville
   :ensure t

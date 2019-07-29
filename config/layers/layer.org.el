@@ -3,6 +3,9 @@
 ;;; Commentary:
 
 ;;; Code:
+(require 'parse-time)
+(require 'solar)
+(require 'timekeeper)
 
 ;; Utility functions
 (defun sa-find-org-file-recursively (&optional directory filext)
@@ -55,10 +58,6 @@ If FILEXT is provided, return files with extension FILEXT instead."
                    (number-to-string today-month) "-"
                    (number-to-string today-day)
                    "T12:00:00-0:0"))))
-
-(require 'parse-time)
-(require 'solar)
-(require 'timekeeper)
 
 (defun datetime-with-offset (offset)
   "Get the current date and time with day OFFSET."

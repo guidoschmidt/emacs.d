@@ -40,7 +40,7 @@
 (require 'layer.git)
 (require 'layer.evil)
 (require 'layer.lsp)
-;;(require 'layer.org)
+(require 'layer.org)
 (require 'layer.restclient)
 (require 'layer.spellcheck)
 (require 'layer.syntaxcheck)

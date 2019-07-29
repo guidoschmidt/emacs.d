@@ -10,7 +10,30 @@
   :config
   (lsp--persist-session (lsp-session)))
 
-(use-package lsp-ui :commands lsp-ui-mode :ensure t)
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode
+  :config
+  (defhydra hydra-lsp-peek (:color black)
+    "
+LSP UI
+--------------------------------------------------------------------------------
+
+_d_: find definitions
+_x_: go to
+_r_: find references
+
+_h_: ← go backward
+_l_: → go forward
+
+"
+  ("d" lsp-ui-peek-find-definitions "find-definitions")
+  ("x" lsp-ui-peek--goto-xref        "go to")
+  ("h" lsp-ui-peek-jump-backward     "<")
+  ("l" lsp-ui-peek-jump-forward      ">")
+  ("r" lsp-ui-peek-find-references   "references"))
+  (evil-leader/set-key
+    "u" 'hydra-lsp-peek/body))
 
 (use-package company-lsp
   :ensure t
