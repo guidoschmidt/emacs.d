@@ -37,13 +37,14 @@
 ;; Layers
 (require 'layer.codecompletion.company)
 (require 'layer.codenavigation)
-(require 'layer.git)
 (require 'layer.evil)
+(require 'layer.git)
 (require 'layer.lsp)
 (require 'layer.org)
 (require 'layer.restclient)
 (require 'layer.spellcheck)
 (require 'layer.syntaxcheck)
+(require 'layer.openframeworks)
 
 ;; Additional packages
 (require 'editor.packages)
@@ -54,25 +55,26 @@
 (require 'themes)
 ;;(require 'ligatures)
 
-;; Languages
+(require 'lang.cpp)
+(require 'lang.csharp)
+(require 'lang.emacs-lisp)
+(require 'lang.rust)
 ;; (require 'lang.android)
 ;; (require 'lang.arduino)
 ;; (require 'lang.clojure)
 ;; (require 'lang.common-lisp)
-(require 'lang.cpp)
-(require 'lang.csharp)
 ;; (require 'lang.css)
-(require 'lang.emacs-lisp)
 ;; (require 'lang.fsharp)
 ;; (require 'lang.glsl)
 ;; (require 'lang.haskell)
-;; (require 'lang.javascript)
+(require 'lang.javascript)
 ;; (require 'lang.kotlin)
 ;; (require 'lang.markup)
 ;; (require 'lang.php)
 ;; (require 'lang.python)
 ;; (require 'lang.swift)
 ;; (require 'lang.urscript)
+;; Languages
 
 ;; Then reset GC as late as possible
 (defun reenable-gc ()
