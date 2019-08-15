@@ -76,7 +76,9 @@
     "{"       'lispy-braces
     "["       'lispy-brackets
     "\""      'lispy-quotes
-    "*"       'lispy-asterisk))
+    "*"       'lispy-asterisk
+    "/"       'lispy-slash
+    "~"       'lispy-tilde))
 
 (use-package evil
   :ensure t
@@ -98,7 +100,13 @@
     "l"  'hydra-lispy-x/body)
   (defalias 'lispy-asterisk
       (lispy-pair "*" "*" 'lispy-parens-preceding-syntax-alist)
-    "`lispy-pair' with **."))
+      "`lispy-pair' with **.")
+  (defalias 'lispy-slash
+      (lispy-pair "/" "/" 'lispy-parens-preceding-syntax-alist)
+      "`lispy-pair' with //.")
+  (defalias 'lispy-tilde
+      (lispy-pair "~" "~" 'lispy-parens-preceding-syntax-alist)
+    "`lispy-pair' with ~."))
 
 (use-package lispyville
   :ensure t
