@@ -156,7 +156,7 @@ If FILEXT is provided, return files with extension FILEXT instead."
 (defvar org-format-latex-options '())
 
 (setq org-format-latex-options
-      `(:scale 2.0 :foreground ,(face-attribute 'default :foreground)))
+      `(:scale 1.2 :foreground ,(face-attribute 'default :foreground)))
 
 ;; Third party packages
 (use-package org-bullets
