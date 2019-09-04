@@ -16,7 +16,9 @@
 
 ;;; Code:
 ;; --- Theme load paths
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(add-to-list 'custom-theme-load-path
+             "~/.emacs.d/themes/"
+             "~/.emacs.d/straight/repos/zaiste-emacs-theme/")
 
 ;;; --- Re-set linum after loading a new theme.
 (use-package ample-theme                    :ensure :defer)
@@ -49,14 +51,20 @@
 (use-package brutalist-theme                :ensure :defer)
 (use-package atom-dark-theme                :ensure :defer)
 (use-package atom-one-dark-theme            :ensure :defer)
+(use-package doom-themes                    :ensure :defer)
+(use-package zaiste-theme
+  :straight (zaiste-theme
+             :type git
+             :host github
+             :repo "zaiste/zaiste-emacs-theme"))
 
 ;; --- Circadian
 (use-package circadian
   ;; :load-path "~/git/develop/emacs/circadian.el"
   :ensure t
   :config
-  (setq circadian-themes '((:sunrise . gruvbox)
-                           (:sunset  . zerodark)))
+  (setq circadian-themes '((:sunrise . zaiste)
+                           (:sunset  . doom-Iosvkem)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
 
