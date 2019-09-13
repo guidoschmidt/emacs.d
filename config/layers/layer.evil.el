@@ -78,7 +78,8 @@
     "\""      'lispy-quotes
     "*"       'lispy-asterisk
     "/"       'lispy-slash
-    "~"       'lispy-tilde))
+    "~"       'lispy-tilde
+    "x"       'frog-jump-buffer))
 
 (use-package evil
   :ensure t

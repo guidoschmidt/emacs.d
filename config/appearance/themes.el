@@ -52,11 +52,6 @@
 (use-package atom-dark-theme                :ensure :defer)
 (use-package atom-one-dark-theme            :ensure :defer)
 (use-package doom-themes                    :ensure :defer)
-(use-package zaiste-theme
-  :straight (zaiste-theme
-             :type git
-             :host github
-             :repo "zaiste/zaiste-emacs-theme"))
 
 ;; --- Circadian
 (use-package circadian

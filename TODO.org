@@ -1,7 +1,12 @@
 * TODO:
-** IN dired hacks [0/2]
-    - [ ] Subtree
-    - [ ] dired-collapse
+** DONE dired hacks [2/2]
+    - [X] Subtree -> Treemacs
+    - [X] dired-collapse
+** DONE treemacs
+** DONE double-saber
+https://github.com/dp12/double-saber
+** DONE frog-jump-buffer
+https://github.com/waymondo/frog-jump-buffer
 ** IN find file in project
    https://github.com/technomancy/find-file-in-project
 ** IN ranger
@@ -17,23 +22,18 @@
     https://gitlab.com/ambrevar/emacs-disk-usage
 ** IN alerts
 *** alerts: https://github.com/jwiegley/alert
-** IN frog-jump-buffer
-https://github.com/waymondo/frog-jump-buffer
-** IN double-saber
-https://github.com/dp12/double-saber
 ** IN debugging mode
 ** TODO quelpa
     https://framagit.org/steckerhalter/quelpa
 ** TODO evil-easymotion
    https://github.com/PythonNut/evil-easymotion
-** DONE treemacs
 * LANGUAGES:
 ** PROJ python
 *** WONTDO https://github.com/anachronic/importmagic.el
 *** IN anacoda
 *** IN nose
 ** PROJ rust
-*** IN lsp-ui
+*** DONE lsp-ui
 * INSPIRATION:
 ** castlemacs
     https://github.com/freetonik/castlemacs/blob/master/init.el

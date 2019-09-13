@@ -200,6 +200,15 @@
    ("v" . nil)
    ("V" . nil)))
 
+(use-package double-saber
+  :ensure t
+  :config
+  (with-eval-after-load "ivy")
+  (add-hook 'ivy-occur-grep-mode-hook
+            (lambda ()
+              (double-saber-mode)
+              (setq-local double-saber-start-line 5))))
+
 ;; counsel - ivy-enhanced versiosn of Emacs-commands
 (use-package counsel
   :ensure t
@@ -384,6 +393,18 @@
 
 ;; Focus-mode
 (use-package focus
+  :ensure t)
+
+;; Treemacs
+(use-package treemacs
+  :ensure t)
+
+;; Dired-collapse
+(use-package dired-collapse
+  :ensure t)
+
+;; Frog jump
+(use-package frog-jump-buffer
   :ensure t)
 
 (provide 'editor.packages)
