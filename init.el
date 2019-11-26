@@ -45,6 +45,7 @@
 (require 'layer.spellcheck)
 (require 'layer.syntaxcheck)
 (require 'layer.openframeworks)
+(require 'layer.processing)
 
 ;; Additional packages
 (require 'editor.packages)
@@ -53,7 +54,7 @@
 (require 'editor.appearance)
 (require 'modeline)
 (require 'themes)
-;;(require 'ligatures)
+(require 'ligatures)
 
 (require 'lang.cpp)
 (require 'lang.csharp)
