@@ -15,8 +15,8 @@
       (sky-color-clock-initialize (round calendar-latitude)))))
 
 (defface evil-normal-state-face
-  `((t (:foreground "#F7B2EE"
-        :background "#A273FF"
+  `((t (:foreground "#F3F2F1"
+        :background "#333333"
         :weight ultra-bold)))
   "Face for warnings in the modeline. Used by `*flycheck'")
 
