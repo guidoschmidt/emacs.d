@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: of-fbo-settings
+# key: of-fbo-settings
+# --
+// Fbo
+ofFbo::Settings settings;
+settings.numSamples = 8;
+settings.numColorbuffers = 3;
+settings.internalformat = GL_RGBA;
+settings.textureTarget = GL_TEXTURE_2D;
+settings.width = ofGetWidth();
+settings.height = ofGetHeight();
+_fbo.allocate(settings);

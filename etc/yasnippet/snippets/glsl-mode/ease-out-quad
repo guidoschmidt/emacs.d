@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: easeOutQuad
+# key: easeOutQuad
+# --
+float easeOutQuad(float t) {
+  return -1.0 * t * (t - 2.0);
+}

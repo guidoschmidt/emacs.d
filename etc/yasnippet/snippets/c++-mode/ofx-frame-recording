@@ -1,0 +1,42 @@
+# -*- mode: snippet -*-
+# name: of-frame-recording
+# key: of-frame-rec
+# --
+
+// .h/.hpp
+// Frame recording
+const std::string _TIMESTAMP = ofGetTimestampString();
+const std::string _OUTPUT_DIR = _TIMESTAMP;
+int               _startRecordingAtFrame = 0;
+ofImage           _screenshot;
+bool              _isRecording;
+
+//--------------------------------------------------------------
+void draw() {
+ // UI
+  if (!_isRecording) {
+    _gui->draw();
+  }
+  // Recording video frames
+  if (_isRecording) {
+    saveFrameToFile("videos");
+  }
+}
+
+//--------------------------------------------------------------
+std::string ofApp::getFrameNumber() {
+  int frameNumber = ofGetFrameNum() - _startRecordingAtFrame;
+  std::stringstream ss;
+  ss << _OUTPUT_DIR << "_" << std::setw(4) << std::setfill('0') << frameNumber;
+  std::string s = ss.str();
+  return s;
+}
+
+//--------------------------------------------------------------
+void ofApp::saveFrameToFile(std::string rootDir) {
+  _screenshot.grabScreen(0, 0, ofGetWidth(), ofGetHeight());
+  _screenshot.save(rootDir + "/png/" +
+                   _OUTPUT_DIR + "/"
+                   + getFrameNumber() + ".png",
+                   OF_IMAGE_QUALITY_BEST);
+}

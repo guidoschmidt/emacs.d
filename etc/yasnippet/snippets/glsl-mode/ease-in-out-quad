@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: easeInOutQuad
+# key: easeInOutQuad
+# --
+float easeInOutQuad(float t) {
+  if ((t *= 2.0) < 1.0) {
+    return 0.5 * t * t;
+  } else {
+    return -0.5 * ((t - 1.0) * (t - 3.0) - 1.0);
+  }
+}

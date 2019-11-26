@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: drawAxes
+# key: drawAxes
+# --
+void drawAxes() {
+  stroke(255, 0, 0);
+  line(-300, 0, 0, 300, 0, 0);
+  text("+x", 300, 0, 0);
+  text("-x", -330, 0, 0);
+  stroke(0, 255, 0);
+  line(0, -300, 0, 0, 300, 0);
+  text("+y", 0, 330, 0);
+  text("-y", 0, -300, 0);
+  stroke(0, 0, 255);
+  line(0, 0, -300, 0, 0, 300);
+  text("+z", 0, 0, 330);
+  text("-z", 0, 0, -300);
+}

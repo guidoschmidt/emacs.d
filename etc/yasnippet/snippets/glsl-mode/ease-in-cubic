@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: easeInCubic
+# key: easeInCubic
+# --
+float easeInCubic(float t) {
+  return t * t * t;
+}

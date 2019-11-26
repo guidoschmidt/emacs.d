@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: easeInOutCubic
+# key: easeInOutCubic
+# --
+float easeInOutCubic(float t) {
+  if ((t *= 2.0) < 1.0) {
+    return 0.5 * t * t * t;
+  } else {
+    return 0.5 * ((t -= 2.0) * t * t + 2.0);
+  }
+}

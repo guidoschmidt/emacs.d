@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: easeInOutExpo
+# key: easeInOutExpo
+# --
+float easeInOutExpo(float t) {
+  if (t == 0.0 || t == 1.0) {
+    return t;
+  }
+  if ((t *= 2.0) < 1.0) {
+    return 0.5 * pow(2.0, 10.0 * (t - 1.0));
+  } else {
+    return 0.5 * (-pow(2.0, -10.0 * (t - 1.0)) + 2.0);
+  }
+}
