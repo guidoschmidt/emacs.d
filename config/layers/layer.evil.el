@@ -78,7 +78,9 @@
     "\""      'lispy-quotes
     "*"       'lispy-asterisk
     "/"       'lispy-slash
+    "'"       'lispy-singlequote
     "~"       'lispy-tilde
+    "<"       'lispy-angle-brackets
     "x"       'frog-jump-buffer))
 
 (use-package evil
@@ -102,12 +104,18 @@
   (defalias 'lispy-asterisk
       (lispy-pair "*" "*" 'lispy-parens-preceding-syntax-alist)
       "`lispy-pair' with **.")
+  (defalias 'lispy-singlequote
+      (lispy-pair "'" "'" 'lispy-parens-preceding-syntax-alist)
+      "`lispy-pair' with ''.")
   (defalias 'lispy-slash
       (lispy-pair "/" "/" 'lispy-parens-preceding-syntax-alist)
       "`lispy-pair' with //.")
   (defalias 'lispy-tilde
       (lispy-pair "~" "~" 'lispy-parens-preceding-syntax-alist)
-    "`lispy-pair' with ~."))
+      "`lispy-pair' with ~.")
+  (defalias 'lispy-angle-brackets
+      (lispy-pair "<" ">" 'lispy-parens-preceding-syntax-alist)
+    "`lispy-pair' with <>."))
 
 (use-package lispyville
   :ensure t

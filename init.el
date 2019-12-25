@@ -62,7 +62,7 @@
 (require 'lang.rust)
 ;; (require 'lang.android)
 ;; (require 'lang.arduino)
-;; (require 'lang.clojure)
+(require 'lang.clojure)
 ;; (require 'lang.common-lisp)
 (require 'lang.css)
 ;; (require 'lang.fsharp)

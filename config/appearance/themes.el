@@ -58,8 +58,8 @@
   ;; :load-path "~/git/develop/emacs/circadian.el"
   :ensure t
   :config
-  (setq circadian-themes '((:sunrise . doom-acario-dark)
-                           (:sunset  . doom-oceanic-next)))
+  (setq circadian-themes '((:sunrise . doom-snazzy)
+                           (:sunset  . doom-acario-dark)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
 
