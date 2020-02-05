@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: vertex shader
+# key: vertex-shader
+# --
+// VERTEX SHADER
+#version $1
+
+void main() {
+  
+}

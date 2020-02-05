@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: geometry shader
+# key: geometry-shader
+# --
+// GEOMETRY SHADER
+#version $1
+
+void main() {
+  
+}
