@@ -38,3 +38,5 @@ windows/
 .lsp-session-*
 
 transient/
+
+.extension/
