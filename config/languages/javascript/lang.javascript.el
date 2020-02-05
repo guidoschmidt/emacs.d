@@ -143,10 +143,9 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
 
 ;;; Prettier.js
 (use-package prettier-js
-  :disabled
   :ensure t
   :config
-  (setq prettier-js-command "/Users/gs/.nvm/versions/node/v12.6.0/bin/vue-prettier")
+  (setq prettier-js-command "/Users/gs/.nvm/versions/node/v13.7.0/bin/prettier")
   (add-hook 'js2-mode-hook 'prettier-js-mode)
   (add-hook 'vue-mode-hook 'prettier-js-mode)
   (add-hook 'rjsx-mode-hook 'prettier-js-mode))
@@ -160,6 +159,10 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
 (add-hook 'rjsx-mode            #'lsp)
 (add-hook 'js-mode-hook         #'lsp)
 (add-hook 'rjsx-mode-hook       #'lsp)
+
+;;; Debugging
+(require 'dap-firefox)
+(dap-firefox-setup)
 
 (provide 'lang.javascript)
 ;;; lang.javascript ends here

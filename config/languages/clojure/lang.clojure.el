@@ -44,6 +44,7 @@
 
 (use-package clj-refactor
   :ensure t
+  :disabled
   :config
   (defun clj-refactor-hook ()
     (clj-refactor-mode 1)

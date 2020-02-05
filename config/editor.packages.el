@@ -155,10 +155,7 @@
 (use-package exec-path-from-shell
   :ensure t
   :config
-  (when (memq window-system '(mac ns x))
-    (setq explicit-shell-file-name "/bin/zsh")
-    (setq shell-file-name "zsh")
-    (exec-path-from-shell-initialize)))
+  (exec-path-from-shell-initialize))
 
 ;; switch-window - drop ace-window in favor of this
 (use-package switch-window
