@@ -11,13 +11,12 @@
   ;;; macOS: Macbook Pro Vreni
   (when (and (equalp (system-name) "Vreni")
              (memq window-system '(ns)))
-    (setq python-shell-interpreter "/Users/gs/.pyenv/versions/3.6.6/bin/python3")
+    (setq python-shell-interpreter "python3")
     (setq exec-path
           (append exec-path
-                  '("/usr/local/bin")))
+                  '("~/.pyenv/versions/3.6.5/bin/")))
     (setenv "PYTHONPATH"
             "/Applications/Rhinoceros.app/Contents/Resources/ManagedPlugIns/RhinoDLR_Python.rhp/RssLib"))
-            "/usr/local/Cellar/opencv@3/3.4.5/lib/python3.7/site-packages"
 
   ;;; Windows: Cube
   (when (and (equalp (system-name) "Cube")
