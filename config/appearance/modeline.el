@@ -55,7 +55,7 @@
   ;; Configure doom-modeline variables
   (setq find-file-visit-truename t)
   (setq doom-modeline-bar-width 3)
-  (setq doom-modeline-height 22)
+  (setq doom-modeline-height 42)
   (setq doom-modeline-buffer-file-name-style 'truncate-upto-project)
   (setq doom-modeline-icon nil)
   (setq doom-modeline-lsp t)

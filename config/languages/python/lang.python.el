@@ -1,3 +1,4 @@
+;;; lang.python --- Python scripting language support
 ;;; Commentary:
 
 ;;; Code:
@@ -7,7 +8,6 @@
   :mode ("\\.py\\'" . python-mode)
   :config
   (setq python-indent-guess-indent-offset nil)
-
   ;;; macOS: Macbook Pro Vreni
   (when (and (equalp (system-name) "Vreni")
              (memq window-system '(ns)))
@@ -17,13 +17,20 @@
                   '("~/.pyenv/versions/3.6.5/bin/")))
     (setenv "PYTHONPATH"
             "/Applications/Rhinoceros.app/Contents/Resources/ManagedPlugIns/RhinoDLR_Python.rhp/RssLib")) 
-
   ;;; Windows: Cube
   (when (and (equalp (system-name) "Cube")
              (memq window-system '(w32)))
     (setq python-shell-interpreter "c:/Development/python/3.6/python.exe")
     (setq exec-path
           (append exec-path '("c:/Development/python/3.6")))
+    (setenv "PYTHONPATH"
+            ""))
+   ;;; Windows: FMP Zenbook
+  (when (and (equalp (system-name) "Zenbook-GS")
+             (memq window-system '(w32)))
+    (setq python-shell-interpreter "c:/Development/anaconda/python.exe")
+    (setq exec-path
+          (append exec-path '("c:/Development/anaconda")))
     (setenv "PYTHONPATH"
             "")))
 
@@ -51,22 +58,10 @@
 
 (use-package flycheck-pycheckers
   :ensure t
+  :disabled
   :config
   (with-eval-after-load 'flycheck
     (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup)))
-
-(lsp-register-client
- (make-lsp--client :new-connection (lsp-stdio-connection "pyls")
-                   :major-modes '(python-mode)
-                   :server-id 'pyls))
-(add-hook 'python-mode-hook #'lsp)
-
-(defun lsp-set-cfg ()
-  "Setup language server configuration."
-  (let ((lsp-cfg `(:pyls (:configurationSources ("flake8")))))
-
-    (lsp--set-configuration lsp-cfg)))
-(add-hook 'lsp-after-initialize-hook 'lsp-set-cfg)
 
 (provide 'lang.python)
 ;;; lang.python ends here

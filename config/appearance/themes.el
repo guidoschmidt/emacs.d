@@ -40,7 +40,6 @@
 (use-package soothe-theme                   :ensure :defer)
 (use-package subatomic-theme                :ensure :defer)
 (use-package tao-theme                      :ensure :defer)
-(use-package color-theme-solarized          :ensure :defer)
 (use-package abyss-theme                    :ensure :defer)
 (use-package challenger-deep-theme          :ensure :defer)
 (use-package srcery-theme                   :ensure :defer)
@@ -58,7 +57,7 @@
   ;; :load-path "~/git/develop/emacs/circadian.el"
   :ensure t
   :config
-  (setq circadian-themes '((:sunrise . doom-molokai)
+  (setq circadian-themes '((:sunrise . doom-oceanic-next)
                            (:sunset  . doom-Iosvkem)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
