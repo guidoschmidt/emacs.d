@@ -8,7 +8,9 @@
   :mode ("\\.py\\'" . python-mode)
   :config
   (setq python-indent-guess-indent-offset nil)
-  ;;; macOS: Macbook Pro Vreni
+  ;;
+  ;; macOS: Macbook Pro Vreni
+  ;;
   (when (and (equalp (system-name) "Vreni")
              (memq window-system '(ns)))
     (setq python-shell-interpreter "python3")
@@ -17,7 +19,9 @@
                   '("~/.pyenv/versions/3.6.5/bin/")))
     (setenv "PYTHONPATH"
             "/Applications/Rhinoceros.app/Contents/Resources/ManagedPlugIns/RhinoDLR_Python.rhp/RssLib")) 
-  ;;; Windows: Cube
+  ;;
+  ;; Windows: Cube
+  ;;
   (when (and (equalp (system-name) "Cube")
              (memq window-system '(w32)))
     (setq python-shell-interpreter "c:/Development/python/3.6/python.exe")
@@ -25,7 +29,9 @@
           (append exec-path '("c:/Development/python/3.6")))
     (setenv "PYTHONPATH"
             ""))
-   ;;; Windows: FMP Zenbook
+  ;;
+  ;; Windows: FMP Zenbook
+  ;;
   (when (and (equalp (system-name) "Zenbook-GS")
              (memq window-system '(w32)))
     (setq python-shell-interpreter "c:/Development/anaconda/python.exe")
