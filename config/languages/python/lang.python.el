@@ -16,7 +16,7 @@
           (append exec-path
                   '("~/.pyenv/versions/3.6.5/bin/")))
     (setenv "PYTHONPATH"
-            "/Applications/Rhinoceros.app/Contents/Resources/ManagedPlugIns/RhinoDLR_Python.rhp/RssLib"))
+            "/Applications/Rhinoceros.app/Contents/Resources/ManagedPlugIns/RhinoDLR_Python.rhp/RssLib")) 
 
   ;;; Windows: Cube
   (when (and (equalp (system-name) "Cube")
@@ -24,15 +24,6 @@
     (setq python-shell-interpreter "c:/Development/python/3.6/python.exe")
     (setq exec-path
           (append exec-path '("c:/Development/python/3.6")))
-    (setenv "PYTHONPATH"
-            ""))
-
-  ;;; Windows: NSYNK
-  (when (and (equalp (system-name) "WOLFGANG")
-             (memq window-system '(w32)))
-    (setq python-shell-interpreter "d:/python/python.exe")
-    (setq exec-path
-          (append exec-path '("d:/python/python")))
     (setenv "PYTHONPATH"
             "")))
 
