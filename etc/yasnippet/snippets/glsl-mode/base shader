@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: base shader
+# key: shader
+# --
+// ${0:FRAGMENT} SHADER
+#version ${1:330}
+
+void main() {
+  
+}

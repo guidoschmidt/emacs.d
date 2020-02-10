@@ -40,6 +40,7 @@
 (require 'layer.evil)
 (require 'layer.git)
 (require 'layer.lsp)
+(require 'layer.dap)
 (require 'layer.org)
 (require 'layer.restclient)
 (require 'layer.spellcheck)
@@ -55,11 +56,11 @@
 (require 'editor.appearance)
 (require 'modeline)
 (require 'themes)
-(require 'ligatures)
 (require 'tabs)
+;; (require 'ligatures)
 
 (require 'lang.cpp)
-(require 'lang.csharp)
+;; (require 'lang.csharp)
 (require 'lang.emacs-lisp)
 (require 'lang.rust)
 ;; (require 'lang.android)
@@ -75,8 +76,8 @@
 (require 'lang.javascript)
 ;; (require 'lang.kotlin)
 (require 'lang.markup)
-(require 'lang.php)
-(require 'lang.python)
+;;(require 'lang.php)
+;;(require 'lang.python)
 ;; (require 'lang.swift)
 ;; (require 'lang.urscript)
 ;; Languages
@@ -88,7 +89,6 @@
         gc-cons-percentage 0.1))
 
 (add-hook 'emacs-startup-hook #'reenable-gc)
-
 
 (provide 'init.el)
 ;;; init.el ends here

@@ -58,7 +58,7 @@
   :ensure t
   :config
   (setq circadian-themes '((:sunrise . doom-oceanic-next)
-                           (:sunset  . doom-snazzy)))
+                           (:sunset  . doom-Iosvkem)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
 

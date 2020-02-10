@@ -2,11 +2,9 @@
 ;;; Commentary:
 
 ;;; Code:
-
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :ensure t
-  :hook (prog-mode . lsp)
   :config
   (lsp--persist-session (lsp-session)))
 
@@ -43,10 +41,6 @@ _l_: → go forward
   (setq company-transformers nil
         company-lsp-async t
         company-lsp-cache-candidates nil))
-
-;; @TODO
-(use-package dap-mode
-  :ensure t)
 
 (provide 'layer.lsp)
 ;;; layer.lsp ends here

@@ -54,7 +54,7 @@
     "k"       'ido-kill-buffer
     "s"       'magit-status
     "TAB"     'indent-region
-    "?"       'flyspell-correct-word-generic
+    "?"       'flyspell-correct-at-point
     "!"       'flyspell-add-word-to-dict
     "/"       'synosaurus-choose-and-replace
     "p"       'counsel-projectile-switch-project
@@ -81,7 +81,8 @@
     "'"       'lispy-singlequote
     "~"       'lispy-tilde
     "<"       'lispy-angle-brackets
-    "x"       'frog-jump-buffer))
+    "x"       'frog-jump-buffer
+    "y"       'ffip))
 
 (use-package evil
   :ensure t
