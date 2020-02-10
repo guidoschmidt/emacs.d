@@ -35,8 +35,8 @@
 (require 'editor.keymap)
 
 ;; Layers
-(require 'layer.codecompletion.company)
-(require 'layer.codenavigation)
+;;(require 'layer.codecompletion.company)
+;;(require 'layer.codenavigation)
 (require 'layer.evil)
 (require 'layer.git)
 (require 'layer.lsp)
@@ -46,6 +46,7 @@
 (require 'layer.syntaxcheck)
 (require 'layer.openframeworks)
 (require 'layer.processing)
+(require 'layer.tramp)
 
 ;; Additional packages
 (require 'editor.packages)
@@ -55,6 +56,7 @@
 (require 'modeline)
 (require 'themes)
 (require 'ligatures)
+(require 'tabs)
 
 (require 'lang.cpp)
 (require 'lang.csharp)

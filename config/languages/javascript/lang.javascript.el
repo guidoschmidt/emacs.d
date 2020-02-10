@@ -143,10 +143,9 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
 
 ;;; Prettier.js
 (use-package prettier-js
-  :disabled
   :ensure t
   :config
-  (setq prettier-js-command "/Users/gs/.nvm/versions/node/v12.6.0/bin/vue-prettier")
+  (setq prettier-js-command "prettier")
   (add-hook 'js2-mode-hook 'prettier-js-mode)
   (add-hook 'vue-mode-hook 'prettier-js-mode)
   (add-hook 'rjsx-mode-hook 'prettier-js-mode))
