@@ -27,6 +27,7 @@ https://github.com/waymondo/frog-jump-buffer
     https://framagit.org/steckerhalter/quelpa
 ** TODO evil-easymotion
    https://github.com/PythonNut/evil-easymotion
+** TODO leaf.el + feather.el
 * LANGUAGES:
 ** PROJ python
 *** WONTDO https://github.com/anachronic/importmagic.el
