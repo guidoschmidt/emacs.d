@@ -252,5 +252,10 @@ _m_: make cursor
   :config
   (setq evil-magit-use-y-for-yank t))
 
+(use-package evil-matchit
+  :ensure t
+  :config
+  (global-evil-matchit-mode 1))
+
 (provide 'layer.evil)
 ;;; layer.evil ends here
