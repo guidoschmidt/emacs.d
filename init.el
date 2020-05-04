@@ -77,7 +77,7 @@
 ;; (require 'lang.kotlin)
 (require 'lang.markup)
 ;;(require 'lang.php)
-;;(require 'lang.python)
+(require 'lang.python)
 ;; (require 'lang.swift)
 ;; (require 'lang.urscript)
 ;; Languages

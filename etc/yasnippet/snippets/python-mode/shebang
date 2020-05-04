@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-# name: shebang 
+# name: shebang
 # key: shebang
 # --
-#!/usr/bin/env python${1:3}
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
