@@ -4,6 +4,7 @@
 
 ;;; Code:
 (use-package shader-mode
+  :ensure t
   :mode ("\\.shader\\'"
          "\\.cginc\\'"))
 
