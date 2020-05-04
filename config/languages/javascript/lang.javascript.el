@@ -145,7 +145,8 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
 (use-package prettier-js
   :ensure t
   :config
-  (setq prettier-js-command "prettier")
+  (when (equalp (system-name) "Zenbook-GS")
+    (setq prettier-js-command "c:/Program Files/nodejs/prettier"))
   (add-hook 'js2-mode-hook 'prettier-js-mode)
   (add-hook 'vue-mode-hook 'prettier-js-mode)
   (add-hook 'rjsx-mode-hook 'prettier-js-mode))
