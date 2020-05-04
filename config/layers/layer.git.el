@@ -33,7 +33,7 @@
      :config
      (setenv "SSH_ASKPASS" "git-gui--askpass")
      (ssh-agency-find-agent)
-     (setq ssh-agency-keys '("//wsl$/Ubuntu/home/guido/.ssh/id_ed25519.github@fmp.studio")))))
+     (setq ssh-agency-keys '("~/.ssh/id_ed25519.fmp.guido")))))
 
 (provide 'layer.git)
 ;;; layer.git ends here
