@@ -35,7 +35,7 @@
 (require 'editor.keymap)
 
 ;; Layers
-;;(require 'layer.codecompletion.company)
+(require 'layer.codecompletion.company)
 ;;(require 'layer.codenavigation)
 (require 'layer.evil)
 (require 'layer.git)
