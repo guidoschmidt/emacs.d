@@ -204,7 +204,9 @@
 
 (use-package all-the-icons-ivy-rich
   :ensure t
-  :init (all-the-icons-ivy-rich-mode 1))
+  :after ivy-rich
+  :config
+  (all-the-icons-ivy-rich-mode 1))
 
 (use-package double-saber
   :ensure t
