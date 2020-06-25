@@ -13,12 +13,9 @@
   ;;
   (when (and (equalp (system-name) "Vreni")
              (memq window-system '(ns)))
-    (setq python-shell-interpreter "python3")
-    (setq exec-path
-          (append exec-path
-                  '("~/.pyenv/versions/3.6.5/bin/")))
+    (setq python-shell-interpreter "~/.pyenv/versions/3.6.5/bin/python3")
     (setenv "PYTHONPATH"
-            "/Applications/Rhinoceros.app/Contents/Resources/ManagedPlugIns/RhinoDLR_Python.rhp/RssLib")) 
+            "/Applications/Rhinoceros.app/Contents/Resources/ManagedPlugIns/RhinoDLR_Python.rhp/RssLib"))
   ;;
   ;; Windows: Cube
   ;;
@@ -43,6 +40,7 @@
 (use-package elpy
   :ensure t
   :commands elpy-mode
+  :disabled
   :config
   (setq elpy-rpc-python-command "python3")
   (defvar elpy-rpc-backend)
@@ -56,6 +54,7 @@
 
 (use-package company-jedi
   :ensure t
+  :disabled
   :config
   (setq jedi:complete-on-dot t)
   (defun company/python-mode-hook ()
@@ -68,6 +67,12 @@
   :config
   (with-eval-after-load 'flycheck
     (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup)))
+
+(use-package lsp-python-ms
+  :ensure t
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-python-ms)
+                          (lsp-deferred))))
 
 (provide 'lang.python)
 ;;; lang.python ends here

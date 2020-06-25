@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: uv/st coordinates
-# key: st
-# --
-vec2 st = gl_FragCoord.xy / u_resolution.xy;

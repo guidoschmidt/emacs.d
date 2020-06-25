@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: document-querySelector
-# key: doc.qsa
-# --
-document.querySelector("$0")

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: uniform vec2 
-# key: u2
-# --
-uniform vec2 u_$1;

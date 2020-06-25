@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: gles-precision
-# key: gles-precision
-# --
-#ifdef GL_ES
-precision mediump float;
-#endif

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: uniform mat4
-# key: um4
-# --
-uniform mat4 u_$1;

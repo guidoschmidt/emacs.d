@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: document-ready
-# key: doc.ready
-# --
-document.onreadystatechange = function() {
-  if (document.readyState === "complete") {
-    console.log("Document is ready...");
-  }
-}
