@@ -1,0 +1,28 @@
+# -*- mode: snippet -*-
+# name: ofApp-header
+# key: ofApp-header
+# --
+#pragma once
+
+#include "ofMain.h"
+
+class $1 : public ofBaseApp {
+private:
+
+public:
+  void setup();
+  void update();
+  void draw();
+
+  // IO events
+  void keyPressed(int key);
+  void keyReleased(int key);
+  void mouseMoved(int x, int y );
+  void mouseDragged(int x, int y, int button);
+  void mousePressed(int x, int y, int button);
+  void mouseReleased(int x, int y, int button);
+  void mouseEntered(int x, int y);
+  void mouseExited(int x, int y);
+  void windowResized(int w, int h);
+  void dragEvent(ofDragInfo dragInfo);
+};

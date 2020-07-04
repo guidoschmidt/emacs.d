@@ -61,5 +61,8 @@
                            (cadr word)
                            (caddr word) current-location))))
 
+(use-package writegood-mode
+  :ensure t)
+
 (provide 'layer.spellcheck)
 ;;; layer.spellcheck ends here

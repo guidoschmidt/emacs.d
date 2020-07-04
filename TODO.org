@@ -7,7 +7,7 @@
 https://github.com/dp12/double-saber
 ** DONE frog-jump-buffer
 https://github.com/waymondo/frog-jump-buffer
-** IN find file in project
+** DONE find file in project
    https://github.com/technomancy/find-file-in-project
 ** IN ranger
 ** IN lispy 
@@ -22,11 +22,12 @@ https://github.com/waymondo/frog-jump-buffer
     https://gitlab.com/ambrevar/emacs-disk-usage
 ** IN alerts
 *** alerts: https://github.com/jwiegley/alert
-** IN debugging mode
+** IN debugging mode (dap mode)
 ** TODO quelpa
     https://framagit.org/steckerhalter/quelpa
 ** TODO evil-easymotion
    https://github.com/PythonNut/evil-easymotion
+** TODO leaf.el + feather.el
 * LANGUAGES:
 ** PROJ python
 *** WONTDO https://github.com/anachronic/importmagic.el

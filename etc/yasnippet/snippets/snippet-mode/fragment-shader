@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: fragment shader
+# key: fragment-shader
+# --
+// FRAGMENT SHADER
+#version $1
+
+void main() {
+  
+}

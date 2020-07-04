@@ -3,17 +3,6 @@
 ;;; Commentary:
 
 ;;; Code:
-(use-package clojure-mode
-  :ensure t
-  :mode "\\.clj\\'"
-  ;; :config
-  ;; (lsp-register-client
-  ;;  (make-lsp--client :new-connection (lsp-stdio-connection "/Users/gs/Downloads/clojure-lsp")
-  ;;                    :major-modes '(clojure-mode)
-  ;;                    :server-id 'clojure-lsp))
-  ;; (add-hook 'clojure-mode-hook #'lsp)
-  :hook (clojure-mode-hook . lispy-mode))
-
 (use-package clojure-snippets
   :ensure t
   :defer)
@@ -31,19 +20,16 @@
     "Return a prompt string with the last 2 segments of NAMESPACE."
     (let ((names (reverse (subseq (reverse (split-string namespace "\\.")) 0 2))))
       (concat (car names) "." (cadr names) "> ")))
+  (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
+  (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)
   :hook ((cider-repl-mode . eldoc-mode)
          (cider-mode      . eldoc-mode)
          (cider-repl-mode . company-mode)
-         (cider-mode      . company-mode)
-         (cider-repl-mode . (lambda ()
-                              (eval-when-compile
-                                (cider-company-enable-fuzzy-completion))))
-         (cider-mode      . (lambda ()
-                              (eval-when-compile
-                                (cider-company-enable-fuzzy-completion))))))
+         (cider-mode      . company-mode)))
 
 (use-package clj-refactor
   :ensure t
+  :disabled
   :config
   (defun clj-refactor-hook ()
     (clj-refactor-mode 1)
@@ -52,11 +38,21 @@
     (cljr-add-keybindings-with-prefix "C-c f"))
   :hook (clojure-mode . clj-refactor-mode))
 
-(use-package flycheck-clojure
+(use-package flycheck-clj-kondo
+  :ensure t)
+
+(use-package clojure-mode
   :ensure t
-  :disabled
+  :mode "\\.clj\\'"
   :config
-  (eval-after-load 'flycheck '(flycheck-clojure-setup)))
+  (require 'flycheck-clj-kondo)
+  :hook (clojure-mode-hook . lispy-mode))
+
+(use-package clojurescript-mode
+  :mode "\\.cljs\\'"
+  :config
+  (require 'flycheck-clj-kondo)
+  :hook (clojurescript-mode-hook . lispy-mode))
 
 (provide 'lang.clojure)
 ;;; lang.clojure ends here

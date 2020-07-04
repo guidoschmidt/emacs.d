@@ -30,9 +30,9 @@
                 company-tooltip-limit 10
                 company-show-numbers t
                 company-transformers '(company-sort-by-occurrence))
-  (global-company-mode t)
   (setq company-backends (mapcar #'company-mode/backend-with-yas
                                  company-backends))
+  (global-company-mode t)
   :bind
   (("<C-tab>" . company-complete-common)
    ("C-c <C-tab>" . company-yasnippet)))

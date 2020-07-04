@@ -155,10 +155,7 @@
 (use-package exec-path-from-shell
   :ensure t
   :config
-  (when (memq window-system '(mac ns x))
-    (setq explicit-shell-file-name "/bin/zsh")
-    (setq shell-file-name "zsh")
-    (exec-path-from-shell-initialize)))
+  (exec-path-from-shell-initialize))
 
 ;; switch-window - drop ace-window in favor of this
 (use-package switch-window
@@ -199,6 +196,17 @@
    :map ivy-switch-buffer-map
    ("v" . nil)
    ("V" . nil)))
+
+(use-package ivy-rich
+  :ensure t
+  :config
+  (ivy-rich-mode 1))
+
+(use-package all-the-icons-ivy-rich
+  :ensure t
+  :after ivy-rich
+  :config
+  (all-the-icons-ivy-rich-mode 1))
 
 (use-package double-saber
   :ensure t

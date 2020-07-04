@@ -118,7 +118,7 @@ If FILEXT is provided, return files with extension FILEXT instead."
 (setq org-startup-indented t
       org-bullets-bullet-list '(" ")
       org-ellipsis "  "
-      org-pretty-entities t
+      org-pretty-entities nil
       org-hide-emphasis-markers t
       org-agenda-block-separator ""
       org-src-fontify-natively t
@@ -156,7 +156,7 @@ If FILEXT is provided, return files with extension FILEXT instead."
 (defvar org-format-latex-options '())
 
 (setq org-format-latex-options
-      `(:scale 1.2 :foreground ,(face-attribute 'default :foreground)))
+      `(:scale 1.8 :foreground ,(face-attribute 'default :foreground)))
 
 ;; Third party packages
 (use-package org-bullets
