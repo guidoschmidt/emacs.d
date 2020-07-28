@@ -82,6 +82,10 @@
 ;; (require 'lang.urscript)
 ;; Languages
 
+(when (and (equalp (system-name) "Vreni")
+           (memq window-system '(ns)))
+   (require 'layer.dash))
+
 ;; Then reset GC as late as possible
 (defun reenable-gc ()
   "Re-set garbage collection variables."
