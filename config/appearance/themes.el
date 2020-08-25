@@ -57,7 +57,7 @@
   ;; :load-path "~/git/develop/emacs/circadian.el"
   :ensure t
   :config
-  (setq circadian-themes '((:sunrise . kaolin-valley-light)
+  (setq circadian-themes '((:sunrise . doom-monokai-pro)
                            (:sunset  . doom-challenger-deep)))
   (circadian-setup)
   (add-hook 'after-init-hook 'circadian-setup))
