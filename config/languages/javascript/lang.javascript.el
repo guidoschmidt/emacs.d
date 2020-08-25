@@ -154,14 +154,13 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (add-hook 'rjsx-mode-hook 'prettier-js-mode))
 
 ;;; Language server client for JavaScript
-(require 'lsp-mode)
-(require 'lsp-clients)
-(add-hook 'js-mode-hook         #'lsp)
-(add-hook 'typescript-mode-hook #'lsp)
-(add-hook 'js3-mode-hook        #'lsp)
-(add-hook 'rjsx-mode            #'lsp)
-(add-hook 'js-mode-hook         #'lsp)
-(add-hook 'rjsx-mode-hook       #'lsp)
+;; (require 'lsp)
+;; (add-hook 'js-mode-hook         #'lsp)
+;; (add-hook 'typescript-mode-hook #'lsp)
+;; (add-hook 'js3-mode-hook        #'lsp)
+;; (add-hook 'rjsx-mode            #'lsp)
+;; (add-hook 'js-mode-hook         #'lsp)
+;; (add-hook 'rjsx-mode-hook       #'lsp)
 
 ;;; Debugging
 (require 'dap-firefox)
