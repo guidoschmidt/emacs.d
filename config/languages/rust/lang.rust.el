@@ -4,10 +4,18 @@
 
 ;;; Code:
 (use-package rust-mode
-  :ensure t)
+  :ensure t
+  :config
+  (setq rust-format-on-save t))
+
+(use-package racer
+  :ensure t
+  :hook ((rust-mode . racer-mode)
+         (racer-mode . eldoc-mode)))
 
 (use-package rustic
   :ensure t
+  :disabled
   :hook
   ((rust-mode . rustic-mode)))
 
