@@ -7,7 +7,6 @@
   :config
   (require 'dap-lldb)
   (dap-mode 1)
-  (dap-ui-mode 1)
   (dap-tooltip-mode 1)
   (add-hook 'dap-stopped-hook
           (lambda (arg) (call-interactively #'dap-hydra))))

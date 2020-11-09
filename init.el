@@ -40,7 +40,7 @@
 (require 'layer.evil)
 (require 'layer.git)
 (require 'layer.lsp)
-(require 'layer.dap)
+;; (require 'layer.dap)
 (require 'layer.org)
 (require 'layer.restclient)
 (require 'layer.spellcheck)
@@ -60,7 +60,7 @@
 ;; (require 'ligatures)
 
 (require 'lang.cpp)
-;; (require 'lang.csharp)
+(require 'lang.csharp)
 (require 'lang.emacs-lisp)
 (require 'lang.rust)
 ;; (require 'lang.android)

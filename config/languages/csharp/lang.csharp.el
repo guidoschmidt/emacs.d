@@ -26,5 +26,12 @@
     '(add-to-list 'company-backends 'company-omnisharp))
   :hook (csharp-mode . omnisharp-mode))
 
+(defun csharp-endline ()
+  "Insert semicolon and move point/cursor to the next line."
+  (interactive)
+  (insert ";")
+  (forward-line)
+  (move-beginning-of-line 1))
+
 (provide 'lang.csharp)
 ;;; lang.csharp ends here

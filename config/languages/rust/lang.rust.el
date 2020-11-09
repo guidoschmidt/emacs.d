@@ -11,7 +11,9 @@
 (use-package racer
   :ensure t
   :hook ((rust-mode . racer-mode)
-         (racer-mode . eldoc-mode)))
+         (racer-mode . eldoc-mode))
+  :config
+  (setq racer-rust-src-path "/Users/gs/.rustup/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/src/rust/src"))
 
 (use-package rustic
   :ensure t
