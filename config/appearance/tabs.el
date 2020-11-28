@@ -6,9 +6,11 @@
   :ensure t
   :demand
   :config
-  (setq centaur-tabs-height 32)
+  (setq centaur-tabs-height 30)
   (setq centaur-tabs-set-icons t)
   (setq centaur-tabs-mode 'under)
+  (custom-set-faces
+   '(tab-line ((t (:background "#171425")))))
   (centaur-tabs-mode t)
   (defhydra hydra-tabs (:color red :hint nil)
     "
