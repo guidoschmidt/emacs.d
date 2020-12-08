@@ -9,6 +9,7 @@
   (setq rust-format-on-save t))
 
 (use-package racer
+  :disabled
   :ensure t
   :hook ((rust-mode . racer-mode)
          (racer-mode . eldoc-mode))

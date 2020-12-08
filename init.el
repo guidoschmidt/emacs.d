@@ -42,11 +42,11 @@
 (require 'layer.lsp)
 ;; (require 'layer.dap)
 (require 'layer.org)
-(require 'layer.restclient)
+;;(require 'layer.restclient)
 (require 'layer.spellcheck)
 (require 'layer.syntaxcheck)
-(require 'layer.openframeworks)
-(require 'layer.processing)
+;;(require 'layer.openframeworks)
+;;(require 'layer.processing)
 (require 'layer.tramp)
 
 ;; Additional packages
@@ -54,9 +54,9 @@
 
 ;; Appearance
 (require 'editor.appearance)
-(require 'modeline)
+;;(require 'modeline)
 (require 'themes)
-(require 'tabs)
+;;(require 'tabs)
 ;; (require 'ligatures)
 
 (require 'lang.cpp)
@@ -65,7 +65,7 @@
 (require 'lang.rust)
 ;; (require 'lang.android)
 ;; (require 'lang.arduino)
-(require 'lang.clojure)
+;;(require 'lang.clojure)
 ;; (require 'lang.common-lisp)
 (require 'lang.css)
 ;; (require 'lang.fsharp)
