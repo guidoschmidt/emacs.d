@@ -179,12 +179,6 @@
   (setq evil-collection-company-use-tng nil)
   (evil-collection-init))
 
-(use-package evil-magit
-  :straight t
-  :after evil
-  :config
-  (setq evil-magit-use-y-for-yank t))
-
 ;; provides gl and gL align operators
 (use-package evil-lion
   :straight t
