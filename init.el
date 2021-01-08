@@ -122,6 +122,7 @@
     "j" 'swiper-avy
     "?" 'flyspell-correct-at-point
     "!" 'flyspell-add-word-to-dict
+    "0" 'switch-window
     "TAB" 'indent-region
     "RET" 'eval-buffer))
 
@@ -206,6 +207,10 @@
   :after evil
   :config
   (setq evil-magit-use-y-for-yank t))
+
+;; Switch window
+(use-package switch-window
+  :straight t)
 
 
 (provide 'init.el)
