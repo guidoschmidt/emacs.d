@@ -65,6 +65,18 @@
 (when (memq system-type '(windows-nt))
   (set-frame-parameter nil 'undecorated t))
 
+;; Move backup files
+(setq backup-directory-alist
+      `((".*" "~/.emacs.d/backup/" t)))
+(setq backup-by-copying t)
+(setq delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
+
+;; Move auto-save files
+(setq auto-save-file-name-transforms
+      `((".*" "~/.emacs.d/auto-save/" t)))
 
 ;; Keymap basics
 (setq mac-option-modifier nil)
