@@ -102,15 +102,62 @@
 
 
 ;; evil-mode
-(use-package evil
-	     :straight t
-	     :config
-	     (evil-mode t))
 (use-package evil-leader
-	     :straight t
-	     :config
-	     (global-evil-leader-mode t))
+  :straight t
+  :config
+  (global-evil-leader-mode)
+  (evil-leader/set-leader "<SPC>")
+  (evil-leader/set-key
+    "a" 'align-regexp
+    "o" 'sort-lines
+    "b" 'ivy-switch-buffer
+    "i" 'ibuffer
+    "n" 'ivy-switch-buffer-other-window
+    "k" 'ido-kill-buffer
+    "s" 'magit-status
+    "p" 'counsel-projectile-switch-project
+    "f" 'counsel-projectile-find-file
+    "g" 'counsel-ag
+    "w" 'save-buffer
+    "j" 'swiper-avy
+    "?" 'flyspell-correct-at-point
+    "!" 'flyspell-add-word-to-dict
+    "TAB" 'indent-region
+    "RET" 'eval-buffer))
 
+(use-package evil
+  :straight t
+  :after evil-leader
+  :config
+  (evil-mode t))
+
+;; counsel
+(use-package counsel
+  :straight t
+  :bind
+  (("M-x" . counsel-M-x)
+   ("C-c g" . counsel-ag)
+   ("C-x C-f" . counsel-find-file)))
+
+;; ivy
+(use-package ivy
+  :straight t
+  :diminish ivy-mode
+  :config
+  (setq enable-recursive-minibuffers nil)
+  (setq ivy-display-style 'fancy)
+  (setq ivy-height 50)
+  (setq ivy-use-virtual-buffers t)
+  (defun swiper-recenter ()
+    "Advice swiper to recenter on exit."
+    (recenter))
+  (advice-add 'swiper :after #'swiper-recenter)
+  (ivy-mode t))
+
+(use-package ivy-rich
+  :straight t
+  :config
+  (ivy-rich-mode t))
 
 ;; company autocompletion
 (use-package company
@@ -150,7 +197,6 @@
 ;; Magit
 (use-package magit
   :straight t
-  :commands magit-status
   :config
   (setq magit-diff-paint-whitespace t)
   (setq magit-completion-read-function 'ivy-completion-read))
