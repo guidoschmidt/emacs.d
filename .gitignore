@@ -1,0 +1,37 @@
+# Emacs related
+.cask/
+elpa/
+ido.last
+recentf
+.mc-lists.el
+auto-save/
+.cache/
+.init.el.un~
+init.el~
+server/
+transient/
+.extension/
+
+# Privacy - ignore private modules
+config/private/
+
+# Python
+.python-environments/
+
+# Projectile
+projectile-bookmarks.eld
+
+# No-littering
+url/
+local/
+var/
+tramp
+
+# straight.el
+straight/
+
+# windows - dir for executables on windows, e.g. ag.exe
+windows/
+
+# LSP
+.lsp-session-*
