@@ -2,6 +2,7 @@
 .cask/
 elpa/
 ido.last
+ido.last~
 recentf
 .mc-lists.el
 auto-save/

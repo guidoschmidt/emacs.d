@@ -20,6 +20,12 @@
 ;; Start server for daemon usage
 (server-start)
 
+;; Load custom functions
+(add-to-list 'load-path "~/.emacs.d/core/")
+
+(require 'core.functions)
+(require 'core.utils)
+
 ;; Remove startup messages
 (setq inhibit-startup-message t)
 
@@ -79,7 +85,7 @@
 (setq default-directory "~/")
 
 ;; Disable window decorations
-(when (memq system-type '(windows-nt))
+(when (windows?) 
   (set-frame-parameter nil 'undecorated t))
 
 ;; Move backup files
@@ -615,7 +621,7 @@ _l_: → forwards
 (use-package prettier-js
   :straight t
   :config
-  (when (string-equal (system-name) "Vreni")
+  (when (hostname? "Vreni")
     (setq prettier-js-command "~/.nvm/versions/node/v15.4.0/bin/prettier"))
   :hook
   (js2-mode  . prettier-js-mode)
@@ -696,11 +702,6 @@ _l_: → forwards
   :config
   (when (executable-find "glslangValidator")
     (add-to-list 'company-backends 'company-glsl)))
-
-;; Load custom functions
-(add-to-list 'load-path "~/.emacs.d/core/")
-
-(require 'core.functions)
 
 ;; Reset garbage collection. Not doing so will cause garbage
 ;; collection freezes during long-term interactive use. Conversely, a
