@@ -133,6 +133,10 @@
   :straight t)
 
 ;; evil-mode
+(setq evil-want-C-u-scroll t)
+(setq evil-want-integration t)
+(setq evil-want-keybinding nil)
+
 (use-package evil-leader
   :straight t
   :config
@@ -142,6 +146,7 @@
     "a"      'align-regexp
     "o"      'sort-lines
     "b"      'ivy-switch-buffer
+    "c"      'clang-format-region
     "x"      'frog-jump-buffer
     "i"      'ibuffer
     "n"      'ivy-switch-buffer-other-window
@@ -182,10 +187,6 @@
   :after evil-leader
   :config
   (evil-mode t))
-
-(setq evil-want-C-u-scroll t)
-(setq evil-want-integration t)
-(setq evil-want-keybinding nil)
 
 (use-package evil-collection
   :straight t
@@ -331,9 +332,49 @@ _m_: make cursor
 
 ;; company autocompletion
 (use-package company
-	     :straight t
-	     :config
-	     (global-company-mode t))
+	:straight t
+  :diminish company-mode
+  :preface
+  (defun company-mode/backend-with-yas (backend)
+    (if (or (not company-mode/enable-yas)
+            (and (listp backend (member 'company-yasnippet backend)))
+            backend
+            (append (if (consp backend) backend (list backend))
+                    '(:with company-yasnippet)))))
+	:config
+  (setq-default company-dabbrev-other-buffers t
+                company-dabbrev-code-time-limit 0.1
+                company-idle-delay 0
+                company-minimum-prefix-length 1
+                company-require-match nil
+                company-dabbrev-downcase nil
+                company-dabbrev-ignore-case nil
+                company-tooltip-align-annotations t
+                company-tooltip-limit 15
+                company-show-numbers t
+                company-transformers '(company-sort-by-occurrence))
+	(global-company-mode t)
+  :bind
+  (("<alt-tab>" . company-complete-common)
+   ("<C-tab>"   . company-yasnippet)))
+
+(use-package company-box
+  :straight t
+  :after company
+  :hook
+  (company-mode . company-box-mode)
+  :config
+  (setq company-box--height 400))
+
+(use-package company-quickhelp
+  :straight t
+  :if window-system
+  :config
+  (setq pos-tip-background-color "#121212")
+  (setq pos-tip-foreground-color "#f3f3f3")
+  (company-quickhelp-mode)
+  :bind
+  (("C-h" . company-quickhelp-manual-begin)))
 
 ;; Themes and circadian for automatic time switching 
 (use-package doom-themes :straight t)
@@ -435,6 +476,123 @@ _m_: make cursor
    ("C-d" . smart-hungry-delete-forward-char))
   :config
   (smart-hungry-delete-add-default-hooks))
+
+;; REST client
+(use-package restclient
+  :straight t
+  :mode "\\.rest\\'"
+  :commands (restclient-mode))
+
+(use-package company-restclient
+  :straight t
+  :init
+   (defun company/restclient-mode-hook ()
+     (push 'company-restclient company-backends))
+   :hook (restclient-mode . company/restclient-mode-hook))
+
+;; Language server protocol
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :straight t
+  :config
+  (setq lsp-session-file "~/.emacs.d/lsp/session"
+        lsp-server-install-dir "~/.emacs.d/lsp/server/")
+  (setq lsp-keep-workspace-alive nil)
+  ;; Disable slow features
+  (setq lsp-enable-folding nil
+        lsp-enable-text-document-color nil)
+  ;; Reduce unexpected code modifications
+  (setq lsp-enable-on-type-formatting nil))
+
+(use-package lsp-ui
+  :straight t
+  :commands lsp-ui-mode
+  :config
+  (setq lsp-ui-doc-max-height 8
+        lsp-ui-doc-max-width 35
+        lsp-ui-sideline-ignore-duplicate t
+        lsp-ui-doc-enable nil
+        lsp-ui-doc-show-with-mouse nil
+        lsp-ui-doc-position 'at-point
+        lsp-ui-sideline-show-hover nil))
+
+(use-package lsp-ivy
+  :straight t)
+
+;; CCLS for lsp - lsp implementation for C++
+(use-package ccls
+  :straight t
+  :hook ((c-mode c++-mode objc-mode) . (lambda () (require 'ccls) (lsp)))
+  :init
+  (defvar ccls-sem-highlight-method 'font-lock)
+  (setq lsp-prefer-flymake nil)
+  :config
+  (defvar projectile-project-root-files-top-down-recurring)
+  (with-eval-after-load 'projectile
+    (setq projectile-project-root-files-top-down-recurring
+          (append '("compile_commands.json" ".ccls")
+                  projectile-project-root-files-top-down-recurring))))
+
+(use-package clang-format
+  :straight t)
+
+(use-package modern-cpp-font-lock
+  :straight t
+  :config
+  (modern-c++-font-lock-global-mode t))
+
+(use-package google-c-style
+  :straight t
+  :hook
+  (c-mode-common-hook . google-set-c-style)
+  (c++-mode-hook      . google-set-c-style)
+  (c-mode-hook        . google-set-c-style))
+
+
+;; CSS/SASS
+(use-package emmet-mode
+  :straight t
+  :hook
+  ((web-mode     . emmet-mode)
+   (html-mode    . emmet-mode)
+   (makdown-mode . emmet-mode)
+   (sass-mode    . emmet-mode)
+   (rjsx-mode    . emmet-mode)))
+
+(use-package sass-mode
+  :straight t
+  :commands sass-mode
+  :config
+  (defun custom/sass-mode-hook ()
+    "Hook to customize SASS mode."
+    (rainbow-mode) 
+    (setq emmet-use-sass-syntax t))
+  :hook (sass-mode . custom/sass-mode-hook))
+
+;; YAML support
+(use-package yaml-mode
+  :straight t
+  :mode "\\.yml\\'")
+
+;; JSON Support
+(use-package json-mode
+  :straight t
+  :mode "\\.json\\'")
+
+(use-package rjsx-mode
+  :straight t
+  :mode "\\.js\\'"
+  :config
+  (setq-default rjsx-indent-level 2))
+
+(use-package prettier-js
+  :straight t
+  :config
+  (when (equalp (system-name) "Vreni")
+    (setq prettier-js-command "~/.nvm/versions/node/v15.4.0/bin/prettier"))
+  :hook
+  (js2-mode  . prettier-js-mode)
+  (rjsx-mode . prettier-js-mode))
 
 ;; Load custom functions
 (add-to-list 'load-path "~/.emacs.d/core/")
