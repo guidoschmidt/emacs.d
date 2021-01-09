@@ -13,6 +13,9 @@
 ;; to skip the mtime checks on every *.elc file.
 (setq load-prefer-newer noninteractive)
 
+;; byte compilation
+(setq byte-compile-warnings '(cl-functions))
+
 ;; Emacs core configuration
 ;; Start server for daemon usage
 (server-start)
@@ -505,7 +508,9 @@ _m_: make cursor
   (setq lsp-enable-folding nil
         lsp-enable-text-document-color nil)
   ;; Reduce unexpected code modifications
-  (setq lsp-enable-on-type-formatting nil))
+  (setq lsp-enable-on-type-formatting nil)
+  :hook
+  (rjsx-mode . (lambda () (lsp))))
 
 (use-package lsp-ui
   :straight t
@@ -602,13 +607,16 @@ _l_: → forwards
 (use-package rjsx-mode
   :straight t
   :mode "\\.js\\'"
-  :config
+  :init
   (setq-default rjsx-indent-level 2))
+
+(use-package react-snippets
+  :straight t)
 
 (use-package prettier-js
   :straight t
   :config
-  (when (equalp (system-name) "Vreni")
+  (when (string-equal (system-name) "Vreni")
     (setq prettier-js-command "~/.nvm/versions/node/v15.4.0/bin/prettier"))
   :hook
   (js2-mode  . prettier-js-mode)
@@ -618,6 +626,58 @@ _l_: → forwards
 (use-package emojify
   :straight t
   :hook (markdown-mode . emojify-mode))
+
+;; Modeline
+(defface evil-normal-state-face
+  `((t (:foreground "#F3F2F1"
+        :background "#333333"
+        :weight ultra-bold)))
+  "Face for warnings in the modeline. Used by `*flycheck'")
+
+(defface evil-insert-state-face
+  `((t (:foreground "#1A7162" :background "#B2EFE5" :weight ultra-bold)))
+  "Face for warnings in the modeline. Used by `*flycheck'")
+
+(defface evil-visual-state-face
+  `((t (:foreground "#E9391D" :background "#FFA96F" :weight ultra-bold)))
+  "Face for warnings in the modeline. Used by `*flycheck'")
+
+(defface evil-leader-state-face
+  `((t (:foreground "#FFFFFF" :background "#000000" :weight ultra-bold)))
+  "Face for warnings in the modeline. Used by `*flycheck'")
+
+(defun evil-state-char ()
+  "Show starting character of evil state and propertize with respective face."
+  (let ((state (symbol-value 'evil-state)))
+    (cond ((equal 'normal state) (propertize " N "
+                                             'face 'evil-normal-state-face))
+          ((equal 'insert state) (propertize " I "
+                                             'face 'evil-insert-state-face))
+          ((equal 'visual state) (propertize " V "
+                                             'face 'evil-visual-state-face)))))
+
+(use-package doom-modeline
+  :straight t
+  :config
+  (defvar custom-evil-state)
+  (doom-modeline-def-segment
+   custom-evil-state
+   (evil-state-char))
+  (setq find-file-visit-truename t)
+  (setq doom-modeline-bar-width 1)
+  (setq doom-modeline-height 20)
+  (setq doom-modeline-buffer-file-name-style 'truncate-upto-project)
+  (setq doom-modeline-icon nil)
+  (setq doom-modeline-lsp t)
+  ;; Define custom doom-modeline configuration
+  (doom-modeline-def-modeline 'gs
+    '(bar custom-evil-state vcs buffer-encoding buffer-info)
+    '(lsp major-mode))
+  (defun setup-custom-doom-modeline ()
+    (doom-modeline-set-modeline 'gs 'default)) 
+  (add-hook 'doom-modeline-mode-hook 'setup-custom-doom-modeline)
+  :hook
+  (after-init . doom-modeline-mode))
 
 ;; Load custom functions
 (add-to-list 'load-path "~/.emacs.d/core/")
