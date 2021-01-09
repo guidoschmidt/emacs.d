@@ -72,6 +72,9 @@
 ;; Allow pixelwise frame sizing
 (setq frame-resize-pixelwise t)
 
+;; Set the default directory for C-x C-f
+(setq default-directory "~/")
+
 ;; Disable window decorations
 (when (memq system-type '(windows-nt))
   (set-frame-parameter nil 'undecorated t))
@@ -149,6 +152,7 @@
     "c"      'clang-format-region
     "x"      'frog-jump-buffer
     "i"      'ibuffer
+    "u"      'hydra-lsp-ui/body
     "n"      'ivy-switch-buffer-other-window
     "k"      'ido-kill-buffer
     "s"      'magit-status
@@ -385,10 +389,9 @@ _m_: make cursor
   :init
   (setq calendar-latitude 49.0)
   (setq calendar-longitude 8.5)
-  (setq circadian-themes '((:sunrise . doom-snazzy)
-			                     (:sunset  . doom-challenger-deep)))
+  (setq circadian-themes '((:sunset  . doom-snazzy)
+			                     (:sunrise . doom-challenger-deep)))
   (add-hook 'emacs-startup-hook #'circadian-setup))
-
 
 ;; Font settings
 (use-package alfontzo
@@ -514,7 +517,24 @@ _m_: make cursor
         lsp-ui-doc-enable nil
         lsp-ui-doc-show-with-mouse nil
         lsp-ui-doc-position 'at-point
-        lsp-ui-sideline-show-hover nil))
+        lsp-ui-sideline-show-hover nil)
+  (defhydra hydra-lsp-ui (:color black)
+    "
+LSP UI
+------
+
+_d_: find definitions
+_x_: go to
+_r_: find references
+
+_h_: ← backwards
+_l_: → forwards
+"
+    ("d" lsp-ui-peek-find-definitions "find definitions")
+    ("x" lsp-ui-peek--goto-xref       "go to")
+    ("h" lsp-ui-peek-jump-backward    "<")
+    ("l" lsp-ui-peek-jump-forward     ">")
+    ("r" lsp-ui-peek-find-references  "references")))
 
 (use-package lsp-ivy
   :straight t)
@@ -593,6 +613,11 @@ _m_: make cursor
   :hook
   (js2-mode  . prettier-js-mode)
   (rjsx-mode . prettier-js-mode))
+
+;; Emojis
+(use-package emojify
+  :straight t
+  :hook (after-init . global-emojify-mode))
 
 ;; Load custom functions
 (add-to-list 'load-path "~/.emacs.d/core/")
