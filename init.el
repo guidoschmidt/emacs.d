@@ -617,7 +617,7 @@ _l_: → forwards
 ;; Emojis
 (use-package emojify
   :straight t
-  :hook (after-init . global-emojify-mode))
+  :hook (markdown-mode . emojify-mode))
 
 ;; Load custom functions
 (add-to-list 'load-path "~/.emacs.d/core/")
