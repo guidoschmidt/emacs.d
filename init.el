@@ -105,7 +105,6 @@
 (setq mac-command-modifier 'meta)
 (setq select-enable-clipboard t)
 
-
 ;; straight.el bootstrapping
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -678,6 +677,25 @@ _l_: → forwards
   (add-hook 'doom-modeline-mode-hook 'setup-custom-doom-modeline)
   :hook
   (after-init . doom-modeline-mode))
+
+;; GLSL language configuration
+(use-package glsl-mode
+  :straight t
+  :mode "\\.glsl\\'"
+  :config
+  (add-hook 'glsl-mode
+            (lambda ()
+              (defvar c-basic-offset 2)
+              (setq tab-width 2))))
+
+(use-package company-glsl
+  :straight (company-glsl
+             :type git
+             :host github
+             :repo "guidoschmidt/company-glsl")
+  :config
+  (when (executable-find "glslangValidator")
+    (add-to-list 'company-backends 'company-glsl)))
 
 ;; Load custom functions
 (add-to-list 'load-path "~/.emacs.d/core/")
