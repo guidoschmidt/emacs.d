@@ -1,7 +1,12 @@
 ;;; core.utils.el --- Custom functions for Emacs -*- lexical-binding: t; -*-
 
+;;; Commentary:
+
+;;; Utilities and convenience functions used to customize Emacs.
+
+;;; Code:
 (defun hostname? (host)
-  "Check the hostname of the current system."
+  "Check the HOST of the current system."
   (string-equal (system-name) host))
 
 (defun windows? ()

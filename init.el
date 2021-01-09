@@ -3,9 +3,11 @@
 ;;; Commentary:
 ;;; Load configuration files from .emacs.d/config/
 
-;; A big contributor to startup times is garbage collection. We up the gc
+;; A big contributor to startup times is garbage collection.  We up the gc
 ;; threshold to temporarily prevent it from running, then reset it later by
-;; enabling `gcmh-mode'. Not resetting it will cause stuttering/freezes.
+;; enabling `gcmh-mode'.  Not resetting it will cause stuttering/freezes.
+
+;;; Code:
 (setq gc-cons-threshold most-positive-fixnum)
 
 ;; In noninteractive sessions, prioritize non-byte-compiled source files to
@@ -21,7 +23,7 @@
 (server-start)
 
 ;; Load custom functions
-(add-to-list 'load-path "~/.emacs.d/core/")
+(add-to-list 'load-path "~/.emacs.d/core")
 
 (require 'core.functions)
 (require 'core.utils)
@@ -53,7 +55,7 @@
 (display-time-mode t)
 
 ;; Apropos sortage by relevancy
-(setq apropos-sort-by-scores t)
+(setq-default apropos-sort-by-scores t)
 
 ;; Enable line numbers
 (global-display-line-numbers-mode t)
@@ -85,7 +87,7 @@
 (setq default-directory "~/")
 
 ;; Disable window decorations
-(when (windows?) 
+(when (windows?)
   (set-frame-parameter nil 'undecorated t))
 
 ;; Move backup files
@@ -144,9 +146,9 @@
   :straight t)
 
 ;; evil-mode
-(setq evil-want-C-u-scroll t)
-(setq evil-want-integration t)
-(setq evil-want-keybinding nil)
+(setq-default evil-want-C-u-scroll t)
+(setq-default evil-want-integration t)
+(setq-default evil-want-keybinding nil)
 
 (use-package evil-leader
   :straight t
@@ -204,8 +206,8 @@
   :straight t
   :after evil
   :config
-  (setq evil-collection-setup-minibuffer t)
-  (setq evil-collection-company-use-tng nil)
+  (setq-default evil-collection-setup-minibuffer t)
+  (setq-default evil-collection-company-use-tng nil)
   (evil-collection-init))
 
 ;; provides gl and gL align operators
@@ -271,6 +273,53 @@ _m_: make cursor
 (use-package counsel-projectile
   :straight t
   :after projectile)
+
+;; Flycheck syntax checking
+(use-package flycheck
+  :straight t
+  :diminish flycheck-mode
+  :config
+  (setq-default flycheck-temp-prefix ".flycheck")
+  (setq flycheck-emacs-lisp-load-path 'inherit)
+  (define-fringe-bitmap 'my-flycheck-fringe-indicator
+    (vector #b00000000
+            #b00000000
+            #b00000000
+            #b00000000
+            #b00000000
+            #b00000000
+            #b00000000
+            #b00011100
+            #b00111110
+            #b00111110
+            #b00111110
+            #b00011100
+            #b00000000
+            #b00000000
+            #b00000000
+            #b00000000
+            #b00000000))
+
+  (let ((bitmap 'my-flycheck-fringe-indicator))
+    (flycheck-define-error-level 'error
+      :severity 2
+      :overlay-category 'flycheck-error-overlay
+      :fringe-bitmap bitmap
+      :fringe-face 'flycheck-fringe-error)
+    (flycheck-define-error-level 'warning
+      :severity 1
+      :overlay-category 'flycheck-warning-overlay
+      :fringe-bitmap bitmap
+      :fringe-face 'flycheck-fringe-warning)
+    (flycheck-define-error-level 'info
+      :severity 0
+      :overlay-category 'flycheck-info-overlay
+      :fringe-bitmap bitmap
+      :fringe-face 'flycheck-fringe-info))
+  :hook
+  ((rjsx-mode       . flycheck-mode)
+   (c++-mode        . flycheck-mode)
+   (emacs-lisp-mode . flycheck-mode)))
 
 ;; ivy - generic completion frontend
 (use-package ivy
@@ -388,7 +437,7 @@ _m_: make cursor
   :bind
   (("C-h" . company-quickhelp-manual-begin)))
 
-;; Themes and circadian for automatic time switching 
+;; Themes and circadian for automatic time switching
 (use-package doom-themes :straight t)
 (use-package soothe-theme :straight t)
 
@@ -595,7 +644,7 @@ _l_: → forwards
   :config
   (defun custom/sass-mode-hook ()
     "Hook to customize SASS mode."
-    (rainbow-mode) 
+    (rainbow-mode)
     (setq emmet-use-sass-syntax t))
   :hook (sass-mode . custom/sass-mode-hook))
 
@@ -679,7 +728,7 @@ _l_: → forwards
     '(bar custom-evil-state vcs buffer-encoding buffer-info)
     '(lsp major-mode))
   (defun setup-custom-doom-modeline ()
-    (doom-modeline-set-modeline 'gs 'default)) 
+    (doom-modeline-set-modeline 'gs 'default))
   (add-hook 'doom-modeline-mode-hook 'setup-custom-doom-modeline)
   :hook
   (after-init . doom-modeline-mode))

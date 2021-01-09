@@ -1,4 +1,10 @@
 ;;; core.functions.el --- Custom functions for Emacs -*- lexical-binding: t; -*-
+
+;;; Commentary:
+
+;;; Basic functions to extend Emacs behavior.
+
+;;; Code:
 (defun duplicate-line ()
   "Duplicate a line."
   (interactive)
