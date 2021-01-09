@@ -34,4 +34,4 @@ straight/
 windows/
 
 # LSP
-.lsp-session-*
+lsp/
