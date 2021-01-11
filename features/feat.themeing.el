@@ -50,5 +50,13 @@
   :config
   (all-the-icons-ivy-rich-mode t))
 
+;; highliht indentation
+(use-package highlight-indent-guides
+  :straight t
+  :config
+  (setq highlight-indent-guides-method 'bitmap)
+  (setq highlight-indent-guides-responsive 'top)
+  :hook (prog-mode . highlight-indent-guides-mode))
+
 (provide 'feat.themeing)
 ;;; feat.themeing.el ends here
