@@ -7,8 +7,7 @@
 
 (use-package csharp-mode
   :straight t
-  :mode "\\.cs\\'"
-  :hook (omnisharp-mode . (lambda () (lsp))))
+  :mode "\\.cs\\'")
 
 (use-package omnisharp
   :straight t
