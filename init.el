@@ -31,6 +31,7 @@
 (require 'lang.shader)
 (require 'lang.cc)
 (require 'lang.csharp)
+(require 'lang.javascript)
 (require 'lang.stylesheets)
 
 ;; Reset garbage collection. Not doing so will cause garbage
