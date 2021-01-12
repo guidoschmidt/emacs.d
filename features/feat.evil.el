@@ -14,45 +14,47 @@
   (global-evil-leader-mode)
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
-    "a"      'align-regexp
-    "o"      'sort-lines
-    "b"      'ivy-switch-buffer
-    "c"      'clang-format-region
-    "x"      'frog-jump-buffer
-    "i"      'ibuffer
-    "u"      'hydra-lsp-ui/body
-    "n"      'ivy-switch-buffer-other-window
-    "k"      'ido-kill-buffer
-    "s"      'magit-status
-    "p"      'counsel-projectile-switch-project
-    "f"      'counsel-projectile-find-file
-    "g"      'counsel-ag
-    "w"      'save-buffer
-    "j"      'swiper-avy
-    "y"      'yas-insert-snippet
-    "q"      'kill-emacs
-    "r"      'reload-current-buffer
-    "?"      'flyspell-correct-at-point
-    "!"      'flyspell-add-word-to-dict
-    "m"      'hydra-evil-mc/body
-    "0"      'switch-window
+    "a"        'align-regexp
+    "o"        'sort-lines
+    "b"        'ivy-switch-buffer
+    "c"        'clang-format-region
+    "x"        'frog-jump-buffer
+    "i"        'ibuffer
+    "u"        'hydra-lsp-ui/body
+    "n"        'ivy-switch-buffer-other-window
+    "k"        'ido-kill-buffer
+    "s"        'magit-status
+    "p"        'counsel-projectile-switch-project
+    "f"        'counsel-projectile-find-file
+    "g"        'counsel-ag
+    "w"        'save-buffer
+    "j"        'swiper-avy
+    "y"        'yas-insert-snippet
+    "q"        'kill-emacs
+    "r"        'reload-current-buffer
+    "?"        'flyspell-correct-at-point
+    "!"        'flyspell-add-word-to-dict
+    "m"        'hydra-evil-mc/body
+    "0"        'switch-window
+    "<C-up>"   'move-line-up
+    "<C-down>" 'move-line-down
 
-    "TAB"    'indent-region
-    "RET"    'eval-buffer
+    "TAB"      'indent-region
+    "RET"      'eval-buffer
 
-    "<up>"   'beginning-of-defun
-    "<down>" 'end-of-defun
+    "<up>"     'beginning-of-defun
+    "<down>"   'end-of-defun
 
-    "("      'lispy-parens
-    "{"      'lispy-braces
-    "["      'lispy-brackets
-    "\""     'lispy-quotes
-    "*"      'lispy-asterisk
-    "/"      'lispy-slash
-    "        '" 'lispy-singlequote
-    "~"      'lispy-tilde
-    "<"      'lispy-angle-brackets
-    "`"      'lispy-backticks))
+    "("        'lispy-parens
+    "{"        'lispy-braces
+    "["        'lispy-brackets
+    "\""       'lispy-quotes
+    "*"        'lispy-asterisk
+    "/"        'lispy-slash
+    "          '" 'lispy-singlequote
+    "~"        'lispy-tilde
+    "<"        'lispy-angle-brackets
+    "`"        'lispy-backticks))
 
 (use-package evil
   :straight t
