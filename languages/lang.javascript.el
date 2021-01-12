@@ -37,6 +37,8 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   :config
   (when (hostname? "Vreni")
     (setq prettier-js-command "~/.nvm/versions/node/v15.4.0/bin/prettier"))
+  (when (hostname? "Zenbook-GS")
+    (setq prettier-js-command "~/AppData/Roaming/nvm/v14.15.3/prettier"))
   :hook
   (js2-mode  . prettier-js-mode)
   (rjsx-mode . prettier-js-mode))
