@@ -6,7 +6,8 @@
 ;;; Code:
 ;; Shader mode
 (use-package shader-mode
-  :straight t)
+  :straight t
+  :mode "\\.compute\\'")
 
 ;; GLSL language configuration
 (use-package glsl-mode
