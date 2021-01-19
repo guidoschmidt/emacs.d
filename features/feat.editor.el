@@ -46,6 +46,9 @@
   (advice-add 'swiper :after #'swiper-recenter)
   (ivy-mode t))
 
+(use-package wgrep-ag
+  :straight t)
+
 (use-package ivy-rich
   :straight t
   :config
