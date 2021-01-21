@@ -12,9 +12,9 @@
 ;; Markdown
 (use-package markdown-mode+
   :straight t
-  :mode (("\\.md" . markdown-mode)
-	 ("\\.mdx" . markdown-mode)
-	 ("\\.makdown" . markdown-mode)))
+  :mode (("\\.md\\'"      . markdown-mode)
+	       ("\\.mdx\\'"     . markdown-mode)
+	       ("\\.makdown\\'" . markdown-mode)))
 
 ;; Emmet abbreviation system
 (use-package emmet-mode
