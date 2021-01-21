@@ -54,6 +54,9 @@
   :config
   (ivy-rich-mode t))
 
+(use-package lsp-ivy
+  :straight t)
+
 ;;; swiper - isearch replacement
 (use-package swiper
   :straight t
