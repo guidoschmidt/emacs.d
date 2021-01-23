@@ -28,10 +28,12 @@
 (require 'feat.git)
 
 (add-to-list 'load-path "~/.emacs.d/languages")
-(require 'lang.shader)
 (require 'lang.cc)
 (require 'lang.csharp)
 (require 'lang.javascript)
+(require 'lang.markup)
+(require 'lang.python)
+(require 'lang.shader)
 (require 'lang.stylesheets)
 
 ;; Reset garbage collection. Not doing so will cause garbage
