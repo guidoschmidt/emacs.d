@@ -125,5 +125,10 @@
   :config
   (smart-hungry-delete-add-default-hooks))
 
+;; Highlight parantheses
+(use-package highlight-parentheses
+  :straight t
+  :hook (prog-mode . highlight-parentheses-mode))
+
 (provide 'feat.editor)
 ;;; feat.editor.el ends here
