@@ -128,7 +128,8 @@
 ;; Highlight parantheses
 (use-package highlight-parentheses
   :straight t
-  :hook (prog-mode . highlight-parentheses-mode))
+  :hook ((prog-mode . highlight-parentheses-mode)
+         (prog-mode . show-paren-mode)))
 
 (provide 'feat.editor)
 ;;; feat.editor.el ends here
