@@ -60,7 +60,11 @@
   :straight t
   :after evil-leader
   :config
+  (evil-set-undo-system 'undo-fu)
   (evil-mode t))
+
+(use-package undo-fu
+  :straight t)
 
 (use-package evil-collection
   :straight t
