@@ -35,6 +35,10 @@
 (use-package doom-modeline
   :straight t
   :config
+  (defvar sky-clock)
+  (doom-modeline-def-segment
+    sky-clock
+    (sky-color-clock))
   (defvar custom-evil-state)
   (doom-modeline-def-segment
    custom-evil-state
@@ -47,13 +51,24 @@
   (setq doom-modeline-lsp t)
   ;; Define custom doom-modeline configuration
   (doom-modeline-def-modeline 'gs
-    '(bar custom-evil-state vcs buffer-encoding buffer-info)
-    '(lsp major-mode))
+    '(custom-evil-state major-mode buffer-info)
+    '(lsp vcs sky-clock))
   (defun setup-custom-doom-modeline ()
     (doom-modeline-set-modeline 'gs 'default))
   (add-hook 'doom-modeline-mode-hook 'setup-custom-doom-modeline)
   :hook
   (after-init . doom-modeline-mode))
+
+(use-package sky-color-clock
+  :straight (sky-color-clock
+             :type git
+             :host github
+             :repo "zk-phi/sky-color-clock")
+  :config
+  (eval-when-compile
+    (when calendar-latitude
+      (sky-color-clock-initialize (round calendar-latitude))))
+  (setq sky-color-clock-enable-emoji-icon t))
 
 (provide 'feat.modeline)
 ;;; feat.modeline.el ends here
