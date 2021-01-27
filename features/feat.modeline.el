@@ -68,7 +68,7 @@
   (eval-when-compile
     (when calendar-latitude
       (sky-color-clock-initialize (round calendar-latitude))))
-  (setq sky-color-clock-enable-emoji-icon t))
+  (setq sky-color-clock-enable-emoji-icon nil))
 
 (provide 'feat.modeline)
 ;;; feat.modeline.el ends here
