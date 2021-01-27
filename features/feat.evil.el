@@ -32,6 +32,7 @@
     "y"        'yas-insert-snippet
     "q"        'kill-emacs
     "r"        'reload-current-buffer
+    "ü"        'browse-url-at-point
     "?"        'flyspell-correct-at-point
     "!"        'flyspell-add-word-to-dict
     "m"        'hydra-evil-mc/body
