@@ -11,6 +11,11 @@
 (use-package rjsx-mode
   :straight t
   :mode "\\.js\\'"
+  :config
+  (defun emmet/rjsx-mode-hook ()
+    (setq-default emmet-expand-jsx-className? t)
+    (emmet-mode))
+  (add-hook 'rjsx-mode-hook 'emmet/rjsx-mode-hook)
   :init
   (setq-default rjsx-indent-level 2))
 
