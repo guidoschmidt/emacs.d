@@ -5,7 +5,7 @@
 ;;; Configuration for Python usage in Emacs
 
 ;;; Code:
-(use-package python
+(use-package python-mode
   :straight t
   :mode "\\py\\'"
   :config
