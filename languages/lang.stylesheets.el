@@ -19,6 +19,7 @@
   :config
   (defun custom/sass-mode-hook ()
     "Hook to customize SASS mode."
+    (setq rainbow-html-colors t)
     (rainbow-mode)
     (setq emmet-use-sass-syntax t))
   :hook (sass-mode . custom/sass-mode-hook))
