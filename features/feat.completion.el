@@ -105,5 +105,10 @@ _l_: → forwards
 (use-package lsp-ivy
   :straight t)
 
+(use-package lsp-treemacs
+  :straight t
+  :config
+  (lsp-treemacs-sync-mode t))
+
 (provide 'feat.completion)
 ;;; feat.completion.el ends here

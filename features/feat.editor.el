@@ -131,5 +131,32 @@
   :hook ((prog-mode . highlight-parentheses-mode)
          (prog-mode . show-paren-mode)))
 
+;; Treemacs
+(use-package treemacs
+  :straight t
+  :config
+  (setq treemacs-position 'right)
+  (setq treemacs-width 32)
+  (treemacs-load-theme 'Idea)
+  (treemacs-resize-icons 16)
+  :hook (treemacs-mode . (lambda () (text-scale-adjust -1))))
+
+(use-package treemacs-evil
+  :after treemacs evil
+  :straight t)
+
+(use-package treemacs-projectile
+  :after treemacs projectile
+  :straight t)
+
+(use-package treemacs-icons-dired
+  :after treemacs dired
+  :straight t
+  :config (treemacs-icons-dired-mode))
+
+(use-package treemacs-magit
+  :after treemacs magit
+  :straight t)
+
 (provide 'feat.editor)
 ;;; feat.editor.el ends here
