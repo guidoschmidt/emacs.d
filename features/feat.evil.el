@@ -127,5 +127,18 @@ _m_: make cursor
     ("i" iedit-mode))
   (global-evil-mc-mode t))
 
+(use-package evil-paredit
+  :straight t
+  :after evil)
+
+;; Evil surround allows quick text object changes
+;; e.g. c-s ( { to swap the parantheses a region is
+;; surrounded by from () to {}
+(use-package evil-surround
+  :straight t
+  :after evil
+  :config
+  (global-evil-surround-mode t))
+
 (provide 'feat.evil)
 ;;; feat.evil.el ends here
