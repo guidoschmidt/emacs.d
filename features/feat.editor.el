@@ -38,7 +38,7 @@
   :config
   (setq enable-recursive-minibuffers nil)
   (setq ivy-display-style 'fancy)
-  (setq ivy-height 50)
+  (setq ivy-height 35)
   (setq ivy-use-virtual-buffers t)
   (defun swiper-recenter ()
     "Advice swiper to recenter on exit."
