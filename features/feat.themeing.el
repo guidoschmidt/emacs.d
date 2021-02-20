@@ -6,15 +6,20 @@
 ;;; Code:
 (use-package doom-themes :straight t)
 (use-package soothe-theme :straight t)
+(use-package eink-theme :straight t)
+(use-package ample-theme :straight t)
+(use-package gruvbox-theme :straight t)
 
 (use-package circadian
   :straight t
   :init
   (setq calendar-latitude 49.0)
   (setq calendar-longitude 8.5)
-  (setq circadian-themes '((:sunrise . doom-old-hope)
-                           (:sunset  . doom-snazzy)))
-  (add-hook 'emacs-startup-hook #'circadian-setup))
+  (setq circadian-themes '((:sunrise . gruvbox-light-hard)
+                           (:sunset  . doom-old-hope)))
+  (add-hook 'emacs-startup-hook #'circadian-setup)
+  :config
+  (circadian-setup))
 
 ;; Font settings
 (use-package alfontzo
