@@ -26,11 +26,13 @@
 (require 'feat.completion)
 (require 'feat.snippets)
 (require 'feat.git)
+(require 'feat.hydra)
 
 (add-to-list 'load-path "~/.emacs.d/languages")
 (require 'lang.cc)
 (require 'lang.csharp)
 (require 'lang.javascript)
+(require 'lang.lua)
 (require 'lang.markup)
 (require 'lang.python)
 (require 'lang.shader)
