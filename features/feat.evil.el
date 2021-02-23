@@ -20,7 +20,7 @@
     "c"        'clang-format-region
     "x"        'frog-jump-buffer
     "i"        'ibuffer
-    "u"        'hydra-lsp-ui/body
+    "u"        'hydra/lsp-ui/body
     "n"        'ivy-switch-buffer-other-window
     "k"        'ido-kill-buffer
     "s"        'magit-status
@@ -35,8 +35,9 @@
     "ü"        'browse-url-at-point
     "?"        'flyspell-correct-at-point
     "!"        'flyspell-add-word-to-dict
-    "m"        'hydra-evil-mc/body
+    "m"        'hydra/multiple-cursors/body
     "0"        'switch-window
+    "1"        'hydra/window-management/body
     "<C-up>"   'move-line-up
     "<C-down>" 'move-line-down
 
@@ -109,22 +110,7 @@
   :straight t
   :after evil
   :config
-  (setq evil-mc-one-cursor-show-mode-line-text t)
-  (defhydra hydra-evil-mc (:color black)
-    "
-Cursors
-_j_: next                 _i_: iedit-mode
-_k_: previous
-_n_: skip + next
-_p_: skip + previous
-_m_: make cursor
-"
-    ("j" evil-mc-make-cursor-move-next-line "next")
-    ("k" evil-mc-make-cursor-move-prev-line "previous")
-    ("n" evil-mc-skip-and-goto-next-match "skip + next")
-    ("p" evil-mc-skip-and-goto-prev-match "skip + previous")
-    ("m" evil-mc-make-cursor-here "cursor")
-    ("i" iedit-mode))
+  (setq evil-mc-one-cursor-show-mode-line-text t) 
   (global-evil-mc-mode t))
 
 (use-package evil-paredit

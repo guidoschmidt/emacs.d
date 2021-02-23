@@ -112,10 +112,6 @@
   :init
   (global-undo-tree-mode))
 
-;;; Hydra
-(use-package hydra
-  :straight t)
-
 ;;; Smart hungry delete
 (use-package smart-hungry-delete
   :straight t

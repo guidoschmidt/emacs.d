@@ -17,15 +17,13 @@
   (setq calendar-longitude 8.5)
   (setq circadian-themes '((:sunrise . gruvbox-light-hard)
                            (:sunset  . doom-old-hope)))
-  (add-hook 'emacs-startup-hook #'circadian-setup)
-  :config
-  (circadian-setup))
+  (add-hook 'emacs-startup-hook #'circadian-setup))
 
 ;; Font settings
 (use-package alfontzo
   :straight (alfontzo :type git
-		      :host github
-		      :repo "guidoschmidt/alfontzo")
+		                  :host github
+		                  :repo "guidoschmidt/alfontzo")
   :config
   (alfontzo-init))
 

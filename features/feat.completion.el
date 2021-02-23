@@ -80,27 +80,7 @@
         lsp-ui-doc-enable nil
         lsp-ui-doc-show-with-mouse nil
         lsp-ui-doc-position 'at-point
-        lsp-ui-sideline-show-hover nil)
-  (defhydra hydra-lsp-ui (:color black)
-    "
-LSP UI
-------
-
-_d_: find definitions
-_x_: go to
-_r_: find references
-_?_: show documentation
-
-_h_: ← backwards
-_l_: → forwards
-"
-    ("d" lsp-ui-peek-find-definitions "find definitions")
-    ("x" lsp-ui-peek--goto-xref       "go to")
-    ("r" lsp-ui-peek-find-references  "references")
-    ("?" lsp-ui-doc-glance            "documentation")
-
-    ("h" lsp-ui-peek-jump-backward    "<")
-    ("l" lsp-ui-peek-jump-forward     ">")))
+        lsp-ui-sideline-show-hover nil))
 
 (use-package lsp-ivy
   :straight t)
