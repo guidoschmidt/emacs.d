@@ -19,6 +19,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/features")
 (require 'feat.evil)
+(require 'feat.functions)
 (require 'feat.editor)
 (require 'feat.themeing)
 (require 'feat.modeline)
