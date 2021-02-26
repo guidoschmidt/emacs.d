@@ -15,7 +15,7 @@
   :init
   (setq calendar-latitude 49.0)
   (setq calendar-longitude 8.5)
-  (setq circadian-themes '((:sunrise . gruvbox-light-hard)
+  (setq circadian-themes '((:sunrise . doom-one-light)
                            (:sunset  . doom-old-hope)))
   (add-hook 'emacs-startup-hook #'circadian-setup))
 

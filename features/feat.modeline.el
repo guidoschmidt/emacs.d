@@ -33,7 +33,9 @@
                                              'face 'evil-visual-state-face)))))
 
 (use-package doom-modeline
+  :disabled
   :straight t
+  :after sky-color-clock
   :config
   (defvar sky-clock)
   (doom-modeline-def-segment
@@ -43,9 +45,8 @@
   (doom-modeline-def-segment
    custom-evil-state
    (evil-state-char))
-  (setq find-file-visit-truename t)
-  (setq doom-modeline-bar-width 1)
-  (setq doom-modeline-height 20)
+  (setq find-file-visit-truename nil)
+  (setq doom-modeline-bar-width 0)
   (setq doom-modeline-buffer-file-name-style 'truncate-upto-project)
   (setq doom-modeline-icon nil)
   (setq doom-modeline-lsp t)
@@ -54,8 +55,8 @@
     '(custom-evil-state major-mode buffer-info)
     '(lsp vcs sky-clock))
   (defun setup-custom-doom-modeline ()
-    (doom-modeline-set-modeline 'gs 'default))
-  (add-hook 'doom-modeline-mode-hook 'setup-custom-doom-modeline)
+    (doom-modeline-set-modeline 'gs 'default)
+    (add-hook 'doom-modeline-mode-hook 'setup-custom-doom-modeline))
   :hook
   (after-init . doom-modeline-mode))
 
@@ -69,6 +70,42 @@
     (when calendar-latitude
       (sky-color-clock-initialize (round calendar-latitude))))
   (setq sky-color-clock-enable-emoji-icon nil))
+
+(use-package mood-line
+  :straight (mood-line
+             :type git
+             :host github
+             :repo "jessiehildebrandt/mood-line")
+  :config
+  (defun mood-line-segment-evil-state ()
+    "Displays a customized evil state indicator."
+    custom-evil-state)
+  (setq mode-line-format
+        '((:eval
+           (mood-line--format
+            ;; Left
+            (format-mode-line
+             '(""
+               (:eval (evil-state-char))
+               (:eval (sky-color-clock))
+               " "
+               (:eval (mood-line-segment-modified))
+               (:eval (mood-line-segment-buffer-name))
+               (:eval (mood-line-segment-anzu))
+               (:eval (mood-line-segment-multiple-cursors))
+               (:eval (mood-line-segment-position))))
+            ;; Right
+            (format-mode-line
+             '((:eval (mood-line-segment-eol))
+               (:eval (mood-line-segment-encoding))
+               (:eval (mood-line-segment-vc))
+               (:eval (mood-line-segment-major-mode)) 
+               (:eval (mood-line-segment-flycheck))
+               (:eval (mood-line-segment-flymake))
+               (:eval (mood-line-segment-process))
+               " "))))))
+
+  (mood-line-mode))
 
 (provide 'feat.modeline)
 ;;; feat.modeline.el ends here
