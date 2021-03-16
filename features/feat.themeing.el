@@ -9,14 +9,18 @@
 (use-package eink-theme :straight t)
 (use-package ample-theme :straight t)
 (use-package gruvbox-theme :straight t)
+(use-package curry-on-theme
+  :straight (cury-on-theme :type git
+                           :host github
+                           :repo "mvarela/Curry-On-theme"))
 
 (use-package circadian
   :straight t
   :init
   (setq calendar-latitude 49.0)
   (setq calendar-longitude 8.5)
-  (setq circadian-themes '((:sunrise . doom-one-light)
-                           (:sunset  . doom-old-hope)))
+  (setq circadian-themes '((:sunrise . doom-moonlight)
+                           (:sunset  . doom-dracula)))
   (add-hook 'emacs-startup-hook #'circadian-setup))
 
 ;; Font settings
