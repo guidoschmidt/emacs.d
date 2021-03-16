@@ -58,7 +58,7 @@
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :straight t
-  :config
+  :config 
   (setq lsp-session-file "~/.emacs.d/lsp/session"
         lsp-server-install-dir "~/.emacs.d/lsp/server/")
   (setq lsp-keep-workspace-alive nil)
