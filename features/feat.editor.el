@@ -154,18 +154,21 @@
   :after treemacs magit
   :straight t)
 
-;; Super-save auto-saves your buffers, when certain events happen - e.g.
-;; you switch between buffers, an Emacs frame loses focus, etc.
-(use-package super-save
-  :straight t
-  :config
-  (super-save-mode t))
-
 ;; dashboard
 (use-package dashboard
   :straight t
   :config
-  (dashboard-setup-startup-hook))
+  (dashboard-setup-startup-hook)
+  (setq dashboard-center-content t)
+  (setq dashboard-startup-banner "~/.emacs.d/logo.png")
+  (setq dashboard-items '((recents  . 10)
+                          (projects . 3)
+                          (registers . 5)))
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-set-navigator t)
+  (setq dashboard-set-footer nil)
+  (setq dashboard-banner-logo-title "Have a good coding session"))
 
 (provide 'feat.editor)
 ;;; feat.editor.el ends here
