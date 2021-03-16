@@ -36,6 +36,7 @@
 (require 'lang.lua)
 (require 'lang.markup)
 (require 'lang.python)
+(require 'lang.rust)
 (require 'lang.shader)
 (require 'lang.stylesheets)
 
