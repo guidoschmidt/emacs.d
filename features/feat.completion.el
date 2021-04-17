@@ -90,5 +90,15 @@
   :config
   (lsp-treemacs-sync-mode t))
 
+;;; -------------------------------------------------------------------------------------------
+;;; DASH
+;;; -------------------------------------------------------------------------------------------
+(if (macOS?)
+    (use-package dash-at-point
+      :straight (dash-at-point
+                 :type git
+		             :host github
+		             :repo "stanaka/dash-at-point")))
+
 (provide 'feat.completion)
 ;;; feat.completion.el ends here
