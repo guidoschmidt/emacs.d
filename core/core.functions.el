@@ -35,5 +35,14 @@
                 (message "File reloaded.")))
         (t (message "Buffer has no file attached to reload."))))
 
+(defun new-buffer ()
+  "Create a new empty buffer."
+  (interactive)
+  (let ((buffer (generate-new-buffer "untitled")))
+    (switch-to-buffer buffer)
+    (funcall initial-major-mode)
+    (setq buffer-offer-save t)
+    buffer))
+
 (provide 'core.functions)
 ;;; core.functions.el ends here
