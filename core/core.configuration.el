@@ -115,6 +115,8 @@
 ;; will delete a selcted text region
 (delete-selection-mode t)
 
+;; Disable .# files
+(setq-default create-lockfiles nil)
 
 ;;; -------------------------------------------------------------------------------------------
 ;;; HOOKS
