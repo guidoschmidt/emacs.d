@@ -50,5 +50,19 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (js2-mode  . prettier-js-mode)
   (rjsx-mode . prettier-js-mode))
 
+(use-package typescript-mode
+  :straight t
+  :mode "\\.tsx?\\'")
+
+(use-package tide
+  :straight t
+  :mode "\\.tsx?\\'"
+  :after
+  (typescript-mode company flycheck)
+  :hook
+  ((typescript-mode . tide-setup)
+   (typescript-mode . tide-hl-identifier-mode)
+   (before-save     . tide-format-before-save)))
+
 (provide 'lang.javascript)
 ;;; lang.javascript.el ends here
