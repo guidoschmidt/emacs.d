@@ -29,6 +29,7 @@
     "g"        'counsel-ag
     "w"        'save-buffer
     "j"        'swiper-avy
+    "t"        'treemacs
     "y"        'yas-insert-snippet
     "q"        'kill-emacs
     "r"        'reload-current-buffer

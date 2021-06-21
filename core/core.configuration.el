@@ -95,7 +95,8 @@
 (display-time-mode t)
 
 ;; Enable line numbers
-(global-display-line-numbers-mode t)
+(global-display-line-numbers-mode nil)
+(add-hook 'prog-mode 'display-line-numbers--turn-on)
 
 ;; Highlight current line
 (global-hl-line-mode t)
