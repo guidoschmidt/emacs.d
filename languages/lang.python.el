@@ -24,5 +24,8 @@
   :straight t
   :hook (python-mode . (lambda () (lsp-deferred))))
 
+(use-package pippel
+  :straight t)
+
 (provide 'lang.python)
 ;;; lang.python.el ends here
