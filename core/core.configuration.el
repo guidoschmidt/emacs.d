@@ -133,6 +133,9 @@
 (set-language-environment "utf-8")
 (set-default-coding-systems 'utf-8)
 
+;;; Hotfix input of vertical line
+(define-key key-translation-map (kbd "C-{") (kbd "|"))
+
 
 (provide 'core.configuration)
 ;;; core.configuration.el ends here
