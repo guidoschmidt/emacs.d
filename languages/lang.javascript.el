@@ -47,8 +47,9 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (when (hostname? "Zenbook-GS")
     (setq prettier-js-command "~/AppData/Roaming/nvm/v14.15.3/prettier"))
   :hook
-  (js2-mode  . prettier-js-mode)
-  (rjsx-mode . prettier-js-mode))
+  (js2-mode        . prettier-js-mode)
+  (rjsx-mode       . prettier-js-mode)
+  (typescript-mode . prettier-js-mode))
 
 (use-package typescript-mode
   :straight t
@@ -61,8 +62,7 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (typescript-mode company flycheck)
   :hook
   ((typescript-mode . tide-setup)
-   (typescript-mode . tide-hl-identifier-mode)
-   (before-save     . tide-format-before-save)))
+   (typescript-mode . tide-hl-identifier-mode)))
 
 (provide 'lang.javascript)
 ;;; lang.javascript.el ends here
