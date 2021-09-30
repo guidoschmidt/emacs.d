@@ -8,13 +8,14 @@
   :straight t
   :mode "\\.json\\'")
 
+(defun emmet/rjsx-mode-hook ()
+  (setq-default emmet-expand-jsx-className? t)
+  (emmet-mode))
+
 (use-package rjsx-mode
   :straight t
   :mode "\\.js\\'"
   :config
-  (defun emmet/rjsx-mode-hook ()
-    (setq-default emmet-expand-jsx-className? t)
-    (emmet-mode))
   (add-hook 'rjsx-mode-hook 'emmet/rjsx-mode-hook)
   :init
   (setq-default rjsx-indent-level 2))
@@ -53,12 +54,15 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
 
 (use-package typescript-mode
   :straight t
+  :config
+  (add-hook 'typescript-mode-hook 'emmet/rjsx-mode-hook)
   :mode (("\\.ts\\'"  . typescript-mode)
          ("\\.tsx\\'" . typescript-mode)))
 
 (use-package tide
   :straight t
-  :mode "\\.tsx?\\'"
+  :mode (("\\.ts\\'"  . tide-mode)
+         ("\\.tsx\\'" . tide-mode))
   :after
   (typescript-mode company flycheck)
   :hook

@@ -11,6 +11,7 @@
    (html-mode    . emmet-mode)
    (makdown-mode . emmet-mode)
    (sass-mode    . emmet-mode)
+   (scss-mode    . emmet-mode)
    (rjsx-mode    . emmet-mode)))
 
 (use-package sass-mode
