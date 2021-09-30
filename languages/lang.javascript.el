@@ -53,7 +53,8 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
 
 (use-package typescript-mode
   :straight t
-  :mode "\\.tsx?\\'")
+  :mode (("\\.ts\\'"  . typescript-mode)
+         ("\\.tsx\\'" . typescript-mode)))
 
 (use-package tide
   :straight t
