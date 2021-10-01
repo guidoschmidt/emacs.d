@@ -8,15 +8,14 @@
   :straight t
   :mode "\\.json\\'")
 
+(defun emmet/rjsx-mode-hook ()
+  (setq-default emmet-expand-jsx-className? t)
+  (emmet-mode))
+
 (use-package rjsx-mode
   :straight t
-  :mode (("\\.js\\'"  . rjsx-mode)
-         ("\\.tsx\\'" . rjsx-mode))
+  :mode "\\.js\\'"
   :config
-  (defun emmet/rjsx-mode-hook ()
-    (setq-default emmet-expand-jsx-className? t)
-    (emmet-mode)
-    (tide-mode))
   (add-hook 'rjsx-mode-hook 'emmet/rjsx-mode-hook)
   :init
   (setq-default rjsx-indent-level 2))
@@ -46,8 +45,6 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
     (setq prettier-js-command "~/.nvm/versions/node/v15.4.0/bin/prettier"))
   (when (hostname? "Brandon.fritz.box")
     (setq prettier-js-command "~/.nvm/versions/node/v15.14.0/bin/prettier"))
-  (when (hostname? "Brandon.local")
-    (setq prettier-js-command "~/.nvm/versions/node/v15.14.0/bin/prettier"))
   (when (hostname? "Zenbook-GS")
     (setq prettier-js-command "~/AppData/Roaming/nvm/v14.15.3/prettier"))
   :hook
@@ -57,21 +54,20 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
 
 (use-package typescript-mode
   :straight t
-  :mode "\\.ts\\'"
-  :init
-  (defun emmet/tsx-mode-hook ()
-    (setq-default emmet-expand-jsx-className? t)
-    (emmet-mode))
-  :hook
-  ((typescript-mode . emmet/tsx-mode-hook)))
+  :config
+  (add-hook 'typescript-mode-hook 'emmet/rjsx-mode-hook)
+  :mode (("\\.ts\\'"  . typescript-mode)
+         ("\\.tsx\\'" . typescript-mode)))
 
 (use-package tide
   :straight t
-  :mode "\\.tsx?\\'"
+  :mode (("\\.ts\\'"  . tide-mode)
+         ("\\.tsx\\'" . tide-mode))
   :after
-  (typescript-mode company flycheck rjsx-mode)
+  (typescript-mode company flycheck)
   :hook
-  ((typescript-mode . tide-hl-identifier-mode)))
+  ((typescript-mode . tide-setup)
+   (typescript-mode . tide-hl-identifier-mode)))
 
 (provide 'lang.javascript)
 ;;; lang.javascript.el ends here
