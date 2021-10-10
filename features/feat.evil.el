@@ -64,6 +64,8 @@
   :after evil-leader
   :config
   (evil-set-undo-system 'undo-fu)
+  ;; Avoid cutting on pasting
+  (setq-default evil-kill-on-visual-paste nil)
   (evil-mode t))
 
 (use-package undo-fu
