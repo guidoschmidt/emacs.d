@@ -9,6 +9,8 @@
 (use-package eink-theme :straight t)
 (use-package ample-theme :straight t)
 (use-package gruvbox-theme :straight t)
+(use-package flatui-theme :straight t)
+(use-package kaolin-themes :straight t)
 (use-package curry-on-theme
   :straight (cury-on-theme :type git
                            :host github
@@ -19,7 +21,7 @@
   :init
   (setq calendar-latitude 49.0)
   (setq calendar-longitude 8.5)
-  (setq circadian-themes '((:sunrise . doom-tomorrow-night)
+  (setq circadian-themes '((:sunrise . flatui-theme)
                            (:sunset  . doom-old-hope)))
   (add-hook 'emacs-startup-hook #'circadian-setup))
 
@@ -61,9 +63,12 @@
 (use-package highlight-indent-guides
   :straight t
   :config
-  (setq highlight-indent-guides-method 'bitmap)
+  (setq highlight-indent-guides-method 'character)
   (setq highlight-indent-guides-responsive 'top)
   :hook (prog-mode . highlight-indent-guides-mode))
+
+;; Set line spacing
+(setq-default line-spacing 0)
 
 (provide 'feat.themeing)
 ;;; feat.themeing.el ends here

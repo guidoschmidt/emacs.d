@@ -52,7 +52,8 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   :hook
   (js2-mode        . prettier-js-mode)
   (rjsx-mode       . prettier-js-mode)
-  (typescript-mode . prettier-js-mode))
+  (typescript-mode . prettier-js-mode)
+  (html-mode       . prettier-js-mode))
 
 (use-package typescript-mode
   :straight t
