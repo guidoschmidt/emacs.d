@@ -42,7 +42,7 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   :straight t
   :config
   (when (hostname? "Vreni")
-    (setq prettier-js-command "~/.nvm/versions/node/v15.4.0/bin/prettier"))
+    (setq prettier-js-command "~/.nvm/versions/node/v17.0.1/bin/prettier"))
   (when (hostname? "Brandon.fritz.box")
     (setq prettier-js-command "~/.nvm/versions/node/v16.9.1/bin/prettier"))
   (when (hostname? "Brandon.local")
