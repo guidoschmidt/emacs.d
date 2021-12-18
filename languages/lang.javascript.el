@@ -74,5 +74,8 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   ((typescript-mode . tide-setup)
    (typescript-mode . tide-hl-identifier-mode)))
 
+(use-package svelte-mode
+  :straight t)
+
 (provide 'lang.javascript)
 ;;; lang.javascript.el ends here
