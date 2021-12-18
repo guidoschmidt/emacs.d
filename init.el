@@ -29,6 +29,7 @@
 (require 'feat.git)
 (require 'feat.hydra)
 (require 'feat.itautomation)
+(require 'feat.livepreview)
 
 (add-to-list 'load-path "~/.emacs.d/languages")
 (require 'lang.cc)
