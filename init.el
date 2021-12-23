@@ -34,6 +34,7 @@
 (add-to-list 'load-path "~/.emacs.d/languages")
 (require 'lang.cc)
 (require 'lang.csharp)
+(require 'lang.clojure)
 (require 'lang.graphql)
 (require 'lang.javascript)
 (require 'lang.lua)
