@@ -36,6 +36,7 @@
 (require 'lang.csharp)
 (require 'lang.clojure)
 (require 'lang.graphql)
+(require 'lang.haskell)
 (require 'lang.javascript)
 (require 'lang.lua)
 (require 'lang.markup)
