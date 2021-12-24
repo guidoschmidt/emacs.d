@@ -11,6 +11,7 @@
 (use-package gruvbox-theme :straight t)
 (use-package flatui-theme :straight t)
 (use-package kaolin-themes :straight t)
+(use-package atom-dark-theme :straight t)
 (use-package curry-on-theme
   :straight (cury-on-theme :type git
                            :host github
