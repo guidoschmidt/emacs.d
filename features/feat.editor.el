@@ -182,5 +182,11 @@
   (setq dashboard-set-footer nil)
   (setq dashboard-banner-logo-title "Have a good coding session"))
 
+;; view large files
+(use-package vlf
+  :straight t
+  :config
+  (require 'vlf-setup))
+
 (provide 'feat.editor)
 ;;; feat.editor.el ends here
