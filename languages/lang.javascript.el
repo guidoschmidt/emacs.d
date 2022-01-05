@@ -8,15 +8,14 @@
   :straight t
   :mode "\\.json\\'")
 
-(defun emmet/jsts-mode-hook ()
-  "Setup emmet in js/ts/jsx/tsx modes."
+(defun emmet/rjsx-mode-hook ()
   (setq-default emmet-expand-jsx-className? t)
   (emmet-mode))
 
 (use-package rjsx-mode
   :straight t
   :config
-  (add-hook 'rjsx-mode-hook 'emmet/jsts-mode-hook)
+  (add-hook 'rjsx-mode-hook 'emmet/rjsx-mode-hook)
   :init
   (setq-default rjsx-indent-level 2))
 
@@ -34,9 +33,6 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
         (setq-local flycheck-javascript-eslint-executable eslint)
       (setq-local flycheck-javascript-eslint-executable
                   "~/.nvm/versions/node/v15.4.0/bin/eslint"))))
-
-(use-package react-snippets
-  :straight t)
 
 (use-package prettier-js
   :straight t
@@ -57,30 +53,8 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (typescript-mode . prettier-js-mode)
   (html-mode       . prettier-js-mode))
 
-(use-package typescript-mode
-  :straight t
-  :config
-  (defun setup-tide-mode ()
-    (interactive)
-    (tide-setup)
-    (flycheck-mode +1)
-    (setq flycheck-check-syntax-automatically '(save mode-enabled))
-    (eldoc-mode +1)
-    (tide-hl-identifier-mode +1)
-    (company-mode +1))
-  (setq company-tooltip-align-annotations t)
-  :hook
-  (('typescript-mode-hook . 'emmet/jsts-mode-hook)
-   ('typescript-mode-hook . 'setup-tide-mode))
-  :mode (("\\.ts\\'"  . typescript-mode)
-         ("\\.tsx\\'" . typescript-mode)
-         ("\\.js\\'" . typescript-mode)
-         ("\\.mjs\\'" . typescript-mode)))
-
-(use-package tide
-  :straight t
-  :after
-  (typescript-mode company flycheck))
+(use-package react-snippets
+  :straight t)
 
 (use-package svelte-mode
   :straight t)

@@ -38,6 +38,7 @@
 (require 'lang.graphql)
 (require 'lang.haskell)
 (require 'lang.javascript)
+(require 'lang.typescript)
 (require 'lang.lua)
 (require 'lang.markup)
 (require 'lang.python)
