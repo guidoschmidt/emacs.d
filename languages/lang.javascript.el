@@ -8,14 +8,15 @@
   :straight t
   :mode "\\.json\\'")
 
-(defun emmet/rjsx-mode-hook ()
+(defun emmet/jsts-mode-hook ()
+  "Setup emmet in js/ts/jsx/tsx modes."
   (setq-default emmet-expand-jsx-className? t)
   (emmet-mode))
 
 (use-package rjsx-mode
   :straight t
   :config
-  (add-hook 'rjsx-mode-hook 'emmet/rjsx-mode-hook)
+  (add-hook 'rjsx-mode-hook 'emmet/jsts-mode-hook)
   :init
   (setq-default rjsx-indent-level 2))
 
@@ -40,6 +41,8 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
 (use-package prettier-js
   :straight t
   :config
+  (when (hostname? "gs-cube")
+    (setq prettier-js-command "~/.nvm/versions/node/v17.1.0/bin/prettier"))
   (when (hostname? "Vreni")
     (setq prettier-js-command "~/.nvm/versions/node/v17.0.1/bin/prettier"))
   (when (hostname? "Brandon.fritz.box")
@@ -57,7 +60,18 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
 (use-package typescript-mode
   :straight t
   :config
-  (add-hook 'typescript-mode-hook 'emmet/rjsx-mode-hook)
+  (defun setup-tide-mode ()
+    (interactive)
+    (tide-setup)
+    (flycheck-mode +1)
+    (setq flycheck-check-syntax-automatically '(save mode-enabled))
+    (eldoc-mode +1)
+    (tide-hl-identifier-mode +1)
+    (company-mode +1))
+  (setq company-tooltip-align-annotations t)
+  :hook
+  (('typescript-mode-hook . 'emmet/jsts-mode-hook)
+   ('typescript-mode-hook . 'setup-tide-mode))
   :mode (("\\.ts\\'"  . typescript-mode)
          ("\\.tsx\\'" . typescript-mode)
          ("\\.js\\'" . typescript-mode)
@@ -66,10 +80,7 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
 (use-package tide
   :straight t
   :after
-  (typescript-mode company flycheck)
-  :hook
-  ((typescript-mode . tide-setup)
-   (typescript-mode . tide-hl-identifier-mode)))
+  (typescript-mode company flycheck))
 
 (use-package svelte-mode
   :straight t)

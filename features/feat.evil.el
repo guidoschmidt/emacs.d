@@ -66,6 +66,7 @@
   (evil-set-undo-system 'undo-fu)
   ;; Avoid cutting on pasting
   (setq-default evil-kill-on-visual-paste nil)
+  (setq evil-ex-visual-char-range t)
   (evil-mode t))
 
 (use-package undo-fu
