@@ -8,6 +8,9 @@
 (setq-default evil-want-integration t)
 (setq-default evil-want-keybinding nil)
 
+(use-package goto-chg
+  :straight t)
+
 (use-package evil-leader
   :straight t
   :config
@@ -66,6 +69,7 @@
   (evil-set-undo-system 'undo-fu)
   ;; Avoid cutting on pasting
   (setq-default evil-kill-on-visual-paste nil)
+  (setq evil-search-module 'evil-search)
   (setq evil-ex-visual-char-range t)
   (evil-mode t))
 

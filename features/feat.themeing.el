@@ -45,11 +45,6 @@
   :diminish rainbow-mode
   :hook (prog-mode . rainbow-mode))
 
-;; Automatically highlight symbols matching the current selection
-(use-package auto-highlight-symbol
-  :straight t
-  :hook (prog-mode . auto-highlight-symbol-mode))
-
 ;; Use beautiful icons
 (use-package all-the-icons-ivy
   :straight t)
@@ -69,7 +64,7 @@
   :hook (prog-mode . highlight-indent-guides-mode))
 
 ;; Set line spacing
-(setq-default line-spacing 0)
+(setq-default line-spacing 2)
 
 (provide 'feat.themeing)
 ;;; feat.themeing.el ends here

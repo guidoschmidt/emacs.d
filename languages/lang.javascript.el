@@ -14,8 +14,12 @@
 
 (use-package rjsx-mode
   :straight t
+  :mode "\\.jsx\\'"
   :config
   (add-hook 'rjsx-mode-hook 'emmet/rjsx-mode-hook)
+  :hook ((rjsx-mode . tide-setup)
+         (rjsx-mode . flycheck-mode)
+         (rjsx-mode . eldoc-mode))
   :init
   (setq-default rjsx-indent-level 2))
 

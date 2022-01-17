@@ -46,6 +46,7 @@
 (require 'lang.shader)
 (require 'lang.stylesheets)
 (require 'lang.graphviz)
+(require 'lang.zig)
 
 ;; Reset garbage collection. Not doing so will cause garbage
 ;; collection freezes during long-term interactive use. Conversely, a
