@@ -125,6 +125,12 @@
   :straight t
   :after evil)
 
+(use-package origami
+  :straight t
+  :after evil
+  :config
+  (global-origami-mode))
+
 ;; Evil surround allows quick text object changes
 ;; e.g. c-s ( { to swap the parantheses a region is
 ;; surrounded by from () to {}
@@ -133,6 +139,34 @@
   :after evil
   :config
   (global-evil-surround-mode t))
+
+(use-package evil-textobj-tree-sitter
+  :straight (evil-textobj-tree-sitter
+             :type git
+             :host github
+             :repo "meain/evil-textobj-tree-sitter"
+             :files (:defaults "queries"))
+  :config 
+  ;; bind `function.outer`(entire function block) to `f` for use in things like `vaf`, `yaf`
+  (define-key evil-outer-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.outer"))
+  ;; bind `function.inner`(function block without name and args) to `f` for use in things like `vif`, `yif`
+  (define-key evil-inner-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.inner"))
+  ;; Goto start of next function
+  (define-key evil-normal-state-map (kbd "]f") (lambda ()
+                                                 (interactive)
+                                                 (evil-textobj-tree-sitter-goto-textobj "function.outer")))
+  ;; Goto start of previous function
+  (define-key evil-normal-state-map (kbd "[f") (lambda ()
+                                                 (interactive)
+                                                 (evil-textobj-tree-sitter-goto-textobj "function.outer" t)))
+  ;; Goto end of next function
+  (define-key evil-normal-state-map (kbd "]F") (lambda ()
+                                                 (interactive)
+                                                 (evil-textobj-tree-sitter-goto-textobj "function.outer" nil t)))
+  ;; Goto end of previous function
+  (define-key evil-normal-state-map (kbd "[F") (lambda ()
+                                                 (interactive)
+                                                 (evil-textobj-tree-sitter-goto-textobj "function.outer" t t))))
 
 (provide 'feat.evil)
 ;;; feat.evil.el ends here
