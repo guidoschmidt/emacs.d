@@ -12,9 +12,25 @@
 ;; Markdown
 (use-package markdown-mode+
   :straight t
+  :bind ( ("<C-return>" . follow-dendron-link)
+          ("<C-tab>"    . switch-to-previous-buffer))
   :mode (("\\.md\\'"      . markdown-mode)
 	       ("\\.mdx\\'"     . markdown-mode)
 	       ("\\.makdown\\'" . markdown-mode)))
+
+(defun follow-dendron-link ()
+  "Follow a link that is placed between [[]] parantheses."
+  (interactive)
+  (let ((curline (thing-at-point 'line t)))
+    (let ((start (string-match "\\[" curline))
+          (end   (string-match "\\]" curline)))
+      (find-file-existing (concat "./" (substring curline (+ start 2) end) ".md")))))
+
+(defun switch-to-previous-buffer ()
+  "Switch to previously open buffer.
+Repeated invocations toggle between the two most recently open buffers."
+  (interactive)
+  (switch-to-buffer (other-buffer (current-buffer) 1)))
 
 ;; Emmet abbreviation system
 (use-package emmet-mode
