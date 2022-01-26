@@ -146,27 +146,22 @@
              :host github
              :repo "meain/evil-textobj-tree-sitter"
              :files (:defaults "queries"))
-  :config 
-  ;; bind `function.outer`(entire function block) to `f` for use in things like `vaf`, `yaf`
+  :config
+  (global-tree-sitter-mode)
   (define-key evil-outer-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.outer"))
-  ;; bind `function.inner`(function block without name and args) to `f` for use in things like `vif`, `yif`
   (define-key evil-inner-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.inner"))
-  ;; Goto start of next function
-  (define-key evil-normal-state-map (kbd "]f") (lambda ()
-                                                 (interactive)
-                                                 (evil-textobj-tree-sitter-goto-textobj "function.outer")))
-  ;; Goto start of previous function
-  (define-key evil-normal-state-map (kbd "[f") (lambda ()
-                                                 (interactive)
-                                                 (evil-textobj-tree-sitter-goto-textobj "function.outer" t)))
-  ;; Goto end of next function
-  (define-key evil-normal-state-map (kbd "]F") (lambda ()
-                                                 (interactive)
-                                                 (evil-textobj-tree-sitter-goto-textobj "function.outer" nil t)))
-  ;; Goto end of previous function
-  (define-key evil-normal-state-map (kbd "[F") (lambda ()
-                                                 (interactive)
-                                                 (evil-textobj-tree-sitter-goto-textobj "function.outer" t t))))
+  (define-key evil-outer-text-objects-map "c" (evil-textobj-tree-sitter-get-textobj "conditional.outer"))
+  (define-key evil-inner-text-objects-map "c" (evil-textobj-tree-sitter-get-textobj "conditional.inner"))
+  (define-key evil-outer-text-objects-map "b" (evil-textobj-tree-sitter-get-textobj "block.outer"))
+  (define-key evil-inner-text-objects-map "b" (evil-textobj-tree-sitter-get-textobj "block.inner"))
+  (define-key evil-inner-text-objects-map "s" (evil-textobj-tree-sitter-get-textobj "scopename.inner"))
+  (define-key evil-inner-text-objects-map "p" (evil-textobj-tree-sitter-get-textobj "parameter.inner")))
+
+(use-package tree-sitter
+  :straight t)
+
+(use-package tree-sitter-langs
+  :straight t)
 
 (provide 'feat.evil)
 ;;; feat.evil.el ends here
