@@ -50,6 +50,9 @@
    (c++-mode        . flycheck-mode)
    (emacs-lisp-mode . flycheck-mode)))
 
+(use-package flycheck-pos-tip
+  :straight t)
+
 (provide 'feat.syntaxchecking)
 ;;; feat.syntaxchecking.el ends here
 
