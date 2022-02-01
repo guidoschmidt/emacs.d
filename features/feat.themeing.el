@@ -12,6 +12,7 @@
 (use-package flatui-theme :straight t)
 (use-package kaolin-themes :straight t)
 (use-package atom-dark-theme :straight t)
+(use-package solo-jazz-theme :straight t)
 (use-package curry-on-theme
   :straight (cury-on-theme :type git
                            :host github
@@ -22,7 +23,7 @@
   :init
   (setq calendar-latitude 49.0)
   (setq calendar-longitude 8.5)
-  (setq circadian-themes '((:sunrise . doom-monokai-ristretto)
+  (setq circadian-themes '((:sunrise . solo-jazz)
                            (:sunset  . doom-old-hope)))
   (add-hook 'emacs-startup-hook #'circadian-setup))
 
