@@ -28,6 +28,10 @@
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (flycheck-add-mode 'typescript-tslint 'web-mode)
   (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+  (defun typescript-company-mode-hook ()
+    (setq-local company-backends
+                '((company-tide :with company-dabbrev company-yasnippet))))
+  (add-hook 'typescript-mode #'typescript-company-mode-hook)
   (add-hook 'web-mode-hook
             (lambda ()
               (when (string-equal "tsx" (file-name-extension buffer-file-name))

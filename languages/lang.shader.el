@@ -24,9 +24,14 @@
              :type git
              :host github
              :repo "guidoschmidt/company-glsl")
+  :after company
   :config
   (when (executable-find "glslangValidator")
-    (add-to-list 'company-backends 'company-glsl)))
+    (progn
+      (defun glsl-company-mode-hook ()
+       (setq-local company-backends
+                   '((company-glsl :width company-dabbrev company-yasnippet))))
+      (add-hook 'glsl-mode-hook #'glsl-company-mode-hook))))
 
 (provide 'lang.shader)
 ;;; lang.shader.el ends here
