@@ -7,8 +7,12 @@
 (use-package magit
   :straight t
   :config
+  (setq project-switch-commands t)
   (setq magit-diff-paint-whitespace t)
   (setq magit-completion-read-function 'ivy-completion-read))
+
+(use-package project
+  :straight t)
 
 (use-package blamer
   :straight (blamer
