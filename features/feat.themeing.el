@@ -24,7 +24,7 @@
   (setq calendar-latitude 49.0)
   (setq calendar-longitude 8.5)
   (setq circadian-themes '((:sunrise . doom-fairy-floss)
-                           (:sunset  . doom-manegarm)))
+                           (:sunset  . doom-fairy-floss)))
   (add-hook 'emacs-startup-hook #'circadian-setup))
 
 ;; Font settings

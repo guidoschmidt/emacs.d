@@ -66,7 +66,8 @@
   :straight t
   :after evil-leader
   :config
-  (evil-set-undo-system 'undo-fu)
+  (setq evil-undo-system 'undo-tree)
+  (setq evil-want-fine-undo nil)
   ;; Avoid cutting on pasting
   (setq-default evil-kill-on-visual-paste nil)
   (setq evil-search-module 'evil-search)
