@@ -44,5 +44,11 @@
     (setq buffer-offer-save t)
     buffer))
 
+(defun insert-lambda-arrow ()
+  "Inserts '=>'."
+  (interactive)
+  (insert-char ?\=)
+  (insert-char ?\>))
+
 (provide 'core.functions)
 ;;; core.functions.el ends here

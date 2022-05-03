@@ -27,6 +27,7 @@
     "n"        'ivy-switch-buffer-other-window
     "k"        'ido-kill-buffer
     "s"        'magit-status
+    "l"        'insert-lambda-arrow
     "p"        'counsel-projectile-switch-project
     "f"        'counsel-projectile-find-file
     "g"        'counsel-ag
