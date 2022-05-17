@@ -45,10 +45,14 @@
     buffer))
 
 (defun insert-lambda-arrow ()
-  "Inserts '=>'."
+  "Insert '=>'."
   (interactive)
+  (insert-char ?\()
+  (insert-char ?\))
+  (insert-char ?\ )
   (insert-char ?\=)
-  (insert-char ?\>))
+  (insert-char ?\>)
+  (insert-char ?\ ))
 
 (provide 'core.functions)
 ;;; core.functions.el ends here
