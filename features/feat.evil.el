@@ -68,6 +68,7 @@
   :after evil-leader
   :config
   (setq evil-undo-system 'undo-tree)
+  (setq undo-tree-enable-undo-in-region nil)
   (setq evil-want-fine-undo nil)
   ;; Avoid cutting on pasting
   (setq-default evil-kill-on-visual-paste nil)
