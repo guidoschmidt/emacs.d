@@ -47,6 +47,7 @@
 (defun insert-lambda-arrow ()
   "Insert '=>'."
   (interactive)
+  (insert-char ?\ )
   (insert-char ?\()
   (insert-char ?\))
   (insert-char ?\ )
