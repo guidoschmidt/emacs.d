@@ -67,7 +67,7 @@
   :straight t
   :after evil-leader
   :config
-  (setq evil-undo-system 'undo-tree)
+  (setq evil-undo-system 'undo-fu)
   (setq undo-tree-enable-undo-in-region nil)
   (setq evil-want-fine-undo nil)
   ;; Avoid cutting on pasting

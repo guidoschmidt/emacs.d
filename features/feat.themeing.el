@@ -23,7 +23,7 @@
   :init
   (setq calendar-latitude 49.0)
   (setq calendar-longitude 8.5)
-  (setq circadian-themes '((:sunrise . doom-material)
+  (setq circadian-themes '((:sunrise . doom-snazzy)
                            (:sunset  . doom-challenger-deep)))
   (add-hook 'emacs-startup-hook #'circadian-setup))
 
