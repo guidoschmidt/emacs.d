@@ -13,6 +13,16 @@
 (use-package kaolin-themes :straight t)
 (use-package atom-dark-theme :straight t)
 (use-package solo-jazz-theme :straight t)
+(use-package emacs-color-themes
+  :straight (emacs-color-themes :type git
+                                :host github
+                                :repo "owainlewis/emacs-color-themes")
+  :config
+  (add-to-list 'custom-theme-load-path "~/.emacs.d/straight/repos/emacs-color-themes/themes"))
+(use-package espresso-theme
+  :straight (espresso-theme :type git
+                            :host github
+                            :repo "dgutov/espresso-theme"))
 (use-package curry-on-theme
   :straight (cury-on-theme :type git
                            :host github
@@ -23,7 +33,7 @@
   :init
   (setq calendar-latitude 49.0)
   (setq calendar-longitude 8.5)
-  (setq circadian-themes '((:sunrise . doom-snazzy)
+  (setq circadian-themes '((:sunrise . doom-oceanic-next)
                            (:sunset  . doom-challenger-deep)))
   (add-hook 'emacs-startup-hook #'circadian-setup))
 
@@ -66,6 +76,12 @@
 
 ;; Set line spacing
 (setq-default line-spacing 2)
+
+;; highlight buffers
+(use-package solaire-mode
+  :straight t
+  :config
+  (solaire-global-mode +1))
 
 (provide 'feat.themeing)
 ;;; feat.themeing.el ends here
