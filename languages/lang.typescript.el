@@ -10,6 +10,19 @@
   (setq-default emmet-expand-jsx-className? t)
   (emmet-mode))
 
+(use-package tsi
+  :straight (tsi
+            :type git
+            :host github
+            :repo "orzechowskid/tsi.el"))
+
+(use-package tsx-mode
+  :after tsi
+  :straight (tsx-mode
+             :type git
+             :host github
+             :repo "orzechowskid/tsx-mode.el"))
+
 (use-package typescript-mode
   :straight t
   :config
