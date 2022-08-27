@@ -108,9 +108,7 @@
 ;;; Undo visualization
 (use-package undo-tree
   :straight t
-  :diminish undo-tree-mode
-  :init
-  (global-undo-tree-mode))
+  :diminish undo-tree-mode)
 
 ;;; Smart hungry delete
 (use-package smart-hungry-delete
