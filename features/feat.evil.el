@@ -13,6 +13,7 @@
 
 (use-package evil-leader
   :straight t
+  :after evil
   :config
   (global-evil-leader-mode)
   (evil-leader/set-leader "<SPC>")
@@ -65,15 +66,12 @@
 
 (use-package evil
   :straight t
-  :after evil-leader
   :config
-  (setq evil-undo-system 'undo-fu)
-  (setq undo-tree-enable-undo-in-region nil)
-  (setq evil-want-fine-undo nil)
   ;; Avoid cutting on pasting
+  (setq-default evil-undo-system 'undo-redo)
   (setq-default evil-kill-on-visual-paste nil)
-  (setq evil-search-module 'evil-search)
-  (setq evil-ex-visual-char-range t)
+  (setq-default evil-search-module 'evil-search)
+  (setq-default evil-ex-visual-char-range t)
   (evil-mode t))
 
 (use-package undo-fu

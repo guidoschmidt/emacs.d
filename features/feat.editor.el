@@ -107,6 +107,7 @@
 
 ;;; Undo visualization
 (use-package undo-tree
+  :disabled
   :straight t
   :diminish undo-tree-mode
   :init
