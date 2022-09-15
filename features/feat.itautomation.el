@@ -13,5 +13,11 @@
 (use-package ansible
   :straight t)
 
+(use-package dotenv-mode
+  :straight (dotenv-mode :type git
+                         :host github
+                         :repo "preetpalS/emacs-dotenv-mode")
+  :mode (("\\.env\\..*\\'"  . dotenv-mode)))
+
 (provide 'feat.itautomation)
 ;;; feat.itautomation.el ends here
