@@ -29,6 +29,7 @@
     "k"        'ido-kill-buffer
     "s"        'magit-status
     "l"        'insert-lambda-arrow
+    "z"        'insert-arrow
     "p"        'counsel-projectile-switch-project
     "f"        'counsel-projectile-find-file
     "g"        'counsel-ag
