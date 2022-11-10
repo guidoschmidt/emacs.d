@@ -27,5 +27,12 @@
 (use-package pippel
   :straight t)
 
+(use-package lsp-python-ms
+  :straight t
+  :init (setq lsp-python-ms-auto-install-server t)
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-python-ms)
+                         (lsp-deferred))))
+
 (provide 'lang.python)
 ;;; lang.python.el ends here
