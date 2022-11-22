@@ -33,8 +33,8 @@
   :init
   (setq calendar-latitude 49.0)
   (setq calendar-longitude 8.5)
-  (setq circadian-themes '((:sunrise . doom-oceanic-next)
-                           (:sunset  . doom-challenger-deep)))
+  (setq circadian-themes '((:sunrise . doom-gruvbox-light)
+                           (:sunset  . doom-gruvbox)))
   (add-hook 'emacs-startup-hook #'circadian-setup))
 
 ;; Font settings
