@@ -34,8 +34,9 @@
   (setq calendar-latitude 49.0)
   (setq calendar-longitude 8.5)
   (setq circadian-themes '((:sunrise . doom-gruvbox-light)
-                           (:sunset  . doom-gruvbox)))
-  (add-hook 'emacs-startup-hook #'circadian-setup))
+                           (:sunset  . doom-molokai)))
+  (add-hook 'emacs-startup-hook #'circadian-setup)
+  (circadian-setup))
 
 ;; Font settings
 (use-package alfontzo

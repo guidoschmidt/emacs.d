@@ -14,7 +14,7 @@
 
 (use-package rjsx-mode
   :straight t
-  :mode "\\.jsx?\\'"
+  :mode "\\.m?jsx?\\'"
   :config
   (add-hook 'rjsx-mode-hook 'emmet/rjsx-mode-hook)
   :hook ((rjsx-mode . tide-setup)

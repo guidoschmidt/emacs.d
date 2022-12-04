@@ -12,7 +12,7 @@
   :custom (zig-format-on-save nil)
   :config
   (add-to-list 'lsp-language-id-configuration '(zig-mode . "zig"))
-  (setq lsp-zig-zls-executable "~/zls/zls"))
+  (setq lsp-zig-zls-executable "~/git/zig/zls/zig-out/bin/zls"))
 
 (provide 'lang.zig)
 ;;; lang.zip.el ends here
