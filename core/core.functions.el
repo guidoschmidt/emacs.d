@@ -55,5 +55,13 @@
   (insert-char ?\>)
   (insert-char ?\ ))
 
+(defun insert-arrow ()
+  "Insert '=>'."
+  (interactive)
+  (insert-char ?\ )
+  (insert-char ?\=)
+  (insert-char ?\>)
+  (insert-char ?\ ))
+
 (provide 'core.functions)
 ;;; core.functions.el ends here

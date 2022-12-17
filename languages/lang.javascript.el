@@ -14,7 +14,7 @@
 
 (use-package rjsx-mode
   :straight t
-  :mode "\\.jsx?\\'"
+  :mode "\\.m?jsx?\\'"
   :config
   (add-hook 'rjsx-mode-hook 'emmet/rjsx-mode-hook)
   :hook ((rjsx-mode . tide-setup)
@@ -44,7 +44,7 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (when (hostname? "gs-cube")
     (setq prettier-js-command "~/.nvm/versions/node/v17.1.0/bin/prettier"))
   (when (hostname? "Vreni")
-    (setq prettier-js-command "~/.nvm/versions/node/v17.0.1/bin/prettier"))
+    (setq prettier-js-command "/usr/local/bin/prettier"))
   (when (hostname? "Brandon.fritz.box")
     (setq prettier-js-command "~/.nvm/versions/node/v16.9.1/bin/prettier"))
   (when (hostname? "Brandon.local")
