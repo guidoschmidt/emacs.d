@@ -21,8 +21,7 @@
            :vars '((mu4e-refile-folder . "/gmail/[google_mail].archive")
                    (mu4e-drafts-folder . "/gmail/[google_mail].drafts")
                    (mu4e-sent-folder . "/gmail/[google_mail].sent")
-                   (mu4e-trash-folder . "/gmail/[google_mail].bin")
-                   )))))
+                   (mu4e-trash-folder . "/gmail/[google_mail].bin"))))))
 
 (use-package mu4e-alert
   :straight t
@@ -33,9 +32,5 @@
          "flag:unread maildir:/gmail/[google_mail].all_mail"))
   (mu4e-alert-enable-mode-line-display))
 
-
-
-(print mu4e-contexts)
-
 (provide 'feat.email)
-;;; feate.email.el ends here
+;;; feat.email.el ends here
