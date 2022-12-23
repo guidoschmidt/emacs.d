@@ -30,11 +30,13 @@
 
 (use-package circadian
   :straight t
+  :load-path "~/git/emacs/circadian.el"
   :init
   (setq calendar-latitude 49.0)
   (setq calendar-longitude 8.5)
   (setq circadian-themes '((:sunrise . doom-gruvbox-light)
-                           (:sunset  . doom-molokai)))
+                           (:sunset  . doom-gruvbox)
+                           ("17:40"  . doom-challenger-deep)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
 
