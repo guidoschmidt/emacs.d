@@ -119,7 +119,7 @@
   :straight t
   :after evil
   :config
-  (setq evil-mc-one-cursor-show-mode-line-text t) 
+  (setq evil-mc-one-cursor-show-mode-line-text t)
   (global-evil-mc-mode t))
 
 (use-package evil-paredit
