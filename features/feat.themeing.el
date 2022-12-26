@@ -13,6 +13,7 @@
 (use-package kaolin-themes :straight t)
 (use-package atom-dark-theme :straight t)
 (use-package solo-jazz-theme :straight t)
+(use-package nyx-theme :straight t)
 (use-package emacs-color-themes
   :straight (emacs-color-themes :type git
                                 :host github
@@ -29,14 +30,16 @@
                            :repo "mvarela/Curry-On-theme"))
 
 (use-package circadian
-  :straight t
-  :load-path "~/git/emacs/circadian.el"
+  :straight (circadian
+             :type git
+             :host github
+             :repo "guidoschmidt/circadian.el")
+  ;; :load-path "~/git/emacs/circadian.el"
   :init
   (setq calendar-latitude 49.0)
   (setq calendar-longitude 8.5)
   (setq circadian-themes '((:sunrise . doom-gruvbox-light)
-                           (:sunset  . doom-gruvbox)
-                           ("17:40"  . doom-challenger-deep)))
+                           (:sunset  . doom-moonlight)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
 
