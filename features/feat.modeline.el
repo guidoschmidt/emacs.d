@@ -4,28 +4,28 @@
 ;;; Setting up doom modile
 
 ;;; Code:
-(defvar-local evil-box-height 5)
+(defvar-local evil-box-height 8)
 
 (defface evil-normal-state-face
   `((t (:foreground "#F3F2F1"
         :background "#333333"
         :weight ultra-bold
-        :box (:line-width ,evil-box-height :color ""))))
-  "Face for warnings in the modeline. Used by `*flycheck'")
+        :box (:line-width ,evil-box-height :color "#333333"))))
+  "Face for warnings in the modeline - Used by `*flycheck'.")
 
 (defface evil-insert-state-face
-  `((t (:foreground "#1A7162"
-        :background "#B2EFE5"
-        :weight ultra-bold
-        :box (:line-width ,evil-box-height :color ""))))
-  "Face for warnings in the modeline. Used by `*flycheck'")
+  `((t (:foreground "#B2EFE5"
+         :background "#1A7162"
+         :weight ultra-bold
+         :box (:line-width ,evil-box-height :color "#1A7162"))))
+  "Face for warnings in the modeline - used by `*flycheck'.")
 
 (defface evil-visual-state-face
   `((t (:foreground "#E9391D"
         :background "#FFA96F"
         :weight ultra-bold
-        :box (:line-width ,evil-box-height :color ""))))
-  "Face for warnings in the modeline. Used by `*flycheck'")
+        :box (:line-width ,evil-box-height :color "#FFA96F"))))
+  "Face for warnings in the modeline - used by `*flycheck'.")
 
 (defun evil-state-char ()
   "Show starting character of evil state and propertize with respective face."
