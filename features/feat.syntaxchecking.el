@@ -5,7 +5,11 @@
 
 ;;; Code:
 (use-package flycheck
-  :straight t
+  :straight (flycheck
+             :type git
+             :host github
+             :repo "Fuco1/flycheck"
+             :branch "fix/stylecheck-syntax-arg")
   :diminish flycheck-mode
   :config
   (setq-default flycheck-temp-prefix ".flycheck")
