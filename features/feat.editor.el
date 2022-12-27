@@ -103,7 +103,7 @@
 (use-package exec-path-from-shell
   :straight t
   :config
-  (when (not windows?)
+  (when (not (windows?))
     (exec-path-from-shell-initialize)))
 
 ;;; Undo visualization
