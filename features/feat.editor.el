@@ -131,22 +131,21 @@
   :straight t
   :config
   (setq treemacs-position 'left)
-  (setq treemacs-width 32)
+  (setq treemacs-width 42)
   (setq treemacs-indentation 2)
   (setq treemacs-space-between-root-nodes nil)
-  (treemacs-load-theme 'Idea)
-  (treemacs-resize-icons 14)
+  (treemacs-resize-icons 13)
   (treemacs-fringe-indicator-mode 'always)
   (treemacs-filewatch-mode t)
-  (treemacs-git-mode 'deferred) 
+  (treemacs-git-mode 'deferred)
   :hook
   (treemacs-mode . (lambda ()
                      (display-line-numbers-mode -1)
                      (custom-set-faces
-                      '(treemacs-root-face ((t (:inherit treemacs-root-face
-                                                         :family "Victor Mono"
-                                                         :height 120
-                                                         :slant italic))))))))
+                      '(treemacs-root-face
+                        ((t (:inherit treemacs-root-face
+                             :family "Iosevka Term SS08 Thin"
+                             :height 115))))))))
 
 (use-package treemacs-evil
   :after treemacs evil
