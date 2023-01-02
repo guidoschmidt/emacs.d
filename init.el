@@ -50,6 +50,9 @@
 (require 'lang.graphviz)
 (require 'lang.zig)
 
+(add-to-list 'load-path "~/.emacs.d/external")
+(require 'protobuf-mode)
+
 ;; Reset garbage collection. Not doing so will cause garbage
 ;; collection freezes during long-term interactive use. Conversely, a
 ;; gc-cons-threshold that is too small will cause stuttering. We use 16mb as our

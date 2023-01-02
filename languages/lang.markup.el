@@ -35,6 +35,8 @@ Repeated invocations toggle between the two most recently open buffers."
 ;; Emmet abbreviation system
 (use-package emmet-mode
   :straight t
+  :config
+  (setq-default emmet-expand-jsx-className? t)
   :hook
   ((web-mode     . emmet-mode)
    (html-mode    . emmet-mode)
