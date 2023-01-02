@@ -42,6 +42,7 @@ Repeated invocations toggle between the two most recently open buffers."
    (html-mode    . emmet-mode)
    (makdown-mode . emmet-mode)
    (sass-mode    . emmet-mode)
+   (scss-mode    . emmet-mode)
    (rjsx-mode    . emmet-mode)))
 
 ;; Encode emojis in markdown

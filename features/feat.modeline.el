@@ -4,28 +4,34 @@
 ;;; Setting up doom modile
 
 ;;; Code:
-(defvar-local evil-box-height 5)
+(defvar-local evil-box-height 8)
+(defvar-local evil-n--background "#16b6a4")
+(defvar-local evil-n--foreground "#a4fff5")
+(defvar-local evil-i--background "#4f4ecd")
+(defvar-local evil-i--foreground "#e1dbff")
+(defvar-local evil-v--background "#d63319")
+(defvar-local evil-v--foreground "#ffcaad")
 
 (defface evil-normal-state-face
-  `((t (:foreground "#F3F2F1"
-        :background "#333333"
+  `((t (:foreground ,evil-n--foreground
+        :background ,evil-n--background
         :weight ultra-bold
-        :box (:line-width ,evil-box-height :color ""))))
-  "Face for warnings in the modeline. Used by `*flycheck'")
+        :box (:line-width ,evil-box-height :color ,evil-n--background))))
+  "Face for warnings in the modeline - Used by `*flycheck'.")
 
 (defface evil-insert-state-face
-  `((t (:foreground "#1A7162"
-        :background "#B2EFE5"
-        :weight ultra-bold
-        :box (:line-width ,evil-box-height :color ""))))
-  "Face for warnings in the modeline. Used by `*flycheck'")
+  `((t (:foreground ,evil-i--foreground
+         :background ,evil-i--background
+         :weight ultra-bold
+         :box (:line-width ,evil-box-height :color ,evil-i--background))))
+  "Face for warnings in the modeline - used by `*flycheck'.")
 
 (defface evil-visual-state-face
-  `((t (:foreground "#E9391D"
-        :background "#FFA96F"
+  `((t (:foreground ,evil-v--foreground
+        :background ,evil-v--background
         :weight ultra-bold
-        :box (:line-width ,evil-box-height :color ""))))
-  "Face for warnings in the modeline. Used by `*flycheck'")
+        :box (:line-width ,evil-box-height :color ,evil-v--background))))
+  "Face for warnings in the modeline - used by `*flycheck'.")
 
 (defun evil-state-char ()
   "Show starting character of evil state and propertize with respective face."
