@@ -171,7 +171,7 @@
   :config
   (dashboard-setup-startup-hook)
   (setq dashboard-center-content t)
-  (setq dashboard-startup-banner "~/.emacs.d/logo.png")
+  (setq dashboard-startup-banner "~/.emacs.d/logo.txt")
   (setq dashboard-items '((recents  . 10)
                           (projects . 3)
                           (registers . 5)))
