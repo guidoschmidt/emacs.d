@@ -63,5 +63,14 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
 (use-package svelte-mode
   :straight t)
 
+(use-package poly-astro
+  :straight (poly-astro
+             :type git
+             :host github
+             :repo "pablo-abc/poly-astro")
+  :mode "\\.astro\\'"
+  :hook
+  (poly-astro . lsp-mode))
+
 (provide 'lang.javascript)
 ;;; lang.javascript.el ends here
