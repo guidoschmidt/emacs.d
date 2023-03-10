@@ -71,5 +71,15 @@
    (("h" lsp-ui-peek-jump-backward "←")
     ("l" lsp-ui-peek-jump-forward "→"))))
 
+(pretty-hydra-define hydra/string-inflection
+  (:foreign-keys warn
+                 :title "String Inflection"
+                 :quit-key "q")
+  ("Change Case"
+   (("1" string-inflection-underscore "snake_case")
+    ("2" string-inflection-capital-underscore "SNAKE_CASE")
+    ("3" string-inflection-lower-camelcase "lowerCamelCase")
+    ("4" string-inflection-kebab-case "kebab-case"))))
+
 (provide 'feat.hydra)
 ;;; feat.hydra.el ends here

@@ -21,7 +21,6 @@
     "a"        'align-regexp
     "o"        'sort-lines
     "b"        'ivy-switch-buffer
-    "c"        'clang-format-region
     "x"        'frog-jump-buffer
     "i"        'ibuffer
     "u"        'hydra/lsp-ui/body
@@ -45,6 +44,7 @@
     "m"        'hydra/multiple-cursors/body
     "0"        'switch-window
     "1"        'hydra/window-management/body
+    "c"        'hydra/string-inflection/body
     "<C-up>"   'move-line-up
     "<C-down>" 'move-line-down
 

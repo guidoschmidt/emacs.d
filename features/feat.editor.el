@@ -187,5 +187,11 @@
   :config
   (require 'vlf-setup))
 
+;; string inflection
+(use-package string-inflection
+  :straight t
+  :config
+  (require 'string-inflection))
+
 (provide 'feat.editor)
 ;;; feat.editor.el ends here
