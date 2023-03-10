@@ -38,6 +38,7 @@
 (require 'lang.csharp)
 (require 'lang.clojure)
 (require 'lang.graphql)
+(require 'lang.go)
 (require 'lang.haskell)
 (require 'lang.javascript)
 (require 'lang.typescript)
