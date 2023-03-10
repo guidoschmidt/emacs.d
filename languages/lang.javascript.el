@@ -44,7 +44,7 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (when (hostname? "gs-cube")
     (setq prettier-js-command "~/.nvm/versions/node/v17.1.0/bin/prettier"))
   (when (hostname? "Vreni")
-    (setq prettier-js-command "/usr/local/bin/prettier"))
+    (setq prettier-js-command "/Users/gs/.nvm/versions/node/v18.9.0/bin/prettier"))
   (when (hostname? "Brandon.fritz.box")
     (setq prettier-js-command "~/.nvm/versions/node/v16.9.1/bin/prettier"))
   (when (hostname? "Brandon.local")
