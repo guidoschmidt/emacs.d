@@ -12,7 +12,8 @@
              :repo "ppareit/graphviz-dot-mode")
   :config
   (setq graphviz-dot-intend-with 4)
-  (use-package company-graphviz-dot))
+  (use-package company-graphviz-dot
+    :disabled))
 
 (provide 'lang.graphviz)
 ;;; lang.graphviz.el ends here
