@@ -76,10 +76,16 @@
                  :title "String Inflection"
                  :quit-key "q")
   ("Change Case"
-   (("1" string-inflection-underscore "snake_case")
-    ("2" string-inflection-capital-underscore "SNAKE_CASE")
-    ("3" string-inflection-lower-camelcase "lowerCamelCase")
-    ("4" string-inflection-kebab-case "kebab-case"))))
+   (("1" string-inflection-underscore "snake_case" :exit t)
+    ("2" string-inflection-capital-underscore "SNAKE_CASE" :exit t)
+    ("3" string-inflection-lower-camelcase "lowerCamelCase" :exit t)
+    ("4" string-inflection-kebab-case "kebab-case" :exit t))))
+
+(pretty-hydra-define hydra/character-input
+  (:foreign-keys warn :title "Insert Character" :quit-key "q")
+  ("Arrows"
+   (("1" (insert-char (char-from-name "RIGHTWARDS ARROW")) "→" :exit t)
+    ("2" (insert-char (char-from-name "LEFTWARDS ARROW")) "←" :exit t))))
 
 (provide 'feat.hydra)
 ;;; feat.hydra.el ends here
