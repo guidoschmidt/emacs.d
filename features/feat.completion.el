@@ -20,18 +20,18 @@
 	:config
   (setq-default company-dabbrev-other-buffers t
                 company-dabbrev-code-time-limit 0.1
-                company-idle-delay 0
+                company-idle-delay 0.1
                 company-minimum-prefix-length 1
                 company-require-match nil
                 company-dabbrev-downcase nil
                 company-dabbrev-ignore-case nil
                 company-tooltip-align-annotations t
-                company-tooltip-limit 15
+                company-tooltip-limit 30
                 company-show-numbers t
                 company-transformers '(company-sort-by-occurrence))
 	(global-company-mode t)
   :bind
-  (("<alt-tab>" . company-complete-common)
+  (("<alt-tab>" . company-complete)
    ("<C-tab>"   . company-yasnippet)))
 
 (use-package company-box
@@ -58,7 +58,7 @@
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :straight t
-  :config 
+  :config
   (setq lsp-session-file "~/.emacs.d/lsp/session"
         lsp-server-install-dir "~/.emacs.d/lsp/server/")
   (setq lsp-keep-workspace-alive nil)
@@ -69,6 +69,11 @@
   (setq lsp-enable-on-type-formatting nil)
   :hook
   (rjsx-mode . (lambda () (lsp))))
+
+(use-package eglot
+  :straight t
+  :hook
+  (prog-mode . eglot-ensure))
 
 (use-package lsp-ui
   :straight t
