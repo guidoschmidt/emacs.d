@@ -38,8 +38,8 @@
   :init
   (setq calendar-latitude 49.0)
   (setq calendar-longitude 8.5)
-  (setq circadian-themes '((:sunrise . doom-gruvbox-light)
-                           (:sunset  . doom-challenger-deep)))
+  (setq circadian-themes '((:sunrise . kaolin-valley-light)
+                           (:sunset  . kaolin-valley-dark)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
 
