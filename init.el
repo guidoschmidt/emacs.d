@@ -50,6 +50,7 @@
 (require 'lang.stylesheets)
 (require 'lang.graphviz)
 (require 'lang.zig)
+(require 'lang.processing)
 
 (add-to-list 'load-path "~/.emacs.d/external")
 (require 'protobuf-mode)
