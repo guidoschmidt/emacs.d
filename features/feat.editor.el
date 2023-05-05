@@ -193,5 +193,9 @@
   :config
   (require 'string-inflection))
 
+;; log files
+(use-package logview
+  :straight t)
+
 (provide 'feat.editor)
 ;;; feat.editor.el ends here
