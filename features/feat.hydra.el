@@ -85,7 +85,11 @@
   (:foreign-keys warn :title "Insert Character" :quit-key "q")
   ("Arrows"
    (("1" (insert-char (char-from-name "RIGHTWARDS ARROW")) "→" :exit t)
-    ("2" (insert-char (char-from-name "LEFTWARDS ARROW")) "←" :exit t))))
+    ("2" (insert-char (char-from-name "LEFTWARDS ARROW")) "←" :exit t))
+
+   "Symbols"
+   (("3" (insert-char (char-from-name "CHECK MARK")) "✓" :exit t)
+    ("4" (insert-char (char-from-name "MULTIPLICATION SIGN")) "×" :exit t))))
 
 (provide 'feat.hydra)
 ;;; feat.hydra.el ends here
