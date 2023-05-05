@@ -70,11 +70,6 @@
   :hook
   (rjsx-mode . (lambda () (lsp))))
 
-(use-package eglot
-  :straight t
-  :hook
-  (prog-mode . eglot-ensure))
-
 (use-package lsp-ui
   :straight t
   :commands lsp-ui-mode
@@ -94,6 +89,7 @@
   :straight t
   :config
   (lsp-treemacs-sync-mode t))
+
 
 ;;; -------------------------------------------------------------------------------------------
 ;;; DASH
