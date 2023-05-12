@@ -33,5 +33,18 @@
                    '((company-glsl :width company-dabbrev company-yasnippet))))
       (add-hook 'glsl-mode-hook #'glsl-company-mode-hook))))
 
+(use-package wgsl-mode
+  :straight (wgsl-mode
+             :type git
+             :host github
+             :repo "acowley/wgsl-mode")
+  :config
+  ;; https://github.com/wgsl-analyzer/wgsl-analyzer
+  (add-to-list 'lsp-language-id-configuration '(wgsl-mode . "wgsl"))
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection "wgsl_analyzer")
+                    :activation-fn (lsp-activate-on "wgsl")
+                    :server-id 'wgsl_analyzer)))
+
 (provide 'lang.shader)
 ;;; lang.shader.el ends here

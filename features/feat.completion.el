@@ -62,6 +62,7 @@
   (setq lsp-session-file "~/.emacs.d/lsp/session"
         lsp-server-install-dir "~/.emacs.d/lsp/server/")
   (setq lsp-keep-workspace-alive nil)
+  (setq lsp-lens-debounce-interval 0.005)
   ;; Disable slow features
   (setq lsp-enable-folding nil
         lsp-enable-text-document-color nil)
