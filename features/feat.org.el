@@ -15,7 +15,5 @@
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-
-
 (provide 'feat.org)
 ;;; feat.org.el ends here

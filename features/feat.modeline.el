@@ -5,10 +5,10 @@
 
 ;;; Code:
 (defvar-local evil-box-height 8)
-(defvar-local evil-n--background "#16b6a4")
-(defvar-local evil-n--foreground "#a4fff5")
-(defvar-local evil-i--background "#4f4ecd")
-(defvar-local evil-i--foreground "#e1dbff")
+(defvar-local evil-n--background "#000000")
+(defvar-local evil-n--foreground "#aaaaaa")
+(defvar-local evil-i--background "#ffffff")
+(defvar-local evil-i--foreground "#333333")
 (defvar-local evil-v--background "#d63319")
 (defvar-local evil-v--foreground "#ffcaad")
 

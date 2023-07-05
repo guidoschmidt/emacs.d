@@ -89,7 +89,8 @@
 (use-package lsp-treemacs
   :straight t
   :config
-  (lsp-treemacs-sync-mode t))
+  (lsp-treemacs-sync-mode t)
+  (setq treemacs-no-png-images t))
 
 
 ;;; -------------------------------------------------------------------------------------------

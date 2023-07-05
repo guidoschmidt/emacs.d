@@ -12,6 +12,7 @@ init.el~
 server/
 transient/
 .extension/
+eln-cache/
 
 # Privacy - ignore private modules
 config/private/
@@ -36,3 +37,6 @@ windows/
 
 # LSP
 lsp/
+
+# Tree sitter
+tree-sitter/

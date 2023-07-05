@@ -28,6 +28,7 @@
 (require 'feat.snippets)
 (require 'feat.git)
 (require 'feat.hydra)
+(require 'feat.org)
 (require 'feat.itautomation)
 (require 'feat.livepreview)
 (require 'feat.formatting)
