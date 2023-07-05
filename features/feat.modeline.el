@@ -1,7 +1,7 @@
 ;;; feat.modeline.el --- Modeline suing doom modile -*- lexical-binding: t; -*-
 
 ;;; Commentary:
-;;; Setting up doom modile
+;;; Setting up modeline
 
 ;;; Code:
 (defvar-local evil-box-height 8)
