@@ -26,7 +26,7 @@
                 company-dabbrev-downcase nil
                 company-dabbrev-ignore-case nil
                 company-tooltip-align-annotations t
-                company-tooltip-limit 30
+                company-tooltip-limit 60
                 company-show-numbers t
                 company-transformers '(company-sort-by-occurrence))
 	(global-company-mode t)
@@ -35,12 +35,14 @@
    ("<C-tab>"   . company-yasnippet)))
 
 (use-package company-box
+  :disabled
   :straight t
   :after company
   :hook
   (company-mode . company-box-mode)
   :config
-  (setq company-box--height 400))
+  (setq company-box--height 800)
+  (setq company-box-icons-alist nil))
 
 (use-package company-quickhelp
   :straight t
