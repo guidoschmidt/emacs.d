@@ -60,7 +60,7 @@
              :host github
              :repo "jessiehildebrandt/mood-line")
   :config
-  (defun customize-mood-line ()
+  (defun customize-mood-line () 
     (mood-line-mode)
     (setq-default
      mode-line-format
@@ -83,8 +83,8 @@
                  (:eval (mood-line-segment-encoding))
                  (:eval (mood-line-segment-vc))
                  (:eval (mood-line-segment-major-mode))
-                 (:eval (mood-line-segment-flycheck))
-                 (:eval (mood-line-segment-flymake))
+                 ;;(:eval (mood-line-segment-flycheck))
+                 ;;(:eval (mood-line-segment-flymake))
                  (:eval (mood-line-segment-process))
                  " ")))))))
   (customize-mood-line))
