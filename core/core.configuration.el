@@ -79,7 +79,11 @@
 ;;; -------------------------------------------------------------------------------------------
 ;; Emacs core configuration
 ;; Start server for daemon usage
+;; Use daemon instead (emacs --daemon-fg)
+(setq server-socket-dir "~/.emacs.d/server")
 (server-start)
+
+(print server-socket-dir)
 
 
 ;;; -------------------------------------------------------------------------------------------

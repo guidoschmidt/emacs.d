@@ -36,7 +36,7 @@
     "j"        'swiper-avy
     "t"        'treemacs
     "y"        'yas-insert-snippet
-    "q"        'kill-emacs
+    "q"        'kill-current-buffer
     "r"        'reload-current-buffer
     "ü"        'browse-url-at-point
     "?"        'flyspell-correct-at-point
@@ -149,8 +149,8 @@
              :host github
              :repo "meain/evil-textobj-tree-sitter"
              :files (:defaults "queries"))
+  :after evil
   :config
-  (global-tree-sitter-mode)
   (define-key evil-outer-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.outer"))
   (define-key evil-inner-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.inner"))
   (define-key evil-outer-text-objects-map "c" (evil-textobj-tree-sitter-get-textobj "conditional.outer"))

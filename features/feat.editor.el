@@ -168,7 +168,7 @@
 ;; dashboard
 (use-package dashboard
   :straight t
-  :config
+  :init
   (dashboard-setup-startup-hook)
   (setq dashboard-center-content t)
   (setq dashboard-startup-banner "~/.emacs.d/logo.txt")
@@ -179,7 +179,8 @@
   (setq dashboard-set-file-icons t)
   (setq dashboard-set-navigator t)
   (setq dashboard-set-footer nil)
-  (setq dashboard-banner-logo-title "Have a good coding session"))
+  (setq dashboard-banner-logo-title "Have a good coding session")
+  (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*"))))
 
 ;; view large files
 (use-package vlf

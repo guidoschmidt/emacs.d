@@ -1,4 +1,4 @@
-;;; lang.zip.el --- Zig language config-*- lexical-binding: t; -*-
+;;; lang.zig.el --- Zig language config-*- lexical-binding: t; -*-
 
 ;;; Commentary:
 
@@ -15,7 +15,7 @@
   (when (hostname? "Cube")
     (setq lsp-zig-zls-executable "~/.zig/zls.exe"))
   (when (hostname? "Vreni")
-    (setq lsp-zig-zls-executable "~/git/zig/zls/zig-out/bin/zls")))
+    (setq lsp-zig-zls-executable "zls")))
 
 (provide 'lang.zig)
-;;; lang.zip.el ends here
+;;; lang.zig.el ends here

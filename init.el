@@ -18,9 +18,9 @@
 (require 'core.straight)
 
 (add-to-list 'load-path "~/.emacs.d/features")
+(require 'feat.editor)
 (require 'feat.evil)
 (require 'feat.functions)
-(require 'feat.editor)
 (require 'feat.themeing)
 (require 'feat.modeline)
 (require 'feat.syntaxchecking)
@@ -35,22 +35,23 @@
 ;; (require 'feat.email)
 
 (add-to-list 'load-path "~/.emacs.d/languages")
+;;(require 'lang.clojure)                 ;
+;;(require 'lang.graphql)
+;;(require 'lang.go)
+;;(require 'lang.haskell)
+;;(require 'lang.python)
+;;(require 'lang.rust)
 (require 'lang.cc)
 (require 'lang.csharp)
-(require 'lang.clojure)
-(require 'lang.graphql)
-(require 'lang.go)
-(require 'lang.haskell)
 (require 'lang.javascript)
 (require 'lang.typescript)
 (require 'lang.lua)
 (require 'lang.markup)
-(require 'lang.python)
-(require 'lang.rust)
 (require 'lang.shader)
 (require 'lang.stylesheets)
 (require 'lang.graphviz)
 (require 'lang.zig)
+(require 'lang.nix)
 (require 'lang.processing)
 
 (add-to-list 'load-path "~/.emacs.d/external")
@@ -61,9 +62,10 @@
 ;; gc-cons-threshold that is too small will cause stuttering. We use 16mb as our
 ;; default.
 (add-hook 'emacs-startup-hook
-  (lambda ()
-    (setq gc-cons-threshold 33554432 ; 32mb
-          gc-cons-percentage 0.1)))
+          (lambda ()
+            (dashboard-open)
+            (setq gc-cons-threshold 33554432 ; 32mb
+                  gc-cons-percentage 0.1)))
 
 (provide 'init.el)
 ;;; init.el ends here
