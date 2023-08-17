@@ -8,12 +8,18 @@
 (use-package soothe-theme :straight t)
 (use-package eink-theme :straight t)
 (use-package ample-theme :straight t)
+(use-package tao-theme :straight t)
+(use-package ample-zen-theme
+  :straight (ample-zen-theme :type git
+                             :host github
+                             :repo "mjwall/ample-zen"))
 (use-package gruvbox-theme :straight t)
 (use-package flatui-theme :straight t)
 (use-package kaolin-themes :straight t)
 (use-package atom-dark-theme :straight t)
 (use-package solo-jazz-theme :straight t)
 (use-package nyx-theme :straight t)
+(use-package danneskjold-theme :straight t)
 (use-package emacs-color-themes
   :straight (emacs-color-themes :type git
                                 :host github
@@ -38,8 +44,15 @@
   :init
   (setq calendar-latitude 49.0)
   (setq calendar-longitude 8.5)
-  (setq circadian-themes '((:sunrise . doom-earl-grey)
-                           (:sunset  . doom-badger)))
+  ;; Themes I like
+  ;; LIGHT:
+  ;; - doom-earl-grey
+  ;; - doom-flatwhite
+  ;; DARK:
+  ;; - doom-dracula
+  ;; - tao-yin
+  (setq circadian-themes '((:sunrise . doom-flatwhite)
+                           (:sunset  . doom-gruvbox)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
 
