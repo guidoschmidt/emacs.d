@@ -89,7 +89,10 @@
 
    "Symbols"
    (("3" (insert-char (char-from-name "CHECK MARK")) "✓" :exit t)
-    ("4" (insert-char (char-from-name "MULTIPLICATION SIGN")) "×" :exit t))))
+    ("4" (insert-char (char-from-name "MULTIPLICATION SIGN")) "×" :exit t))
+
+   "Hyphens"
+   (("5" (insert-char (char-from-name "EM DASH")) "—" :exit t))))
 
 (provide 'feat.hydra)
 ;;; feat.hydra.el ends here
