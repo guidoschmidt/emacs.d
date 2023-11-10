@@ -51,7 +51,7 @@
   ;; DARK:
   ;; - doom-dracula
   ;; - tao-yin
-  (setq circadian-themes '((:sunrise . doom-flatwhite)
+  (setq circadian-themes '((:sunrise . doom-challenger-deep)
                            (:sunset  . doom-gruvbox)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
