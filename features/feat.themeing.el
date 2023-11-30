@@ -20,6 +20,7 @@
 (use-package solo-jazz-theme :straight t)
 (use-package nyx-theme :straight t)
 (use-package danneskjold-theme :straight t)
+(use-package stimmung-themes :straight t)
 (use-package emacs-color-themes
   :straight (emacs-color-themes :type git
                                 :host github
@@ -51,8 +52,8 @@
   ;; DARK:
   ;; - doom-dracula
   ;; - tao-yin
-  (setq circadian-themes '((:sunrise . doom-challenger-deep)
-                           (:sunset  . doom-gruvbox)))
+  (setq circadian-themes '((:sunrise . stimmung-themes-light)
+                           (:sunset  . doom-lantern)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
 
