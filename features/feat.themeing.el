@@ -52,7 +52,7 @@
   ;; DARK:
   ;; - doom-dracula
   ;; - tao-yin
-  (setq circadian-themes '((:sunrise . stimmung-themes-light)
+  (setq circadian-themes '((:sunrise . doom-opera-light)
                            (:sunset  . doom-lantern)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
