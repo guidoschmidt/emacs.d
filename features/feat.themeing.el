@@ -53,7 +53,7 @@
   ;; - doom-dracula
   ;; - tao-yin
   (setq circadian-themes '((:sunrise . doom-opera-light)
-                           (:sunset  . doom-lantern)))
+                           (:sunset  . doom-gruvbox)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
 
