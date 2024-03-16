@@ -60,7 +60,7 @@
              :host github
              :repo "jessiehildebrandt/mood-line")
   :config
-  (defun customize-mood-line () 
+  (defun customize-mood-line ()
     (mood-line-mode)
     (setq-default
      mode-line-format

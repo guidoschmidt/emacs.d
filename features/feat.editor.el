@@ -40,6 +40,7 @@
   (setq ivy-display-style 'fancy)
   (setq ivy-height 35)
   (setq ivy-use-virtual-buffers t)
+  (setq ivy-magic-slash-non-match-action nil)
   (defun swiper-recenter ()
     "Advice swiper to recenter on exit."
     (recenter))
@@ -197,6 +198,12 @@
 ;; log files
 (use-package logview
   :straight t)
+
+;; editorconfig
+(use-package editorconfig
+  :straight t
+  :config
+  (editorconfig-mode 1))
 
 (provide 'feat.editor)
 ;;; feat.editor.el ends here

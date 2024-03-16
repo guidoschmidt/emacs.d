@@ -15,7 +15,9 @@
   (when (hostname? "Cube")
     (setq lsp-zig-zls-executable "~/.zig/zls.exe"))
   (when (hostname? "Vreni")
-    (setq lsp-zig-zls-executable "zls")))
+    (setq lsp-zig-zls-executable "zls"))
+  (when (hostname? "Konrad")
+    (setq lsp-zig-zls-executable "~/git/zig/zls/zig-out/bin/zls")))
 
 (provide 'lang.zig)
 ;;; lang.zig.el ends here
