@@ -161,7 +161,9 @@
   (define-key evil-inner-text-objects-map "p" (evil-textobj-tree-sitter-get-textobj "parameter.inner")))
 
 (use-package tree-sitter
-  :straight t)
+  :straight t
+  :config
+  (global-tree-sitter-mode))
 
 (use-package tree-sitter-langs
   :straight t)
