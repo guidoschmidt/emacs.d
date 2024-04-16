@@ -146,7 +146,7 @@
                      (custom-set-faces
                       '(treemacs-root-face
                         ((t (:inherit treemacs-root-face
-                             :family "Iosevka Term SS08 Thin"
+                             :family "Monaspace Argon Var"
                              :height 115))))))))
 
 (use-package treemacs-evil
