@@ -42,9 +42,6 @@
              :host github
              :repo "guidoschmidt/circadian.el")
   ;; :load-path "~/git/emacs/circadian.el"
-  :init
-  (setq calendar-latitude 49.0)
-  (setq calendar-longitude 8.5)
   ;; Themes I like
   ;; LIGHT:
   ;; - doom-earl-grey
@@ -52,8 +49,11 @@
   ;; DARK:
   ;; - doom-dracula
   ;; - tao-yin
-  (setq circadian-themes '((:sunrise . doom-opera-light)
-                           (:sunset  . doom-gruvbox)))
+  :init
+  (setq calendar-latitude 49.0)
+  (setq calendar-longitude 8.5)
+  (setq circadian-themes '((:sunrise . nyx)
+                           (:sunset  . doom-challenger-deep)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
 
