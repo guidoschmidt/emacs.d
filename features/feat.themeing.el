@@ -8,7 +8,7 @@
 (use-package soothe-theme :straight t)
 (use-package eink-theme :straight t)
 (use-package ample-theme :straight t)
-(use-package tao-theme :straight t)
+;;(use-package tao-theme :straight t)
 (use-package ample-zen-theme
   :straight (ample-zen-theme :type git
                              :host github
@@ -43,8 +43,8 @@
              :repo "guidoschmidt/circadian.el")
   ;; :load-path "~/git/emacs/circadian.el"
   :init
-  (setq calendar-latitude 49.0)
-  (setq calendar-longitude 8.5)
+  (setq calendar-latitude 49.398750)
+  (setq calendar-longitude 8.672434)
   ;; Themes I like
   ;; LIGHT:
   ;; - doom-earl-grey
@@ -52,8 +52,8 @@
   ;; DARK:
   ;; - doom-dracula
   ;; - tao-yin
-  (setq circadian-themes '((:sunrise . doom-opera-light)
-                           (:sunset  . doom-gruvbox)))
+  (setq circadian-themes '((:sunrise . doom-flatwhite)
+                           (:sunset . doom-1337)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
 
