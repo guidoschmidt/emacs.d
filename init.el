@@ -37,7 +37,7 @@
 (add-to-list 'load-path "~/.emacs.d/languages")
 ;;(require 'lang.clojure)                 ;
 ;;(require 'lang.graphql)
-;;(require 'lang.go)
+(require 'lang.go)
 ;;(require 'lang.haskell)
 (require 'lang.python)
 (require 'lang.rust)
