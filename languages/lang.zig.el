@@ -21,7 +21,7 @@
       (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)))
   (add-to-list 'lsp-language-id-configuration '(zig-mode . "zig"))
   (when (hostname? "Cube")
-    (setq lsp-zig-zls-executable "~/.zig/zls.exe"))
+    (setq lsp-zig-zls-executable "F:/git/zig/zls/zig-out/bin/zls.exe"))
   (when (hostname? "Vreni")
     (setq lsp-zig-zls-executable "zls"))
   (when (hostname? "Konrad")
