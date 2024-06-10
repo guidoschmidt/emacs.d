@@ -11,7 +11,6 @@
   :hook ((zig-mode . lsp-deferred))
   :custom (zig-format-on-save nil)
   :config
-  (setq zig-indent-offset 4)
   (if (>= emacs-major-version 28)
       (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
     (progn
