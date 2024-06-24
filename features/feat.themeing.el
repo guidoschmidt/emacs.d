@@ -46,18 +46,19 @@
   ;; - doom-earl-grey
   ;; - doom-flatwhite
   ;; DARK:
+  ;; - doom-badger
   ;; - doom-dracula
   ;; - tao-yin
+  ;; - junio
   :init
+  (setq circadian-verbose t)
   (setq calendar-latitude 49.398750)
   (setq calendar-longitude 8.672434)
-  (setq circadian-themes '((:sunrise . '(doom-gruvbox-light
-                                         doom-flatwhite
-                                         doom-earl-grey))
-                           (:sunset . '(doom-dracula
-                                        doom-gruvbox
-                                        tao-yin
-                                        doom-challenger-deep)) ))
+  (setq circadian-themes '((:sunrise . (doom-gruvbox-light))
+                           (:sunset  . (doom-dracula
+                                       doom-badger
+                                       doom-feather-dark))
+                           ("00:00"  . doom-challenger-deep)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
 
