@@ -49,6 +49,11 @@
       :overlay-category 'flycheck-info-overlay
       :fringe-bitmap bitmap
       :fringe-face 'flycheck-fringe-info))
+  :custom
+  (custom-set-variables
+   '(flycheck-python-flake8-executable "python3")
+   '(flycheck-python-pycompile-executable "python3")
+   '(flycheck-python-pylint-executable "python3"))
   :hook
   ((rjsx-mode       . flycheck-mode)
    (c++-mode        . flycheck-mode)
