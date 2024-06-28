@@ -3,7 +3,8 @@
 ;;; Commentary:
 
 ;;; Code:
-(add-to-list 'default-frame-alist '(undecorated . t))
+(when (not (string-equal system-type "windows-nt"))
+  (add-to-list 'default-frame-alist '(undecorated . t)))
 
 (provide 'early-init.el)
 ;;; early-init.el ends here

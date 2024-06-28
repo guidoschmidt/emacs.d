@@ -42,8 +42,8 @@
 (setq default-directory "~/")
 
 ;; Disable window decorations
-(when (windows?)
-  (set-frame-parameter nil 'undecorated t))
+;; (when (windows?)
+;;   (set-frame-parameter nil 'undecorated t))
 
 ;; Move backup files
 (setq backup-directory-alist
