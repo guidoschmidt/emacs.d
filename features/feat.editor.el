@@ -205,5 +205,12 @@
   :config
   (editorconfig-mode 1))
 
+;; helpful
+(use-package helpful
+  :straight (helpful
+             :type git
+             :host github
+             :repo "Wilfred/helpful"))
+
 (provide 'feat.editor)
 ;;; feat.editor.el ends here
