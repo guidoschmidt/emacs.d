@@ -54,8 +54,8 @@
   (setq circadian-verbose t)
   (setq calendar-latitude 49.398750)
   (setq calendar-longitude 8.672434)
-  (setq circadian-themes '((:sunrise . (doom-gruvbox-light
-                                        doom-oksolar-light))
+  (setq circadian-themes '((:sunrise . (kaolin-temple
+                                        kaolin-valley-dark))
                            (:sunset  . (doom-dracula
                                         doom-badger
                                         doom-feather-dark))
