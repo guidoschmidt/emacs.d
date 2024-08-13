@@ -5,6 +5,7 @@
 ;;; Code:
 ;; `M-x combobulate' (or `C-c o o') to start using Combobulate
 (use-package treesit
+  :disabled
   :preface
   (defun mp-setup-install-grammars ()
     "Install Tree-sitter grammars if they are absent."
