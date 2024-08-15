@@ -53,6 +53,7 @@
 (require 'lang.zig)
 (require 'lang.nix)
 (require 'lang.processing)
+(require 'lang.powershell)
 
 (add-to-list 'load-path "~/.emacs.d/external")
 (require 'protobuf-mode)
