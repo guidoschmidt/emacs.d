@@ -11,6 +11,7 @@
 (use-package goto-chg
   :straight t)
 
+
 (use-package evil-leader
   :straight t
   :after evil
@@ -70,14 +71,17 @@
 (use-package evil
   :straight t
   :config
-  (setq-default evil-undo-system 'undo-redo)
   ;; Avoid cutting on pasting
-  (setq-default evil-undo-system 'undo-redo)
+  (evil-set-undo-system 'undo-redo)
   (setq-default evil-kill-on-visual-paste nil)
   (setq-default evil-search-module 'evil-search)
   (setq-default evil-ex-visual-char-range t)
   (evil-mode t))
 
+(use-package undo-tree
+  :straight t
+  :config
+  (global-undo-tree-mode t))
 
 (use-package evil-collection
   :straight t
