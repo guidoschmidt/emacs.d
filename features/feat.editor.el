@@ -212,5 +212,9 @@
              :host github
              :repo "Wilfred/helpful"))
 
+;; Inline calc mode
+(use-package literate-calc-mode
+  :straight t)
+
 (provide 'feat.editor)
 ;;; feat.editor.el ends here
