@@ -9,14 +9,7 @@
 ;;; -------------------------------------------------------------------------------------------
 (use-package company
 	:straight t
-  :diminish company-mode
-  :preface
-  (defun company-mode/backend-with-yas (backend)
-    (if (or (not company-mode/enable-yas)
-            (and (listp backend (member 'company-yasnippet backend)))
-            backend
-            (append (if (consp backend) backend (list backend))
-                    '(:with company-yasnippet)))))
+  :defer t
 	:config
   (setq-default company-dabbrev-other-buffers t
                 company-dabbrev-code-time-limit 0.1
@@ -29,20 +22,7 @@
                 company-tooltip-limit 60
                 company-show-numbers t
                 company-transformers '(company-sort-by-occurrence))
-	(global-company-mode t)
-  :bind
-  (("<alt-tab>" . company-complete)
-   ("<C-tab>"   . company-yasnippet)))
-
-(use-package company-box
-  :disabled
-  :straight t
-  :after company
-  :hook
-  (company-mode . company-box-mode)
-  :config
-  (setq company-box--height 800)
-  (setq company-box-icons-alist nil))
+	(global-company-mode))
 
 (use-package company-quickhelp
   :straight t
@@ -104,6 +84,42 @@
                  :type git
 		             :host github
 		             :repo "stanaka/dash-at-point")))
+
+
+;;; -------------------------------------------------------------------------------------------
+;;; CODEIUM
+;;; -------------------------------------------------------------------------------------------
+(use-package codeium
+  :after company
+  :straight (codeium
+             :type git
+             :host github
+             :repo "Exafunction/codeium.el")
+  :init
+  (add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
+  :config
+  (setq use-dialog-box nil)
+  ;; use M-x codeium-diagnose to see apis/fields that would be sent to the local language server
+  (setq codeium-api-enabled
+        (lambda (api)
+          (memq api '(GetCompletions
+                      Heartbeat
+                      CancelRequest
+                      GetAuthToken
+                      RegisterUser
+                      auth-redirect
+                      AcceptCompletion))))
+  ;; You can overwrite all the codeium configs!
+  ;; for example, we recommend limiting the string sent to codeium for better performance
+  (defun my-codeium/document/text ()
+    (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (min (+ (point) 1000) (point-max))))
+  ;; if you change the text, you should also change the cursor_offset
+  ;; warning: this is measured by UTF-8 encoded bytes
+  (defun my-codeium/document/cursor_offset ()
+    (codeium-utf8-byte-length
+     (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (point))))
+  (setq codeium/document/text 'my-codeium/document/text)
+  (setq codeium/document/cursor_offset 'my-codeium/document/cursor_offset))
 
 (provide 'feat.completion)
 ;;; feat.completion.el ends here
