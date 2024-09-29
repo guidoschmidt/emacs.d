@@ -109,5 +109,21 @@
   :config
   (solaire-global-mode +1))
 
+;; spacious padding
+(use-package spacious-padding
+  :straight (spacious-padding :type git
+                              :host github
+                              :repo "protesilaos/spacious-padding")
+  :config
+  (setq spacious-padding-widths
+        '(:internal-border-width 60
+          :header-line-width 0
+          :mode-line-width 0
+          :tab-width 2
+          :right-divider-width 4
+          :scroll-bar-width 0
+          :fringe-width 0))
+  (spacious-padding-mode 1))
+
 (provide 'feat.themeing)
 ;;; feat.themeing.el ends here

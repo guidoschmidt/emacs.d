@@ -68,11 +68,12 @@
     "<"        'lispy-angle-brackets
     "`"        'lispy-backticks))
 
+
 (use-package evil
   :straight t
   :config
   ;; Avoid cutting on pasting
-  (evil-set-undo-system 'undo-redo)
+  (setq-default evil-undo-system 'undo-redo)
   (setq-default evil-kill-on-visual-paste nil)
   (setq-default evil-search-module 'evil-search)
   (setq-default evil-ex-visual-char-range t)
@@ -80,8 +81,7 @@
 
 (use-package undo-tree
   :straight t
-  :config
-  (global-undo-tree-mode t))
+  :disabled)
 
 (use-package evil-collection
   :straight t
