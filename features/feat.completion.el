@@ -90,6 +90,7 @@
 ;;; CODEIUM
 ;;; -------------------------------------------------------------------------------------------
 (use-package codeium
+  :disabled
   :after company
   :straight (codeium
              :type git
