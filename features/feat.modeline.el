@@ -36,7 +36,7 @@
 (defun evil-state-char ()
   "Show starting character of evil state and propertize with respective face."
   (let ((state (symbol-value 'evil-state)))
-    (cond ((equal 'normal state) (propertize " · "
+    (cond ((equal 'normal state) (propertize " ▪ "
                                              'face 'evil-normal-state-face))
           ((equal 'insert state) (propertize " ± "
                                              'face 'evil-insert-state-face))
