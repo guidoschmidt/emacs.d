@@ -32,6 +32,7 @@
 (require 'feat.itautomation)
 (require 'feat.livepreview)
 (require 'feat.formatting)
+(require 'feat.assistant)
 ;; (require 'feat.email)
 
 (add-to-list 'load-path "~/.emacs.d/languages")
