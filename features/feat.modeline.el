@@ -4,43 +4,46 @@
 ;;; Setting up modeline
 
 ;;; Code:
-(defvar-local evil-box-height 5)
+(defvar-local evil-box-height 6)
 (defvar-local evil-n--background "#2213f7")
-(defvar-local evil-n--foreground "#99b9d8")
-(defvar-local evil-i--background "#f7d113")
-(defvar-local evil-i--foreground "#ffefe0")
+(defvar-local evil-n--foreground "#9983ef")
+(defvar-local evil-i--background "#0bb7ae")
+(defvar-local evil-i--foreground "#92efef")
 (defvar-local evil-v--background "#d63319")
 (defvar-local evil-v--foreground "#ffcaad")
 
 (defface evil-normal-state-face
   `((t (:foreground ,evil-n--foreground
-        :background ,evil-n--background
-        :weight bold
-        :box (:line-width ,evil-box-height :color ,evil-n--background))))
-  "Face for warnings in the modeline - Used by `*flycheck'.")
+                    :background ,evil-n--background
+                    :weight bold
+                    :box (:line-width ,evil-box-height :color ,evil-n--background))))
+  "Face for warnings in the modeline - Used by `*flycheck'."
+  :group 'modeline)
 
 (defface evil-insert-state-face
   `((t (:foreground ,evil-i--foreground
          :background ,evil-i--background
          :weight bold
          :box (:line-width ,evil-box-height :color ,evil-i--background))))
-  "Face for warnings in the modeline - used by `*flycheck'.")
+  "Face for warnings in the modeline - used by `*flycheck'."
+  :group 'modeline)
 
 (defface evil-visual-state-face
   `((t (:foreground ,evil-v--foreground
         :background ,evil-v--background
         :weight bold
         :box (:line-width ,evil-box-height :color ,evil-v--background))))
-  "Face for warnings in the modeline - used by `*flycheck'.")
+  "Face for warnings in the modeline - used by `*flycheck'."
+  :group 'modeline)
 
 (defun evil-state-char ()
   "Show starting character of evil state and propertize with respective face."
   (let ((state (symbol-value 'evil-state)))
-    (cond ((equal 'normal state) (propertize " ▪ "
+    (cond ((equal 'normal state) (propertize " ■ "
                                              'face 'evil-normal-state-face))
-          ((equal 'insert state) (propertize " ± "
+          ((equal 'insert state) (propertize " ▶ "
                                              'face 'evil-insert-state-face))
-          ((equal 'visual state) (propertize " × "
+          ((equal 'visual state) (propertize " ● "
                                              'face 'evil-visual-state-face)))))
 
 (use-package sky-color-clock
@@ -53,6 +56,7 @@
     (when calendar-latitude
       (sky-color-clock-initialize (round calendar-latitude))))
   (setq sky-color-clock-enable-emoji-icon nil))
+
 
 (use-package mood-line
   :straight (mood-line
@@ -70,8 +74,7 @@
               (format-mode-line
                '(""
                  (:eval (evil-state-char))
-                 
-                 " "
+                 "  "
                  (:eval (mood-line-segment-modified))
                  (:eval (mood-line-segment-buffer-name))
                  (:eval (mood-line-segment-anzu))
