@@ -47,6 +47,20 @@
   (advice-add 'swiper :after #'swiper-recenter)
   (ivy-mode t))
 
+(use-package ivy-posframe
+  :straight t
+  :config
+  ;; (setq ivy-posframe-height-alist '((t . 40)))
+  (setq ivy-posframe-height 20)
+  (setq ivy-posframe-min-width 100)
+  (setq ivy-posframe-width 100)
+  (setq ivy-posframe-parameters
+        '((left-fringe  . 0)
+          (right-fringe . 0)))
+  (setq ivy-posframe-border-width 40)
+  (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+  (ivy-posframe-mode 1))
+
 (use-package wgrep-ag
   :straight t)
 
