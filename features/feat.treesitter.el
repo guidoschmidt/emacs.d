@@ -5,17 +5,25 @@
 ;;; Code:
 ;; `M-x combobulate' (or `C-c o o') to start using Combobulate
 (use-package treesit
-  :disabled
   :preface
   (defun mp-setup-install-grammars ()
     "Install Tree-sitter grammars if they are absent."
     (interactive)
     (dolist (grammar
-             '((css "https://github.com/tree-sitter/tree-sitter-css")
-               (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript" "master" "src"))
-               (python "https://github.com/tree-sitter/tree-sitter-python")
-               (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src"))
-               (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
+             ;; Note the version numbers. These are the versions that
+             ;; are known to work with Combobulate *and* Emacs.
+             '((css . ("https://github.com/tree-sitter/tree-sitter-css" "v0.20.0"))
+               (go . ("https://github.com/tree-sitter/tree-sitter-go" "v0.20.0"))
+               (html . ("https://github.com/tree-sitter/tree-sitter-html" "v0.20.1"))
+               (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript" "v0.20.1" "src"))
+               (json . ("https://github.com/tree-sitter/tree-sitter-json" "v0.20.2"))
+               (markdown . ("https://github.com/ikatyang/tree-sitter-markdown" "v0.7.1"))
+               (python . ("https://github.com/tree-sitter/tree-sitter-python" "v0.20.4"))
+               (rust . ("https://github.com/tree-sitter/tree-sitter-rust" "v0.21.2"))
+               (toml . ("https://github.com/tree-sitter/tree-sitter-toml" "v0.5.1"))
+               (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.3" "tsx/src"))
+               (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.3" "typescript/src"))
+               (yaml . ("https://github.com/ikatyang/tree-sitter-yaml" "v0.5.0"))))
       (add-to-list 'treesit-language-source-alist grammar)
       ;; Only install `grammar' if we don't already have it
       ;; installed. However, if you want to *update* a grammar then
@@ -23,36 +31,33 @@
       (unless (treesit-language-available-p (car grammar))
         (treesit-install-language-grammar (car grammar)))))
 
-  ;; Optional, but recommended. Tree-sitter enabled major modes are
-  ;; distinct from their ordinary counterparts.
-  ;;
   ;; You can remap major modes with `major-mode-remap-alist'. Note
   ;; that this does *not* extend to hooks! Make sure you migrate them
   ;; also
-  (dolist (mapping '((python-mode     . python-ts-mode)
-                     (css-mode        . css-ts-mode)
-                     (typescript-mode . tsx-ts-mode)
-                     (js-mode         . js-ts-mode)
-                     (css-mode        . css-ts-mode)
-                     (yaml-mode       . yaml-ts-mode)))
+  (dolist (mapping
+           '((python-mode     . python-ts-mode)
+             (css-mode        . css-ts-mode)
+             (typescript-mode . typescript-ts-mode)
+             (js2-mode        . js-ts-mode)
+             (bash-mode       . bash-ts-mode)
+             (conf-toml-mode  . toml-ts-mode)
+             (go-mode         . go-ts-mode)
+             (css-mode        . css-ts-mode)
+             (json-mode       . json-ts-mode)
+             (js-json-mode    . json-ts-mode)))
     (add-to-list 'major-mode-remap-alist mapping))
+
   :config
-  (mp-setup-install-grammars))
+  (setq treesit-language-source-alist
+        '((python "https://github.com/tree-sitter/tree-sitter-python")))
+  (mapc #'treesit-install-language-grammar (mapcar #'car treesit-language-source-alist)))
 
 (use-package combobulate
-  ;; Optional, but recommended.
-  ;; You can manually enable Combobulate with `M-x
-  ;; combobulate-mode'.
   :straight (combobulate
              :type git
              :host github
              :repo "mickeynp/combobulate")
-  :hook ((python-ts-mode . combobulate-mode)
-         (js-ts-mode . combobulate-mode)
-         (css-ts-mode . combobulate-mode)
-         (yaml-ts-mode . combobulate-mode)
-         (typescript-ts-mode . combobulate-mode)
-         (tsx-ts-mode . combobulate-mode)))
+  :hook ((prog-mode . combobulate-mode)))
 
 (provide 'feat.treesitter)
 ;;; feat.treesitter.el ends here
