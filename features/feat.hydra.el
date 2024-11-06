@@ -69,7 +69,10 @@
 
    "Movement"
    (("h" lsp-ui-peek-jump-backward "←")
-    ("l" lsp-ui-peek-jump-forward "→"))))
+    ("l" lsp-ui-peek-jump-forward "→"))
+
+   "Actions"
+   (("a" lsp-execute-code-action "code action" :exit t))))
 
 (pretty-hydra-define hydra/string-inflection
   (:foreign-keys warn
