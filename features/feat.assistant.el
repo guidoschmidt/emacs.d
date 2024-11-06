@@ -17,6 +17,16 @@
 	         :default-chat-non-standard-params '(("num_ctx" . 8192))))
   (setopt ellama-naming-scheme 'ellama-generate-name-by-llm))
 
+(use-package gptel
+  :straight t
+  :config
+  (setq
+   gptel-model 'llama3.1:latest
+   gptel-backend (gptel-make-ollama "ollama"
+                   :host "localhost:11434"
+                   :stream t
+                   :models '(llama3.1:latest))))
+
 (provide 'feat.assistant)
 
 ;;; feat.assistant.el ends here
