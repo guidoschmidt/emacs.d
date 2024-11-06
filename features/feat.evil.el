@@ -24,6 +24,7 @@
     "b"        'ivy-switch-buffer
     "x"        'frog-jump-buffer
     "i"        'ibuffer
+    "e"        'imenu
     "u"        'hydra/lsp-ui/body
     "n"        'ivy-switch-buffer-other-window
     "k"        'ido-kill-buffer
