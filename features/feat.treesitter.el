@@ -6,24 +6,25 @@
 ;; `M-x combobulate' (or `C-c o o') to start using Combobulate
 (use-package treesit
   :preface
-  (defun mp-setup-install-grammars ()
+  (defun treesit-setup-install-grammars ()
     "Install Tree-sitter grammars if they are absent."
     (interactive)
     (dolist (grammar
              ;; Note the version numbers. These are the versions that
              ;; are known to work with Combobulate *and* Emacs.
-             '((css . ("https://github.com/tree-sitter/tree-sitter-css" "v0.20.0"))
-               (go . ("https://github.com/tree-sitter/tree-sitter-go" "v0.20.0"))
-               (html . ("https://github.com/tree-sitter/tree-sitter-html" "v0.20.1"))
+             '((css        . ("https://github.com/tree-sitter/tree-sitter-css" "v0.20.0"))
+               (go         . ("https://github.com/tree-sitter/tree-sitter-go" "v0.20.0"))
+               (html       . ("https://github.com/tree-sitter/tree-sitter-html" "v0.20.1"))
                (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript" "v0.20.1" "src"))
-               (json . ("https://github.com/tree-sitter/tree-sitter-json" "v0.20.2"))
-               (markdown . ("https://github.com/ikatyang/tree-sitter-markdown" "v0.7.1"))
-               (python . ("https://github.com/tree-sitter/tree-sitter-python" "v0.20.4"))
-               (rust . ("https://github.com/tree-sitter/tree-sitter-rust" "v0.21.2"))
-               (toml . ("https://github.com/tree-sitter/tree-sitter-toml" "v0.5.1"))
-               (tsx . ("https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.3" "tsx/src"))
+               (json       . ("https://github.com/tree-sitter/tree-sitter-json" "v0.20.2"))
+               (markdown   . ("https://github.com/ikatyang/tree-sitter-markdown" "v0.7.1"))
+               (python     . ("https://github.com/tree-sitter/tree-sitter-python" "v0.20.4"))
+               (rust       . ("https://github.com/tree-sitter/tree-sitter-rust" "v0.21.2"))
+               (toml       . ("https://github.com/tree-sitter/tree-sitter-toml" "v0.5.1"))
+               (tsx        . ("https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.3" "tsx/src"))
                (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.3" "typescript/src"))
-               (yaml . ("https://github.com/ikatyang/tree-sitter-yaml" "v0.5.0"))))
+               (yaml       . ("https://github.com/ikatyang/tree-sitter-yaml" "v0.5.0"))
+               (zig        . ("https://github.com/tree-sitter-grammars/tree-sitter-zig" "v1.0.2"))))
       (add-to-list 'treesit-language-source-alist grammar)
       ;; Only install `grammar' if we don't already have it
       ;; installed. However, if you want to *update* a grammar then
@@ -46,10 +47,10 @@
              (json-mode       . json-ts-mode)
              (js-json-mode    . json-ts-mode)))
     (add-to-list 'major-mode-remap-alist mapping))
-
   :config
   (setq treesit-language-source-alist
-        '((python "https://github.com/tree-sitter/tree-sitter-python")))
+        '((python "https://github.com/tree-sitter/tree-sitter-python")
+          (zig    "https://github.com/tree-sitter-grammars/tree-sitter-zig")))
   (mapc #'treesit-install-language-grammar (mapcar #'car treesit-language-source-alist)))
 
 (use-package combobulate

@@ -31,6 +31,7 @@
 (require 'feat.org)
 (require 'feat.itautomation)
 (require 'feat.livepreview)
+(require 'feat.treesitter)
 (require 'feat.formatting)
 (require 'feat.assistant)
 ;; (require 'feat.email)
