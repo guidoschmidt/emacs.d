@@ -230,5 +230,9 @@
 (use-package literate-calc-mode
   :straight t)
 
+;; Insert paths into minibuffer prompts in Emacs
+(use-package consult-dir
+  :straight t)
+
 (provide 'feat.editor)
 ;;; feat.editor.el ends here

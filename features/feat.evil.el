@@ -33,7 +33,7 @@
     "z"        'insert-arrow
     "p"        'counsel-projectile-switch-project
     "f"        'counsel-projectile-find-file
-    "g"        'counsel-ag
+    "g"        'counsel-rg
     "w"        'save-buffer
     "j"        'swiper-avy
     "t"        'treemacs
