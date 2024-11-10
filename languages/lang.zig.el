@@ -9,7 +9,7 @@
   :straight t
   :defer zig-mode
   :hook ((zig-mode . lsp-deferred))
-  :custom (zig-format-on-save nil)
+  :after lsp-mode
   :config
   (if (>= emacs-major-version 28)
       (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
@@ -18,13 +18,16 @@
         (let ((inhibit-read-only t))
           (ansi-color-apply-on-region compilation-filter-start (point))))
       (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)))
-  (add-to-list 'lsp-language-id-configuration '(zig-mode . "zig"))
+
+  (setq lsp-zig-enable-build-on-save t)
+  (setq lsp-zig-build-on-save-step "check")
+  (setq lsp-zig-enable-autofix t)
+  (setq lsp-log-io t)
+  (add-hook 'after-save-hook (lambda ()
+                               (print "Should build using lsp-zig-build-on-save-step")))
+
   (when (hostname? "Cube")
-    (setq lsp-zig-zls-executable "F:/git/zig/zls/zig-out/bin/zls.exe"))
-  (when (hostname? "Vreni")
-    (setq lsp-zig-zls-executable "zls"))
-  (when (hostname? "Konrad")
-    (setq lsp-zig-zls-executable "~/git/zig/zls/zig-out/bin/zls")))
+    (setq lsp-zig-zls-executable "F:/git/zig/zls/zig-out/bin/zls.exe")))
 
 (provide 'lang.zig)
 ;;; lang.zig.el ends here

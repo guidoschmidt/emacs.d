@@ -7,9 +7,12 @@
 ;;; Code:
 (use-package dap-mode
   :straight t
+  :defer
   :config
   (add-hook 'dap-stopped-hook
             (lambda (arg) (call-interactively #'dap-hydra)))
+  (add-hook 'dap-mode-hook
+            (lambda () (set-fringe-style '(20 . 8))))
   (dap-auto-configure-mode t)
   (setq dap-auto-configure-features '(sessions locals breakpoints expressions tooltip))
 
