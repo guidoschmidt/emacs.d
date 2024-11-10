@@ -22,9 +22,12 @@
   (setq lsp-zig-enable-build-on-save t)
   (setq lsp-zig-build-on-save-step "check")
   (setq lsp-zig-enable-autofix t)
-  (setq lsp-log-io t)
-  (add-hook 'after-save-hook (lambda ()
-                               (print "Should build using lsp-zig-build-on-save-step")))
+  (setq lsp-zig-enable-inlay-hints t)
+
+  (defun zig-check ()
+    "Compile using `zig build check`."
+    (interactive)
+    (zig--run-cmd "build" "check"))
 
   (when (hostname? "Cube")
     (setq lsp-zig-zls-executable "F:/git/zig/zls/zig-out/bin/zls.exe")))
