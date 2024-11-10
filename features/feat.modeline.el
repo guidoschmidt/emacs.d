@@ -90,7 +90,7 @@
                  ;;(:eval (mood-line-segment-flycheck))
                  ;;(:eval (mood-line-segment-flymake))
                  (:eval (mood-line-segment-process))
-                 " "
+                 "   "
                  (:eval (sky-color-clock)))))))))
   (customize-mood-line))
 
