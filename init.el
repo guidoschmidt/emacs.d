@@ -21,6 +21,7 @@
 (require 'feat.editor)
 (require 'feat.evil)
 (require 'feat.functions)
+(require 'feat.debug)
 (require 'feat.themeing)
 (require 'feat.modeline)
 (require 'feat.syntaxchecking)

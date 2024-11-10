@@ -33,11 +33,5 @@
           (append '("compile_commands.json" ".ccls")
                   projectile-project-root-files-top-down-recurring))))
 
-(use-package dap-mode
-  :straight t
-  :config
-  (add-hook 'dap-stopped-hook
-          (lambda (arg) (call-interactively #'dap-hydra))))
-
 (provide 'lang.cc)
 ;;; lang.cc.el ends here
