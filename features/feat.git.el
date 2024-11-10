@@ -19,7 +19,7 @@
              :type git
              :host github
              :repo "Artawower/blamer.el")
-  :defer 20
+  :defer blamer-mode
   :custom
   (blamer-idle-time 0.3)
   (blamer-min-offset 70)
