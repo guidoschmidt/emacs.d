@@ -112,6 +112,7 @@
 
 ;; Set window fringe
 (fringe-mode 20)
+(set-fringe-style '(0 . 0))
 
 ;; Enable winner mode for window history
 (winner-mode t)

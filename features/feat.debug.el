@@ -10,9 +10,13 @@
   :defer
   :config
   (add-hook 'dap-stopped-hook
-            (lambda (arg) (call-interactively #'dap-hydra)))
-  (add-hook 'dap-mode-hook
-            (lambda () (set-fringe-style '(20 . 8))))
+            (lambda (arg)
+              (call-interactively #'dap-hydra)
+              (set-fringe-style '(0 . 0))))
+  (defun dap-mode-fringe-hook ()
+    "Sets fringes for dap-mode."
+    (set-window-fringes nil 20 0))
+  (add-hook 'dap-mode-hook 'dap-mode-fringe-hook)
   (dap-auto-configure-mode t)
   (setq dap-auto-configure-features '(sessions locals breakpoints expressions tooltip))
 
