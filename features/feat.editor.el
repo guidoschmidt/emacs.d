@@ -51,7 +51,8 @@
   :straight t
   :config
   ;; (setq ivy-posframe-height-alist '((t . 40)))
-  (setq ivy-posframe-height 20)
+  ;; (setq ivy-posframe-height 20)
+  (setq ivy-posframe-height 40)
   (setq ivy-posframe-min-width 100)
   (setq ivy-posframe-width 100)
   (setq ivy-posframe-parameters
