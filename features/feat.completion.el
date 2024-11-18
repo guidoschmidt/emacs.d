@@ -19,7 +19,7 @@
                 company-dabbrev-downcase nil
                 company-dabbrev-ignore-case nil
                 company-tooltip-align-annotations t
-                company-tooltip-limit 60
+                company-tooltip-limit 15
                 company-show-numbers t
                 company-transformers '(company-sort-by-occurrence))
 	(global-company-mode))
@@ -41,6 +41,9 @@
   :commands (lsp lsp-deferred)
   :straight t
   :config
+  (setq lsp-log-io nil)
+  (setq lsp-idle-delay 0.500)
+  (setq lsp-use-plists t)
   (setq lsp-session-file "~/.emacs.d/lsp/session"
         lsp-server-install-dir "~/.emacs.d/lsp/server/")
   (setq lsp-keep-workspace-alive nil)
