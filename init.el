@@ -68,7 +68,8 @@
 (add-hook 'emacs-startup-hook
           (lambda ()
             (dashboard-open)
-            (setq gc-cons-threshold 33554432 ; 32mb
+            (setq read-process-output-max (* 4 1024 1024)) ; 4 mb
+            (setq gc-cons-threshold (* 100 1024 1024) ; 100 mb
                   gc-cons-percentage 0.1)))
 
 (provide 'init.el)
