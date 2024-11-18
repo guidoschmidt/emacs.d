@@ -21,7 +21,7 @@
 
   (setq lsp-zig-enable-build-on-save t)
   (setq lsp-zig-build-on-save-step "check")
-  (setq lsp-zig-enable-autofix t)
+  (setq lsp-zig-enable-autofix nil)
   (setq lsp-zig-enable-inlay-hints t)
 
   (defun zig-check ()
