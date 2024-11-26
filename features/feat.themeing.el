@@ -57,11 +57,14 @@
   (setq circadian-themes '((:sunrise . (kaolin-aurora
                                         curry-on
                                         kaolin-temple
-                                        doom-bluloco-dark))
+                                        doom-bluloco-dark
+                                        doom-spacegrey))
                            (:sunset  . (junio
                                         doom-dracula
-                                        doom-badger))
-                           ("00:00"  . doom-challenger-deep)))
+                                        doom-badger
+                                        doom-spacegrey
+                                        ))
+                           ("00:00"  . doom-ir-black)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
 
