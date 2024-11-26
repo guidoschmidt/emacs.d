@@ -36,9 +36,7 @@
   ;; that this does *not* extend to hooks! Make sure you migrate them
   ;; also
   (dolist (mapping
-           '((python-mode     . python-ts-mode)
-             (css-mode        . css-ts-mode)
-             (typescript-mode . typescript-ts-mode)
+           '((css-mode        . css-ts-mode)
              (js2-mode        . js-ts-mode)
              (bash-mode       . bash-ts-mode)
              (conf-toml-mode  . toml-ts-mode)
@@ -54,6 +52,7 @@
   (mapc #'treesit-install-language-grammar (mapcar #'car treesit-language-source-alist)))
 
 (use-package combobulate
+  :disabled
   :straight (combobulate
              :type git
              :host github
