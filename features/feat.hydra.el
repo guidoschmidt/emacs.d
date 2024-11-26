@@ -51,6 +51,7 @@
 
    "Cursor"
    (("m" evil-mc-make-cursor-here "make cursor")
+    ("a" evil-mc-make-all-cursors "make all cursors")
     ("c" evil-mc-undo-all-cursors "clear all cursors"))
 
    "iedit"
