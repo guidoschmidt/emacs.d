@@ -58,7 +58,7 @@
   (setq ivy-posframe-parameters
         '((left-fringe  . 0)
           (right-fringe . 0)))
-  (setq ivy-posframe-border-width 40)
+  (setq ivy-posframe-border-width 12)
   (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
   (ivy-posframe-mode 1))
 
