@@ -128,7 +128,8 @@
   :after evil
   :config
   (setq evil-mc-one-cursor-show-mode-line-text t)
-  (global-evil-mc-mode t))
+  (global-evil-mc-mode t)
+  (evil-collection-define-key '(normal visual) 'evil-mc-key-map (kbd "g") evil-mc-cursors-map))
 
 (use-package evil-paredit
   :straight t

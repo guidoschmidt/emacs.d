@@ -4,12 +4,10 @@
 ;;; Company with lsp for auto-completion
 
 ;;; Code:
-;;; -------------------------------------------------------------------------------------------
+
 ;;; COMPANY
-;;; -------------------------------------------------------------------------------------------
 (use-package company
 	:straight t
-  :defer t
 	:config
   (setq-default company-dabbrev-other-buffers t
                 company-dabbrev-code-time-limit 0.1
@@ -34,9 +32,8 @@
   :bind
   (("C-h" . company-quickhelp-manual-begin)))
 
-;;; -------------------------------------------------------------------------------------------
+
 ;;; LSP: LANGUAGE SERVER PROTOCOL
-;;; -------------------------------------------------------------------------------------------
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :straight t
@@ -76,52 +73,6 @@
   :config
   (lsp-treemacs-sync-mode t)
   (setq treemacs-no-png-images t))
-
-;; (use-package lsp-bridge
-;;   :straight '(lsp-bridge
-;;               :type git
-;;               :host github
-;;               :repo "manateelazycat/lsp-bridge"
-;;               :files (:defaults "*.el" "*.py" "acm" "core" "langserver" "multiserver" "resources")
-;;               :build (:not compile))
-;;   :init
-;;   (global-lsp-bridge-mode))
-
-;;; -------------------------------------------------------------------------------------------
-;;; CODEIUM
-;;; -------------------------------------------------------------------------------------------
-(use-package codeium
-  :disabled
-  :after company
-  :straight (codeium
-             :type git
-             :host github
-             :repo "Exafunction/codeium.el")
-  :init
-  (add-to-list 'completion-at-point-functions #'codeium-completion-at-point)
-  :config
-  (setq use-dialog-box nil)
-  ;; use M-x codeium-diagnose to see apis/fields that would be sent to the local language server
-  (setq codeium-api-enabled
-        (lambda (api)
-          (memq api '(GetCompletions
-                      Heartbeat
-                      CancelRequest
-                      GetAuthToken
-                      RegisterUser
-                      auth-redirect
-                      AcceptCompletion))))
-  ;; You can overwrite all the codeium configs!
-  ;; for example, we recommend limiting the string sent to codeium for better performance
-  (defun my-codeium/document/text ()
-    (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (min (+ (point) 1000) (point-max))))
-  ;; if you change the text, you should also change the cursor_offset
-  ;; warning: this is measured by UTF-8 encoded bytes
-  (defun my-codeium/document/cursor_offset ()
-    (codeium-utf8-byte-length
-     (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (point))))
-  (setq codeium/document/text 'my-codeium/document/text)
-  (setq codeium/document/cursor_offset 'my-codeium/document/cursor_offset))
 
 (provide 'feat.completion)
 ;;; feat.completion.el ends here

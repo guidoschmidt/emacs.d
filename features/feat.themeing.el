@@ -54,13 +54,17 @@
   (setq circadian-verbose t)
   (setq calendar-latitude 49.398750)
   (setq calendar-longitude 8.672434)
-  (setq circadian-themes '((:sunrise . (doom-gruvbox-light
-                                        solo-jazz
-                                        doom-bluloco-light))
-                           (:sunset  . (doom-dracula
+  (setq circadian-themes '((:sunrise . (kaolin-aurora
+                                        curry-on
+                                        kaolin-temple
+                                        doom-bluloco-dark
+                                        doom-spacegrey))
+                           (:sunset  . (junio
+                                        doom-dracula
                                         doom-badger
-                                        doom-feather-dark))
-                           ("00:00"  . doom-challenger-deep)))
+                                        doom-spacegrey
+                                        ))
+                           ("00:00"  . doom-ir-black)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
 
