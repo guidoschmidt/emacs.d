@@ -49,21 +49,17 @@
   ;; - doom-badger
   ;; - doom-dracula
   ;; - tao-yin
-  ;; - junio
   :init
   (setq circadian-verbose t)
   (setq calendar-latitude 49.398750)
   (setq calendar-longitude 8.672434)
-  (setq circadian-themes '((:sunrise . (kaolin-aurora
-                                        curry-on
-                                        kaolin-temple
-                                        doom-bluloco-dark
-                                        doom-spacegrey))
-                           (:sunset  . (junio
+  (setq circadian-themes '((:sunrise . (doom-one-light
+                                        gruvbox-light-hard
+                                        doom-oksolar-light))
+                           (:sunset  . (kaolin-aurora
                                         doom-dracula
                                         doom-badger
-                                        doom-spacegrey
-                                        ))
+                                        doom-spacegrey))
                            ("00:00"  . doom-ir-black)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
