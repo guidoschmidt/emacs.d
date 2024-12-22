@@ -59,6 +59,7 @@
     "<up>"     'beginning-of-defun
     "<down>"   'end-of-defun
 
+    "|"        'lispy-bars
     "("        'lispy-parens
     "{"        'lispy-braces
     "["        'lispy-brackets
@@ -104,6 +105,9 @@
   :straight t
   :after evil
   :config
+  (defalias 'lispy-bars
+    (lispy-pair "|" "|" 'lispy-parens-preceding-syntax-alist)
+    "`lispy-pair' using *")
   (defalias 'lispy-asterisk
     (lispy-pair "*" "*" 'lispy-parens-preceding-syntax-alist)
     "`lispy-pair' using *")
