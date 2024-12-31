@@ -19,7 +19,7 @@
           (ansi-color-apply-on-region compilation-filter-start (point))))
       (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)))
 
-  (setq lsp-zig-enable-build-on-save t)
+  (setq lsp-zig-enable-build-on-save nil)
   (setq lsp-zig-build-on-save-step "check")
   (setq lsp-zig-enable-autofix nil)
   (setq lsp-zig-enable-inlay-hints t)
