@@ -55,12 +55,12 @@
   (setq calendar-longitude 8.672434)
   (setq circadian-themes '((:sunrise . (doom-challenger-deep
                                         doom-horizon
-                                        nyx))
+                                        doom-gruvbox))
                            (:sunset  . (kaolin-aurora
                                         doom-dracula
                                         doom-badger
                                         doom-spacegrey))
-                           ("00:00"  . doom-ir-black)))
+                           ("23:59" . doom-ir-black)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
 
