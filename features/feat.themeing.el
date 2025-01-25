@@ -57,13 +57,14 @@
   (setq circadian-verbose t)
   (setq calendar-latitude 49.398750)
   (setq calendar-longitude 8.672434)
-  (setq circadian-themes '((:sunrise . (doom-challenger-deep
-                                        doom-horizon
-                                        doom-gruvbox
+  (setq circadian-themes '((:sunrise . (doom-gruvbox-light
                                         everforest-hard-light))
                            (:sunset  . (kaolin-aurora
+                                        doom-challenger-deep
+                                        doom-horizon
                                         doom-dracula
                                         doom-badger
+                                        doom-gruvbox
                                         doom-spacegrey
                                         everforest-hard-dark))
                            ("23:59" . doom-ir-black)))
