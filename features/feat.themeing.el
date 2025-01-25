@@ -21,6 +21,10 @@
 (use-package nyx-theme :straight t)
 (use-package danneskjold-theme :straight t)
 (use-package stimmung-themes :straight t)
+(use-package everforest
+  :straight (everforest :type git
+                        :host github
+                        :repo "Theory-of-Everything/everforest-emacs"))
 (use-package emacs-color-themes
   :straight (emacs-color-themes :type git
                                 :host github
@@ -55,11 +59,13 @@
   (setq calendar-longitude 8.672434)
   (setq circadian-themes '((:sunrise . (doom-challenger-deep
                                         doom-horizon
-                                        doom-gruvbox))
+                                        doom-gruvbox
+                                        everforest-hard-light))
                            (:sunset  . (kaolin-aurora
                                         doom-dracula
                                         doom-badger
-                                        doom-spacegrey))
+                                        doom-spacegrey
+                                        everforest-hard-dark))
                            ("23:59" . doom-ir-black)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
