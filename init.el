@@ -23,6 +23,7 @@
 (require 'feat.functions)
 (require 'feat.themeing)
 (require 'feat.modeline)
+(require 'feat.auth)
 (require 'feat.syntaxchecking)
 (require 'feat.completion)
 (require 'feat.snippets)
@@ -34,7 +35,7 @@
 ;;(require 'feat.treesitter)
 (require 'feat.debug)
 (require 'feat.formatting)
-;;(require 'feat.assistant)
+(require 'feat.assistant)
 ;; (require 'feat.email)
 
 (add-to-list 'load-path "~/.emacs.d/languages")

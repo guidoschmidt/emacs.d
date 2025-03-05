@@ -43,3 +43,6 @@ tree-sitter/
 
 # ellama
 ellama-sessions/
+
+# chatgpt-shell
+.chatgpt-shell.el
