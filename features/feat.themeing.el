@@ -59,14 +59,8 @@
   (setq calendar-longitude 8.672434)
   (setq circadian-themes '((:sunrise . (doom-gruvbox-light
                                         everforest-hard-light))
-                           (:sunset  . (kaolin-aurora
-                                        doom-challenger-deep
-                                        doom-horizon
-                                        doom-dracula
-                                        doom-badger
-                                        doom-gruvbox
-                                        doom-spacegrey
-                                        everforest-hard-dark))
+                           (:sunset  . (doom-gruvbox
+                                        doom-Iosvkem))
                            ("23:59" . doom-ir-black)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
