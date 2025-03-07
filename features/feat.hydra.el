@@ -8,6 +8,12 @@
 (use-package hydra
   :straight t)
 
+(use-package hydra-posframe
+  :straight (hydra-posframe :type git
+                            :host github
+                            :repo "Ladicle/hydra-posframe")
+  :hook (after-init . hydra-posframe-mode))
+
 (use-package major-mode-hydra
   :straight (major-mode-hydra :type git
 		                          :host github
@@ -97,6 +103,15 @@
 
    "Hyphens"
    (("5" (insert-char (char-from-name "EM DASH")) "—" :exit t))))
+
+(pretty-hydra-define hydra/assistant
+  (:foreign-keys warn :title "Assistant" :quit-key "q")
+  ("Prompt"
+   (("p" (chatgpt-shell-prompt) "Prompt" :exit t)
+    ("s" (chatgpt-shell) "Shell" :exit t)
+    ("e" (chatgpt-shell-explain-code) "Explain Code" :exit t)
+    )
+   ))
 
 (provide 'feat.hydra)
 ;;; feat.hydra.el ends here

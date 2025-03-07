@@ -50,15 +50,11 @@
     "8"        'combobulate
     "9"        'hydra/character-input/body
     "c"        'hydra/string-inflection/body
-    "<C-up>"   'move-line-up
-    "<C-down>" 'move-line-down
-
+    "-"        'hydra/assistant/body
     "TAB"      'indent-region
     "RET"      'eval-buffer
-
-    "<up>"     'beginning-of-defun
-    "<down>"   'end-of-defun
-
+    "<C-p>"    'beginning-of-defun
+    "<C-n>"    'end-of-defun
     "|"        'lispy-bars
     "("        'lispy-parens
     "{"        'lispy-braces
