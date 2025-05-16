@@ -74,5 +74,10 @@
   (lsp-treemacs-sync-mode t)
   (setq treemacs-no-png-images t))
 
+(use-package lsp-biome
+  :straight (lsp-biome :type git
+                       :host github
+                       :repo "cxa/lsp-biome"))
+
 (provide 'feat.completion)
 ;;; feat.completion.el ends here
