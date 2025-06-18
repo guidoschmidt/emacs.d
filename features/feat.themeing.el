@@ -21,6 +21,7 @@
 (use-package nyx-theme :straight t)
 (use-package danneskjold-theme :straight t)
 (use-package stimmung-themes :straight t)
+(use-package klere-theme :straight t)
 (use-package everforest
   :straight (everforest :type git
                         :host github
@@ -58,9 +59,11 @@
   (setq calendar-latitude 49.398750)
   (setq calendar-longitude 8.672434)
   (setq circadian-themes '((:sunrise . (doom-dracula
-                                        everforest-hard-dark))
+                                        klere
+                                        doom-oceanic-next))
                            (:sunset  . (doom-gruvbox
-                                        doom-Iosvkem))
+                                        doom-Iosvkem
+                                        doom-oceanic-next))
                            ("23:59" . danneskjold)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
@@ -118,11 +121,11 @@
                               :repo "protesilaos/spacious-padding")
   :config
   (setq spacious-padding-widths
-        '(:internal-border-width 60
+        '(:internal-border-width 25
           :header-line-width 0
           :mode-line-width 0
           :tab-width 2
-          :right-divider-width 4
+          :right-divider-width 0
           :scroll-bar-width 0
           :fringe-width 0))
   (spacious-padding-mode 1))
