@@ -62,6 +62,7 @@
                                         klere
                                         doom-oceanic-next))
                            (:sunset  . (doom-gruvbox
+                                        klere
                                         doom-Iosvkem
                                         doom-oceanic-next))
                            ("23:59" . danneskjold)))
