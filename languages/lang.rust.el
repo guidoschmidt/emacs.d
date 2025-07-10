@@ -7,8 +7,9 @@
 ;;; Code:
 (use-package rustic
   :straight t
+  :custom
+  (rustic-analyzer-command '("rustup" "run" "stable" "rust-analyzer"))
   :config
-  (setq rustic-lsp-server 'rls)
   (setq rustic-format-on-save t))
 
 (provide 'lang.rust)

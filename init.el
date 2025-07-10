@@ -44,7 +44,7 @@
 ;; (require 'lang.go)
 ;;(require 'lang.haskell)
 (require 'lang.python)
-;; (require 'lang.rust)
+(require 'lang.rust)
 (require 'lang.cc)
 ;; (require 'lang.csharp)
 (require 'lang.javascript)
