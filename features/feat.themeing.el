@@ -22,6 +22,7 @@
 (use-package danneskjold-theme :straight t)
 (use-package stimmung-themes :straight t)
 (use-package klere-theme :straight t)
+(use-package humanoid-themes :straight t)
 (use-package everforest
   :straight (everforest :type git
                         :host github
@@ -58,13 +59,8 @@
   (setq circadian-verbose t)
   (setq calendar-latitude 49.398750)
   (setq calendar-longitude 8.672434)
-  (setq circadian-themes '((:sunrise . (doom-dracula
-                                        klere
-                                        doom-oceanic-next))
-                           (:sunset  . (doom-gruvbox
-                                        klere
-                                        doom-Iosvkem
-                                        doom-oceanic-next))
+  (setq circadian-themes '((:sunrise . (humanoid-light))
+                           (:sunset  . (humanoid-dark))
                            ("23:59" . danneskjold)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
