@@ -6,7 +6,11 @@
 
 ;;; Code:
 (use-package dap-mode
-  :straight t
+  :straight (dap-mode
+             :type git
+             :host github
+             :repo "sfavazza/dap-mode"
+             :branch "fix_buf_w_breakpoints")
   :defer
   :config
   (add-hook 'dap-stopped-hook
@@ -19,6 +23,13 @@
   (add-hook 'dap-mode-hook 'dap-mode-fringe-hook)
   (dap-auto-configure-mode t)
   (setq dap-auto-configure-features '(sessions locals breakpoints expressions tooltip))
+
+  (dap-register-debug-template
+   "LLDB::Run"
+   (list :type "lldb-vscode"
+         :cwd "."
+         :request "launch"
+         :name "LLDB::Run"))
 
   (require 'dap-lldb)
   ;; set the debugger executable (c++)
