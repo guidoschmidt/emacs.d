@@ -99,15 +99,17 @@
 
    "Symbols"
    (("3" (insert-char (char-from-name "CHECK MARK")) "✓" :exit t)
-    ("4" (insert-char (char-from-name "MULTIPLICATION SIGN")) "×" :exit t))
+    ("4" (insert-char (char-from-name "MULTIPLICATION SIGN")) "×" :exit t)
+    ("5" (insert-char (char-from-name "CIRCLE WITH VERTICAL FILL")) "◍" :exit t))
 
    "Hyphens"
-   (("5" (insert-char (char-from-name "EM DASH")) "—" :exit t))))
+   (("6" (insert-char (char-from-name "EM DASH")) "—" :exit t))))
 
 (pretty-hydra-define hydra/assistant
   (:foreign-keys warn :title "Assistant" :quit-key "q")
   ("Prompt"
    (("p" (chatgpt-shell-prompt) "Prompt" :exit t)
+    ("o" (ellama-transient-main-menu) "Ollama" :exit t)
     ("s" (chatgpt-shell) "Shell" :exit t)
     ("e" (chatgpt-shell-explain-code) "Explain Code" :exit t)
     )

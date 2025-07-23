@@ -5,6 +5,10 @@
 ;;; 
 
 ;;; Code:
+(use-package zig-ts-mode
+  :disabled
+  :straight '(:type git :host codeberg :repo "meow_king/zig-ts-mode"))
+
 (use-package zig-mode
   :straight t
   :defer zig-mode

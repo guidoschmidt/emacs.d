@@ -46,3 +46,4 @@ ellama-sessions/
 
 # chatgpt-shell
 .chatgpt-shell.el
+.claude/
