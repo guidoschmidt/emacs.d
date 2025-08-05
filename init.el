@@ -29,7 +29,7 @@
 (require 'feat.snippets)
 (require 'feat.git)
 (require 'feat.hydra)
-;; (require 'feat.org)
+(require 'feat.journaling)
 (require 'feat.itautomation)
 ;;(require 'feat.livepreview)
 ;;(require 'feat.treesitter)

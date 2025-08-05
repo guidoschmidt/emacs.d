@@ -161,8 +161,8 @@
                      (custom-set-faces
                       '(treemacs-root-face
                         ((t (:inherit treemacs-root-face
-                             :family "Monaspace Argon Var"
-                             :height 115))))))))
+                             :family "Atkinson Hyperlegible Mono"
+                             :height 112))))))))
 
 (use-package treemacs-evil
   :after treemacs evil
