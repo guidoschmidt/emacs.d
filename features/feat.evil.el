@@ -31,7 +31,7 @@
     "k"        'ido-kill-buffer
     "s"        'magit-status
     "l"        'insert-lambda-arrow
-    "z"        'insert-arrow
+    "z"        'writeroom-mode
     "p"        'counsel-projectile-switch-project
     "f"        'counsel-projectile-find-file
     "g"        'counsel-rg
