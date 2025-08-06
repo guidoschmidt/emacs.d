@@ -56,10 +56,16 @@
   (setq ivy-posframe-min-width 100)
   (setq ivy-posframe-width 100)
   (setq ivy-posframe-parameters
-        '((left-fringe  . 0)
-          (right-fringe . 0)))
-  (setq ivy-posframe-border-width 15)
+        '((left-fringe  . 12)
+          (right-fringe . 12)))
+  (setq ivy-posframe-border-width 40)
   (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+  ;; (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center)))
+
+  (defun ivy-posframe-theme-hook (theme)
+    (set-face-attribute 'ivy-posframe-border nil :background (face-background 'default)))
+  (add-hook 'circadian-after-load-theme-hook 'ivy-posframe-theme-hook)
+  
   (ivy-posframe-mode 1))
 
 (use-package wgrep-ag
@@ -191,10 +197,10 @@
   (dashboard-setup-startup-hook)
   (setq dashboard-center-content t)
   (setq dashboard-startup-banner "~/.emacs.d/logo.txt")
-  (setq dashboard-items '((recents  . 10)
-                          (projects . 3)
+  (setq dashboard-items '((recents  . 20)
+                          (projects . 6)
                           (registers . 5)))
-  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-heading-icons nil)
   (setq dashboard-set-file-icons t)
   (setq dashboard-set-navigator t)
   (setq dashboard-set-footer nil)

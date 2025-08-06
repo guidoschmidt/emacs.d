@@ -14,6 +14,7 @@
                              :host github
                              :repo "mjwall/ample-zen"))
 (use-package gruvbox-theme :straight t)
+(use-package base16-theme :straight t)
 (use-package flatui-theme :straight t)
 (use-package kaolin-themes :straight t)
 (use-package atom-dark-theme :straight t)
@@ -59,8 +60,8 @@
   (setq circadian-verbose t)
   (setq calendar-latitude 49.398750)
   (setq calendar-longitude 8.672434)
-  (setq circadian-themes '((:sunrise . (humanoid-light))
-                           (:sunset  . (humanoid-dark))
+  (setq circadian-themes '((:sunrise . (base16-primer-light))
+                           (:sunset  . (base16-primer-dark))
                            ("23:59" . danneskjold)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
@@ -118,13 +119,13 @@
                               :repo "protesilaos/spacious-padding")
   :config
   (setq spacious-padding-widths
-        '(:internal-border-width 25
+        '(:internal-border-width 20
           :header-line-width 0
           :mode-line-width 0
           :tab-width 2
           :right-divider-width 0
           :scroll-bar-width 0
-          :fringe-width 0))
+          :fringe-width 30))
   (spacious-padding-mode 1))
 
 (provide 'feat.themeing)
