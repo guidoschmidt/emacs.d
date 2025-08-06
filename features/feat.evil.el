@@ -42,7 +42,7 @@
     "q"        'kill-current-buffer
     "r"        'reload-current-buffer
     "ü"        'browse-url-at-point
-    "?"        'flyspell-correct-at-point
+    "?"        'claude-code-ide-menu
     "!"        'flyspell-add-word-to-dict
     "m"        'hydra/multiple-cursors/body
     "0"        'switch-window
