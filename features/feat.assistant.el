@@ -27,6 +27,12 @@
   ((setq chatgpt-shell-anthropic-key
          (auth-source-pick-first-password :host "api.anthropic.com"))))
 
+
+(use-package claude-code-ide
+  :straight (:type git :host github :repo "manzaltu/claude-code-ide.el")
+  :config
+  (claude-code-ide-emacs-tools-setup))
+
 (provide 'feat.assistant)
 
 ;;; feat.assistant.el ends here
