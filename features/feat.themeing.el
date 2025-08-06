@@ -119,13 +119,13 @@
                               :repo "protesilaos/spacious-padding")
   :config
   (setq spacious-padding-widths
-        '(:internal-border-width 20
+        '(:internal-border-width 30
           :header-line-width 0
           :mode-line-width 0
           :tab-width 2
           :right-divider-width 0
           :scroll-bar-width 0
-          :fringe-width 30))
+          :fringe-width 0))
   (spacious-padding-mode 1))
 
 (provide 'feat.themeing)
