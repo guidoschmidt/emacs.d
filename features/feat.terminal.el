@@ -18,9 +18,5 @@
                          ("integration" "integration/*")
                          (:exclude ".dir-locals.el" "*-tests.el"))))
 
-(use-package vterm
-  :straight t)
-
-
 (provide 'feat.terminal)
 ;;; feat.terminal.el ends here
