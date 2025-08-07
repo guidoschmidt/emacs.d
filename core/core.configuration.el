@@ -90,7 +90,9 @@
 ;;; MODES
 ;;; -------------------------------------------------------------------------------------------
 ;; Interactive do mode
-(ido-mode t)
+;; (ido-mode t)
+;; (setq-default ido-use-filename-at-point 'guess)
+
 
 ;; Electric pairs
 (electric-pair-mode t)
