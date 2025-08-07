@@ -1,4 +1,4 @@
-;;; feat.themeing.el --- Themeing and tools related to themes -*- lexical-binding: t; -*-
+;; feat.themeing.el --- Themeing and tools related to themes -*- lexical-binding: t; -*-
 
 ;;; Commentary:
 ;;; Themes and theme related tooling
@@ -14,7 +14,9 @@
                              :host github
                              :repo "mjwall/ample-zen"))
 (use-package gruvbox-theme :straight t)
-(use-package base16-theme :straight t)
+(use-package base16-theme :straight (base16-theme
+                                     :host github
+                                     :repo "guidoschmidt/base16-emacs"))
 (use-package flatui-theme :straight t)
 (use-package kaolin-themes :straight t)
 (use-package atom-dark-theme :straight t)
@@ -60,9 +62,9 @@
   (setq circadian-verbose t)
   (setq calendar-latitude 49.398750)
   (setq calendar-longitude 8.672434)
-  (setq circadian-themes '((:sunrise . (base16-primer-light))
-                           (:sunset  . (base16-primer-dark))
-                           ("23:59" . danneskjold)))
+  (setq circadian-themes '((:sunrise . base16-primer-light)
+                           (:sunset  . base16-spacemacs)
+                           ("23:59"  . base16-primer-dark)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
 
