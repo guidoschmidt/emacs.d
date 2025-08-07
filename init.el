@@ -35,6 +35,7 @@
 (require 'feat.terminal)
 (require 'feat.formatting)
 (require 'feat.assistant)
+(require 'feat.terminal)
 ;;(require 'feat.livepreview)
 ;;(require 'feat.treesitter)
 ;;(require 'feat.email)
