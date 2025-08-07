@@ -65,6 +65,7 @@
   (defun ivy-posframe-theme-hook (theme)
     (set-face-attribute 'ivy-posframe-border nil :background (face-background 'default)))
   (add-hook 'circadian-after-load-theme-hook 'ivy-posframe-theme-hook)
+  (add-hook 'counsel-load-theme 'ivy-posframe-theme-hook)
   
   (ivy-posframe-mode 1))
 
