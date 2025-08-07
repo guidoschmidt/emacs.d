@@ -22,7 +22,7 @@
     "o"        'sort-lines
     "b"        'consult-buffer
     "i"        'ibuffer
-    "e"        'consult-outline
+    "e"        'consult-imenu-multi
     "d"        'dap-hydra
     "u"        'hydra/lsp-ui/body
     "n"        'consult-buffer-other-window
