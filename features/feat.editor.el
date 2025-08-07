@@ -21,6 +21,7 @@
 
 ;;; counsel
 (use-package counsel
+  :disabled
   :straight t
   :bind
   (("M-x" . counsel-M-x)
@@ -28,11 +29,13 @@
    ("C-x C-f" . counsel-find-file)))
 
 (use-package counsel-projectile
+  :disabled
   :straight t
   :after projectile)
 
 ;;; ivy - generic completion frontend
 (use-package ivy
+  :disabled
   :straight t
   :diminish ivy-mode
   :config
@@ -49,6 +52,7 @@
 
 (use-package ivy-posframe
   :straight t
+  :disabled
   :config
   ;; (setq ivy-posframe-height-alist '((t . 40)))
   ;; (setq ivy-posframe-height 20)
@@ -83,6 +87,7 @@
 ;;; swiper - isearch replacement
 (use-package swiper
   :straight t
+  :disabled
   :bind
   (("C-s" . swiper)))
 
@@ -104,8 +109,7 @@
                    :foreground "#424242")))))
   :bind
   (("C-c a" . avy-goto-char)
-   ("C-c o" . avy-goto-char-timer)
-   ("C-c e" . swiper-avy)))
+   ("C-c o" . avy-goto-char-timer)))
 
 ;;; Project management
 (use-package projectile
@@ -244,6 +248,109 @@
 ;; Insert paths into minibuffer prompts in Emacs
 (use-package consult-dir
   :straight t)
+
+;; Provides search and navigation commands based on completing-read (Emacs default)
+(use-package consult
+  :straight t
+  :hook (completion-list-mode . consult-preview-at-point-mode)
+  :bind
+  (("C-s"     . consult-line)
+   ("C-x C-f" . find-file))
+  :init
+  (advice-add #'register-preview :override #'consult-register-window)
+  (setq register-preview-delay 0.5))
+
+;; Performant and minimalistic vertical completion UI with default completion system
+(use-package vertico
+  :straight t
+  :custom
+  (vertico-count 40)
+  (vertico-resize t)
+  (vertico-cycle t)
+  :init
+  (vertico-mode))
+
+(use-package vertico-posframe
+  :straight t
+  :after vertico
+  :config
+  (setq vertico-posframe-border-width 30)
+  (defun vertico-posframe-theme-hook (theme)
+    (set-face-attribute 'vertico-posframe-border nil :background (face-background 'default))
+    (set-face-attribute 'vertico-posframe-border-2 nil :background (face-background 'default))
+    (set-face-attribute 'vertico-posframe-border-3 nil :background (face-background 'default))
+    (set-face-attribute 'vertico-posframe-border-4 nil :background (face-background 'default))
+    (set-face-attribute 'vertico-posframe-border-fallback nil :background (face-background 'default)))
+  (add-hook 'circadian-after-load-theme-hook 'vertico-posframe-theme-hook)
+  (add-hook 'consult-theme 'vertico-posframe-theme-hook)
+  :init
+  (vertico-posframe-mode 1))
+
+;; Persist history over Emacs restarts. Vertico sorts by history position.
+(use-package savehist
+  :init
+  (savehist-mode))
+
+;; Adding extra metadata for completions in the margins
+(use-package marginalia
+  :after vertico
+  :ensure t
+  :custom
+  (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+  :init
+  (marginalia-mode))
+
+;; Completion style for matching regexps in any order
+(use-package orderless
+  :straight t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
+
+(use-package embark
+  :straight t
+  :bind
+  (("C-." . embark-act)         ;; pick some comfortable binding
+   ("C-;" . embark-dwim)        ;; good alternative: M-.
+   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
+  :init
+  ;; Optionally replace the key help with a completing-read interface
+  (setq prefix-help-command #'embark-prefix-help-command)
+  ;; Show the Embark target at point via Eldoc. You may adjust the
+  ;; Eldoc strategy, if you want to see the documentation from
+  ;; multiple providers. Beware that using this can be a little
+  ;; jarring since the message shown in the minibuffer can be more
+  ;; than one line, causing the modeline to move up and down:
+
+  ;; (add-hook 'eldoc-documentation-functions #'embark-eldoc-first-target)
+  ;; (setq eldoc-documentation-strategy #'eldoc-documentation-compose-eagerly)
+
+  ;; Add Embark to the mouse context menu. Also enable `context-menu-mode'.
+  ;; (context-menu-mode 1)
+  ;; (add-hook 'context-menu-functions #'embark-context-menu 100)
+  :config
+  ;; Hide the mode line of the Embark live/completions buffers
+  (add-to-list 'display-buffer-alist
+               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                 nil
+                 (window-parameters (mode-line-format . none)))))
+
+;; Consult users will also want the embark-consult package.
+(use-package embark-consult
+  :straight t
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
+
+;; Emacs minibuffer configurations.
+(use-package emacs
+  :custom
+  (context-menu-mode t)
+  (enable-recursive-minibuffers t)
+  (read-extended-command-predicate #'command-completion-default-include-p)
+  (minibuffer-prompt-properties
+   '(read-only t cursor-intangible t face minibuffer-prompt)))
+
+
 
 (provide 'feat.editor)
 ;;; feat.editor.el ends here

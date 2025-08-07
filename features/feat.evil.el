@@ -14,29 +14,26 @@
 
 (use-package evil-leader
   :straight t
-  :after evil
   :config
   (global-evil-leader-mode)
   (evil-leader/set-leader "<SPC>")
   (evil-leader/set-key
     "a"        'align-regexp
     "o"        'sort-lines
-    "b"        'ivy-switch-buffer
-    "x"        'frog-jump-buffer
+    "b"        'consult-buffer
     "i"        'ibuffer
-    "e"        'imenu
+    "e"        'consult-outline
     "d"        'dap-hydra
     "u"        'hydra/lsp-ui/body
-    "n"        'ivy-switch-buffer-other-window
+    "n"        'consult-buffer-other-window
     "k"        'ido-kill-buffer
     "s"        'magit-status
     "l"        'insert-lambda-arrow
     "z"        'writeroom-mode
-    "p"        'counsel-projectile-switch-project
-    "f"        'counsel-projectile-find-file
-    "g"        'counsel-rg
+    "p"        'consult-project-buffer
+    "f"        'consult-find
+    "g"        'consult-ripgrep
     "w"        'save-buffer
-    "j"        'swiper-avy
     "t"        'treemacs
     "y"        'yas-insert-snippet
     "q"        'kill-current-buffer
@@ -175,13 +172,13 @@
   (define-key evil-inner-text-objects-map
               "p" (evil-textobj-tree-sitter-get-textobj "parameter.inner")))
 
-(use-package tree-sitter
-  :straight t
-  :config
-  (global-tree-sitter-mode))
-
-(use-package tree-sitter-langs
+(use-package evil-avy
   :straight t)
+
+(use-package evil-commentary
+  :straight t
+  :init
+  (evil-commentary-mode))
 
 (provide 'feat.evil)
 ;;; feat.evil.el ends here
