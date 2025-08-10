@@ -6,8 +6,7 @@
 
 ;;; Code:
 (use-package zig-ts-mode
-  :disabled
-  :straight '(:type git :host codeberg :repo "meow_king/zig-ts-mode"))
+  :straight (zig-ts-mode :type git :host codeberg :repo "andyscott/zig-ts-mode" :branch "issue-2-dev"))
 
 (use-package zig-mode
   :straight t

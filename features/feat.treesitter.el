@@ -3,9 +3,9 @@
 ;;; Commentary:
 
 ;;; Code:
-;; `M-x combobulate' (or `C-c o o') to start using Combobulate
+;; 'M-x combobulate' (or 'C-c o o') to start using Combobulate
 (use-package treesit
-  :preface
+  :init
   (defun treesit-setup-install-grammars ()
     "Install Tree-sitter grammars if they are absent."
     (interactive)
@@ -24,7 +24,7 @@
                (tsx        . ("https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.3" "tsx/src"))
                (typescript . ("https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.3" "typescript/src"))
                (yaml       . ("https://github.com/ikatyang/tree-sitter-yaml" "v0.5.0"))
-               (zig        . ("https://github.com/tree-sitter-grammars/tree-sitter-zig" "v1.0.2"))))
+               (zig        . ("https://github.com/maxxnino/tree-sitter-zig"))))
       (add-to-list 'treesit-language-source-alist grammar)
       ;; Only install `grammar' if we don't already have it
       ;; installed. However, if you want to *update* a grammar then
@@ -44,15 +44,9 @@
              (css-mode        . css-ts-mode)
              (json-mode       . json-ts-mode)
              (js-json-mode    . json-ts-mode)))
-    (add-to-list 'major-mode-remap-alist mapping))
-  :config
-  (setq treesit-language-source-alist
-        '((python "https://github.com/tree-sitter/tree-sitter-python")
-          (zig    "https://github.com/tree-sitter-grammars/tree-sitter-zig")))
-  (mapc #'treesit-install-language-grammar (mapcar #'car treesit-language-source-alist)))
+    (add-to-list 'major-mode-remap-alist mapping)))
 
 (use-package combobulate
-  :disabled
   :straight (combobulate
              :type git
              :host github

@@ -62,7 +62,7 @@
   (setq circadian-verbose t)
   (setq calendar-latitude 49.398750)
   (setq calendar-longitude 8.672434)
-  (setq circadian-themes '((:sunrise . base16-primer-light)
+  (setq circadian-themes '((:sunrise . base16-primer-dark-dimmed)
                            (:sunset  . base16-primer-dark-dimmed)
                            ("23:59"  . base16-primer-dark)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
