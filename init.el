@@ -36,8 +36,8 @@
 (require 'feat.formatting)
 (require 'feat.assistant)
 (require 'feat.terminal)
+(require 'feat.treesitter)
 ;;(require 'feat.livepreview)
-;;(require 'feat.treesitter)
 ;;(require 'feat.email)
 
 (add-to-list 'load-path "~/.emacs.d/languages")
