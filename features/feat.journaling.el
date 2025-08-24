@@ -8,7 +8,7 @@
 
 ;;; Hide the emphasis markup
 ;;; (e.g. /.../ for italics, *...* for bold, etc.)
-(setq org-hide-emphasis-markers t)
+(setq-default org-hide-emphasis-markers t)
 
 (use-package org-bullets
   :straight t
@@ -17,13 +17,15 @@
 
 (use-package writeroom-mode
   :straight t
-  :defer markdown-mode+
+  :defer markdown-mode
   :config
   (custom-set-default 'writeroom-fullscreen-effect 'maximized)
-  (defun writeroom-set-june (arg)
-    (setq buffer-face-mode-face '(:family "Atkinson Hyperlegible Mono" :height 180))
-    (buffer-face-mode arg))
-  (add-to-list 'writeroom-global-effects 'writeroom-set-june)
+  (defun writeroom-set-font ()
+    "Sets a fixed width (monospace) font in current buffer"
+    (setq buffer-face-mode-face '(:family "Atkinson Hyperlegible Mono" :height 250))
+    (buffer-face-mode)
+    (auto-fill-mode 0))
+  (add-to-list 'writeroom-mode-hook 'writeroom-set-font)
   (add-hook 'markdown-mode-hook (lambda () (writeroom-mode))))
 
 (provide 'feat.journaling)

@@ -50,19 +50,11 @@
              :type git
              :host github
              :repo "guidoschmidt/circadian.el")
-  ;; Themes I like
-  ;; LIGHT:
-  ;; - doom-earl-grey
-  ;; - doom-flatwhite
-  ;; DARK:
-  ;; - doom-badger
-  ;; - doom-dracula
-  ;; - tao-yin
   :init
   (setq circadian-verbose t)
   (setq calendar-latitude 49.398750)
   (setq calendar-longitude 8.672434)
-  (setq circadian-themes '((:sunrise . base16-primer-dark-dimmed)
+  (setq circadian-themes '((:sunrise . base16-primer-light)
                            (:sunset  . base16-primer-dark-dimmed)
                            ("23:59"  . base16-primer-dark)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
@@ -101,8 +93,8 @@
 (use-package highlight-indent-guides
   :straight t
   :config
-  (setq highlight-indent-guides-method 'character)
-  (setq highlight-indent-guides-responsive 'top)
+  (setq highlight-indent-guides-method 'column)
+  (setq highlight-indent-guides-responsive 'stack)
   :hook (prog-mode . highlight-indent-guides-mode))
 
 ;; Set line spacing
@@ -121,7 +113,7 @@
                               :repo "protesilaos/spacious-padding")
   :config
   (setq spacious-padding-widths
-        '(:internal-border-width 30
+        '(:internal-border-width 20
           :header-line-width 0
           :mode-line-width 0
           :tab-width 2
