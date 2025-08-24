@@ -52,7 +52,6 @@
 
 (use-package ivy-posframe
   :straight t
-  :disabled
   :config
   ;; (setq ivy-posframe-height-alist '((t . 40)))
   ;; (setq ivy-posframe-height 20)
@@ -64,13 +63,9 @@
           (right-fringe . 12)))
   (setq ivy-posframe-border-width 40)
   (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
-  ;; (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center)))
-
   (defun ivy-posframe-theme-hook (theme)
     (set-face-attribute 'ivy-posframe-border nil :background (face-background 'default)))
   (add-hook 'circadian-after-load-theme-hook 'ivy-posframe-theme-hook)
-  (add-hook 'counsel-load-theme 'ivy-posframe-theme-hook)
-  
   (ivy-posframe-mode 1))
 
 (use-package wgrep-ag
@@ -97,18 +92,18 @@
   :custom-face
   :config
   (setq avy-background t)
-  (setq avy-all-windows t)
+  (setq avy-all-windows 'all-frames)
   (custom-set-faces
    '(avy-lead-face
      ((t (:inherit avy-lead-face
-                   :background "#eeeeee"
-                   :foreground "#424242"))))
+                   :background "#42424ace2"
+                   :foreground "#eeeeee"))))
    '(avy-lead-face-0
      ((t (:inherit avy-lead-face-0
                    :background "#feca32"
                    :foreground "#424242")))))
   :bind
-  (("C-c a" . avy-goto-char)
+  (("C-c e" . avy-goto-char)
    ("C-c o" . avy-goto-char-timer)))
 
 ;;; Project management
@@ -275,7 +270,7 @@
   :straight t
   :after vertico
   :config
-  (setq vertico-posframe-border-width 30)
+  (setq vertico-posframe-border-width 20)
   (defun vertico-posframe-theme-hook (theme)
     (set-face-attribute 'vertico-posframe-border nil :background (face-background 'default))
     (set-face-attribute 'vertico-posframe-border-2 nil :background (face-background 'default))
@@ -285,7 +280,8 @@
   (add-hook 'circadian-after-load-theme-hook 'vertico-posframe-theme-hook)
   (add-hook 'consult-theme 'vertico-posframe-theme-hook)
   :init
-  (vertico-posframe-mode 1))
+  (when (not (windows?))
+   (vertico-posframe-mode 1)))
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
@@ -299,7 +295,8 @@
   :custom
   (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
   :init
-  (marginalia-mode))
+  (when (not (windows?))
+    (marginalia-mode)))
 
 ;; Completion style for matching regexps in any order
 (use-package orderless
