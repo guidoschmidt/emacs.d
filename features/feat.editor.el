@@ -162,6 +162,7 @@
   (setq treemacs-width 42)
   (setq treemacs-indentation 2)
   (setq treemacs-space-between-root-nodes nil)
+  (setq treemacs-user-mode-line-format 'none)
   (treemacs-resize-icons 13)
   (treemacs-fringe-indicator-mode 'always)
   (treemacs-filewatch-mode t)
@@ -173,7 +174,7 @@
                       '(treemacs-root-face
                         ((t (:inherit treemacs-root-face
                              :family "Atkinson Hyperlegible Mono"
-                             :height 112))))))))
+                             :height 110))))))))
 
 (use-package treemacs-evil
   :after treemacs evil
