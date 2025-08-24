@@ -4,7 +4,7 @@
 ;;; Setting up modeline
 
 ;;; Code:
-(defvar-local evil-box-height 6)
+(defvar-local evil-box-height 10)
 (defvar-local evil-n--background "#2213f7")
 (defvar-local evil-n--foreground "#9983ef")
 (defvar-local evil-i--background "#0bb7ae")
