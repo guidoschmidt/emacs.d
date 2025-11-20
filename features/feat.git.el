@@ -5,6 +5,7 @@
 
 ;;; Code:
 (use-package magit
+  :disabled
   :straight t
   :config
   (setq project-switch-commands t)
@@ -15,6 +16,7 @@
   :straight t)
 
 (use-package blamer
+  :disabled
   :straight (blamer
              :type git
              :host github

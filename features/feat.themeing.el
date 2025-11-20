@@ -26,10 +26,7 @@
 (use-package stimmung-themes :straight t)
 (use-package klere-theme :straight t)
 (use-package humanoid-themes :straight t)
-(use-package everforest
-  :straight (everforest :type git
-                        :host github
-                        :repo "Theory-of-Everything/everforest-emacs"))
+
 (use-package emacs-color-themes
   :straight (emacs-color-themes :type git
                                 :host github
@@ -54,9 +51,9 @@
   (setq circadian-verbose t)
   (setq calendar-latitude 49.398750)
   (setq calendar-longitude 8.672434)
-  (setq circadian-themes '((:sunrise . doom-material-dark)
-                           (:sunset  . doom-challenger-deep)
-                           ("23:59"  . doom-ayu-dark)))
+  (setq circadian-themes '((:sunrise . klere)
+                           (:sunset  . doom-lantern)
+                           ("23:59"  . doom-ir-black)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
 
@@ -94,11 +91,11 @@
   :straight t
   :config
   (setq highlight-indent-guides-method 'fill)
-  (setq highlight-indent-guides-responsive 'top)
+  (setq highlight-indent-guides-responsive 'stack)
   (setq highlight-indent-guides-auto-enabled nil)
-  (set-face-background 'highlight-indent-guides-odd-face "#3a162a")
-  (set-face-background 'highlight-indent-guides-even-face "#16383a")
-  (set-face-foreground 'highlight-indent-guides-character-face "#16173a")
+  (set-face-background 'highlight-indent-guides-odd-face "#222")
+  (set-face-background 'highlight-indent-guides-even-face "#333")
+  (set-face-foreground 'highlight-indent-guides-character-face "#444")
   :hook (prog-mode . highlight-indent-guides-mode))
 
 ;; Set line spacing

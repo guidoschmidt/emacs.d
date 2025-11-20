@@ -21,7 +21,7 @@
 
 ;;; counsel
 (use-package counsel
-  :disabled
+  ;; :disabled
   :straight t
   :bind
   (("M-x" . counsel-M-x)
@@ -29,13 +29,13 @@
    ("C-x C-f" . counsel-find-file)))
 
 (use-package counsel-projectile
-  :disabled
+  ;; :disabled
   :straight t
   :after projectile)
 
 ;;; ivy - generic completion frontend
 (use-package ivy
-  :disabled
+  ;; :disabled
   :straight t
   :diminish ivy-mode
   :config
@@ -82,7 +82,7 @@
 ;;; swiper - isearch replacement
 (use-package swiper
   :straight t
-  :disabled
+  ;; :disabled
   :bind
   (("C-s" . swiper)))
 
@@ -243,10 +243,12 @@
 
 ;; Insert paths into minibuffer prompts in Emacs
 (use-package consult-dir
+  :disabled
   :straight t)
 
 ;; Provides search and navigation commands based on completing-read (Emacs default)
 (use-package consult
+  :disabled
   :straight t
   :hook (completion-list-mode . consult-preview-at-point-mode)
   :bind
@@ -258,15 +260,18 @@
 
 ;; Performant and minimalistic vertical completion UI with default completion system
 (use-package vertico
+  :disabled
   :straight t
   :custom
   (vertico-count 40)
   (vertico-resize t)
   (vertico-cycle t)
+  (setq vertico-scroll-margin 20)
   :init
   (vertico-mode))
 
 (use-package vertico-posframe
+  :disabled
   :straight t
   :after vertico
   :config
@@ -285,11 +290,13 @@
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
+  :disabled
   :init
   (savehist-mode))
 
 ;; Adding extra metadata for completions in the margins
 (use-package marginalia
+  :disabled
   :after vertico
   :ensure t
   :custom
@@ -300,12 +307,14 @@
 
 ;; Completion style for matching regexps in any order
 (use-package orderless
+  :disabled
   :straight t
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
 (use-package embark
+  :disabled
   :straight t
   :bind
   (("C-." . embark-act)         ;; pick some comfortable binding
@@ -335,9 +344,16 @@
 
 ;; Consult users will also want the embark-consult package.
 (use-package embark-consult
+  :disabled
   :straight t
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
+
+(use-package corfu
+  :disabled
+  :straight t
+  :init
+  (global-corfu-mode))
 
 ;; Emacs minibuffer configurations.
 (use-package emacs

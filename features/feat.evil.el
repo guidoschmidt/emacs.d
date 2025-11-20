@@ -20,19 +20,35 @@
   (evil-leader/set-key
     "a"        'align-regexp
     "o"        'sort-lines
-    "b"        'consult-buffer
+
+    ;; "b"        'consult-buffer
+    "b"        'ivy-switch-buffer
+
     "i"        'ibuffer
-    "e"        'consult-imenu-multi
+
+    ;; "e"        'consult-imenu-multi
+    "e"        'imenu
+
     "d"        'dap-hydra
     "u"        'hydra/lsp-ui/body
-    "n"        'consult-buffer-other-window
+
+    ;; "n"        'consult-buffer-other-window
+    "n"        'ivy-switch-buffer-other-window
+
     "k"        'ido-kill-buffer
     "s"        'magit-status
     "l"        'insert-lambda-arrow
     "z"        'writeroom-mode
-    "p"        'consult-project-buffer
-    "f"        'consult-find
-    "g"        'consult-ripgrep
+
+    ;; "p"        'consult-project-buffer
+    "p"        'counsel-projectile-switch-project
+
+    ;; "f"        'consult-find
+    "f"        'counsel-projectile-find-file
+
+    ;; "g"        'consult-ripgrep
+    "g"        'counsel-rg
+
     "w"        'save-buffer
     "t"        'treemacs
     "y"        'yas-insert-snippet
