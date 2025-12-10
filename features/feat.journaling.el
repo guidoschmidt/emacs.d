@@ -22,7 +22,7 @@
   (custom-set-default 'writeroom-fullscreen-effect 'maximized)
   (defun writeroom-set-font ()
     "Sets a fixed width (monospace) font in current buffer"
-    (setq buffer-face-mode-face '(:family "Atkinson Hyperlegible Mono" :height 250))
+    (setq buffer-face-mode-face '(:family "Andale Mono" :height 150))
     (buffer-face-mode)
     (auto-fill-mode 0))
   (add-to-list 'writeroom-mode-hook 'writeroom-set-font)
