@@ -9,6 +9,7 @@
   :straight t)
 
 (use-package hydra-posframe
+  :disabled
   :straight (hydra-posframe :type git
                             :host github
                             :repo "Ladicle/hydra-posframe")
