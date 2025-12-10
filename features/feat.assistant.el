@@ -12,7 +12,7 @@
   (require 'llm-ollama)
   (setopt ellama-provider
 	        (make-llm-ollama
-	         :chat-model "mistral"
+	         :chat-model "gpt-oss:120b-cloud"
 	         :embedding-model "nomic-embed-text"
 	         :default-chat-non-standard-params '(("num_ctx" . 8192))))
   (setopt ellama-naming-scheme 'ellama-generate-name-by-llm))
