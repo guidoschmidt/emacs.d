@@ -26,6 +26,7 @@
 (use-package stimmung-themes :straight t)
 (use-package klere-theme :straight t)
 (use-package humanoid-themes :straight t)
+(use-package kanagawa-themes :straight t)
 
 (use-package emacs-color-themes
   :straight (emacs-color-themes :type git
@@ -51,7 +52,7 @@
   (setq circadian-verbose t)
   (setq calendar-latitude 49.398750)
   (setq calendar-longitude 8.672434)
-  (setq circadian-themes '((:sunrise . doom-horizon)
+  (setq circadian-themes '((:sunrise . base16-kanagawa)
                            (:sunset  . doom-lantern)
                            ("23:59"  . doom-ir-black)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
@@ -86,6 +87,13 @@
   :config
   (all-the-icons-ivy-rich-mode t))
 
+;; Colour tools
+(use-package ct
+  :straight (ct
+             :host github
+             :repo "neeasade/ct.el"
+             :branch "master"))
+
 ;; highliht indentation
 (use-package highlight-indent-guides
   :straight t
@@ -93,8 +101,10 @@
   (setq highlight-indent-guides-method 'fill)
   (setq highlight-indent-guides-responsive 'stack)
   (setq highlight-indent-guides-auto-enabled nil)
-  (set-face-background 'highlight-indent-guides-odd-face "#2b2d38")
-  (set-face-background 'highlight-indent-guides-even-face "#20212b")
+  (set-face-background 'highlight-indent-guides-odd-face
+                       (ct-edit-oklab-l-dec (face-background 'default) 1))
+  (set-face-background 'highlight-indent-guides-even-face
+                       (ct-edit-oklab-l-dec (face-background 'default) 2))
   (set-face-foreground 'highlight-indent-guides-character-face "#444")
   :hook (prog-mode . highlight-indent-guides-mode))
 
