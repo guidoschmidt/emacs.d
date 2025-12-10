@@ -39,6 +39,7 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
                   "~/.nvm/versions/node/v15.4.0/bin/eslint"))))
 
 (use-package prettier-js
+  :disabled
   :straight t
   :config
   (when (hostname? "gs-cube")
@@ -54,6 +55,12 @@ src: http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-
   (rjsx-mode       . prettier-js-mode)
   (typescript-mode . prettier-js-mode)
   (html-mode       . prettier-js-mode))
+
+(use-package lsp-biome
+  :straight (lsp-biome
+             :type git
+             :host github
+             :repo "cxa/lsp-biome"))
 
 (use-package react-snippets
   :straight t)
