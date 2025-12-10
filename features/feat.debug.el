@@ -13,6 +13,10 @@
              :branch "fix_buf_w_breakpoints")
   :defer
   :config
+  (dap-ui-mode 1)
+  (dap-tooltip-mode 1)
+  (tooltip-mode 1)
+  (dap-ui-controls-mode nil)
   (add-hook 'dap-stopped-hook
             (lambda (arg)
               (call-interactively #'dap-hydra)
@@ -23,6 +27,21 @@
   (add-hook 'dap-mode-hook 'dap-mode-fringe-hook)
   (dap-auto-configure-mode t)
   (setq dap-auto-configure-features '(sessions locals breakpoints expressions tooltip))
+
+  (dap-register-debug-template
+   "LLDB::Run/Zig"
+   (list :type "lldb-vscode"
+         :cwd "${workspaceFolder}"
+         :request "launch"
+         :program "${workspaceFolder}/zig-out/bin/${workspaceFolderBasename}"
+         :name "LLDB::Run"))
+
+  (dap-register-debug-template
+   "LLDB::Run/Zig [select binary]"
+   (list :type "lldb-vscode"
+         :cwd "${workspaceFolder}"
+         :request "launch"
+         :name "LLDB::Run"))
 
   (dap-register-debug-template
    "LLDB::Run"
