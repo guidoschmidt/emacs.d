@@ -180,6 +180,7 @@
   :straight t)
 
 (use-package treemacs-icons-dired
+  :disabled
   :after treemacs dired
   :straight t
   :config (treemacs-icons-dired-mode))
@@ -202,7 +203,7 @@
                           (projects . 6)
                           (registers . 5)))
   (setq dashboard-set-heading-icons nil)
-  (setq dashboard-set-file-icons t)
+  (setq dashboard-set-file-icons nil)
   (setq dashboard-set-navigator t)
   (setq dashboard-set-footer nil)
   (setq dashboard-banner-logo-title "Have a good coding session")

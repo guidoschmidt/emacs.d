@@ -53,7 +53,7 @@
   (setq calendar-latitude 49.398750)
   (setq calendar-longitude 8.672434)
   (setq circadian-themes '((:sunrise . base16-kanagawa)
-                           (:sunset  . doom-lantern)
+                           (:sunset  . doom-ir-black)
                            ("23:59"  . doom-ir-black)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))
@@ -79,10 +79,12 @@
 
 ;; Use beautiful icons
 (use-package all-the-icons-ivy
+  :disabled
   :straight t)
 
 ;; Use beautiful icons also in ivy
 (use-package all-the-icons-ivy-rich
+  :disabled
   :straight t
   :config
   (all-the-icons-ivy-rich-mode t))

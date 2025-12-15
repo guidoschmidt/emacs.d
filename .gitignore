@@ -47,3 +47,6 @@ ellama-sessions/
 # chatgpt-shell
 .chatgpt-shell.el
 .claude/
+
+# gpg authinfo
+secrets/authinfo

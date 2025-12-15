@@ -8,9 +8,10 @@
 ;;; Code:
 (require 'auth-source)
 
+;; (setenv "GPG_AGENT_INFO" nil)
 (setq auth-source-debug t)
-(setq epg-gpg-program "/opt/homebrew/bin/gpg")
-(setq auth-sources '((:source "~/.emacs.d/secrets/.auth.gpg")))
+(setq-default epg-gpg-program "/opt/homebrew/bin/gpg")
+(setq-default auth-sources '((:source "~/.emacs.d/secrets/authinfo.gpg")))
 
 (provide 'feat.auth)
 ;;; feat.auth.el ends here

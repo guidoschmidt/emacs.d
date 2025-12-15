@@ -23,9 +23,9 @@
 
 (use-package chatgpt-shell
   :straight (:type git :host github :repo "xenodium/chatgpt-shell" :files ("chatgpt-shell*.el"))
-  :custom
-  ((setq chatgpt-shell-anthropic-key
-         (auth-source-pick-first-password :host "api.anthropic.com"))))
+  :config
+  (setq chatgpt-shell-anthropic-key
+        (auth-source-pick-first-password :host "api.anthropic.com") ))
 
 
 (use-package claude-code-ide
