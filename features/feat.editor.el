@@ -51,6 +51,7 @@
   (ivy-mode t))
 
 (use-package ivy-posframe
+  :disabled
   :straight t
   :config
   ;; (setq ivy-posframe-height-alist '((t . 40)))
