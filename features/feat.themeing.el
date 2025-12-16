@@ -42,7 +42,7 @@
   (setq calendar-latitude 49.398750)
   (setq calendar-longitude 8.672434)
   (setq circadian-themes '((:sunrise . base16-kanagawa)
-                           (:sunset  . doom-ir-black)
+                           (:sunset  . doom-1337)
                            ("23:59"  . doom-ir-black)))
   (add-hook 'emacs-startup-hook #'circadian-setup)
   (circadian-setup))

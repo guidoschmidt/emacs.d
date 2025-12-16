@@ -35,7 +35,6 @@
 
 ;;; ivy - generic completion frontend
 (use-package ivy
-  ;; :disabled
   :straight t
   :diminish ivy-mode
   :config
@@ -96,13 +95,11 @@
   (setq avy-all-windows 'all-frames)
   (custom-set-faces
    '(avy-lead-face
-     ((t (:inherit avy-lead-face
-                   :background "#42424ace2"
-                   :foreground "#eeeeee"))))
+     ((t (:background "#000"
+          :foreground "#fff"))))
    '(avy-lead-face-0
-     ((t (:inherit avy-lead-face-0
-                   :background "#feca32"
-                   :foreground "#424242")))))
+     ((t (:background "#fff"
+          :foreground "#000")))))
   :bind
   (("C-c e" . avy-goto-char)
    ("C-c o" . avy-goto-char-timer)))
@@ -168,8 +165,7 @@
                      (display-line-numbers-mode -1)
                      (custom-set-faces
                       '(treemacs-root-face
-                        ((t (:inherit treemacs-root-face
-                             :family "Atkinson Hyperlegible Mono"
+                        ((t (:family "Atkinson Hyperlegible Mono"
                              :height 110))))))))
 
 (use-package treemacs-evil
