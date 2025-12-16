@@ -9,22 +9,15 @@
 (use-package eink-theme :straight t)
 (use-package ample-theme :straight t)
 (use-package tao-theme :straight t)
-(use-package ample-zen-theme
-  :straight (ample-zen-theme :type git
-                             :host github
-                             :repo "mjwall/ample-zen"))
 (use-package gruvbox-theme :straight t)
 (use-package base16-theme :straight (base16-theme
                                      :host github
                                      :repo "guidoschmidt/base16-emacs"))
-(use-package flatui-theme :straight t)
 (use-package kaolin-themes :straight t)
 (use-package atom-dark-theme :straight t)
 (use-package solo-jazz-theme :straight t)
-(use-package nyx-theme :straight t)
 (use-package danneskjold-theme :straight t)
 (use-package stimmung-themes :straight t)
-(use-package klere-theme :straight t)
 (use-package humanoid-themes :straight t)
 (use-package kanagawa-themes :straight t)
 
@@ -38,10 +31,6 @@
   :straight (espresso-theme :type git
                             :host github
                             :repo "dgutov/espresso-theme"))
-(use-package curry-on-theme
-  :straight (cury-on-theme :type git
-                           :host github
-                           :repo "mvarela/Curry-On-theme"))
 
 (use-package circadian
   :straight (circadian
