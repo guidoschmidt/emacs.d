@@ -152,21 +152,22 @@
   :straight t
   :config
   (setq treemacs-position 'left)
-  (setq treemacs-width 42)
+  (setq treemacs-width 50)
   (setq treemacs-indentation 2)
   (setq treemacs-space-between-root-nodes nil)
   (setq treemacs-user-mode-line-format 'none)
-  (treemacs-resize-icons 13)
+  (custom-set-faces
+   '(treemacs-root-face
+     ((t (:family "Atkinson Hyperlegible Mono"
+                  :height (face-attribute 'default :height))))))
+  (treemacs-follow-mode t)
   (treemacs-fringe-indicator-mode 'always)
   (treemacs-filewatch-mode t)
   (treemacs-git-mode 'deferred)
+  
   :hook
   (treemacs-mode . (lambda ()
-                     (display-line-numbers-mode -1)
-                     (custom-set-faces
-                      '(treemacs-root-face
-                        ((t (:family "Atkinson Hyperlegible Mono"
-                             :height 110))))))))
+                     (display-line-numbers-mode -1))))
 
 (use-package treemacs-evil
   :after treemacs evil
